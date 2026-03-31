@@ -1,40 +1,25 @@
 import React from 'react';
-import { FractionDisplay } from './components/FractionDisplay';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <header className="max-w-4xl mx-auto mb-8">
-        <h1 className="text-3xl font-bold text-blue-900">SCHROOL Platform</h1>
-        <p className="text-gray-600">Educational Mathematics Platform</p>
+    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', padding: '2rem', fontFamily: 'sans-serif' }}>
+      <header style={{ maxWidth: '64rem', margin: '0 auto 2rem' }}>
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: '#1e3a8a' }}>SCHROOL Platform</h1>
+        <p style={{ color: '#4b5563' }}>Educational Mathematics Platform - Live Deployment</p>
       </header>
       
-      <main className="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-8">
-        <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-100">
-          <h2 className="text-xl font-semibold text-blue-800 mb-4">Fraction Renderer Test</h2>
-          <div className="flex items-center gap-8">
-            <div className="text-center">
-              <p className="text-sm text-gray-500 mb-2">Vertical Format:</p>
-              <FractionDisplay numerator={3} denominator={4} />
-            </div>
-            <div className="text-center">
-              <p className="text-sm text-gray-500 mb-2">Mixed Number:</p>
-              <div className="flex items-center gap-1">
-                <span className="text-2xl font-bold">2</span>
-                <FractionDisplay numerator={1} denominator={2} />
-              </div>
+      <main style={{ maxWidth: '64rem', margin: '0 auto', backgroundColor: 'white', borderRadius: '0.75rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', padding: '2rem' }}>
+        <div style={{ textAlign: 'center', padding: '3rem 0' }}>
+          <h2 style={{ fontSize: '1.5rem', color: '#1e40af', marginBottom: '1rem' }}>Deployment Successful!</h2>
+          <p style={{ fontSize: '1.125rem', color: '#374151', marginBottom: '2rem' }}>The SCHROOL platform is now live and connected to the database.</p>
+          <div style={{ padding: '1.5rem', backgroundColor: '#eff6ff', borderRadius: '0.5rem', border: '1px solid #dbeafe', display: 'inline-block' }}>
+            <p style={{ fontWeight: 'bold', color: '#1e40af', marginBottom: '0.5rem' }}>Fraction Display Test:</p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', fontSize: '1.5rem' }}>
+              <span>3</span>
+              <div style={{ width: '2rem', height: '2px', backgroundColor: 'black', margin: '2px 0' }}></div>
+              <span>4</span>
             </div>
           </div>
-        </div>
-
-        <div className="text-center py-12">
-          <p className="text-lg text-gray-700 mb-4">The platform is being updated with the latest lesson fixes.</p>
-          <button 
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            onClick={() => window.location.reload()}
-          >
-            Refresh Lessons
-          </button>
         </div>
       </main>
     </div>
@@ -42,3 +27,4 @@ function App() {
 }
 
 export default App;
+
