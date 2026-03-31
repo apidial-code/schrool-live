@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -26,3 +29,4 @@
     "vite": "^5.1.4"
   }
 }
+
