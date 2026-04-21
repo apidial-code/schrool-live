@@ -1,1 +1,1 @@
-web: npx vite preview --port $PORT --host
+web: npx serve -s dist -l $PORT
