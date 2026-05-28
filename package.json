@@ -13,12 +13,22 @@
     "start": "vite preview --port $PORT --host 0.0.0.0"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^3.0.7",
+    "@trpc/client": "^10.45.1",
+    "@trpc/react-query": "^10.45.1",
+    "@trpc/server": "^10.45.1",
     "autoprefixer": "^10.4.18",
+    "clsx": "^2.1.0",
     "lucide-react": "^0.344.0",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "serve": "^14.2.6"
+    "serve": "^14.2.6",
+    "sonner": "^1.4.3",
+    "stripe": "^14.19.0",
+    "tailwind-merge": "^2.2.1",
+    "wouter": "^3.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
