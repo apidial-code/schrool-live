@@ -6,6 +6,7 @@ import { appRouter } from "../routers/index.js";
 import { createContext } from "./context.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,12 +28,32 @@ async function startServer() {
     })
   );
 
-  if (process.env.NODE_ENV === "production") {
-    console.log("Production mode: serving static files");
-    const distPath = path.resolve(__dirname, "../../../../dist");
+  // Robust static file serving
+  const possibleDistPaths = [
+    path.resolve(__dirname, "../../../dist"),
+    path.resolve(__dirname, "../../../../dist"),
+    path.resolve(process.cwd(), "dist"),
+    path.resolve(process.cwd(), "../dist")
+  ];
+
+  let distPath = "";
+  for (const p of possibleDistPaths) {
+    if (fs.existsSync(p) && fs.existsSync(path.join(p, "index.html"))) {
+      distPath = p;
+      console.log("Found static files at:", distPath);
+      break;
+    }
+  }
+
+  if (distPath) {
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
+    });
+  } else {
+    console.error("CRITICAL: Could not find static files directory!");
+    app.get("*", (req, res) => {
+      res.status(404).send("Static files not found. Build might have failed.");
     });
   }
 
