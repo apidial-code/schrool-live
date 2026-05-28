@@ -41,33 +41,21 @@ async function startServer() {
 
   let distPath = "";
   for (const p of possibleDistPaths) {
-    console.log("Checking path:", p);
+
     if (fs.existsSync(p) && fs.existsSync(path.join(p, "index.html"))) {
       distPath = p;
-      console.log("Found static files at:", distPath);
+  
       break;
     }
   }
 
   if (distPath) {
     app.use(express.static(distPath));
-    app.get("/student", (req, res) => {
-      res.sendFile(path.join(distPath, "student-dashboard.html"));
-    });
-    app.get("/parent", (req, res) => {
-      res.sendFile(path.join(distPath, "parent-dashboard.html"));
-    });
-    app.get("/teacher", (req, res) => {
-      res.sendFile(path.join(distPath, "teacher-dashboard.html"));
-    });
-    app.get("/admin", (req, res) => {
-      res.sendFile(path.join(distPath, "admin-dashboard.html"));
-    });
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   } else {
-    console.error("CRITICAL: Could not find static files directory! Checked paths: ", possibleDistPaths);
+    console.error("CRITICAL: Could not find static files directory!");
     app.get("*", (req, res) => {
       res.status(404).send("Static files not found. Build might have failed.");
     });
