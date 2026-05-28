@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "ts-node-esm server/_core/index.ts"
+    "start": "node server/_core/index.js"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
