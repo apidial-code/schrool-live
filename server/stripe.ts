@@ -1,6 +1,6 @@
-import { ENV } from './_core/env';
-import type { YearLevel, Tier, PaymentMethod } from '../shared/pricing';
-import { calculateTotalCost, getPaymentBreakdown, getYearLevelName, getTierName } from '../shared/pricing';
+import { ENV } from './_core/env.js';
+import type { YearLevel, Tier, PaymentMethod } from '../shared/pricing.js';
+import { calculateTotalCost, getPaymentBreakdown, getYearLevelName, getTierName } from '../shared/pricing.js';
 
 let stripe: any = null;
 

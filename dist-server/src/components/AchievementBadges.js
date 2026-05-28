@@ -1,0 +1,9 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Trophy, Award, Star } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+export function AchievementBadges({ badges, isLoading }) {
+    if (isLoading) {
+        return (_jsxs(Card, { children: [_jsx(CardHeader, { children: _jsxs(CardTitle, { className: "flex items-center gap-2", children: [_jsx(Trophy, { className: "w-5 h-5 text-yellow-600" }), "My Achievements"] }) }), _jsx(CardContent, { children: _jsx("div", { className: "text-center py-8 text-gray-500", children: "Loading badges..." }) })] }));
+    }
+    return (_jsxs(Card, { children: [_jsxs(CardHeader, { children: [_jsxs(CardTitle, { className: "flex items-center gap-2", children: [_jsx(Trophy, { className: "w-5 h-5 text-yellow-600" }), "My Achievements"] }), _jsxs(CardDescription, { children: [badges.length, " badges earned"] })] }), _jsx(CardContent, { children: badges.length === 0 ? (_jsxs("div", { className: "text-center py-8 text-gray-500", children: [_jsx(Award, { className: "w-12 h-12 mx-auto mb-4 opacity-50" }), _jsx("p", { children: "Complete lessons to earn badges!" })] })) : (_jsx("div", { className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4", children: badges.map((badge) => (_jsxs("div", { className: "flex flex-col items-center p-4 rounded-lg bg-gradient-to-br from-yellow-50 to-amber-50 border border-yellow-200 hover:shadow-md transition-shadow", title: badge.description || badge.badgeName, children: [_jsx("div", { className: "w-12 h-12 rounded-full bg-yellow-600 text-white flex items-center justify-center mb-2", children: _jsx(Star, { className: "w-6 h-6" }) }), _jsx("h3", { className: "text-sm font-semibold text-center text-gray-900", children: badge.badgeName }), _jsx("p", { className: "text-xs text-gray-600 mt-1", children: new Date(badge.earnedAt).toLocaleDateString() })] }, badge.id))) })) })] }));
+}

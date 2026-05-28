@@ -1,4 +1,4 @@
-import { mysqlTable, serial, varchar, timestamp, decimal, integer, text, boolean } from "drizzle-orm/mysql-core";
+import { mysqlTable, serial, varchar, timestamp, decimal, int, text, boolean } from "drizzle-orm/mysql-core";
 export const users = mysqlTable("users", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }),
@@ -7,7 +7,7 @@ export const users = mysqlTable("users", {
 });
 export const enrollments = mysqlTable("enrollments", {
   id: serial("id").primaryKey(),
-  userId: integer("user_id"),
+  userId: int("user_id"),
   studentName: varchar("student_name", { length: 255 }),
   parentEmail: varchar("parent_email", { length: 255 }),
   tier: varchar("tier", { length: 50 }),
@@ -23,18 +23,18 @@ export const courses = mysqlTable("courses", {
 });
 export const lessons = mysqlTable("lessons", {
   id: serial("id").primaryKey(),
-  courseId: integer("course_id"),
+  courseId: int("course_id"),
   title: varchar("title", { length: 255 }),
-  orderIndex: integer("order_index"),
+  orderIndex: int("order_index"),
 });
 export const exercises = mysqlTable("exercises", {
   id: serial("id").primaryKey(),
-  lessonId: integer("lesson_id"),
+  lessonId: int("lesson_id"),
 });
 export const userProgress = mysqlTable("user_progress", {
   id: serial("id").primaryKey(),
-  userId: integer("user_id"),
-  lessonId: integer("lesson_id"),
+  userId: int("user_id"),
+  lessonId: int("lesson_id"),
 });
 export const emailCampaigns = mysqlTable("email_campaigns", { id: serial("id").primaryKey() });
 export const emailSequences = mysqlTable("email_sequences", { id: serial("id").primaryKey() });
@@ -43,12 +43,12 @@ export const emailLogs = mysqlTable("email_logs", { id: serial("id").primaryKey(
 export const diagnosticTestResults = mysqlTable("diagnostic_test_results", { id: serial("id").primaryKey() });
 export const zoomSessions = mysqlTable("zoom_sessions", {
   id: serial("id").primaryKey(),
-  enrollmentId: integer("enrollment_id"),
-  studentId: integer("student_id"),
-  teacherId: integer("teacher_id"),
-  sessionNumber: integer("session_number"),
+  enrollmentId: int("enrollment_id"),
+  studentId: int("student_id"),
+  teacherId: int("teacher_id"),
+  sessionNumber: int("session_number"),
   scheduledAt: timestamp("scheduled_at"),
-  duration: integer("duration"),
+  duration: int("duration"),
   status: varchar("status", { length: 50 }),
 });
 export type InsertUser = typeof users.$inferInsert;

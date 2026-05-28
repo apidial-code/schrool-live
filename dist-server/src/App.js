@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Route, Switch } from "wouter";
+import EliteEnrollment from "./pages/EliteEnrollment";
+import EnrollmentSuccess from "./pages/EnrollmentSuccess";
+function App() {
+    return (_jsxs(Switch, { children: [_jsx(Route, { path: "/enroll/elite", component: EliteEnrollment }), _jsx(Route, { path: "/enrollment/success", component: EnrollmentSuccess }), _jsx(Route, { path: "/", children: _jsxs("div", { style: { minHeight: '100vh', backgroundColor: '#f9fafb', padding: '2rem', fontFamily: 'sans-serif' }, children: [_jsxs("header", { style: { maxWidth: '64rem', margin: '0 auto 2rem' }, children: [_jsx("h1", { style: { fontSize: '1.875rem', fontWeight: 'bold', color: '#1e3a8a' }, children: "SCHROOL Platform" }), _jsx("p", { style: { color: '#4b5563' }, children: "Educational Mathematics Platform - Live Deployment" })] }), _jsx("main", { style: { maxWidth: '64rem', margin: '0 auto', backgroundColor: 'white', borderRadius: '0.75rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', padding: '2rem' }, children: _jsxs("div", { style: { textAlign: 'center', padding: '3rem 0' }, children: [_jsx("h2", { style: { fontSize: '1.5rem', color: '#1e40af', marginBottom: '1rem' }, children: "Welcome to SCHROOL" }), _jsx("p", { style: { fontSize: '1.125rem', color: '#374151', marginBottom: '2rem' }, children: "Please select an option below to continue." }), _jsx("a", { href: "/enroll/elite", style: { display: 'inline-block', padding: '0.75rem 1.5rem', backgroundColor: '#1e40af', color: 'white', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 'bold' }, children: "Go to Elite Enrollment" })] }) })] }) })] }));
+}
+export default App;
