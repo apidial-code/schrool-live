@@ -7,6 +7,7 @@ import { createContext } from "./context.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import lessonsApiRouter from "../routes/lessonsApi.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 async function startServer() {
@@ -20,6 +21,8 @@ async function startServer() {
         router: appRouter,
         createContext,
     }));
+    // Direct lessons API (workaround for Drizzle ORM issues)
+    app.use("/api/lessons/direct", lessonsApiRouter);
     // Robust static file serving
     const possibleDistPaths = [
         path.resolve(__dirname, "../../../dist"),
