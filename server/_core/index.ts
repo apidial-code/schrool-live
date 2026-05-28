@@ -63,23 +63,11 @@ async function startServer() {
     app.get("/admin", (req, res) => {
       res.sendFile(path.join(distPath, "admin-dashboard.html"));
     });
-    app.get("/student", (req, res) => {
-      res.sendFile(path.join(distPath, "student-dashboard.html"));
-    });
-    app.get("/parent", (req, res) => {
-      res.sendFile(path.join(distPath, "parent-dashboard.html"));
-    });
-    app.get("/teacher", (req, res) => {
-      res.sendFile(path.join(distPath, "teacher-dashboard.html"));
-    });
-    app.get("/admin", (req, res) => {
-      res.sendFile(path.join(distPath, "admin-dashboard.html"));
-    });
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   } else {
-    console.error("CRITICAL: Could not find static files directory!");
+    console.error("CRITICAL: Could not find static files directory! Checked paths: ", possibleDistPaths);
     app.get("*", (req, res) => {
       res.status(404).send("Static files not found. Build might have failed.");
     });
