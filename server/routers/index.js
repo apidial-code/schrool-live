@@ -1,5 +1,4 @@
 import { router } from "../_core/trpc.js";
-import { lessonsRouter } from "./lessons.js";
 import { enrollmentNewRouter } from "./enrollmentNew.js";
 import { enrollmentRouter } from "./enrollment.js";
 import { progressRouter } from "./progress.js";
@@ -17,5 +16,5 @@ export const appRouter = router({
     teacher: placeholderRouter,
     admin: placeholderRouter,
     teacherOnboarding: placeholderRouter,
-    lessons: lessonsRouter,
+    lessons: placeholderRouter,
 });
