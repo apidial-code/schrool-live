@@ -4,6 +4,10 @@ import { createServer } from "http";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
   const server = createServer(app);
@@ -19,9 +23,10 @@ async function startServer() {
   );
   // Serve static files in production
   if (process.env.NODE_ENV === "production") {
-    app.use(express.static("dist"));
+    const distPath = path.resolve(__dirname, "../../dist");
+    app.use(express.static(distPath));
     app.get("*", (req, res) => {
-      res.sendFile("index.html", { root: "dist" });
+      res.sendFile(path.join(distPath, "index.html"));
     });
   }
   const port = parseInt(process.env.PORT || "3000");
