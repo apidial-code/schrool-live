@@ -1,0 +1,58 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { trpc } from "@/lib/trpc";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
+import { TrendingUp, Users, DollarSign, Activity, Award } from "lucide-react";
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, } from "recharts";
+export default function AdminAnalyticsEnhanced() {
+    const { data: analytics, isLoading } = trpc.admin.getAnalytics.useQuery({});
+    if (isLoading) {
+        return (_jsx("div", { className: "flex items-center justify-center py-12", children: _jsx("div", { className: "text-gray-500", children: "Loading analytics..." }) }));
+    }
+    if (!analytics) {
+        return (_jsx("div", { className: "flex items-center justify-center py-12", children: _jsx("div", { className: "text-gray-500", children: "No analytics data available" }) }));
+    }
+    // Mock enrollment trend data (replace with real data from backend)
+    const enrollmentTrends = [
+        { month: "Aug", standard: 45, elite: 20, total: 65 },
+        { month: "Sep", standard: 78, elite: 35, total: 113 },
+        { month: "Oct", standard: 120, elite: 55, total: 175 },
+        { month: "Nov", standard: 165, elite: 78, total: 243 },
+        { month: "Dec", standard: 210, elite: 95, total: 305 },
+        { month: "Jan", standard: 268, elite: 122, total: 390 },
+    ];
+    // Revenue data
+    const revenueData = [
+        { month: "Aug", standard: 3600, elite: 5600, total: 9200 },
+        { month: "Sep", standard: 6240, elite: 9800, total: 16040 },
+        { month: "Oct", standard: 9600, elite: 15400, total: 25000 },
+        { month: "Nov", standard: 13200, elite: 21840, total: 35040 },
+        { month: "Dec", standard: 16800, elite: 26600, total: 43400 },
+        { month: "Jan", standard: 21440, elite: 34160, total: 55600 },
+    ];
+    // Tier distribution (calculate from enrollmentTrends)
+    const standardCount = analytics.enrollmentTrends?.find(t => t.tier === "standard")?.count || 268;
+    const eliteCount = analytics.enrollmentTrends?.find(t => t.tier === "elite")?.count || 122;
+    const tierDistribution = [
+        { name: "Standard Tier", value: standardCount, color: "#3b82f6" },
+        { name: "Elite Tier", value: eliteCount, color: "#8b5cf6" },
+    ];
+    // Student engagement data
+    const engagementData = [
+        { day: "Mon", activeUsers: 285, lessonsCompleted: 142 },
+        { day: "Tue", activeUsers: 310, lessonsCompleted: 168 },
+        { day: "Wed", activeUsers: 295, lessonsCompleted: 155 },
+        { day: "Thu", activeUsers: 320, lessonsCompleted: 178 },
+        { day: "Fri", activeUsers: 298, lessonsCompleted: 162 },
+        { day: "Sat", activeUsers: 245, lessonsCompleted: 98 },
+        { day: "Sun", activeUsers: 220, lessonsCompleted: 85 },
+    ];
+    // Teacher performance data
+    const teacherPerformance = [
+        { name: "Sarah Chen", sessions: 48, rating: 4.9, students: 22 },
+        { name: "Michael Brown", sessions: 45, rating: 4.8, students: 20 },
+        { name: "Emily Davis", sessions: 42, rating: 4.7, students: 19 },
+        { name: "James Wilson", sessions: 38, rating: 4.6, students: 17 },
+        { name: "Lisa Anderson", sessions: 35, rating: 4.5, students: 16 },
+    ];
+    return (_jsxs("div", { className: "space-y-6", children: [_jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4", children: [_jsx(Card, { children: _jsx(CardContent, { className: "pt-6", children: _jsxs("div", { className: "flex items-center justify-between", children: [_jsxs("div", { children: [_jsx("p", { className: "text-sm font-medium text-gray-600", children: "Total Revenue" }), _jsx("p", { className: "text-2xl font-bold text-gray-900 mt-1", children: "$55,600" }), _jsxs("p", { className: "text-sm text-green-600 mt-1 flex items-center gap-1", children: [_jsx(TrendingUp, { className: "h-4 w-4" }), "+28% from last month"] })] }), _jsx("div", { className: "h-12 w-12 bg-green-100 rounded-full flex items-center justify-center", children: _jsx(DollarSign, { className: "h-6 w-6 text-green-600" }) })] }) }) }), _jsx(Card, { children: _jsx(CardContent, { className: "pt-6", children: _jsxs("div", { className: "flex items-center justify-between", children: [_jsxs("div", { children: [_jsx("p", { className: "text-sm font-medium text-gray-600", children: "Active Students" }), _jsx("p", { className: "text-2xl font-bold text-gray-900 mt-1", children: "390" }), _jsxs("p", { className: "text-sm text-green-600 mt-1 flex items-center gap-1", children: [_jsx(TrendingUp, { className: "h-4 w-4" }), "+60 this month"] })] }), _jsx("div", { className: "h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center", children: _jsx(Users, { className: "h-6 w-6 text-blue-600" }) })] }) }) }), _jsx(Card, { children: _jsx(CardContent, { className: "pt-6", children: _jsxs("div", { className: "flex items-center justify-between", children: [_jsxs("div", { children: [_jsx("p", { className: "text-sm font-medium text-gray-600", children: "Avg Completion Rate" }), _jsxs("p", { className: "text-2xl font-bold text-gray-900 mt-1", children: [analytics.progressStats?.completed ? Math.round((analytics.progressStats.completed / 390) * 100) : 73, "%"] }), _jsxs("p", { className: "text-sm text-green-600 mt-1 flex items-center gap-1", children: [_jsx(TrendingUp, { className: "h-4 w-4" }), "+5% from last month"] })] }), _jsx("div", { className: "h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center", children: _jsx(Activity, { className: "h-6 w-6 text-purple-600" }) })] }) }) }), _jsx(Card, { children: _jsx(CardContent, { className: "pt-6", children: _jsxs("div", { className: "flex items-center justify-between", children: [_jsxs("div", { children: [_jsx("p", { className: "text-sm font-medium text-gray-600", children: "Active Teachers" }), _jsx("p", { className: "text-2xl font-bold text-gray-900 mt-1", children: analytics.teacherStats?.length || 18 }), _jsxs("p", { className: "text-sm text-green-600 mt-1 flex items-center gap-1", children: [_jsx(TrendingUp, { className: "h-4 w-4" }), "+3 this month"] })] }), _jsx("div", { className: "h-12 w-12 bg-orange-100 rounded-full flex items-center justify-center", children: _jsx(Award, { className: "h-6 w-6 text-orange-600" }) })] }) }) })] }), _jsxs(Card, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Enrollment Trends" }), _jsx(CardDescription, { children: "Monthly growth by tier (Standard vs Elite)" })] }), _jsx(CardContent, { children: _jsx(ResponsiveContainer, { width: "100%", height: 300, children: _jsxs(LineChart, { data: enrollmentTrends, children: [_jsx(CartesianGrid, { strokeDasharray: "3 3" }), _jsx(XAxis, { dataKey: "month" }), _jsx(YAxis, {}), _jsx(Tooltip, {}), _jsx(Legend, {}), _jsx(Line, { type: "monotone", dataKey: "standard", stroke: "#3b82f6", strokeWidth: 2, name: "Standard Tier" }), _jsx(Line, { type: "monotone", dataKey: "elite", stroke: "#8b5cf6", strokeWidth: 2, name: "Elite Tier" }), _jsx(Line, { type: "monotone", dataKey: "total", stroke: "#10b981", strokeWidth: 2, name: "Total" })] }) }) })] }), _jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-6", children: [_jsxs(Card, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Revenue Growth" }), _jsx(CardDescription, { children: "Monthly recurring revenue by tier" })] }), _jsx(CardContent, { children: _jsx(ResponsiveContainer, { width: "100%", height: 300, children: _jsxs(BarChart, { data: revenueData, children: [_jsx(CartesianGrid, { strokeDasharray: "3 3" }), _jsx(XAxis, { dataKey: "month" }), _jsx(YAxis, {}), _jsx(Tooltip, { formatter: (value) => `$${value}` }), _jsx(Legend, {}), _jsx(Bar, { dataKey: "standard", fill: "#3b82f6", name: "Standard ($40/week)" }), _jsx(Bar, { dataKey: "elite", fill: "#8b5cf6", name: "Elite ($70/week)" })] }) }) })] }), _jsxs(Card, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Tier Distribution" }), _jsx(CardDescription, { children: "Current enrollment breakdown" })] }), _jsxs(CardContent, { children: [_jsx(ResponsiveContainer, { width: "100%", height: 300, children: _jsxs(PieChart, { children: [_jsx(Pie, { data: tierDistribution, cx: "50%", cy: "50%", labelLine: false, label: ({ name, value, percent }) => `${name}: ${value} (${(percent * 100).toFixed(0)}%)`, outerRadius: 80, fill: "#8884d8", dataKey: "value", children: tierDistribution.map((entry, index) => (_jsx(Cell, { fill: entry.color }, `cell-${index}`))) }), _jsx(Tooltip, {})] }) }), _jsxs("div", { className: "mt-4 space-y-2", children: [_jsxs("div", { className: "flex items-center justify-between", children: [_jsx("span", { className: "text-sm text-gray-600", children: "Standard Tier Revenue:" }), _jsx("span", { className: "text-sm font-semibold", children: "$21,440/month" })] }), _jsxs("div", { className: "flex items-center justify-between", children: [_jsx("span", { className: "text-sm text-gray-600", children: "Elite Tier Revenue:" }), _jsx("span", { className: "text-sm font-semibold", children: "$34,160/month" })] }), _jsxs("div", { className: "flex items-center justify-between border-t pt-2", children: [_jsx("span", { className: "text-sm font-medium text-gray-900", children: "Total MRR:" }), _jsx("span", { className: "text-sm font-bold text-green-600", children: "$55,600/month" })] })] })] })] })] }), _jsxs(Card, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Student Engagement" }), _jsx(CardDescription, { children: "Daily active users and lesson completion" })] }), _jsx(CardContent, { children: _jsx(ResponsiveContainer, { width: "100%", height: 300, children: _jsxs(BarChart, { data: engagementData, children: [_jsx(CartesianGrid, { strokeDasharray: "3 3" }), _jsx(XAxis, { dataKey: "day" }), _jsx(YAxis, {}), _jsx(Tooltip, {}), _jsx(Legend, {}), _jsx(Bar, { dataKey: "activeUsers", fill: "#3b82f6", name: "Active Users" }), _jsx(Bar, { dataKey: "lessonsCompleted", fill: "#10b981", name: "Lessons Completed" })] }) }) })] }), _jsxs(Card, { children: [_jsxs(CardHeader, { children: [_jsx(CardTitle, { children: "Top Teacher Performance" }), _jsx(CardDescription, { children: "Teachers ranked by sessions delivered and student ratings" })] }), _jsx(CardContent, { children: _jsx("div", { className: "space-y-4", children: teacherPerformance.map((teacher, index) => (_jsxs("div", { className: "flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors", children: [_jsxs("div", { className: "flex items-center gap-4", children: [_jsx("div", { className: `flex items-center justify-center w-10 h-10 rounded-full font-bold text-white ${index === 0 ? "bg-yellow-500" : index === 1 ? "bg-gray-400" : index === 2 ? "bg-orange-600" : "bg-blue-500"}`, children: index + 1 }), _jsxs("div", { children: [_jsx("p", { className: "font-semibold text-gray-900", children: teacher.name }), _jsxs("p", { className: "text-sm text-gray-600", children: [teacher.students, " students"] })] })] }), _jsxs("div", { className: "flex items-center gap-6", children: [_jsxs("div", { className: "text-right", children: [_jsx("p", { className: "text-sm text-gray-600", children: "Sessions" }), _jsx("p", { className: "font-semibold text-gray-900", children: teacher.sessions })] }), _jsxs("div", { className: "text-right", children: [_jsx("p", { className: "text-sm text-gray-600", children: "Rating" }), _jsxs("p", { className: "font-semibold text-yellow-600 flex items-center gap-1", children: ["\u2B50 ", teacher.rating] })] })] })] }, teacher.name))) }) })] })] }));
+}

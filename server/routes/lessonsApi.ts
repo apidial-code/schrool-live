@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 const router = Router();
 
 // Mock curriculum data
@@ -29,14 +28,14 @@ const mockLessons = [
 
 const mockExercises = {
   1: [
-    { id: 101, question: "What is 2x + 5 = 15?", options: ["x=5", "x=10", "x=2", "x=7"], answer: "x=5", difficulty: "easy" },
-    { id: 102, question: "Simplify 3(x + 4)", options: ["3x+12", "3x+4", "x+12", "3x+7"], answer: "3x+12", difficulty: "medium" },
+    { id: 101, lessonId: 1, difficulty: "easy", question: "What is 2x + 5 = 15?", options: JSON.stringify(["x=5", "x=10", "x=2", "x=7"]), correctAnswer: "x=5", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 1 },
+    { id: 102, lessonId: 1, difficulty: "easy", question: "Simplify 3(x + 4)", options: JSON.stringify(["3x+12", "3x+4", "x+12", "3x+7"]), correctAnswer: "3x+12", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 2 },
   ],
   2: [
-    { id: 201, question: "What is the area of a circle with radius 5?", options: ["25π", "10π", "5π", "50π"], answer: "25π", difficulty: "easy" },
+    { id: 201, lessonId: 2, difficulty: "easy", question: "What is the area of a circle with radius 5?", options: JSON.stringify(["25π", "10π", "5π", "50π"]), correctAnswer: "25π", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 1 },
   ],
   23: [
-    { id: 2301, question: "What is the derivative of x^2?", options: ["2x", "x", "2", "x^2"], answer: "2x", difficulty: "easy" },
+    { id: 2301, lessonId: 23, difficulty: "easy", question: "What is the derivative of x^2?", options: JSON.stringify(["2x", "x", "2", "x^2"]), correctAnswer: "2x", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 1 },
   ]
 };
 
