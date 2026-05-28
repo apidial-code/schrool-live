@@ -1,0 +1,22 @@
+export declare const ENV: {
+    appId: string;
+    cookieSecret: string;
+    databaseUrl: string;
+    oAuthServerUrl: string;
+    ownerOpenId: string;
+    isProduction: boolean;
+    forgeApiUrl: string;
+    forgeApiKey: string;
+    githubClientId: string;
+    githubClientSecret: string;
+    githubCallbackUrl: string;
+    stripeSecretKey: string;
+    stripePublishableKey: string;
+    stripeWebhookSecret: string;
+    brevoApiKey: string;
+    brevoFromEmail: string;
+    brevoFromName: string;
+    zoomClientId: string;
+    zoomClientSecret: string;
+    zoomAccountId: string;
+};

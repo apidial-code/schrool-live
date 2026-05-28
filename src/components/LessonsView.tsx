@@ -30,8 +30,8 @@ export function LessonsView() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {lessons?.map((l: any) => {
             const lessonProgress = progress?.find((p: any) => p.lessonId === l.id);
-            const allLevelsComplete = 
-              progress?.some((p: any) => p.lessonId === l.id && p.completed);
+            const allLevelsComplete =
+              progress?.some((p: any) => p.lessonId === l.id && p.easyCompleted && p.mediumCompleted && p.challengingCompleted);
 
             return (
               <Card
@@ -49,9 +49,9 @@ export function LessonsView() {
                     return (
                       <div key={level} className="text-sm">
                         <span className="capitalize font-semibold">{level}:</span>
-                        {levelProgress?.completed ? (
+                        {levelProgress?.[`${level}Completed`] ? (
                           <span className="ml-2 text-green-600">✓ Complete ({levelProgress.correctAnswers}/10)</span>
-                        ) : levelProgress ? (
+                        ) : levelProgress?.[`${level}Completed`] === 0 ? (
                           <span className="ml-2 text-yellow-600">In Progress ({levelProgress.correctAnswers}/10)</span>
                         ) : (
                           <span className="ml-2 text-gray-400">Not started</span>

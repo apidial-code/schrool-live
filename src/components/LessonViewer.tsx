@@ -273,11 +273,8 @@ export function LessonViewer({ lessonId, onClose }: LessonViewerProps) {
     const updateData: any = {
       lessonId,
       difficulty: currentLevel,
-      difficultyScore: correctCount,
-      difficultyTotal: exercises.length,
-      difficultyCompleted: passed ? 1 : 0,
+      score: correctCount,
     };
-    if (currentLevel === "challenging" && passed) updateData.completed = 1;
     updateProgress.mutate(updateData);
     setShowResults(true);
   };

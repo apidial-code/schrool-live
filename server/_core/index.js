@@ -25,18 +25,14 @@ async function startServer() {
     app.use("/api/lessons/direct", lessonsApiRouter);
     // Robust static file serving
     const possibleDistPaths = [
-        path.resolve(__dirname, "../../../dist"),
-        path.resolve(__dirname, "../../../../dist"),
-        path.resolve(process.cwd(), "dist"),
-        path.resolve(process.cwd(), "../dist"),
-        path.resolve(__dirname, "../../dist")
+        path.resolve(__dirname, "../../../../dist"), // For Heroku, assuming dist is at the root
+        path.resolve(process.cwd(), "dist"), // For local development
+        path.resolve(__dirname, "../../dist") // Another common local path
     ];
     let distPath = "";
     for (const p of possibleDistPaths) {
-        console.log("Checking path:", p);
         if (fs.existsSync(p) && fs.existsSync(path.join(p, "index.html"))) {
             distPath = p;
-            console.log("Found static files at:", distPath);
             break;
         }
     }
