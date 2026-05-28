@@ -34,11 +34,9 @@ async function startServer() {
 
   // Robust static file serving
   const possibleDistPaths = [
-    path.resolve(__dirname, "../../../dist"),
-    path.resolve(__dirname, "../../../../dist"),
-    path.resolve(process.cwd(), "dist"),
-    path.resolve(process.cwd(), "../dist"),
-    path.resolve(__dirname, "../../dist")
+    path.resolve(__dirname, "../../../../dist"), // For Heroku, assuming dist is at the root
+    path.resolve(process.cwd(), "dist"), // For local development
+    path.resolve(__dirname, "../../dist") // Another common local path
   ];
 
   let distPath = "";
@@ -53,6 +51,18 @@ async function startServer() {
 
   if (distPath) {
     app.use(express.static(distPath));
+    app.get("/student", (req, res) => {
+      res.sendFile(path.join(distPath, "student-dashboard.html"));
+    });
+    app.get("/parent", (req, res) => {
+      res.sendFile(path.join(distPath, "parent-dashboard.html"));
+    });
+    app.get("/teacher", (req, res) => {
+      res.sendFile(path.join(distPath, "teacher-dashboard.html"));
+    });
+    app.get("/admin", (req, res) => {
+      res.sendFile(path.join(distPath, "admin-dashboard.html"));
+    });
     app.get("/student", (req, res) => {
       res.sendFile(path.join(distPath, "student-dashboard.html"));
     });
