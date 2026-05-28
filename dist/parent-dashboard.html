@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Schrool</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            /* SCHROOL Brand Colors */
+            --primary-blue: #4169E1;
+            --primary-blue-hover: #2563EB;
+            --primary-blue-light: #EFF6FF;
+            --secondary-purple: #6366F1;
+            --secondary-teal: #00bda5;
+            --secondary-orange: #ff7a59;
+            --secondary-green: #4CAF50;
+            
+            /* Neutrals */
+            --white: #ffffff;
+            --gray-50: #f9f9f9;
+            --gray-100: #f8f9fa;
+            --gray-200: #eee;
+            --gray-300: #ddd;
+            --gray-400: #999;
+            --gray-500: #666;
+            --gray-600: #555;
+            --gray-700: #444;
+            --gray-800: #333;
+            --gray-900: #222;
+            
+            /* Status */
+            --success: #4CAF50;
+            --warning: #ffc107;
+            --error: #e91e63;
+            --info: #2196F3;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+        
+        /* Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background-color: var(--white);
+            box-shadow: var(--shadow-md);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-header {
+            padding: var(--spacing-xl);
+            border-bottom: 1px solid var(--gray-200);
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .tagline {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        
+        .sidebar-nav {
+            padding: var(--spacing-lg);
+        }
+        
+        .sidebar-nav ul {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            color: var(--gray-600);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background-color: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+        
+        .sidebar-nav i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-footer {
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--gray-200);
+            margin-top: auto;
+        }
+        
+        .sidebar-footer h3 {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: var(--white);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .search-bar {
+            position: relative;
+            width: 400px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 3rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: border-color 0.2s ease;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.1);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .notifications {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .notifications i {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            transition: color 0.2s ease;
+        }
+        
+        .notifications:hover i {
+            color: var(--primary-blue);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--error);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            cursor: pointer;
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            transition: background-color 0.2s ease;
+        }
+        
+        .user-profile:hover {
+            background-color: var(--gray-100);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-teal), var(--secondary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .user-role {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .content {
+            flex: 1;
+            padding: var(--spacing-xl);
+        }
+        
+        .page-header {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .page-subtitle {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+        }
+        
+        /* Cards */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .card-action {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+        
+        .card-action:hover {
+            color: var(--primary-blue-hover);
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        /* Child selector */
+        .child-selector {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+        
+        .child-card {
+            background: linear-gradient(135deg, var(--secondary-teal), var(--secondary-green));
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .child-card.active {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .child-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(20px, -20px);
+        }
+        
+        .child-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .child-grade {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .child-status {
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .stat-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .stat-icon.progress {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+        }
+        
+        .stat-icon.assignments {
+            background: linear-gradient(135deg, var(--secondary-orange), var(--warning));
+        }
+        
+        .stat-icon.time {
+            background: linear-gradient(135deg, var(--secondary-teal), var(--secondary-green));
+        }
+        
+        .stat-icon.achievements {
+            background: linear-gradient(135deg, var(--warning), var(--secondary-orange));
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        /* Progress bars */
+        .progress-container {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .progress-label {
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+        
+        .progress-value {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--gray-200);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-purple));
+            border-radius: var(--radius-sm);
+            transition: width 0.3s ease;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.875rem;
+            gap: var(--spacing-sm);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-blue-hover);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--gray-200);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th,
+        .table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .table th {
+            background-color: var(--gray-50);
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.875rem;
+        }
+        
+        .table td {
+            font-size: 0.875rem;
+        }
+        
+        .table tbody tr:hover {
+            background-color: var(--gray-50);
+        }
+        
+        /* Status badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+        }
+        
+        .badge-warning {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning);
+        }
+        
+        .badge-error {
+            background-color: rgba(233, 30, 99, 0.1);
+            color: var(--error);
+        }
+        
+        .badge-info {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: var(--info);
+        }
+        
+        /* Chart container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .header {
+                padding: var(--spacing-md);
+            }
+            
+            .search-bar {
+                width: 200px;
+            }
+            
+            .content {
+                padding: var(--spacing-md);
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-info {
+                display: none;
+            }
+            
+            .child-selector {
+                flex-direction: column;
+            }
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-600);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Quick actions */
+        .quick-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+        
+        /* Recent activity */
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: background-color 0.2s ease;
+        }
+        
+        .activity-item:hover {
+            background-color: var(--gray-50);
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+        }
+        
+        .activity-icon.assignment {
+            background-color: var(--primary-blue);
+        }
+        
+        .activity-icon.grade {
+            background-color: var(--secondary-green);
+        }
+        
+        .activity-icon.message {
+            background-color: var(--secondary-orange);
+        }
+        
+        .activity-icon.achievement {
+            background-color: var(--warning);
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .activity-time {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        /* Trust indicators */
+        .trust-indicators {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .trust-item i {
+            color: var(--secondary-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">🎓 Schrool</div>
+                <div class="tagline">Making math a breeze not a chore!</div>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Portal</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Data Protected</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-child"></i> My Children</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Progress Reports</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i> Assignments</a></li>
+                    <li><a href="#"><i class="fas fa-comment"></i> Messages</a></li>
+                    <li><a href="#"><i class="fas fa-calendar"></i> Schedule</a></li>
+                    <li><a href="#"><i class="fas fa-credit-card"></i> Billing</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <h3>Parent Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About 5QHackMath</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Parent Guides</a></li>
+                    <li><a href="#"><i class="fas fa-comments"></i> Communication Tips</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Support Center</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search assignments, messages, reports...">
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">JW</div>
+                        <div class="user-info">
+                            <div class="user-name">Jennifer Wilson</div>
+                            <div class="user-role">Parent</div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content -->
+            <div class="content">
+                <div class="page-header">
+                    <h1 class="page-title">Welcome back, Jennifer! 👋</h1>
+                    <p class="page-subtitle">Here's how your children are progressing</p>
+                </div>
+                
+                <!-- Child Selector -->
+                <div class="child-selector">
+                    <div class="child-card active" onclick="selectChild('alex')">
+                        <div class="child-name">Alex Wilson</div>
+                        <div class="child-grade">Grade 8 • Mathematics</div>
+                        <div class="child-status">
+                            <i class="fas fa-circle" style="color: #4CAF50;"></i>
+                            On track
+                        </div>
+                    </div>
+                    <div class="child-card" onclick="selectChild('emma')">
+                        <div class="child-name">Emma Wilson</div>
+                        <div class="child-grade">Grade 6 • Mathematics</div>
+                        <div class="child-status">
+                            <i class="fas fa-circle" style="color: #4CAF50;"></i>
+                            Excellent
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-comment"></i> Message Teacher
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download Report
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-calendar-plus"></i> Schedule Meeting
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-credit-card"></i> View Billing
+                    </button>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon progress">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-value">87%</div>
+                        <div class="stat-label">Overall Progress</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon assignments">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Completed Assignments</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon time">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-value">4.5h</div>
+                        <div class="stat-label">Weekly Study Time</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon achievements">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                </div>
+                
+                <!-- Main Content Grid -->
+                <div class="grid grid-cols-2">
+                    <!-- Progress Chart -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Alex's Learning Progress</h3>
+                            <a href="#" class="card-action">View Details</a>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Activity</h3>
+                            <a href="#" class="card-action">View All</a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon assignment">
+                                    <i class="fas fa-clipboard"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Completed Algebra assignment</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon message">
+                                    <i class="fas fa-message"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Message from Ms. Johnson</div>
+                                    <div class="activity-time">1 day ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon achievement">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Earned "Problem Solver" badge</div>
+                                    <div class="activity-time">2 days ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon grade">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Received A+ on 5QHackMath project</div>
+                                    <div class="activity-time">3 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Content Grid -->
+                <div class="grid grid-cols-3" style="margin-top: var(--spacing-xl);">
+                    <!-- Subject Progress -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Subject Progress</h3>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Mathematics</span>
+                                <span class="progress-value">92%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">English</span>
+                                <span class="progress-value">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">Science</span>
+                                <span class="progress-value">78%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <span class="progress-label">5QHackMath</span>
+                                <span class="progress-value">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Upcoming Assignments -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Upcoming Assignments</h3>
+                        </div>
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Assignment</th>
+                                        <th>Due Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Geometry Quiz</td>
+                                        <td>Tomorrow</td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5QHackMath Project</td>
+                                        <td>Friday</td>
+                                        <td><span class="badge badge-info">In Progress</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Math Homework</td>
+                                        <td>Monday</td>
+                                        <td><span class="badge badge-success">Ready</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Teacher Communication -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Teacher Updates</h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                            <div class="activity-item">
+                                <div class="activity-icon message">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Ms. Johnson</div>
+                                    <div class="activity-time">Alex is doing excellent work in 5QHackMath!</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon grade">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Grade Update</div>
+                                    <div class="activity-time">Algebra test: A+ (95%)</div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-outline" style="margin-top: var(--spacing-md);">
+                                <i class="fas fa-comment"></i> Send Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !toggle.contains(event.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+        
+        // Child selection
+        function selectChild(childId) {
+            // Remove active class from all child cards
+            document.querySelectorAll('.child-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Add active class to selected child
+            event.target.closest('.child-card').classList.add('active');
+            
+            // Update dashboard content based on selected child
+            // This would typically fetch new data from the server
+            console.log('Selected child:', childId);
+        }
+        
+        // Progress Chart
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+                datasets: [{
+                    label: 'Mathematics',
+                    data: [75, 78, 82, 85, 88, 92],
+                    borderColor: '#6e8efb',
+                    backgroundColor: 'rgba(110, 142, 251, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: '5QHackMath',
+                    data: [80, 83, 87, 90, 93, 95],
+                    borderColor: '#00bda5',
+                    backgroundColor: 'rgba(0, 189, 165, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 70,
+                        max: 100
+                    }
+                }
+            }
+        });
+        
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats on load
+            const statValues = document.querySelectorAll('.stat-value');
+            statValues.forEach(stat => {
+                const finalValue = stat.textContent;
+                const isPercentage = finalValue.includes('%');
+                const isTime = finalValue.includes('h');
+                
+                if (!isPercentage && !isTime) {
+                    stat.textContent = '0';
+                    
+                    const increment = () => {
+                        const current = parseInt(stat.textContent);
+                        const target = parseInt(finalValue);
+                        
+                        if (current < target) {
+                            stat.textContent = Math.min(current + Math.ceil(target / 20), target);
+                            setTimeout(increment, 50);
+                        } else {
+                            stat.textContent = finalValue;
+                        }
+                    };
+                    
+                    setTimeout(increment, 500);
+                }
+            });
+            
+            // Animate progress bars
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

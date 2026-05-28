@@ -25,10 +25,12 @@ async function startServer() {
         path.resolve(__dirname, "../../../dist"),
         path.resolve(__dirname, "../../../../dist"),
         path.resolve(process.cwd(), "dist"),
-        path.resolve(process.cwd(), "../dist")
+        path.resolve(process.cwd(), "../dist"),
+        path.resolve(__dirname, "../../dist")
     ];
     let distPath = "";
     for (const p of possibleDistPaths) {
+        console.log("Checking path:", p);
         if (fs.existsSync(p) && fs.existsSync(path.join(p, "index.html"))) {
             distPath = p;
             console.log("Found static files at:", distPath);

@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5QHackMath Dashboard - Schrool</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* SCHROOL Dashboard - Brand Color Scheme */
+        :root {
+            /* Primary SCHROOL Blue Color Scheme */
+            --primary-blue: #4169E1;
+            --primary-blue-dark: #2563EB;
+            --primary-blue-light: #EFF6FF;
+            --primary-blue-medium: #6366F1;
+            
+            /* Secondary Colors */
+            --secondary-blue: #4169E1;
+            --secondary-blue-light: #EFF6FF;
+            --accent-blue: #2563EB;
+            
+            /* Success/Green Colors */
+            --success-color: #4caf50;
+            --success-light: #e8f5e9;
+            --success-dark: #388e3c;
+            
+            /* Warning/Red Colors (occasional use) */
+            --warning-red: #f44336;
+            --warning-red-light: #ffebee;
+            --error-color: #d32f2f;
+            
+            /* Neutral Colors */
+            --text-color: #333333;
+            --text-light: #666666;
+            --text-lighter: #999999;
+            --background-color: #f8fafc;
+            --white: #ffffff;
+            --border-color: #e0e7ff;
+            --shadow-color: rgba(0, 112, 192, 0.1);
+            
+            /* Typography */
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Enhanced Header */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+            color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-section h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        .course-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-btn {
+            background: var(--primary-blue-medium);
+            border: none;
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-btn:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            gap: 2rem;
+        }
+
+        /* Enhanced Sidebar */
+        .dashboard-sidebar {
+            width: 300px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            padding: 2rem;
+            flex-shrink: 0;
+            height: fit-content;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-profile {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-blue-light);
+        }
+
+        .user-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 2.2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .user-profile h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .user-profile p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Enhanced Navigation */
+        .dashboard-nav ul {
+            list-style: none;
+        }
+
+        .dashboard-nav li {
+            margin-bottom: 0.8rem;
+        }
+
+        .dashboard-nav a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.2rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .dashboard-nav a:hover {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .dashboard-nav li.active a {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .dashboard-nav i {
+            margin-right: 1rem;
+            width: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-badge {
+            background: var(--warning-red);
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            margin-left: auto;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Enhanced Main Content */
+        .dashboard-main {
+            flex: 1;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Dashboard Sections */
+        .dashboard-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .dashboard-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-blue-light);
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Enhanced Overview Cards */
+        .dashboard-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .overview-card:hover::before {
+            left: 100%;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px var(--shadow-color);
+        }
+
+        .overview-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .overview-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Clickable Cards */
+        .clickable-card {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clickable-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .clickable-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .clickable-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 12px 40px var(--shadow-color);
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .card-score {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--success-color);
+        }
+
+        .card-score.perfect {
+            color: var(--primary-blue);
+            background: var(--primary-blue-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .card-details {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-completed {
+            background: var(--success-light);
+            color: var(--success-dark);
+        }
+
+        .status-pending {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+
+        .status-in-progress {
+            background: var(--secondary-blue-light);
+            color: var(--secondary-blue);
+        }
+
+        /* Progress Components */
+        .progress-ring {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+        }
+
+        .progress-ring svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke-width: 10;
+        }
+
+        .progress-ring-bg {
+            stroke: var(--border-color);
+        }
+
+        .progress-ring-progress {
+            stroke: var(--primary-blue);
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.8s ease;
+        }
+
+        .progress-ring-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        /* Achievement Badges */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            cursor: pointer;
+        }
+
+        .achievement-card.special {
+            background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+
+        .achievement-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Message Components */
+        .message-list {
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 2rem;
+        }
+
+        .message-item {
+            background: var(--primary-blue-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .message-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .message-time {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .message-content {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Button Components */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow-color);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), var(--success-dark));
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Form Components */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px var(--primary-blue-light);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-blue-light);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s;
+            font-weight: 500;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--warning-red);
+        }
+
+        .notification.info {
+            background: var(--primary-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                flex-direction: column;
+            }
+            
+            .dashboard-sidebar {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .dashboard-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .dashboard-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-container {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading States */
+        .loading-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .loading-indicator i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Special Visual Elements */
+        .visual-separator {
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            margin: 2rem 0;
+            border-radius: 1px;
+        }
+
+        .highlight-box {
+            background: var(--primary-blue-light);
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 16px var(--shadow-color);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <h1>SCHROOL</h1>
+                <div class="course-badge">5QHackMath Course</div>
+            </div>
+            <div class="header-actions">
+                <button class="header-btn" id="help-btn">
+                    <i class="fas fa-question-circle"></i>
+                    Help
+                </button>
+                <button class="header-btn" id="create-question-btn">
+                    <i class="fas fa-plus"></i>
+                    Create Question
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Enhanced Sidebar -->
+        <nav class="dashboard-sidebar">
+            <div class="user-profile">
+                <div class="user-avatar">EJ</div>
+                <h3>Emma Johnson</h3>
+                <p>Year 8 5QHackMath Student</p>
+            </div>
+            
+            <div class="dashboard-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard" data-section="dashboard">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#assignments" data-section="assignments">
+                            <i class="fas fa-tasks"></i>
+                            My Assignments
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#progress" data-section="progress">
+                            <i class="fas fa-chart-line"></i>
+                            My Progress
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#5qhackmath" data-section="5qhackmath">
+                            <i class="fas fa-lightbulb"></i>
+                            5QHackMath
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#achievements" data-section="achievements">
+                            <i class="fas fa-trophy"></i>
+                            Achievements
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#schedule" data-section="schedule">
+                            <i class="fas fa-calendar-alt"></i>
+                            Schedule
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#messages" data-section="messages">
+                            <i class="fas fa-envelope"></i>
+                            Messages
+                            <span class="nav-badge">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Enhanced Main Content -->
+        <main class="dashboard-main">
+            <!-- Dashboard Overview Section -->
+            <section class="dashboard-section active" id="dashboard">
+                <div class="section-header">
+                    <h2>Dashboard Overview</h2>
+                    <button class="btn btn-secondary" id="export-progress-btn">
+                        <i class="fas fa-download"></i>
+                        Export Progress
+                    </button>
+                </div>
+                
+                <div class="dashboard-overview">
+                    <div class="overview-card" data-action="show-completed-topics">
+                        <h3>12</h3>
+                        <p>Completed Topics</p>
+                    </div>
+                    <div class="overview-card" data-action="show-pending-topics">
+                        <h3>8</h3>
+                        <p>Pending Topics</p>
+                    </div>
+                    <div class="overview-card" data-action="show-score-breakdown">
+                        <h3>85%</h3>
+                        <p>Average Score</p>
+                    </div>
+                    <div class="overview-card" data-action="show-schedule">
+                        <h3>24</h3>
+                        <p>Weeks Remaining</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div class="clickable-card" data-action="show-detailed-progress">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">
+                            <i class="fas fa-chart-pie"></i>
+                            Course Progress
+                        </h3>
+                        <div class="progress-ring">
+                            <svg>
+                                <circle class="progress-ring-circle progress-ring-bg" cx="70" cy="70" r="60"></circle>
+                                <circle class="progress-ring-circle progress-ring-progress" cx="70" cy="70" r="60" 
+                                        stroke-dasharray="377" stroke-dashoffset="113"></circle>
+                            </svg>
+                            <div class="progress-ring-text">70%</div>
+                        </div>
+                        <p style="text-align: center; color: var(--text-light); margin-top: 1rem; font-weight: 500;">18 of 26 weeks completed</p>
+                    </div>
+                    
+                    <div class="clickable-card" data-action="show-activity-details">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">
+                            <i class="fas fa-calendar-check"></i>
+                            Recent Activity
+                        </h3>
+                        <div style="space-y: 1rem;">
+                            <div style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-color);">
+                                <strong style="color: var(--primary-blue);">Today:</strong> Completed Quadratic Functions assignment
+                            </div>
+                            <div style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-color);">
+                                <strong style="color: var(--primary-blue);">Yesterday:</strong> Attended Zoom session with Ms. Wilson
+                            </div>
+                            <div style="padding: 0.8rem 0; border-bottom: 1px solid var(--border-color);">
+                                <strong style="color: var(--primary-blue);">2 days ago:</strong> Achieved 10/10 on Linear Equations
+                            </div>
+                            <div style="padding: 0.8rem 0;">
+                                <strong style="color: var(--primary-blue);">3 days ago:</strong> Created 5 original algebra questions
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Upcoming Events
+                    </h3>
+                    <div class="clickable-card" style="margin: 0;" data-action="join-zoom-session">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.8rem;">Next Zoom Session</h4>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">14</div>
+                                <div class="stat-label">March</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4:00</div>
+                                <div class="stat-label">PM</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">60</div>
+                                <div class="stat-label">Minutes</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1rem;"><strong>Teacher:</strong> Ms. Sarah Wilson</p>
+                        <p><strong>Topic:</strong> Geometry Basics - Question Creation Workshop</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Assignments Section -->
+            <section class="dashboard-section" id="assignments">
+                <div class="section-header">
+                    <h2>My Assignments</h2>
+                    <button class="btn btn-primary" id="create-assignment-btn">
+                        <i class="fas fa-plus"></i>
+                        Create Questions
+                    </button>
+                </div>
+                
+                <div style="display: grid; gap: 1.5rem;">
+                    <div class="clickable-card" data-assignment="algebraic-expressions" data-action="open-assignment">
+                        <div class="card-header">
+                            <div class="card-title">Algebraic Expressions</div>
+                            <div class="card-score">9/10</div>
+                        </div>
+                        <div class="card-details">Completed • Due: Week 3 • Created 5 original questions</div>
+                        <span class="card-status status-completed">Completed</span>
+                    </div>
+                    
+                    <div class="clickable-card" data-assignment="linear-equations" data-action="open-assignment">
+                        <div class="card-header">
+                            <div class="card-title">Linear Equations</div>
+                            <div class="card-score perfect">10/10</div>
+                        </div>
+                        <div class="card-details">Completed • Due: Week 4 • Excellent question creation</div>
+                        <span class="card-status status-completed">Completed</span>
+                    </div>
+                    
+                    <div class="clickable-card" data-assignment="quadratic-functions" data-action="open-assignment">
+                        <div class="card-header">
+                            <div class="card-title">Quadratic Functions</div>
+                            <div class="card-score">7/10</div>
+                        </div>
+                        <div class="card-details">Completed • Due: Week 6 • Good understanding shown</div>
+                        <span class="card-status status-completed">Completed</span>
+                    </div>
+                    
+                    <div class="clickable-card" data-assignment="geometry-basics" data-action="open-assignment">
+                        <div class="card-header">
+                            <div class="card-title">Geometry Basics</div>
+                            <div class="card-score">-</div>
+                        </div>
+                        <div class="card-details">In Progress • Due: Week 8 • Due: March 15, 2024</div>
+                        <span class="card-status status-in-progress">In Progress</span>
+                    </div>
+                    
+                    <div class="clickable-card" data-assignment="trigonometry" data-action="open-assignment">
+                        <div class="card-header">
+                            <div class="card-title">Trigonometry</div>
+                            <div class="card-score">-</div>
+                        </div>
+                        <div class="card-details">Upcoming • Due: Week 10 • Starts: March 22, 2024</div>
+                        <span class="card-status status-pending">Pending</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="dashboard-section" id="progress">
+                <div class="section-header">
+                    <h2>My Progress</h2>
+                    <button class="btn btn-secondary" id="detailed-report-btn">
+                        <i class="fas fa-chart-bar"></i>
+                        Detailed Report
+                    </button>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div class="clickable-card" data-action="show-progress-details">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">
+                            <i class="fas fa-chart-line"></i>
+                            5QHackMath Progress
+                        </h3>
+                        <div class="progress-ring">
+                            <svg>
+                                <circle class="progress-ring-circle progress-ring-bg" cx="70" cy="70" r="60"></circle>
+                                <circle class="progress-ring-circle progress-ring-progress" cx="70" cy="70" r="60" 
+                                        stroke-dasharray="377" stroke-dashoffset="113"></circle>
+                            </svg>
+                            <div class="progress-ring-text">70%</div>
+                        </div>
+                        <p style="text-align: center; color: var(--text-light); margin-top: 1rem;">Course Completion</p>
+                    </div>
+                    
+                    <div class="clickable-card" data-action="show-points-breakdown">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">
+                            <i class="fas fa-star"></i>
+                            Points Earned
+                        </h3>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">1,247</div>
+                            <p style="color: var(--text-light);">Total Points</p>
+                            <div style="background: var(--border-color); height: 12px; border-radius: 6px; margin: 1rem 0; position: relative;">
+                                <div style="background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)); height: 100%; width: 75%; border-radius: 6px;"></div>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-light);">75% to next level</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clickable-card" data-action="show-chart-details">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">
+                        <i class="fas fa-chart-bar"></i>
+                        Weekly Progress Chart
+                    </h3>
+                    <canvas id="progressChart" width="400" height="200"></canvas>
+                </div>
+            </section>
+
+            <!-- 5QHackMath Section -->
+            <section class="dashboard-section" id="5qhackmath">
+                <div class="section-header">
+                    <h2>5QHackMath Methodology</h2>
+                    <button class="btn btn-secondary" id="study-guide-btn">
+                        <i class="fas fa-book"></i>
+                        Study Guide
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.5rem;">
+                        Welcome to the revolutionary 5QHackMath learning approach!
+                    </h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        5QHackMath is an innovative methodology where <strong>you create your own math questions</strong> instead of just solving them. 
+                        This approach helps you understand mathematical concepts at a deeper level by thinking like a teacher.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">How it works:</h4>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                                    Learn a mathematical concept through guided lessons
+                                </li>
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                                    Create 5 original questions based on that concept
+                                </li>
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                                    Provide detailed solutions for each question
+                                </li>
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                                    Share questions with classmates and solve theirs
+                                </li>
+                                <li style="display: flex; align-items: center;">
+                                    <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 0.5rem;"></i>
+                                    Receive feedback from your teacher
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Benefits:</h4>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-star" style="color: var(--primary-blue); margin-right: 0.5rem;"></i>
+                                    Deeper understanding of mathematical concepts
+                                </li>
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-star" style="color: var(--primary-blue); margin-right: 0.5rem;"></i>
+                                    Enhanced critical thinking and problem-solving skills
+                                </li>
+                                <li style="margin-bottom: 0.8rem; display: flex; align-items: center;">
+                                    <i class="fas fa-star" style="color: var(--primary-blue); margin-right: 0.5rem;"></i>
+                                    Improved confidence in mathematics
+                                </li>
+                                <li style="display: flex; align-items: center;">
+                                    <i class="fas fa-star" style="color: var(--primary-blue); margin-right: 0.5rem;"></i>
+                                    Better preparation for exams and assessments
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+                    <div class="clickable-card" style="text-align: center;" data-action="open-video-tutorials">
+                        <i class="fas fa-video" style="font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Video Tutorials</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Watch how to create effective math questions</p>
+                    </div>
+                    
+                    <div class="clickable-card" style="text-align: center;" data-action="download-study-guides">
+                        <i class="fas fa-book-open" style="font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Study Guides</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Download comprehensive methodology guides</p>
+                    </div>
+                    
+                    <div class="clickable-card" style="text-align: center;" data-action="join-community">
+                        <i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Community</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Connect with other 5QHackMath students</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section class="dashboard-section" id="achievements">
+                <div class="section-header">
+                    <h2>Achievements</h2>
+                    <button class="btn btn-secondary" id="view-certificate-btn">
+                        <i class="fas fa-certificate"></i>
+                        View Certificate
+                    </button>
+                </div>
+                
+                <div class="achievement-grid">
+                    <div class="achievement-card" data-action="show-star-student-details">
+                        <div class="achievement-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="achievement-title">Star Student</div>
+                        <div class="achievement-description">Top performer in Year 8 5QHackMath course</div>
+                        <div style="margin-top: 1rem; background: rgba(255,255,255,0.2); padding: 0.8rem; border-radius: 8px;">
+                            <strong>Current Ranking: #3 out of 24 students</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-card special" data-action="show-goal-crusher-details">
+                        <div class="achievement-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="achievement-title">Goal Crusher</div>
+                        <div class="achievement-description">Achieved 10/10 scores on multiple exercises</div>
+                        <div style="margin-top: 1rem; background: rgba(255,255,255,0.2); padding: 0.8rem; border-radius: 8px;">
+                            <strong>Perfect Scores: 3 exercises</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clickable-card" style="text-align: center; margin-top: 2rem;" data-action="show-certificate-progress">
+                    <div style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Very Good Certificate</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                        You're on track for a "Very Good" certificate based on your current average of 85%
+                    </p>
+                    <div style="background: var(--border-color); height: 16px; border-radius: 8px; overflow: hidden; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)); height: 100%; width: 85%; transition: width 0.5s ease;"></div>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">
+                        85% average • Need 90% for "Outstanding"
+                    </p>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section class="dashboard-section" id="schedule">
+                <div class="section-header">
+                    <h2>Schedule & Sessions</h2>
+                    <button class="btn btn-primary" id="add-to-calendar-btn">
+                        <i class="fas fa-calendar-plus"></i>
+                        Add to Calendar
+                    </button>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Upcoming Sessions</h3>
+                    
+                    <div class="clickable-card" style="margin-bottom: 1.5rem;" data-action="join-next-session">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Next Session</h4>
+                        <div style="display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center;">
+                            <div>
+                                <p style="margin-bottom: 0.5rem;"><strong>Date:</strong> Thursday, March 14, 2024 at 4:00 PM</p>
+                                <p style="margin-bottom: 0.5rem;"><strong>Teacher:</strong> Ms. Sarah Wilson</p>
+                                <p><strong>Topic:</strong> Geometry Basics - Question Creation Workshop</p>
+                            </div>
+                            <button class="btn btn-success">
+                                <i class="fas fa-video"></i>
+                                Join Session
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="clickable-card" data-action="show-weekly-schedule">
+                            <h4 style="margin-bottom: 1rem; color: var(--primary-blue);">Weekly Schedule</h4>
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--primary-blue);">Thursdays 4:00 PM - 5:00 PM</strong>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Live Zoom sessions with Ms. Wilson</p>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--success-color);">Sundays (Flexible)</strong>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Assignment submission deadline</p>
+                            </div>
+                            <div>
+                                <strong style="color: var(--text-color);">Self-paced Learning</strong>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Work on materials anytime</p>
+                            </div>
+                        </div>
+                        
+                        <div class="clickable-card" data-action="show-upcoming-assignments">
+                            <h4 style="margin-bottom: 1rem; color: var(--primary-blue);">Upcoming Assignments</h4>
+                            <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <strong style="color: var(--warning-red);">Due This Week</strong>
+                                <p style="margin: 0.3rem 0;">Geometry Basics - 5 Questions</p>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Due: March 17, 2024</p>
+                            </div>
+                            <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <strong style="color: var(--primary-blue);">Next Week</strong>
+                                <p style="margin: 0.3rem 0;">Trigonometry Introduction</p>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Starts: March 22, 2024</p>
+                            </div>
+                            <div>
+                                <strong style="color: var(--text-color);">Future</strong>
+                                <p style="margin: 0.3rem 0;">Statistics & Probability</p>
+                                <p style="color: var(--text-light); font-size: 0.9rem;">Starts: March 29, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section class="dashboard-section" id="messages">
+                <div class="section-header">
+                    <h2>Messages</h2>
+                    <button class="btn btn-primary" id="new-message-btn">
+                        <i class="fas fa-plus"></i>
+                        New Message
+                    </button>
+                </div>
+                
+                <div class="message-list">
+                    <div class="message-item" data-action="open-message" data-message-id="1">
+                        <div class="message-header">
+                            <span class="message-sender">Ms. Sarah Wilson (Teacher)</span>
+                            <span class="message-time">2 hours ago</span>
+                        </div>
+                        <div class="message-content">
+                            <strong>Great work on your quadratic functions assignment!</strong><br>
+                            Your question creation showed excellent understanding of the concept. Keep up the good work!
+                        </div>
+                    </div>
+                    
+                    <div class="message-item" data-action="open-message" data-message-id="2">
+                        <div class="message-header">
+                            <span class="message-sender">Admin</span>
+                            <span class="message-time">1 day ago</span>
+                        </div>
+                        <div class="message-content">
+                            <strong>Reminder: Your next Zoom session is scheduled for Thursday at 4:00 PM.</strong><br>
+                            Please have your weekly assignment ready for discussion.
+                        </div>
+                    </div>
+                    
+                    <div class="message-item" data-action="open-message" data-message-id="3">
+                        <div class="message-header">
+                            <span class="message-sender">Ms. Sarah Wilson (Teacher)</span>
+                            <span class="message-time">3 days ago</span>
+                        </div>
+                        <div class="message-content">
+                            <strong>Assignment Feedback</strong><br>
+                            I've reviewed your algebra questions from last week. Please check the feedback I've added to your assignment. Let me know if you have any questions!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clickable-card">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Send New Message</h3>
+                    <div class="form-group">
+                        <label class="form-label">To:</label>
+                        <select class="form-select" id="message-recipient">
+                            <option>Ms. Sarah Wilson (Teacher)</option>
+                            <option>Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject:</label>
+                        <input type="text" class="form-input" id="message-subject" placeholder="Enter subject">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message:</label>
+                        <textarea class="form-textarea" id="message-content" placeholder="Type your message here..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="send-message-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="dashboard-section" id="settings">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <button class="btn btn-secondary" id="save-settings-btn">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                </div>
+                
+                <div class="clickable-card" data-action="edit-profile">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Student Information</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label class="form-label">First Name:</label>
+                            <input type="text" class="form-input" id="student-first-name" value="Emma">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Course ID:</label>
+                            <input type="text" class="form-input" value="5QHM-Y8-2024-001" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Course:</label>
+                            <input type="text" class="form-input" value="Year 8 5QHackMath Course" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Teacher:</label>
+                            <input type="text" class="form-input" value="Ms. Sarah Wilson" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Start Date:</label>
+                            <input type="text" class="form-input" value="January 15, 2024" readonly>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 1rem;">
+                        For privacy and security, only limited information is displayed. Contact your teacher or admin for any changes.
+                    </p>
+                </div>
+
+                <div class="clickable-card" style="margin-top: 2rem;" data-action="notification-settings">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue);">Notification Preferences</h3>
+                    <div style="display: grid; gap: 1rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked> Email notifications for new assignments
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked> Reminder notifications for upcoming sessions
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked> Achievement notifications
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox"> Weekly progress reports
+                        </label>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for detailed views -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Details</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div id="modal-body">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Enhanced 5QHackMath Dashboard JavaScript with Specific Card Actions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize dashboard
+            initializeDashboard();
+            
+            // Navigation functionality
+            const navLinks = document.querySelectorAll('.dashboard-nav a');
+            const sections = document.querySelectorAll('.dashboard-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all nav items
+                    navLinks.forEach(nav => nav.parentElement.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    this.parentElement.classList.add('active');
+                    
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Show selected section
+                    const sectionId = this.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.add('active');
+                    
+                    // Trigger section-specific actions
+                    handleSectionChange(sectionId);
+                });
+            });
+            
+            // Specific card action handlers
+            document.addEventListener('click', function(e) {
+                const card = e.target.closest('[data-action]');
+                if (card) {
+                    const action = card.getAttribute('data-action');
+                    const assignmentId = card.getAttribute('data-assignment');
+                    const messageId = card.getAttribute('data-message-id');
+                    
+                    handleCardAction(action, { assignmentId, messageId, card });
+                }
+            });
+            
+            // Button event listeners
+            setupButtonListeners();
+            
+            // Initialize progress chart
+            initializeProgressChart();
+        });
+        
+        function handleCardAction(action, data) {
+            switch(action) {
+                // Dashboard Overview Actions
+                case 'show-completed-topics':
+                    showModal('Completed Topics', generateCompletedTopicsContent());
+                    break;
+                case 'show-pending-topics':
+                    showModal('Pending Topics', generatePendingTopicsContent());
+                    break;
+                case 'show-score-breakdown':
+                    showModal('Score Breakdown', generateScoreBreakdownContent());
+                    break;
+                case 'show-schedule':
+                    navigateToSection('schedule');
+                    break;
+                case 'show-detailed-progress':
+                    showModal('Detailed Progress', generateDetailedProgressContent());
+                    break;
+                case 'show-activity-details':
+                    showModal('Activity Details', generateActivityDetailsContent());
+                    break;
+                case 'join-zoom-session':
+                    handleZoomSession();
+                    break;
+                
+                // Assignment Actions
+                case 'open-assignment':
+                    openAssignmentDetails(data.assignmentId);
+                    break;
+                
+                // Progress Actions
+                case 'show-progress-details':
+                    showModal('Progress Details', generateProgressDetailsContent());
+                    break;
+                case 'show-points-breakdown':
+                    showModal('Points Breakdown', generatePointsBreakdownContent());
+                    break;
+                case 'show-chart-details':
+                    showModal('Chart Analysis', generateChartDetailsContent());
+                    break;
+                
+                // 5QHackMath Actions
+                case 'open-video-tutorials':
+                    openVideoTutorials();
+                    break;
+                case 'download-study-guides':
+                    downloadStudyGuides();
+                    break;
+                case 'join-community':
+                    joinCommunity();
+                    break;
+                
+                // Achievement Actions
+                case 'show-star-student-details':
+                    showModal('Star Student Achievement', generateStarStudentContent());
+                    break;
+                case 'show-goal-crusher-details':
+                    showModal('Goal Crusher Achievement', generateGoalCrusherContent());
+                    break;
+                case 'show-certificate-progress':
+                    showModal('Certificate Progress', generateCertificateProgressContent());
+                    break;
+                
+                // Schedule Actions
+                case 'join-next-session':
+                    handleZoomSession();
+                    break;
+                case 'show-weekly-schedule':
+                    showModal('Weekly Schedule', generateWeeklyScheduleContent());
+                    break;
+                case 'show-upcoming-assignments':
+                    showModal('Upcoming Assignments', generateUpcomingAssignmentsContent());
+                    break;
+                
+                // Message Actions
+                case 'open-message':
+                    openMessageDetails(data.messageId);
+                    break;
+                
+                // Settings Actions
+                case 'edit-profile':
+                    showNotification('Profile editing enabled. Make changes and click Save.', 'info');
+                    enableProfileEditing();
+                    break;
+                case 'notification-settings':
+                    showNotification('Notification preferences updated automatically.', 'info');
+                    break;
+                
+                default:
+                    showNotification(`Action: ${action} - Feature ready for implementation`, 'info');
+            }
+        }
+        
+        function openAssignmentDetails(assignmentId) {
+            const assignments = {
+                'algebraic-expressions': {
+                    title: 'Algebraic Expressions',
+                    score: '9/10',
+                    status: 'Completed',
+                    questions: [
+                        'Simplify: 3x + 5x - 2x',
+                        'Expand: 2(x + 3)',
+                        'Factor: x² + 5x + 6',
+                        'Solve for x: 2x + 7 = 15',
+                        'Evaluate: 3x² when x = 4'
+                    ],
+                    feedback: 'Excellent work! Your questions show good understanding of algebraic manipulation.'
+                },
+                'linear-equations': {
+                    title: 'Linear Equations',
+                    score: '10/10',
+                    status: 'Completed',
+                    questions: [
+                        'Solve: 3x + 5 = 17',
+                        'Find the slope: y = 2x + 3',
+                        'Graph: y = -x + 4',
+                        'Word problem: Age problem with linear equation',
+                        'System: x + y = 10, x - y = 2'
+                    ],
+                    feedback: 'Perfect score! Your questions demonstrate mastery of linear equations.'
+                },
+                'quadratic-functions': {
+                    title: 'Quadratic Functions',
+                    score: '7/10',
+                    status: 'Completed',
+                    questions: [
+                        'Solve: x² - 5x + 6 = 0',
+                        'Find vertex: y = x² - 4x + 3',
+                        'Factor: x² - 9',
+                        'Complete the square: x² + 6x + 5',
+                        'Word problem: Projectile motion'
+                    ],
+                    feedback: 'Good work! Focus on completing the square method for improvement.'
+                },
+                'geometry-basics': {
+                    title: 'Geometry Basics',
+                    score: 'In Progress',
+                    status: 'In Progress',
+                    questions: [
+                        'Calculate area of triangle with base 8 and height 6',
+                        'Find perimeter of rectangle: length 12, width 8',
+                        'Pythagorean theorem: a=3, b=4, find c',
+                        'Angle relationships in parallel lines',
+                        'Circle circumference with radius 5'
+                    ],
+                    feedback: 'Assignment in progress. Due March 15, 2024.'
+                },
+                'trigonometry': {
+                    title: 'Trigonometry',
+                    score: 'Pending',
+                    status: 'Pending',
+                    questions: [],
+                    feedback: 'Assignment starts March 22, 2024.'
+                }
+            };
+            
+            const assignment = assignments[assignmentId];
+            if (assignment) {
+                const content = `
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="color: var(--primary-blue);">Score: ${assignment.score}</h4>
+                            <span class="card-status status-${assignment.status.toLowerCase().replace(' ', '-')}">${assignment.status}</span>
+                        </div>
+                        <p style="color: var(--text-light); margin-bottom: 1.5rem;">${assignment.feedback}</p>
+                    </div>
+                    
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Questions Created:</h4>
+                    <ol style="margin-bottom: 2rem;">
+                        ${assignment.questions.map(q => `<li style="margin-bottom: 0.5rem;">${q}</li>`).join('')}
+                    </ol>
+                    
+                    ${assignment.status === 'In Progress' ? 
+                        '<button class="btn btn-primary" onclick="continueAssignment()"><i class="fas fa-edit"></i> Continue Working</button>' :
+                        assignment.status === 'Pending' ?
+                        '<button class="btn btn-primary" onclick="startAssignment()"><i class="fas fa-play"></i> Start Assignment</button>' :
+                        '<button class="btn btn-secondary" onclick="reviewAssignment()"><i class="fas fa-eye"></i> Review Assignment</button>'
+                    }
+                `;
+                
+                showModal(assignment.title + ' - Assignment Details', content);
+            }
+        }
+        
+        function openMessageDetails(messageId) {
+            const messages = {
+                '1': {
+                    sender: 'Ms. Sarah Wilson (Teacher)',
+                    subject: 'Great work on your quadratic functions assignment!',
+                    content: 'Hi Emma,\n\nI wanted to personally congratulate you on your excellent work with the quadratic functions assignment. Your question creation showed a deep understanding of the concept, and the variety of problems you created demonstrates your ability to think critically about mathematics.\n\nKeep up the fantastic work!\n\nBest regards,\nMs. Wilson',
+                    time: '2 hours ago'
+                },
+                '2': {
+                    sender: 'Admin',
+                    subject: 'Zoom Session Reminder',
+                    content: 'Dear Emma,\n\nThis is a friendly reminder that your next Zoom session is scheduled for Thursday at 4:00 PM.\n\nPlease ensure you have:\n- Your weekly assignment ready for discussion\n- Any questions you\'d like to ask Ms. Wilson\n- A quiet space for the session\n\nZoom link will be sent 30 minutes before the session.\n\nBest regards,\nSchrool Admin Team',
+                    time: '1 day ago'
+                },
+                '3': {
+                    sender: 'Ms. Sarah Wilson (Teacher)',
+                    subject: 'Assignment Feedback Available',
+                    content: 'Hi Emma,\n\nI\'ve finished reviewing your algebra questions from last week and have added detailed feedback to your assignment.\n\nOverall, you did very well! I particularly liked your creative approach to the word problems. There are a few areas where we can improve, which I\'ve noted in the feedback.\n\nPlease review the comments and let me know if you have any questions during our next session.\n\nKeep up the great work!\n\nMs. Wilson',
+                    time: '3 days ago'
+                }
+            };
+            
+            const message = messages[messageId];
+            if (message) {
+                const content = `
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <strong style="color: var(--primary-blue);">From: ${message.sender}</strong>
+                            <span style="color: var(--text-light); font-size: 0.9rem;">${message.time}</span>
+                        </div>
+                        <h4 style="color: var(--text-color); margin-bottom: 1.5rem;">${message.subject}</h4>
+                    </div>
+                    
+                    <div style="background: var(--primary-blue-light); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                        <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; line-height: 1.6;">${message.content}</pre>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="replyToMessage('${messageId}')">
+                            <i class="fas fa-reply"></i> Reply
+                        </button>
+                        <button class="btn btn-secondary" onclick="markAsRead('${messageId}')">
+                            <i class="fas fa-check"></i> Mark as Read
+                        </button>
+                    </div>
+                `;
+                
+                showModal('Message Details', content);
+            }
+        }
+        
+        function handleZoomSession() {
+            showNotification('Opening Zoom session...', 'info');
+            // In a real implementation, this would open the Zoom link
+            setTimeout(() => {
+                showNotification('Zoom session link opened in new window', 'info');
+            }, 1000);
+        }
+        
+        function openVideoTutorials() {
+            showNotification('Opening video tutorial library...', 'info');
+            // In a real implementation, this would navigate to video tutorials
+        }
+        
+        function downloadStudyGuides() {
+            showNotification('Downloading 5QHackMath study guides...', 'info');
+            // In a real implementation, this would trigger file downloads
+        }
+        
+        function joinCommunity() {
+            showNotification('Opening 5QHackMath student community...', 'info');
+            // In a real implementation, this would open community platform
+        }
+        
+        function enableProfileEditing() {
+            const firstNameInput = document.getElementById('student-first-name');
+            if (firstNameInput) {
+                firstNameInput.focus();
+                firstNameInput.style.borderColor = 'var(--primary-blue)';
+            }
+        }
+        
+        // Content generators for modals
+        function generateCompletedTopicsContent() {
+            return `
+                <div style="display: grid; gap: 1rem;">
+                    <div style="padding: 1rem; background: var(--success-light); border-radius: 8px;">
+                        <strong>Algebraic Expressions</strong> - Score: 9/10
+                    </div>
+                    <div style="padding: 1rem; background: var(--success-light); border-radius: 8px;">
+                        <strong>Linear Equations</strong> - Score: 10/10
+                    </div>
+                    <div style="padding: 1rem; background: var(--success-light); border-radius: 8px;">
+                        <strong>Quadratic Functions</strong> - Score: 7/10
+                    </div>
+                    <div style="padding: 1rem; background: var(--success-light); border-radius: 8px;">
+                        <strong>Polynomials</strong> - Score: 8/10
+                    </div>
+                    <div style="padding: 1rem; background: var(--success-light); border-radius: 8px;">
+                        <strong>Factoring</strong> - Score: 9/10
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generatePendingTopicsContent() {
+            return `
+                <div style="display: grid; gap: 1rem;">
+                    <div style="padding: 1rem; background: var(--primary-blue-light); border-radius: 8px;">
+                        <strong>Geometry Basics</strong> - Due: March 15, 2024
+                    </div>
+                    <div style="padding: 1rem; background: var(--primary-blue-light); border-radius: 8px;">
+                        <strong>Trigonometry</strong> - Starts: March 22, 2024
+                    </div>
+                    <div style="padding: 1rem; background: var(--primary-blue-light); border-radius: 8px;">
+                        <strong>Statistics</strong> - Starts: March 29, 2024
+                    </div>
+                    <div style="padding: 1rem; background: var(--primary-blue-light); border-radius: 8px;">
+                        <strong>Probability</strong> - Starts: April 5, 2024
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateScoreBreakdownContent() {
+            return `
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Score Analysis</h4>
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <span>Highest Score:</span>
+                            <strong style="color: var(--success-color);">10/10 (Linear Equations)</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <span>Lowest Score:</span>
+                            <strong style="color: var(--warning-red);">7/10 (Quadratic Functions)</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);">
+                            <span>Average Score:</span>
+                            <strong style="color: var(--primary-blue);">85%</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                            <span>Improvement Trend:</span>
+                            <strong style="color: var(--success-color);">+5% this month</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Modal functionality
+        function showModal(title, content) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            
+            modalTitle.textContent = title;
+            modalBody.innerHTML = content;
+            modal.classList.add('show');
+        }
+        
+        function hideModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+        }
+        
+        // Setup button listeners
+        function setupButtonListeners() {
+            // Modal close button
+            document.getElementById('modal-close').addEventListener('click', hideModal);
+            
+            // Click outside modal to close
+            document.getElementById('modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideModal();
+                }
+            });
+            
+            // Header buttons
+            document.getElementById('help-btn').addEventListener('click', () => {
+                showNotification('Opening 5QHackMath help center...', 'info');
+            });
+            
+            document.getElementById('create-question-btn').addEventListener('click', () => {
+                showNotification('Opening question creation interface...', 'info');
+            });
+            
+            // Send message button
+            document.getElementById('send-message-btn').addEventListener('click', sendMessage);
+            
+            // Save settings button
+            document.getElementById('save-settings-btn').addEventListener('click', saveSettings);
+        }
+        
+        function sendMessage() {
+            const recipient = document.getElementById('message-recipient').value;
+            const subject = document.getElementById('message-subject').value;
+            const content = document.getElementById('message-content').value;
+            
+            if (!subject || !content) {
+                showNotification('Please fill in subject and message content', 'error');
+                return;
+            }
+            
+            showNotification(`Message sent to ${recipient}`, 'info');
+            
+            // Clear form
+            document.getElementById('message-subject').value = '';
+            document.getElementById('message-content').value = '';
+        }
+        
+        function saveSettings() {
+            const firstName = document.getElementById('student-first-name').value;
+            showNotification('Settings saved successfully', 'info');
+        }
+        
+        function navigateToSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.dashboard-nav li').forEach(li => {
+                li.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-section="${sectionId}"]`).parentElement.classList.add('active');
+        }
+        
+        // Initialize dashboard
+        function initializeDashboard() {
+            showNotification('Welcome back, Emma! Dashboard loaded successfully.', 'info');
+            updateProgressRing();
+            initializeProgressChart();
+        }
+        
+        function handleSectionChange(sectionId) {
+            switch(sectionId) {
+                case 'messages':
+                    markMessagesAsRead();
+                    break;
+                case 'assignments':
+                    showNotification('Loading assignments...', 'info');
+                    break;
+                case 'progress':
+                    showNotification('Loading progress data...', 'info');
+                    break;
+            }
+        }
+        
+        function markMessagesAsRead() {
+            const messageBadge = document.querySelector('.nav-badge');
+            if (messageBadge) {
+                messageBadge.textContent = '0';
+                messageBadge.style.display = 'none';
+            }
+        }
+        
+        function updateProgressRing() {
+            const progressRings = document.querySelectorAll('.progress-ring-progress');
+            progressRings.forEach(ring => {
+                const circumference = 2 * Math.PI * 60;
+                const progress = 70;
+                const offset = circumference - (progress / 100) * circumference;
+                
+                ring.style.strokeDasharray = circumference;
+                ring.style.strokeDashoffset = offset;
+            });
+        }
+        
+        function initializeProgressChart() {
+            const ctx = document.getElementById('progressChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Week 14', 'Week 15', 'Week 16', 'Week 17', 'Week 18', 'Week 19'],
+                        datasets: [{
+                            label: 'Weekly Progress',
+                            data: [78, 82, 75, 88, 95, 85],
+                            borderColor: '#0070c0',
+                            backgroundColor: 'rgba(0, 112, 192, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Helper functions for modal actions
+        function continueAssignment() {
+            hideModal();
+            showNotification('Opening assignment editor...', 'info');
+        }
+        
+        function startAssignment() {
+            hideModal();
+            showNotification('Starting new assignment...', 'info');
+        }
+        
+        function reviewAssignment() {
+            hideModal();
+            showNotification('Opening assignment review...', 'info');
+        }
+        
+        function replyToMessage(messageId) {
+            hideModal();
+            navigateToSection('messages');
+            document.getElementById('message-content').focus();
+            showNotification('Reply form ready', 'info');
+        }
+        
+        function markAsRead(messageId) {
+            hideModal();
+            showNotification('Message marked as read', 'info');
+        }
+    </script>
+</body>
+</html>
+

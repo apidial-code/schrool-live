@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Schrool</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            /* SCHROOL Brand Colors */
+            --primary-blue: #4169E1;
+            --primary-blue-hover: #2563EB;
+            --primary-blue-light: #EFF6FF;
+            --secondary-purple: #6366F1;
+            --secondary-teal: #00bda5;
+            --secondary-orange: #ff7a59;
+            --secondary-green: #4CAF50;
+            
+            /* Neutrals */
+            --white: #ffffff;
+            --gray-50: #f9f9f9;
+            --gray-100: #f8f9fa;
+            --gray-200: #eee;
+            --gray-300: #ddd;
+            --gray-400: #999;
+            --gray-500: #666;
+            --gray-600: #555;
+            --gray-700: #444;
+            --gray-800: #333;
+            --gray-900: #222;
+            
+            /* Status */
+            --success: #4CAF50;
+            --warning: #ffc107;
+            --error: #e91e63;
+            --info: #2196F3;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #4169E1 0%, #2563EB 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background-color: var(--white);
+            box-shadow: var(--shadow-md);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-header {
+            padding: var(--spacing-xl);
+            border-bottom: 1px solid var(--gray-200);
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            color: white;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .tagline {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .student-info {
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .student-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-sm);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .student-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .student-grade {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .sidebar-nav {
+            padding: var(--spacing-lg);
+        }
+        
+        .sidebar-nav ul {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            color: var(--gray-600);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background-color: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+        
+        .sidebar-nav i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-footer {
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--gray-200);
+            margin-top: auto;
+        }
+        
+        .sidebar-footer h3 {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--gray-50);
+        }
+        
+        .header {
+            background-color: var(--white);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .search-bar {
+            position: relative;
+            width: 400px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 3rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: border-color 0.2s ease;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.1);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .notifications {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .notifications i {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            transition: color 0.2s ease;
+        }
+        
+        .notifications:hover i {
+            color: var(--primary-blue);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--error);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .streak-counter {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: linear-gradient(135deg, var(--secondary-orange), var(--warning));
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            cursor: pointer;
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            transition: background-color 0.2s ease;
+        }
+        
+        .user-profile:hover {
+            background-color: var(--gray-100);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .user-level {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .content {
+            flex: 1;
+            padding: var(--spacing-xl);
+        }
+        
+        .page-header {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .page-subtitle {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+        }
+        
+        /* Cards */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .card-action {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+        
+        .card-action:hover {
+            color: var(--primary-blue-hover);
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+        
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        /* Achievement Cards */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, var(--secondary-orange), var(--warning));
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(20px, -20px);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .achievement-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .achievement-description {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        /* Progress rings */
+        .progress-ring {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--spacing-md);
+            position: relative;
+        }
+        
+        .progress-ring svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 8;
+        }
+        
+        .progress-ring .bg {
+            stroke: var(--gray-200);
+        }
+        
+        .progress-ring .progress {
+            stroke: var(--primary-blue);
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.3s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.875rem;
+            gap: var(--spacing-sm);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--gray-200);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .btn-fun {
+            background: linear-gradient(135deg, var(--secondary-orange), var(--warning));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-fun::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-fun:hover::before {
+            left: 100%;
+        }
+        
+        /* Assignment cards */
+        .assignment-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .assignment-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .assignment-card.due-soon {
+            border-left-color: var(--warning);
+        }
+        
+        .assignment-card.overdue {
+            border-left-color: var(--error);
+        }
+        
+        .assignment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .assignment-title {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+        
+        .assignment-subject {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        
+        .assignment-due {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-align: right;
+        }
+        
+        .assignment-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        /* Status badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+        }
+        
+        .badge-warning {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning);
+        }
+        
+        .badge-error {
+            background-color: rgba(233, 30, 99, 0.1);
+            color: var(--error);
+        }
+        
+        .badge-info {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: var(--info);
+        }
+        
+        /* Chart container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .header {
+                padding: var(--spacing-md);
+            }
+            
+            .search-bar {
+                width: 200px;
+            }
+            
+            .content {
+                padding: var(--spacing-md);
+            }
+            
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-info {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-600);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Quick actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .quick-action-card {
+            background: linear-gradient(135deg, var(--secondary-teal), var(--secondary-green));
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .quick-action-card:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .quick-action-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .quick-action-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .quick-action-description {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        /* Leaderboard */
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            transition: background-color 0.2s ease;
+        }
+        
+        .leaderboard-item:hover {
+            background-color: var(--gray-50);
+        }
+        
+        .leaderboard-rank {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .leaderboard-rank.gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+        
+        .leaderboard-rank.silver {
+            background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+        }
+        
+        .leaderboard-rank.bronze {
+            background: linear-gradient(135deg, #CD7F32, #B8860B);
+        }
+        
+        .leaderboard-info {
+            flex: 1;
+        }
+        
+        .leaderboard-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .leaderboard-score {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        
+        .leaderboard-points {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">🎓 Schrool</div>
+                <div class="tagline">Making math a breeze not a chore!</div>
+                <div class="student-info">
+                    <div class="student-avatar">AW</div>
+                    <div class="student-name">Alex Wilson</div>
+                    <div class="student-grade">Grade 8 • Level 15</div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i> My Assignments</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> My Progress</a></li>
+                    <li><a href="#"><i class="fas fa-lightbulb"></i> 5QHackMath</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Study Groups</a></li>
+                    <li><a href="#"><i class="fas fa-trophy"></i> Achievements</a></li>
+                    <li><a href="#"><i class="fas fa-calendar"></i> Schedule</a></li>
+                    <li><a href="#"><i class="fas fa-comment"></i> Messages</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <h3>Learning Tools</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-calculator"></i> Math Tools</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Question Creator</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Study Materials</a></li>
+                    <li><a href="#"><i class="fas fa-life-ring"></i> Get Help</a></li>
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search assignments, topics, friends...">
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="streak-counter">
+                        <i class="fas fa-fire"></i>
+                        <span>7 day streak!</span>
+                    </div>
+                    
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">2</span>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">AW</div>
+                        <div class="user-info">
+                            <div class="user-name">Alex Wilson</div>
+                            <div class="user-level">Level 15 • 2,450 XP</div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Content -->
+            <div class="content">
+                <div class="page-header">
+                    <h1 class="page-title">Hey Alex! Ready to learn? 🚀</h1>
+                    <p class="page-subtitle">You're doing amazing! Keep up the great work!</p>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <a href="#" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="quick-action-title">Create Question</div>
+                        <div class="quick-action-description">Use 5QHackMath to create your own math questions</div>
+                    </a>
+                    
+                    <a href="#" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <div class="quick-action-title">Submit Assignment</div>
+                        <div class="quick-action-description">Upload your completed homework</div>
+                    </a>
+                    
+                    <a href="#" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="quick-action-title">Join Study Group</div>
+                        <div class="quick-action-description">Collaborate with classmates</div>
+                    </a>
+                    
+                    <a href="#" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="quick-action-title">Math Games</div>
+                        <div class="quick-action-description">Learn while having fun!</div>
+                    </a>
+                </div>
+                
+                <!-- Achievement Cards -->
+                <div class="achievement-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-title">Problem Solver</div>
+                        <div class="achievement-description">Solved 50 math problems this week!</div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🔥</div>
+                        <div class="achievement-title">On Fire!</div>
+                        <div class="achievement-description">7-day learning streak</div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">⭐</div>
+                        <div class="achievement-title">Star Student</div>
+                        <div class="achievement-description">Top 10% in class</div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-title">Goal Crusher</div>
+                        <div class="achievement-description">Completed weekly goals</div>
+                    </div>
+                </div>
+                
+                <!-- Main Content Grid -->
+                <div class="grid grid-cols-3">
+                    <!-- Progress Overview -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">My Progress</h3>
+                            <a href="#" class="card-action">View Details</a>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle class="bg" cx="60" cy="60" r="52"></circle>
+                                    <circle class="progress" cx="60" cy="60" r="52" 
+                                            stroke-dasharray="327" stroke-dashoffset="65"></circle>
+                                </svg>
+                                <div class="progress-text">80%</div>
+                            </div>
+                            <p style="color: var(--gray-600); margin-bottom: var(--spacing-lg);">Overall Progress</p>
+                            
+                            <div style="text-align: left;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                    <span style="font-size: 0.875rem;">Mathematics</span>
+                                    <span style="font-size: 0.875rem; font-weight: 600;">92%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                                    <span style="font-size: 0.875rem;">5QHackMath</span>
+                                    <span style="font-size: 0.875rem; font-weight: 600;">95%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.875rem;">Problem Solving</span>
+                                    <span style="font-size: 0.875rem; font-weight: 600;">88%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Upcoming Assignments -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Upcoming Assignments</h3>
+                            <a href="#" class="card-action">View All</a>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                            <div class="assignment-card due-soon">
+                                <div class="assignment-header">
+                                    <div>
+                                        <div class="assignment-title">Geometry Quiz</div>
+                                        <div class="assignment-subject">Mathematics</div>
+                                    </div>
+                                    <div class="assignment-due">
+                                        <div>Due Tomorrow</div>
+                                        <span class="badge badge-warning">Pending</span>
+                                    </div>
+                                </div>
+                                <div class="assignment-actions">
+                                    <button class="btn btn-primary" style="font-size: 0.75rem; padding: 0.5rem 1rem;">Start</button>
+                                </div>
+                            </div>
+                            
+                            <div class="assignment-card">
+                                <div class="assignment-header">
+                                    <div>
+                                        <div class="assignment-title">5QHackMath Project</div>
+                                        <div class="assignment-subject">Creative Math</div>
+                                    </div>
+                                    <div class="assignment-due">
+                                        <div>Due Friday</div>
+                                        <span class="badge badge-info">In Progress</span>
+                                    </div>
+                                </div>
+                                <div class="assignment-actions">
+                                    <button class="btn btn-outline" style="font-size: 0.75rem; padding: 0.5rem 1rem;">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Class Leaderboard -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Class Leaderboard</h3>
+                            <a href="#" class="card-action">View Full</a>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                            <div class="leaderboard-item">
+                                <div class="leaderboard-rank gold">1</div>
+                                <div class="leaderboard-info">
+                                    <div class="leaderboard-name">Emma Wilson</div>
+                                    <div class="leaderboard-score">2,850 XP</div>
+                                </div>
+                                <div class="leaderboard-points">🥇</div>
+                            </div>
+                            
+                            <div class="leaderboard-item">
+                                <div class="leaderboard-rank silver">2</div>
+                                <div class="leaderboard-info">
+                                    <div class="leaderboard-name">You (Alex)</div>
+                                    <div class="leaderboard-score">2,450 XP</div>
+                                </div>
+                                <div class="leaderboard-points">🥈</div>
+                            </div>
+                            
+                            <div class="leaderboard-item">
+                                <div class="leaderboard-rank bronze">3</div>
+                                <div class="leaderboard-info">
+                                    <div class="leaderboard-name">Sarah Davis</div>
+                                    <div class="leaderboard-score">2,200 XP</div>
+                                </div>
+                                <div class="leaderboard-points">🥉</div>
+                            </div>
+                            
+                            <div class="leaderboard-item">
+                                <div class="leaderboard-rank">4</div>
+                                <div class="leaderboard-info">
+                                    <div class="leaderboard-name">Mike Johnson</div>
+                                    <div class="leaderboard-score">1,950 XP</div>
+                                </div>
+                                <div class="leaderboard-points">1,950</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Content Grid -->
+                <div class="grid grid-cols-2" style="margin-top: var(--spacing-xl);">
+                    <!-- Learning Progress Chart -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Learning Journey</h3>
+                            <a href="#" class="card-action">View Details</a>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activities -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Activities</h3>
+                            <a href="#" class="card-action">View All</a>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); border-radius: var(--radius-md); background-color: var(--gray-50);">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--secondary-green), var(--secondary-teal)); display: flex; align-items: center; justify-content: center; color: white;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 500;">Completed Algebra homework</div>
+                                    <div style="font-size: 0.75rem; color: var(--gray-500);">2 hours ago • +50 XP</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); border-radius: var(--radius-md); background-color: var(--gray-50);">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--secondary-orange), var(--warning)); display: flex; align-items: center; justify-content: center; color: white;">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 500;">Earned "Problem Solver" badge</div>
+                                    <div style="font-size: 0.75rem; color: var(--gray-500);">1 day ago • +100 XP</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); border-radius: var(--radius-md); background-color: var(--gray-50);">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple)); display: flex; align-items: center; justify-content: center; color: white;">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 500;">Created 5 new math questions</div>
+                                    <div style="font-size: 0.75rem; color: var(--gray-500);">2 days ago • +75 XP</div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-fun" style="margin-top: var(--spacing-md);">
+                                <i class="fas fa-plus"></i> Add New Activity
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !toggle.contains(event.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+        
+        // Progress Chart
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+                datasets: [{
+                    label: 'XP Earned',
+                    data: [200, 350, 450, 600, 750, 850],
+                    borderColor: '#6e8efb',
+                    backgroundColor: 'rgba(110, 142, 251, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Questions Created',
+                    data: [5, 8, 12, 15, 18, 22],
+                    borderColor: '#00bda5',
+                    backgroundColor: 'rgba(0, 189, 165, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate achievement cards on load
+            const achievementCards = document.querySelectorAll('.achievement-card');
+            achievementCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Animate progress ring
+            setTimeout(() => {
+                const progressCircle = document.querySelector('.progress-ring .progress');
+                const circumference = 2 * Math.PI * 52;
+                const progress = 80; // 80%
+                const offset = circumference - (progress / 100) * circumference;
+                
+                progressCircle.style.strokeDasharray = circumference;
+                progressCircle.style.strokeDashoffset = offset;
+            }, 1000);
+            
+            // Add click effects to quick action cards
+            document.querySelectorAll('.quick-action-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = e.offsetX - 10 + 'px';
+                    ripple.style.top = e.offsetY - 10 + 'px';
+                    ripple.style.width = '20px';
+                    ripple.style.height = '20px';
+                    
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+        
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- SCHROOL API Client -->
+    <script src="/api-client.js"></script>
+
+    <!-- Load Real Data -->
+    <script>
+        // Load real lesson data from backend
+        async function loadDashboardData() {
+            try {
+                // Get current user
+                const user = await window.schroolAPI.getCurrentUser();
+                if (!user) {
+                    window.location.href = '/login';
+                    return;
+                }
+
+                // Update user info in dashboard
+                document.querySelector('.user-name').textContent = user.name || 'Student';
+                document.querySelector('.user-email').textContent = user.email || '';
+
+                // Get all lessons
+                const lessons = await window.schroolAPI.getAllLessons();
+                console.log('✅ Loaded', lessons.length, 'lessons');
+
+                // Get user progress
+                const progress = await window.schroolAPI.getUserProgress();
+                console.log('✅ Loaded user progress:', progress.length, 'lessons completed');
+
+                // Update stats
+                const completedLessons = progress.filter(p => p.completed === 1).length;
+                const totalLessons = lessons.length;
+                const pendingLessons = totalLessons - completedLessons;
+                const avgScore = progress.length > 0 
+                    ? Math.round(progress.reduce((sum, p) => sum + ((p.correctAnswers / p.totalAttempts) * 100 || 0), 0) / progress.length)
+                    : 0;
+
+                // Update dashboard stats
+                document.querySelector('.stat-card:nth-child(1) .stat-number').textContent = completedLessons;
+                document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = pendingLessons;
+                document.querySelector('.stat-card:nth-child(3) .stat-number').textContent = avgScore + '%';
+
+                // Update progress percentage
+                const progressPercent = Math.round((completedLessons / totalLessons) * 100);
+                document.querySelector('.progress-fill').style.width = progressPercent + '%';
+                document.querySelector('.progress-text').textContent = progressPercent + '%';
+
+                // Render lesson list
+                renderLessonList(lessons, progress);
+
+            } catch (error) {
+                console.error('❌ Error loading dashboard data:', error);
+            }
+        }
+
+        // Render lesson list with real data
+        function renderLessonList(lessons, progress) {
+            const lessonGrid = document.querySelector('.lesson-grid');
+            if (!lessonGrid) return;
+
+            lessonGrid.innerHTML = ''; // Clear existing lessons
+
+            lessons.forEach((lesson, index) => {
+                const lessonProgress = progress.find(p => p.lessonId === lesson.id);
+                const isCompleted = lessonProgress && lessonProgress.completed === 1;
+                const score = lessonProgress 
+                    ? Math.round((lessonProgress.correctAnswers / lessonProgress.totalAttempts) * 100)
+                    : 0;
+
+                const lessonCard = document.createElement('div');
+                lessonCard.className = 'lesson-card';
+                lessonCard.innerHTML = `
+                    <div class="lesson-icon">
+                        <i class="fas fa-${getCategoryIcon(lesson.category)}"></i>
+                    </div>
+                    <div class="lesson-info">
+                        <h3>${lesson.title}</h3>
+                        <p>${lesson.description || 'Click to start learning'}</p>
+                        <div class="lesson-meta">
+                            <span class="lesson-category">${lesson.category}</span>
+                            ${isCompleted ? `<span class="lesson-score">✓ ${score}%</span>` : '<span class="lesson-status">Not Started</span>'}
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="openLesson(${lesson.id}, '${lesson.videoId}')">
+                        ${isCompleted ? 'Review' : 'Start'}
+                    </button>
+                `;
+                lessonGrid.appendChild(lessonCard);
+            });
+        }
+
+        // Get icon for lesson category
+        function getCategoryIcon(category) {
+            const icons = {
+                'Fractions': 'divide',
+                'Decimals': 'calculator',
+                'Percentages': 'percent',
+                'Numbers': 'hashtag',
+                'default': 'book'
+            };
+            return icons[category] || icons.default;
+        }
+
+        // Open lesson with video player
+        function openLesson(lessonId, videoId) {
+            const videoURL = window.schroolAPI.getBunnyVideoURL(videoId);
+            // For now, open in new tab - later we'll build a modal
+            window.open(videoURL, '_blank');
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadDashboardData);
+    </script>
+</body>
+</html>
+
