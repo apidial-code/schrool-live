@@ -440,17 +440,17 @@ export default function EliteEnrollment() {
                     {/* Upfront Payment Option */}
                     <div className="border-2 border-green-500 rounded-lg p-6 bg-green-50 relative">
                       <div className="absolute -top-3 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        SAVE $410
+                        TEST MODE
                       </div>
                       <div className="flex items-start space-x-3">
                         <RadioGroupItem value="upfront" id="upfront" className="mt-1" />
                         <Label htmlFor="upfront" className="flex-1 cursor-pointer">
                           <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-3xl font-bold text-gray-900">$5,584</span>
-                            <span className="text-lg text-gray-500 line-through">$5,994</span>
+                            <span className="text-3xl font-bold text-gray-900">$0.08</span>
+                            <span className="text-lg text-gray-500 line-through">$0.10</span>
                           </div>
                           <div className="font-semibold text-gray-900 mb-1">Pay in Full (Best Value)</div>
-                          <div className="text-sm text-gray-600">One-time payment - Save $410 compared to payment plan</div>
+                          <div className="text-sm text-gray-600">One-time payment - Test Transaction compared to payment plan</div>
                         </Label>
                       </div>
                     </div>
@@ -461,12 +461,12 @@ export default function EliteEnrollment() {
                         <RadioGroupItem value="plan" id="plan" className="mt-1" />
                         <Label htmlFor="plan" className="flex-1 cursor-pointer">
                           <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-3xl font-bold text-gray-900">$5,994</span>
+                            <span className="text-3xl font-bold text-gray-900">$0.10</span>
                           </div>
                           <div className="font-semibold text-gray-900 mb-1">Payment Plan</div>
                           <div className="text-sm text-gray-600 space-y-1">
-                            <div>• 30% Deposit: <span className="font-semibold">$1,798.20</span> (due today)</div>
-                            <div>• 4 Monthly Payments: <span className="font-semibold">$1,049.50</span> each</div>
+                            <div>• 30% Deposit: <span className="font-semibold">$0.10</span> (due today)</div>
+                            <div>• 4 Monthly Payments: <span className="font-semibold">$0.00</span> each</div>
                             <div className="text-xs text-gray-500 mt-2">No interest charged - flexible payment schedule</div>
                           </div>
                         </Label>
