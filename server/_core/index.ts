@@ -53,6 +53,18 @@ async function startServer() {
 
   if (distPath) {
     app.use(express.static(distPath));
+    app.get("/student", (req, res) => {
+      res.sendFile(path.join(distPath, "student-dashboard.html"));
+    });
+    app.get("/parent", (req, res) => {
+      res.sendFile(path.join(distPath, "parent-dashboard.html"));
+    });
+    app.get("/teacher", (req, res) => {
+      res.sendFile(path.join(distPath, "teacher-dashboard.html"));
+    });
+    app.get("/admin", (req, res) => {
+      res.sendFile(path.join(distPath, "admin-dashboard.html"));
+    });
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
