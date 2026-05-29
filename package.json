@@ -9,7 +9,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && (npx tsc --project tsconfig.json || true)",
-
     "preview": "vite preview",
     "start": "node dist-server/server/_core/index.js"
   },
@@ -64,6 +63,7 @@
     "recharts": "^2.12.2",
     "serve": "^14.2.6",
     "sonner": "^1.4.3",
+    "streamdown": "^2.5.0",
     "stripe": "^14.19.0",
     "superjson": "^2.2.1",
     "tailwind-merge": "^2.2.1",
