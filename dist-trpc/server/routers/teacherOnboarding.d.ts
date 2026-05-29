@@ -1,4 +1,4 @@
-export declare const lessonsRouter: import("@trpc/server").TRPCBuiltRouter<{
+export declare const teacherOnboardingRouter: import("@trpc/server").TRPCBuiltRouter<{
     ctx: {
         req: import("express").Request<import("express-serve-static-core").ParamsDictionary, any, any, import("qs").ParsedQs, Record<string, any>>;
         res: import("express").Response<any, Record<string, any>>;
@@ -7,23 +7,22 @@ export declare const lessonsRouter: import("@trpc/server").TRPCBuiltRouter<{
     errorShape: import("@trpc/server").TRPCDefaultErrorShape;
     transformer: true;
 }, import("@trpc/server").TRPCDecorateCreateRouterOptions<{
-    list: import("@trpc/server").TRPCQueryProcedure<{
-        input: void;
-        output: never[];
+    validateApprovalCode: import("@trpc/server").TRPCQueryProcedure<{
+        input: {
+            code: string;
+        };
+        output: {
+            valid: boolean;
+        };
         meta: object;
     }>;
-    getById: import("@trpc/server").TRPCQueryProcedure<{
+    getExamAttempts: import("@trpc/server").TRPCQueryProcedure<{
         input: {
-            lessonId: number;
+            teacherId: number;
         };
-        output: null;
-        meta: object;
-    }>;
-    getExercises: import("@trpc/server").TRPCQueryProcedure<{
-        input: {
-            lessonId: number;
+        output: {
+            attempts: number;
         };
-        output: never[];
         meta: object;
     }>;
 }>>;

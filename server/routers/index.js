@@ -1,5 +1,11 @@
 import { router } from "../_core/trpc.js";
 import { enrollmentNewRouter } from "./enrollmentNew.js";
+import { lessonsRouter } from "./lessons.js";
+import { studentRouter } from "./student.js";
+import { parentRouter } from "./parent.js";
+import { teacherRouter } from "./teacher.js";
+import { adminRouter } from "./admin.js";
+import { teacherOnboardingRouter } from "./teacherOnboarding.js";
 import { enrollmentRouter } from "./enrollment.js";
 import { progressRouter } from "./progress.js";
 import { authRouter } from "./auth.js";
@@ -10,11 +16,10 @@ export const appRouter = router({
     enrollment: enrollmentRouter,
     progress: progressRouter,
     auth: authRouter,
-    // Adding placeholders for other routers used in the frontend
-    student: placeholderRouter,
-    parent: placeholderRouter,
-    teacher: placeholderRouter,
-    admin: placeholderRouter,
-    teacherOnboarding: placeholderRouter,
-    lessons: placeholderRouter,
+    student: studentRouter,
+    parent: parentRouter,
+    teacher: teacherRouter,
+    admin: adminRouter,
+    teacherOnboarding: teacherOnboardingRouter,
+    lessons: lessonsRouter,
 });

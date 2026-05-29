@@ -31,20 +31,24 @@ async function startServer() {
     ];
     let distPath = "";
     for (const p of possibleDistPaths) {
+        console.log(`Checking dist path: ${p}`);
         if (fs.existsSync(p) && fs.existsSync(path.join(p, "index.html"))) {
             distPath = p;
+            console.log(`Resolved distPath: ${distPath}`);
             break;
         }
     }
     if (distPath) {
         app.use(express.static(distPath));
         app.get("*", (req, res) => {
+            console.log(`Serving index.html for route: ${req.url}`);
             res.sendFile(path.join(distPath, "index.html"));
         });
     }
     else {
         console.error("CRITICAL: Could not find static files directory!");
         app.get("*", (req, res) => {
+            console.log(`Serving index.html for route: ${req.url}`);
             res.status(404).send("Static files not found. Build might have failed.");
         });
     }

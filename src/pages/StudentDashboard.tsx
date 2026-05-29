@@ -46,17 +46,17 @@ export default function StudentDashboard() {
     const fetchLessons = async () => {
       try {
         setLessonsLoading(true);
-        const response = await fetch('/api/lessons/direct');
+        const response = await fetch("/api/lessons/direct");
         if (response.ok) {
           const data = await response.json();
           setLessons(data);
           console.log(`[StudentDashboard] Loaded ${data.length} lessons from direct API`);
         } else {
-          console.error('[StudentDashboard] Failed to fetch lessons:', response.status);
+          console.error("[StudentDashboard] Failed to fetch lessons:", response.status);
           setLessons([]);
         }
       } catch (error) {
-        console.error('[StudentDashboard] Error fetching lessons:', error);
+        console.error("[StudentDashboard] Error fetching lessons:", error);
         setLessons([]);
       } finally {
         setLessonsLoading(false);
@@ -95,8 +95,8 @@ export default function StudentDashboard() {
   }
 
   // Calculate progress statistics
-  const totalLessons = lessons?.length || 0;
-  const completedLessons = userProgress?.filter(p => p.completed === 1).length || 0;
+  const totalLessons = lessons.length || 0;
+  const completedLessons = userProgress ? userProgress.filter(p => p.completed === 1).length : 0;
   const progressPercentage = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;
 
   const navigationItems = [
@@ -195,13 +195,13 @@ export default function StudentDashboard() {
                 <CardDescription>Pick up where you left off</CardDescription>
               </CardHeader>
               <CardContent>
-                {!lessons || lessons.length === 0 ? (
+                {lessons.length === 0 ? (
                   <div className="text-center py-8 text-gray-500">
                     No lessons available yet. Check back soon!
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    {lessons.slice(0, 5).map((lesson, index) => {
+                    {lessons && lessons.slice(0, 5).map((lesson, index) => {
                       const progress = userProgress?.find(p => p.lessonId === lesson.id);
                       // Check if all 3 levels have 8/10 or better
                       const isCompleted = progress && 
@@ -317,11 +317,11 @@ export default function StudentDashboard() {
                   </div>
                   <div className="space-y-2">
                     <div className="font-semibold text-blue-600">2️⃣ Practice Exercises</div>
-                    <p className="text-gray-600">Solve 10 questions at each difficulty level</p>
+                    <p className="text-gray-600">Solve 10 questions per difficulty level</p>
                   </div>
                   <div className="space-y-2">
-                    <div className="font-semibold text-blue-600">3️⃣ Score 8/10 to Progress</div>
-                    <p className="text-gray-600">Unlock next level when you reach 8 correct</p>
+                    <div className="font-semibold text-blue-600">3️⃣ Track Progress</div>
+                    <p className="text-gray-600">Monitor your scores and unlock new lessons</p>
                   </div>
                 </div>
               </CardContent>
@@ -332,72 +332,25 @@ export default function StudentDashboard() {
                 <CardTitle>All Math Lessons</CardTitle>
               </CardHeader>
               <CardContent>
-                {!lessons || lessons.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">
-                    No lessons available yet. Check back soon!
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {lessons.map((lesson, index) => (
-                      <div
-                        key={lesson.id}
-                        className="p-4 border rounded-lg hover:shadow-md transition-all cursor-pointer bg-gradient-to-br from-white to-blue-50"
-                        onClick={() => setSelectedLesson(lesson.id)}
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold flex-shrink-0">
-                            {index + 1}
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-gray-900">{lesson.title}</h3>
-                            <p className="text-sm text-gray-600 mt-1">{lesson.description}</p>
-                            <div className="flex gap-2 mt-3">
-                              <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Easy</span>
-                              <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Medium</span>
-                              <span className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">Challenging</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        );
-
-      case "lessons":
-        return (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">My Lessons</h2>
-              <p className="text-gray-600 mt-1">Click on a lesson to start learning</p>
-            </div>
-
-            <Card>
-              <CardContent className="pt-6">
-                {!lessons || lessons.length === 0 ? (
+                {lessons.length === 0 ? (
                   <div className="text-center py-8 text-gray-500">
                     No lessons available yet. Check back soon!
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    {lessons.map((lesson, index) => {
+                    {lessons && lessons.map((lesson, index) => {
                       const progress = userProgress?.find(p => p.lessonId === lesson.id);
-                      // Check if all 3 levels have 8/10 or better
                       const isCompleted = progress && 
                         (progress.easyScore ?? 0) >= 8 && 
                         (progress.mediumScore ?? 0) >= 8 && 
                         (progress.challengingScore ?? 0) >= 8;
-                      // Check if previous lesson has all 3 levels completed
                       const prevProgress = index > 0 ? userProgress?.find(p => p.lessonId === lessons[index - 1].id) : null;
                       const isPrevCompleted = prevProgress && 
                         (prevProgress.easyScore ?? 0) >= 8 && 
                         (prevProgress.mediumScore ?? 0) >= 8 && 
                         (prevProgress.challengingScore ?? 0) >= 8;
                       const isLocked = index > 0 && !isPrevCompleted;
-                      
+
                       return (
                         <div
                           key={lesson.id}
@@ -425,11 +378,81 @@ export default function StudentDashboard() {
                               </div>
                             </div>
                             <div className="flex items-center gap-4">
-                              {progress && (
-                                <div className="text-sm text-gray-600">
-                                  {progress.correctAnswers}/{progress.totalAttempts} correct
-                                </div>
+                              {isCompleted && (
+                                <Trophy className="w-5 h-5 text-green-600" />
                               )}
+                              {isLocked && (
+                                <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">
+                                  Locked
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        );
+
+      case "lessons":
+        return (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">My Lessons</h2>
+              <p className="text-gray-600 mt-1">All available lessons</p>
+            </div>
+            <Card>
+              <CardContent className="pt-6">
+                {lessons.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    No lessons available yet. Check back soon!
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {lessons && lessons.map((lesson, index) => {
+                      const progress = userProgress?.find(p => p.lessonId === lesson.id);
+                      const isCompleted = progress && 
+                        (progress.easyScore ?? 0) >= 8 && 
+                        (progress.mediumScore ?? 0) >= 8 && 
+                        (progress.challengingScore ?? 0) >= 8;
+                      const prevProgress = index > 0 ? userProgress?.find(p => p.lessonId === lessons[index - 1].id) : null;
+                      const isPrevCompleted = prevProgress && 
+                        (prevProgress.easyScore ?? 0) >= 8 && 
+                        (prevProgress.mediumScore ?? 0) >= 8 && 
+                        (prevProgress.challengingScore ?? 0) >= 8;
+                      const isLocked = index > 0 && !isPrevCompleted;
+
+                      return (
+                        <div
+                          key={lesson.id}
+                          className={`p-4 border rounded-lg transition-all ${
+                            isLocked
+                              ? "bg-gray-50 border-gray-200 opacity-60 cursor-not-allowed"
+                              : isCompleted
+                              ? "bg-green-50 border-green-200 hover:shadow-md cursor-pointer"
+                              : "bg-white border-gray-200 hover:shadow-md cursor-pointer"
+                          }`}
+                          onClick={() => !isLocked && setSelectedLesson(lesson.id)}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-3">
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                                  isCompleted ? "bg-green-600 text-white" : isLocked ? "bg-gray-300 text-gray-600" : "bg-blue-600 text-white"
+                                }`}>
+                                  {index + 1}
+                                </div>
+                                <div>
+                                  <h3 className="font-semibold text-gray-900">{lesson.title}</h3>
+                                  <p className="text-sm text-gray-600">{lesson.description}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4">
                               {isCompleted && (
                                 <Trophy className="w-5 h-5 text-green-600" />
                               )}
@@ -455,98 +478,72 @@ export default function StudentDashboard() {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl font-bold text-gray-900">My Progress</h2>
-              <p className="text-gray-600 mt-1">Track your learning journey</p>
+              <p className="text-gray-600 mt-1">Overview of your learning journey</p>
             </div>
-
-            {/* Overall Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600">Total Lessons</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-blue-600">{totalLessons}</div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600">Completed</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-green-600">{completedLessons}</div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600">In Progress</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-yellow-600">{totalLessons - completedLessons}</div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-600">Overall Progress</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-blue-700">{progressPercentage.toFixed(0)}%</div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Detailed Progress */}
             <Card>
               <CardHeader>
-                <CardTitle>Lesson by Lesson Progress</CardTitle>
-                <CardDescription>See your performance on each lesson</CardDescription>
+                <CardTitle>Overall Progress</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {lessons?.map((lesson, index) => {
-                    const progress = userProgress?.find(p => p.lessonId === lesson.id);
-                    // Check if all 3 levels have 8/10 or better
-                    const isCompleted = progress && 
-                      (progress.easyScore ?? 0) >= 8 && 
-                      (progress.mediumScore ?? 0) >= 8 && 
-                      (progress.challengingScore ?? 0) >= 8;
-                    
-                    return (
-                      <div key={lesson.id} className="border rounded-lg p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                              isCompleted ? "bg-green-600 text-white" : "bg-gray-300 text-gray-600"
-                            }`}>
-                              {index + 1}
-                            </div>
-                            <h4 className="font-semibold text-gray-900">{lesson.title}</h4>
-                          </div>
-                          {isCompleted && <Trophy className="w-5 h-5 text-green-600" />}
-                        </div>
-                        
-                        {progress && (
-                          <div className="space-y-2 ml-11">
-                            <div className="flex justify-between text-sm">
-                              <span className="text-gray-600">Easy Level:</span>
-                              <span className="font-medium">{progress.easyScore || 0}/10 {progress.easyCompleted ? "✓" : ""}</span>
-                            </div>
-                            <div className="flex justify-between text-sm">
-                              <span className="text-gray-600">Medium Level:</span>
-                              <span className="font-medium">{progress.mediumScore || 0}/10 {progress.mediumCompleted ? "✓" : ""}</span>
-                            </div>
-                            <div className="flex justify-between text-sm">
-                              <span className="text-gray-600">Challenging Level:</span>
-                              <span className="font-medium">{progress.challengingScore || 0}/10 {progress.challengingCompleted ? "✓" : ""}</span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-medium">Lessons Completed:</span>
+                    <span className="text-lg font-bold text-blue-600">{completedLessons} / {totalLessons}</span>
+                  </div>
+                  <Progress value={progressPercentage} className="h-3" />
+                  <div className="text-right text-sm text-gray-600">{progressPercentage.toFixed(0)}% Complete</div>
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Lesson Breakdown</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {lessons.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    No lessons available yet.
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {lessons && lessons.map(lesson => {
+                      const progress = userProgress?.find(p => p.lessonId === lesson.id);
+                      const easyScore = progress?.easyScore ?? 0;
+                      const mediumScore = progress?.mediumScore ?? 0;
+                      const challengingScore = progress?.challengingScore ?? 0;
+                      const overallScore = (easyScore + mediumScore + challengingScore) / 3;
+
+                      return (
+                        <div key={lesson.id} className="border-b pb-4 last:border-b-0">
+                          <h3 className="font-semibold text-lg text-gray-800">{lesson.title}</h3>
+                          <div className="mt-2 space-y-2 text-sm">
+                            <div className="flex justify-between items-center">
+                              <span>Easy:</span>
+                              <Progress value={easyScore * 10} className="w-2/3 h-2" />
+                              <span className="font-medium">{easyScore}/10</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span>Medium:</span>
+                              <Progress value={mediumScore * 10} className="w-2/3 h-2" />
+                              <span className="font-medium">{mediumScore}/10</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span>Challenging:</span>
+                              <Progress value={challengingScore * 10} className="w-2/3 h-2" />
+                              <span className="font-medium">{challengingScore}/10</span>
+                            </div>
+                            <div className="flex justify-between items-center font-bold mt-2 pt-2 border-t">
+                              <span>Overall:</span>
+                              <Progress value={overallScore * 10} className="w-2/3 h-2" />
+                              <span>{overallScore.toFixed(1)}/10</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
@@ -554,236 +551,120 @@ export default function StudentDashboard() {
 
       case "notes":
         return <ImportantNotes />;
-
       case "questions":
         return <AskQuestion />;
-
       case "badges":
         return <StudentBadges />;
-
       case "settings":
         return (
           <div className="space-y-6">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">Settings</h2>
-              <p className="text-gray-600 mt-1">Manage your account preferences</p>
-            </div>
-
+            <h2 className="text-3xl font-bold text-gray-900">Settings</h2>
             <Card>
               <CardHeader>
-                <CardTitle>Profile Information</CardTitle>
-                <CardDescription>Your account details</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium text-gray-700">Name</label>
-                  <p className="text-gray-900 mt-1">{user?.name || "Demo Student"}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-gray-700">Email</label>
-                  <p className="text-gray-900 mt-1">{user?.email || "Not provided"}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-gray-700">Role</label>
-                  <p className="text-gray-900 mt-1 capitalize">{user?.role || "student"}</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Notification Preferences</CardTitle>
-                <CardDescription>Coming soon</CardDescription>
+                <CardTitle>Profile Settings</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">Notification settings will be available soon.</p>
+                <p>Manage your profile information here.</p>
+                {/* Add form for profile settings */}
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
-                <CardTitle>Display Preferences</CardTitle>
-                <CardDescription>Coming soon</CardDescription>
+                <CardTitle>Notification Settings</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">Display customization options will be available soon.</p>
+                <p>Configure your notification preferences.</p>
+                {/* Add form for notification settings */}
               </CardContent>
             </Card>
           </div>
         );
-
       case "help":
         return (
           <div className="space-y-6">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">Help & Support</h2>
-              <p className="text-gray-600 mt-1">Get assistance when you need it</p>
-            </div>
-
+            <h2 className="text-3xl font-bold text-gray-900">Help & Support</h2>
+            <Card>
+              <CardHeader>
+                <CardTitle>FAQ</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Find answers to common questions.</p>
+                {/* Add FAQ content */}
+              </CardContent>
+            </Card>
             <Card>
               <CardHeader>
                 <CardTitle>Contact Support</CardTitle>
-                <CardDescription>Reach out to our team</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Phone Tutor</h4>
-                  <a href="tel:+61499989179" className="text-blue-600 hover:underline text-lg font-medium">
-                    +61 499 989 179
-                  </a>
-                  <p className="text-sm text-gray-500 mt-1">
-                    (Will be replaced with 1800 number at launch)
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Email Support</h4>
-                  <a href="mailto:support@schrool.com" className="text-blue-600 hover:underline">
-                    support@schrool.com
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Frequently Asked Questions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">How do I unlock the next lesson?</h4>
-                  <p className="text-gray-600 text-sm">
-                    Complete all three difficulty levels (Easy, Medium, Challenging) of the current lesson with at least 8/10 correct answers in each level.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Can I watch solution videos?</h4>
-                  <p className="text-gray-600 text-sm">
-                    Yes! Solution videos are always available. However, questions where you watched the solution won't count toward your final score.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">What is the 8/10 rule?</h4>
-                  <p className="text-gray-600 text-sm">
-                    You need to answer at least 8 out of 10 questions correctly (without watching solutions) to progress to the next difficulty level or lesson.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Tutorial Videos</CardTitle>
-                <CardDescription>Coming soon</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">Tutorial videos will be available soon to help you navigate the platform.</p>
+                <p>If you need further assistance, please contact our support team.</p>
+                {/* Add contact form or details */}
               </CardContent>
             </Card>
           </div>
         );
-
       default:
-        return null;
+        return (
+          <div className="text-center py-10 text-gray-500">
+            <p>Select an item from the sidebar to view content.</p>
+          </div>
+        );
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? "w-64" : "w-0"} lg:w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white transition-all duration-300 overflow-hidden fixed lg:relative h-screen z-20`}>
-        <div className="p-6">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold">SCHROOL</h1>
-            <p className="text-sm text-blue-200 mt-1">Student Portal</p>
-          </div>
-
-          <div className="mb-8 text-center">
-            <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
-              {user?.name?.charAt(0).toUpperCase() || "S"}
-            </div>
-            <p className="font-semibold">{user?.name || "Demo Student"}</p>
-            <p className="text-sm text-blue-200">Student</p>
-          </div>
-
-          <nav className="space-y-2">
-            {navigationItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setCurrentView(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                    currentView === item.id
-                      ? "bg-white text-blue-600 shadow-lg"
-                      : "text-white hover:bg-blue-700"
-                  }`}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="text-sm font-medium">{item.label}</span>
-                </button>
-              );
-            })}
-          </nav>
+      <div className={`fixed inset-y-0 left-0 z-50 bg-white shadow-lg transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`} style={{ width: sidebarOpen ? "280px" : "0" }}>
+        <div className="flex items-center justify-between p-4 border-b">
+          <h1 className="text-2xl font-bold text-blue-700">SCHROOL</h1>
+          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(false)}>
+            <X className="h-6 w-6" />
+          </Button>
         </div>
-      </aside>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen">
-        {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10">
-          <div className="px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden"
-              >
-                {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </Button>
-              
-              <div className="flex-1 lg:hidden" />
-              
-              <div className="flex items-center gap-4">
-                <div className="hidden sm:flex items-center gap-2 text-sm text-gray-600">
-                  <User className="w-4 h-4" />
-                  <span>{user?.name || "Demo Student"}</span>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => logout.mutate()}
-                  disabled={logout.isPending}
-                >
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Logout
-                </Button>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Content Area */}
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
-          {renderContent()}
-        </main>
+        <nav className="flex-1 p-4 space-y-2">
+          {navigationItems.map((item) => (
+            <Button
+              key={item.id}
+              variant={currentView === item.id ? "secondary" : "ghost"}
+              className={`w-full justify-start gap-3 ${item.highlight ? "bg-blue-100 text-blue-700 hover:bg-blue-200" : ""}`}
+              onClick={() => {
+                setCurrentView(item.id);
+                setSidebarOpen(false);
+              }}
+            >
+              <item.icon className="h-5 w-5" />
+              {item.label}
+            </Button>
+          ))}
+          <Button
+            variant="ghost"
+            className="w-full justify-start gap-3 text-red-600 hover:bg-red-50 hover:text-red-700"
+            onClick={() => logout.mutate()}
+          >
+            <LogOut className="h-5 w-5" />
+            Logout
+          </Button>
+        </nav>
       </div>
 
-      {/* Lesson Viewer Modal */}
-      {selectedLesson && (
-        <LessonViewer
-          lessonId={selectedLesson}
-          onClose={() => setSelectedLesson(null)}
-        />
-      )}
-
-      {/* Mobile Sidebar Overlay */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col lg:ml-70">
+        <header className="bg-white shadow-sm p-4 flex items-center justify-between lg:hidden">
+          <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(true)}>
+            <Menu className="h-6 w-6" />
+          </Button>
+          <h1 className="text-xl font-bold text-blue-700">SCHROOL</h1>
+          <User className="h-6 w-6 text-gray-600" />
+        </header>
+        <main className="flex-1 p-6 bg-gray-50 overflow-y-auto">
+          {selectedLesson ? (
+            <LessonViewer lessonId={selectedLesson} onClose={() => setSelectedLesson(null)} />
+          ) : (
+            renderContent()
+          )}
+        </main>
+      </div>
     </div>
   );
 }
