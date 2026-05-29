@@ -17,11 +17,6 @@ function App() {
       <Route path="/teacher" component={TeacherDashboard} />
       <Route path="/admin" component={AdminDashboard} />
       <Route path="/">
-        {/* Fallback for unmatched routes to debug client-side routing */}
-        <Route path="/:rest*" component={() => {
-          console.log("Unmatched route:", window.location.pathname);
-          return <div>404 - Page Not Found (Client-side)</div>;
-        }} />
         <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', padding: '2rem', fontFamily: 'sans-serif' }}>
           <header style={{ maxWidth: '64rem', margin: '0 auto 2rem' }}>
             <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: '#1e3a8a' }}>SCHROOL Platform</h1>
@@ -47,7 +42,5 @@ function App() {
   );
 }
 
-// Add a simple console log to confirm App component is rendered
-console.log("App component rendered");
-
 export default App;
+// Temporary comment to trigger rebuild
