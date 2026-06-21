@@ -1,88 +1,63 @@
 import { Router } from "express";
-import mysql from "mysql2/promise";
-
 const router = Router();
 
-// Create a connection pool using the DATABASE_URL env var
-let pool: mysql.Pool | null = null;
-function db() {
-  if (!pool) {
-    const url = process.env.DATABASE_URL;
-    if (!url) throw new Error("DATABASE_URL is not set");
-    pool = mysql.createPool({
-      uri: url,
-      ssl: { rejectUnauthorized: false },
-      waitForConnections: true,
-      connectionLimit: 5,
-    });
+// Mock curriculum data
+const mockLessons = [
+  {
+    id: 1,
+    title: "Introduction to Algebra",
+    description: "Learn the basics of algebraic expressions and equations.",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder video
+    order: 1,
+  },
+  {
+    id: 2,
+    title: "Geometry Fundamentals",
+    description: "Explore shapes, sizes, and the properties of space.",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    order: 2,
+  },
+  {
+    id: 23,
+    title: "Advanced Calculus",
+    description: "Deep dive into limits, derivatives, and integrals.",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    order: 23,
   }
-  return pool;
-}
+];
+
+const mockExercises = {
+  1: [
+    { id: 101, lessonId: 1, difficulty: "easy", question: "What is 2x + 5 = 15?", options: JSON.stringify(["x=5", "x=10", "x=2", "x=7"]), correctAnswer: "x=5", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 1 },
+    { id: 102, lessonId: 1, difficulty: "easy", question: "Simplify 3(x + 4)", options: JSON.stringify(["3x+12", "3x+4", "x+12", "3x+7"]), correctAnswer: "3x+12", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 2 },
+  ],
+  2: [
+    { id: 201, lessonId: 2, difficulty: "easy", question: "What is the area of a circle with radius 5?", options: JSON.stringify(["25π", "10π", "5π", "50π"]), correctAnswer: "25π", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 1 },
+  ],
+  23: [
+    { id: 2301, lessonId: 23, difficulty: "easy", question: "What is the derivative of x^2?", options: JSON.stringify(["2x", "x", "2", "x^2"]), correctAnswer: "2x", solutionVideoId: "dQw4w9WgXcQ", orderIndex: 1 },
+  ]
+};
 
 // GET /api/lessons/direct
-router.get("/", async (req, res) => {
-  try {
-    const [rows] = await db().query(
-      `SELECT id, title, description, videoId, thumbnailUrl, duration, orderIndex, category
-       FROM lessons ORDER BY orderIndex ASC`
-    );
-    res.json(rows);
-  } catch (err) {
-    console.error("[LessonsAPI] Error fetching lessons:", err);
-    res.status(500).json({ message: "Failed to fetch lessons" });
-  }
+router.get("/", (req, res) => {
+  res.json(mockLessons);
 });
 
 // GET /api/lessons/direct/:id
-router.get("/:id", async (req, res) => {
-  try {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)) return res.status(400).json({ message: "Invalid lesson ID" });
-    const [rows] = await db().query(
-      `SELECT id, title, description, videoId, thumbnailUrl, duration, orderIndex, category
-       FROM lessons WHERE id = ? LIMIT 1`,
-      [id]
-    ) as any[];
-    if (!(rows as any[]).length) return res.status(404).json({ message: "Lesson not found" });
-    res.json((rows as any[])[0]);
-  } catch (err) {
-    console.error("[LessonsAPI] Error fetching lesson:", err);
-    res.status(500).json({ message: "Failed to fetch lesson" });
+router.get("/:id", (req, res) => {
+  const lesson = mockLessons.find(l => l.id === parseInt(req.params.id));
+  if (lesson) {
+    res.json(lesson);
+  } else {
+    res.status(404).json({ message: "Lesson not found" });
   }
 });
 
-// GET /api/lessons/direct/:id/exercises?difficulty=easy
-router.get("/:id/exercises", async (req, res) => {
-  try {
-    const lessonId = parseInt(req.params.id);
-    if (isNaN(lessonId)) return res.status(400).json({ message: "Invalid lesson ID" });
-    const difficulty = req.query.difficulty as string | undefined;
-
-    let query = `SELECT id, lessonId, question, correctAnswer, solutionVideoId, orderIndex, difficulty, options, imageUrl
-                 FROM exercises WHERE lessonId = ?`;
-    const params: any[] = [lessonId];
-
-    if (difficulty && ["easy", "medium", "challenging"].includes(difficulty)) {
-      query += ` AND difficulty = ?`;
-      params.push(difficulty);
-    }
-    query += ` ORDER BY orderIndex ASC`;
-
-    const [rows] = await db().query(query, params) as any[];
-
-    // Parse options JSON if stored as string
-    const exercises = (rows as any[]).map((ex: any) => ({
-      ...ex,
-      options: typeof ex.options === "string"
-        ? (() => { try { return JSON.parse(ex.options); } catch { return ex.options; } })()
-        : ex.options,
-    }));
-
-    res.json(exercises);
-  } catch (err) {
-    console.error("[LessonsAPI] Error fetching exercises:", err);
-    res.status(500).json({ message: "Failed to fetch exercises" });
-  }
+// GET /api/lessons/direct/:id/exercises
+router.get("/:id/exercises", (req, res) => {
+  const exercises = mockExercises[parseInt(req.params.id) as keyof typeof mockExercises] || [];
+  res.json(exercises);
 });
 
 export default router;
