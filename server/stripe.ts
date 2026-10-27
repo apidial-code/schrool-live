@@ -75,8 +75,8 @@ export async function createEnrollmentCheckoutSession(
 
   if (!ENV.stripeSecretKey || ENV.stripeSecretKey === 'sk_test_dummy_disabled') {
     console.log('[Stripe] MOCK MODE: Creating mock checkout session and enrollment');
-    const { getDb, generateMagicLinkToken } = await import('./db');
-    const { users, enrollments } = await import('../drizzle/schema');
+    const { getDb, generateMagicLinkToken } = await import('./db.js');
+    const { users, enrollments } = await import('../drizzle/schema.js');
     const db = await getDb();
 
     const studentId = Math.floor(Math.random() * 10000);
