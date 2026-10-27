@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc --project tsconfig.json --rootDir . --outDir dist-server --noEmitOnError",
+    "build": "vite build && tsc --project tsconfig.server.json",
     "preview": "vite preview",
     "start": "node dist-server/server/_core/index.js"
   },
