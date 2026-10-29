@@ -1,21 +1,76 @@
-import { mysqlTable, serial, varchar, timestamp, decimal, int, text, boolean } from "drizzle-orm/mysql-core";
+import {
+  mysqlTable, serial, varchar, timestamp, decimal,
+  int, text, boolean, uniqueIndex
+} from "drizzle-orm/mysql-core";
+// Application roles: student, parent, teacher, consultant, admin.
 export const users = mysqlTable("users", {
   id: serial("id").primaryKey(),
+  openId: varchar("open_id", { length: 255 }).unique(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).unique(),
-  role: varchar("role", { length: 50 }),
+  role: varchar("role", { length: 50 })
+    .notNull().default("student"),
+  accountStatus: varchar("account_status", { length: 30 })
+    .notNull().default("pending"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow().onUpdateNow().notNull(),
 });
+
+export const parentStudentLinks = mysqlTable(
+  "parent_student_links",
+  {
+    id: serial("id").primaryKey(),
+    parentId: int("parent_id").notNull(),
+    studentId: int("student_id").notNull(),
+    status: varchar("status", { length: 30 })
+      .notNull().default("pending"),
+    verifiedAt: timestamp("verified_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    uniqueIndex("parent_student_pair")
+      .on(table.parentId, table.studentId),
+  ]
+);
+
 export const enrollments = mysqlTable("enrollments", {
   id: serial("id").primaryKey(),
   userId: int("user_id"),
+  parentId: int("parent_id"),
+  studentId: int("student_id"),
+  consultantId: int("consultant_id"),
+  courseId: int("course_id"),
+  yearLevel: varchar("year_level", { length: 30 }),
   studentName: varchar("student_name", { length: 255 }),
   parentEmail: varchar("parent_email", { length: 255 }),
   tier: varchar("tier", { length: 50 }),
-  status: varchar("status", { length: 50 }),
-  paymentStatus: varchar("payment_status", { length: 50 }),
-  stripeSubscriptionId: varchar("stripe_subscription_id", { length: 255 }),
-  verificationToken: varchar("verification_token", { length: 255 }),
+  status: varchar("status", { length: 50 })
+    .notNull().default("draft"),
+  paymentStatus: varchar("payment_status", { length: 50 })
+    .notNull().default("unpaid"),
+  currency: varchar("currency", { length: 3 })
+    .notNull().default("AUD"),
+  paymentPlan: varchar("payment_plan", { length: 50 }),
+  agreedTotalCents: int("agreed_total_cents", {
+    unsigned: true,
+  }),
+  termsVersion: varchar("terms_version", { length: 100 }),
+  agreementSnapshot: text("agreement_snapshot"),
+  acceptedAt: timestamp("accepted_at"),
+  acceptanceLinkExpiresAt: timestamp("acceptance_link_expires_at"),
+  activatedAt: timestamp("activated_at"),
+  accessEndsAt: timestamp("access_ends_at"),
+  adjustedCourseFinishAt: timestamp("adjusted_course_finish_at"),
+  stripeSubscriptionId: varchar("stripe_subscription_id", {
+    length: 255,
+  }),
+  verificationToken: varchar("verification_token", {
+    length: 255,
+  }),
   enrolledAt: timestamp("enrolled_at").defaultNow(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow().onUpdateNow().notNull(),
 });
 export const courses = mysqlTable("courses", {
   id: serial("id").primaryKey(),
