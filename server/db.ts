@@ -1,86 +1,80 @@
+import mysql from "mysql2/promise";
+import { drizzle } from "drizzle-orm/mysql2";
+import * as schema from "../drizzle/schema.js";
 import { eq, and, desc } from "drizzle-orm";
-import { InsertUser, users, emailCampaigns, emailSequences, emailQueue, emailLogs, diagnosticTestResults, lessons, exercises, userProgress, courses, enrollments } from "../drizzle/schema.js";
-import { ENV } from './_core/env.js';
-import jwt from 'jsonwebtoken';
+import {
+  InsertUser, users, emailCampaigns, emailSequences,
+  emailQueue, emailLogs, diagnosticTestResults,
+  lessons, exercises, userProgress, courses, enrollments
+} from "../drizzle/schema.js";
+import { ENV } from "./_core/env.js";
+import jwt from "jsonwebtoken";
 
-let _db: any = null;
+let databasePromise: Promise<any> | undefined;
 
-export async function getDb() {
-  if (_db) return _db;
-  
-  console.log("[Database] MOCK_DB_ENABLED is true, returning mock database.");
-  _db = {
-    query: {
-      diagnosticTestResults: {
-        findFirst: async () => null,
-      },
-      enrollments: {
-        findFirst: async () => {
-          const data = (global as any).mockData?.['enrollments'] || [];
-          return data.length > 0 ? data[data.length - 1] : null;
-        }
-      }
-    },
-    insert: (table: any) => ({
-      values: (data: any) => {
-        console.log(`[MockDB] Inserting into ${table?.name || 'table'}:`, data);
-        const id = Math.floor(Math.random() * 10000);
-        if (!(global as any).mockData) (global as any).mockData = {};
-        const tableName = table?.name || 'enrollments';
-        if (!(global as any).mockData[tableName]) (global as any).mockData[tableName] = [];
-        const record = { ...data, id, enrolledAt: new Date() };
-        (global as any).mockData[tableName].push(record);
-        return [{ insertId: id }];
-      }
-    }),
-    update: (table: any) => ({
-      set: (data: any) => ({
-        where: () => ({
-          execute: async () => {
-            console.log(`[MockDB] Updating ${table?.name || 'table'} with:`, data);
-          }
-        }),
-      }),
-    }),
-    select: () => ({
-      from: (table: any) => ({
-        where: (condition: any) => ({
-          limit: async (num: number) => {
-            const tableName = table?.name || 'enrollments';
-            const data = (global as any).mockData?.[tableName] || [];
-            if (tableName === 'users' || table?.name === 'users' || table?.config?.name === 'users') {
-              const users = (global as any).mockData?.users || [];
-              if (users.length > 0) return [users[users.length - 1]];
-              return [{ id: 1, openId: 'mock_open_id', name: 'Mock User', role: 'student', email: 'student@test.com' }];
-            }
-            return data.length > 0 ? [data[data.length - 1]] : [];
-          },
-          orderBy: (column: any) => ({
-            limit: async (num: number) => {
-              const tableName = table?.name || 'enrollments';
-              const data = (global as any).mockData?.[tableName] || [];
-              return data.length > 0 ? [data[data.length - 1]] : [];
-            },
-          }),
-        }),
-        orderBy: (column: any) => ({
-          limit: async (num: number) => {
-            const tableName = table?.name || 'enrollments';
-            const data = (global as any).mockData?.[tableName] || [];
-            if (tableName === 'users' || table?.name === 'users' || table?.config?.name === 'users') {
-              const users = (global as any).mockData?.users || [];
-              if (users.length > 0) return [users[users.length - 1]];
-              return [{ id: 1, openId: 'mock_open_id', name: 'Mock User', role: 'student', email: 'student@test.com' }];
-            }
-            return data.length > 0 ? [data[data.length - 1]] : [];
-          },
-        }),
-      }),
-    }),
-  };
-  return _db;
+export async function getDb(): Promise<any> {
+  if (!databasePromise) {
+    databasePromise = connectDatabase().catch(() => {
+      databasePromise = undefined;
+      throw new Error(
+        "Secure database connection failed. Check database configuration."
+      );
+    });
+  }
+  return databasePromise;
 }
 
+async function connectDatabase() {
+  const databaseUrl = process.env.DATABASE_URL;
+  if (!databaseUrl) throw new Error("DATABASE_URL is required.");
+
+  const url = new URL(databaseUrl);
+  if (
+    url.protocol !== "mysql:" ||
+    !url.hostname ||
+    url.pathname.length < 2
+  ) {
+    throw new Error("Invalid database configuration.");
+  }
+
+  const response = await fetch(
+    "https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem",
+    { signal: AbortSignal.timeout(10000) }
+  );
+  if (!response.ok) {
+    throw new Error("Database certificate download failed.");
+  }
+
+  const ca = await response.text();
+  if (!ca.includes("-----BEGIN CERTIFICATE-----")) {
+    throw new Error("Invalid database certificate bundle.");
+  }
+
+  const pool = mysql.createPool({
+    host: url.hostname,
+    port: Number(url.port || 3306),
+    user: decodeURIComponent(url.username),
+    password: decodeURIComponent(url.password),
+    database: decodeURIComponent(url.pathname.slice(1)),
+    connectionLimit: 2,
+    waitForConnections: true,
+    queueLimit: 20,
+    connectTimeout: 10000,
+    ssl: {
+      ca,
+      rejectUnauthorized: true,
+      minVersion: "TLSv1.2",
+    },
+  });
+
+  try {
+    await pool.query("SELECT 1");
+    return drizzle(pool, { schema, mode: "default" });
+  } catch (error) {
+    await pool.end();
+    throw error;
+  }
+}
 export async function upsertUser(user: InsertUser): Promise<void> {
   const db = await getDb();
   if (!db) return;
