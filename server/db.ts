@@ -157,14 +157,77 @@ export async function createUser(data: {
 }
 
 export async function createEnrollment(data: any) {
+  const parentId = data?.parentId;
+  const studentId = data?.studentId;
+  const yearLevel = data?.yearLevel;
+  const tier = data?.tier;
+
+  if (
+    !Number.isSafeInteger(parentId) || parentId <= 0 ||
+    !Number.isSafeInteger(studentId) || studentId <= 0 ||
+    parentId === studentId
+  ) {
+    throw new Error("Valid parent and student IDs are required.");
+  }
+
+  if (!["year5-6", "year7", "year8", "year9"].includes(yearLevel)) {
+    throw new Error("Invalid school year level.");
+  }
+
+  if (tier !== "standard" && tier !== "elite") {
+    throw new Error("Invalid course tier.");
+  }
+
   const db = await getDb();
-  const id = Math.floor(Math.random() * 1000);
-  console.log("[MockDB] createEnrollment:", data);
-  if (!(global as any).mockData) (global as any).mockData = {};
-  if (!(global as any).mockData['enrollments']) (global as any).mockData['enrollments'] = [];
-  const record = { ...data, id, enrolledAt: new Date() };
-  (global as any).mockData['enrollments'].push(record);
-  return record;
+
+  return db.transaction(async (tx: any) => {
+    const [parent] = await tx.select().from(users)
+      .where(eq(users.id, parentId)).limit(1);
+
+    const [student] = await tx.select().from(users)
+      .where(eq(users.id, studentId)).limit(1);
+
+    if (
+      !parent || parent.role !== "parent" ||
+      !student || student.role !== "student"
+    ) {
+      throw new Error("Parent or student account not found.");
+    }
+
+    const links = schema.parentStudentLinks;
+
+    const [link] = await tx.select().from(links)
+      .where(and(
+        eq(links.parentId, parentId),
+        eq(links.studentId, studentId)
+      )).limit(1);
+
+    if (!link || !["pending", "verified"].includes(link.status)) {
+      throw new Error("A valid family link is required.");
+    }
+
+    const [result] = await tx.insert(enrollments).values({
+      userId: studentId,
+      parentId,
+      studentId,
+      studentName: student.name,
+      parentEmail: parent.email,
+      yearLevel,
+      tier,
+      status: "draft",
+      paymentStatus: "unpaid",
+      currency: "AUD",
+    });
+
+    const [enrollment] = await tx.select().from(enrollments)
+      .where(eq(enrollments.id, result.insertId)).limit(1);
+
+    if (!enrollment) {
+      throw new Error("Unable to retrieve enrolment.");
+    }
+
+    return enrollment;
+  });
 }
 
 export async function getEnrollmentByUserId(userId: number) {
