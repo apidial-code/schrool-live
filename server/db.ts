@@ -77,28 +77,83 @@ async function connectDatabase() {
 }
 export async function upsertUser(user: InsertUser): Promise<void> {
   const db = await getDb();
-  if (!db) return;
-  console.log("[MockDB] upsertUser:", user);
+
+  if (!user.email && !user.openId) {
+    throw new Error("An email or login identifier is required.");
+  }
+
+  // Account roles and activation must be changed through
+  // authorised administration, not through a login update.
+  const { id, role, accountStatus, ...profile } = user;
+
+  await db.insert(users).values({
+    ...profile,
+    role: "student",
+    accountStatus: "pending",
+  }).onDuplicateKeyUpdate({
+    set: {
+      ...(user.name != null ? { name: user.name } : {}),
+    },
+  });
 }
 
 export async function getUserByOpenId(openId: string) {
+  if (!openId) return undefined;
+
   const db = await getDb();
-  if (!db) return undefined;
-  return { id: 1, openId, name: "Mock User" };
+  const [user] = await db.select()
+    .from(users)
+    .where(eq(users.openId, openId))
+    .limit(1);
+
+  return user;
 }
 
 export async function getUserByEmail(email: string) {
+  const normalisedEmail = email.trim().toLowerCase();
+  if (!normalisedEmail) return undefined;
+
   const db = await getDb();
-  if (!db) return undefined;
-  const data = (global as any).mockData?.['users'] || [];
-  return data.find((u: any) => u.email === email) || { id: 1, email, name: "Mock User", role: "student", openId: "mock_open_id" };
+  const [user] = await db.select()
+    .from(users)
+    .where(eq(users.email, normalisedEmail))
+    .limit(1);
+
+  return user;
 }
 
-export async function createUser(data: any) {
+export async function createUser(data: {
+  name: string;
+  email: string;
+  role: "student" | "parent";
+}) {
+  const name = data.name.trim();
+  const email = data.email.trim().toLowerCase();
+
+  if (!name || !email) {
+    throw new Error("Name and email are required.");
+  }
+
+  if (data.role !== "student" && data.role !== "parent") {
+    throw new Error("Invalid account role.");
+  }
+
   const db = await getDb();
-  const id = Math.floor(Math.random() * 1000);
-  console.log("[MockDB] createUser:", data);
-  return { id, ...data };
+  const [result] = await db.insert(users).values({
+    name,
+    email,
+    role: data.role,
+    accountStatus: "pending",
+  });
+
+  const [user] = await db.select()
+    .from(users)
+    .where(eq(users.id, result.insertId))
+    .limit(1);
+
+  if (!user) throw new Error("Unable to retrieve created account.");
+
+  return user;
 }
 
 export async function createEnrollment(data: any) {
