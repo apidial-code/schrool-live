@@ -231,12 +231,20 @@ export async function createEnrollment(data: any) {
 }
 
 export async function getEnrollmentByUserId(userId: number) {
-  const db = await getDb();
-  if (!db) return undefined;
-  const data = (global as any).mockData?.['enrollments'] || [];
-  return data.find((e: any) => e.userId === userId) || data[0];
-}
+  if (!Number.isSafeInteger(userId) || userId <= 0) {
+    return undefined;
+  }
 
+  const db = await getDb();
+
+  const [enrollment] = await db.select()
+    .from(enrollments)
+    .where(eq(enrollments.studentId, userId))
+    .orderBy(desc(enrollments.id))
+    .limit(1);
+
+  return enrollment;
+}
 export async function getEnrollmentByStripeSubscription(stripeSubscriptionId: string) {
   return null;
 }
