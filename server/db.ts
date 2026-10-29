@@ -227,8 +227,59 @@ export async function getDiagnosticResultByEmail(email: string) {
   return null;
 }
 
-export async function linkParentAndStudent(parentId: number, studentId: number) {
-  console.log(`[MockDB] linkParentAndStudent: parent ${parentId}, student ${studentId}`);
+export async function linkParentAndStudent(
+  parentId: number,
+  studentId: number
+) {
+  if (
+    !Number.isSafeInteger(parentId) || parentId <= 0 ||
+    !Number.isSafeInteger(studentId) || studentId <= 0 ||
+    parentId === studentId
+  ) {
+    throw new Error(
+      "Valid, different parent and student IDs are required."
+    );
+  }
+
+  const db = await getDb();
+
+  return db.transaction(async (tx: any) => {
+    const [parent] = await tx.select().from(users)
+      .where(eq(users.id, parentId)).limit(1);
+
+    const [student] = await tx.select().from(users)
+      .where(eq(users.id, studentId)).limit(1);
+
+    if (!parent || parent.role !== "parent") {
+      throw new Error("Parent account not found.");
+    }
+
+    if (!student || student.role !== "student") {
+      throw new Error("Student account not found.");
+    }
+
+    const links = schema.parentStudentLinks;
+
+    await tx.insert(links).values({
+      parentId,
+      studentId,
+      status: "pending",
+    }).onDuplicateKeyUpdate({
+      set: { parentId },
+    });
+
+    const [link] = await tx.select().from(links)
+      .where(and(
+        eq(links.parentId, parentId),
+        eq(links.studentId, studentId)
+      )).limit(1);
+
+    if (!link) {
+      throw new Error("Unable to retrieve family link.");
+    }
+
+    return link;
+  });
 }
 
 export async function getCourseById(courseId: number) {
