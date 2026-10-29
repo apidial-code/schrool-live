@@ -1,15 +1,18 @@
 import { publicProcedure, router } from "../_core/trpc.js";
 
 export const authRouter = router({
-  me: publicProcedure.query(async () => {
-    return {
-      id: 1,
-      name: "Demo Student",
-      email: "student@example.com",
-      role: "student",
-    };
+  me: publicProcedure.query(({ ctx }) => {
+    return ctx.user;
   }),
-  logout: publicProcedure.mutation(async () => {
+
+  logout: publicProcedure.mutation(({ ctx }) => {
+    ctx.res.clearCookie("__Host-schrool_session", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+    });
+
     return { success: true };
   }),
 });
