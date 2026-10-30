@@ -107,3 +107,24 @@ export const zoomSessions = mysqlTable("zoom_sessions", {
   status: varchar("status", { length: 50 }),
 });
 export type InsertUser = typeof users.$inferInsert;
+export const loginLinks = mysqlTable("login_links", {
+  id: serial("id").primaryKey(),
+  userId: int("user_id").notNull(),
+  tokenHash: varchar("token_hash", { length: 64 })
+    .notNull().unique(),
+  rememberDevice: boolean("remember_device")
+    .notNull().default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  usedAt: timestamp("used_at"),
+});
+
+export const loginSessions = mysqlTable("login_sessions", {
+  id: serial("id").primaryKey(),
+  userId: int("user_id").notNull(),
+  tokenHash: varchar("token_hash", { length: 64 })
+    .notNull().unique(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  revokedAt: timestamp("revoked_at"),
+});
