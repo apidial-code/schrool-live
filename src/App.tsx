@@ -7,7 +7,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import ParentDashboard from "./pages/ParentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
-
+import SignIn from "./pages/SignIn.tsx";
 function Notice({ title, children }: {
   title: string;
   children: React.ReactNode;
@@ -78,15 +78,7 @@ function DashboardGate({ role, children }: {
 export default function App() {
   return (
     <Switch>
-      <Route path="/login">
-        <Notice title="Schrool sign in">
-          <p>
-            Secure sign-in is being prepared in this
-            staging environment.
-          </p>
-          <p>Account access is not available yet.</p>
-        </Notice>
-      </Route>
+      <Route path="/login" component={SignIn} />
 
       <Route path="/enroll/elite" component={EliteEnrollment} />
       <Route path="/enrollment/success" component={EnrollmentSuccess} />
