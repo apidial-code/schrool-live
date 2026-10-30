@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from "node:crypto";
 import { publicProcedure, router } from "../_core/trpc.js";
-
+import { revokeLoginSession } from "../db.js";
 export const LOGIN_LINK_LIFETIME_MS = 15 * 60 * 1000;
 
 export function hashAuthToken(token: string): string {
@@ -25,7 +25,11 @@ export const authRouter = router({
     return ctx.user;
   }),
 
-  logout: publicProcedure.mutation(({ ctx }) => {
+    logout: publicProcedure.mutation(async ({ ctx }) => {
+    if (ctx.sessionTokenHash) {
+      await revokeLoginSession(ctx.sessionTokenHash);
+    }
+
     ctx.res.clearCookie("__Host-schrool_session", {
       httpOnly: true,
       secure: true,
@@ -35,4 +39,5 @@ export const authRouter = router({
 
     return { success: true };
   }),
-});
+  });
+  
