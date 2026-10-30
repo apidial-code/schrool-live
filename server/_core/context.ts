@@ -38,7 +38,3 @@ export async function createContext({
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>;
-  return { req, res, user };
-}
-
-export type Context = Awaited<ReturnType<typeof createContext>>;
