@@ -489,3 +489,48 @@ export async function consumeLoginLink(data: {
     };
   });
 }
+export async function getLoginSessionUser(tokenHash: string) {
+  if (!/^[a-f0-9]{64}$/.test(tokenHash)) return undefined;
+
+  const db = await getDb();
+  const sessions = schema.loginSessions;
+
+  const [record] = await db.select({
+    expiresAt: sessions.expiresAt,
+    revokedAt: sessions.revokedAt,
+    user: {
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      role: users.role,
+      accountStatus: users.accountStatus,
+    },
+  })
+    .from(sessions)
+    .innerJoin(users, eq(users.id, sessions.userId))
+    .where(eq(sessions.tokenHash, tokenHash))
+    .limit(1);
+
+  if (
+    !record || record.revokedAt ||
+    record.expiresAt.getTime() <= Date.now() ||
+    record.user.accountStatus !== "active" ||
+    !["student", "parent", "teacher", "consultant", "admin"]
+      .includes(record.user.role)
+  ) {
+    return undefined;
+  }
+
+  return record.user;
+}
+
+export async function revokeLoginSession(tokenHash: string) {
+  if (!/^[a-f0-9]{64}$/.test(tokenHash)) return;
+
+  const db = await getDb();
+  const sessions = schema.loginSessions;
+
+  await db.update(sessions)
+    .set({ revokedAt: new Date() })
+    .where(eq(sessions.tokenHash, tokenHash));
+}
