@@ -423,3 +423,69 @@ export async function saveLoginLink(data: {
     return true;
   });
 }
+export async function consumeLoginLink(data: {
+  linkTokenHash: string;
+  sessionTokenHash: string;
+}) {
+  if (
+    !/^[a-f0-9]{64}$/.test(data.linkTokenHash) ||
+    !/^[a-f0-9]{64}$/.test(data.sessionTokenHash) ||
+    data.linkTokenHash === data.sessionTokenHash
+  ) {
+    throw new Error("Invalid sign-in token data.");
+  }
+
+  const db = await getDb();
+  const links = schema.loginLinks;
+  const sessions = schema.loginSessions;
+
+  return db.transaction(async (tx: any) => {
+    const [link] = await tx.select().from(links)
+      .where(eq(links.tokenHash, data.linkTokenHash))
+      .limit(1).for("update");
+
+    if (!link || link.usedAt) return undefined;
+
+    const [user] = await tx.select().from(users)
+      .where(eq(users.id, link.userId))
+      .limit(1).for("update");
+
+    const now = new Date();
+
+    if (
+      link.expiresAt.getTime() <= now.getTime() ||
+      !user || user.accountStatus !== "active" || !user.email ||
+      !["student", "parent", "teacher", "consultant", "admin"]
+        .includes(user.role)
+    ) {
+      return undefined;
+    }
+
+    const rememberDevice =
+      ["student", "parent"].includes(user.role) &&
+      link.rememberDevice === true;
+
+    const lifetimeMs = rememberDevice
+      ? 30 * 24 * 60 * 60 * 1000
+      : 8 * 60 * 60 * 1000;
+
+    const expiresAt = new Date(now.getTime() + lifetimeMs);
+
+    await tx.update(links)
+      .set({ usedAt: now })
+      .where(eq(links.id, link.id));
+
+    await tx.insert(sessions).values({
+      userId: user.id,
+      tokenHash: data.sessionTokenHash,
+      expiresAt,
+    });
+
+    return {
+      userId: user.id,
+      role: user.role,
+      rememberDevice,
+      expiresAt,
+    };
+  });
+}
