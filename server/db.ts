@@ -1,7 +1,7 @@
 import mysql from "mysql2/promise";
 import { drizzle } from "drizzle-orm/mysql2";
 import * as schema from "../drizzle/schema.js";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, gte } from "drizzle-orm";
 import {
   InsertUser, users, emailCampaigns, emailSequences,
   emailQueue, emailLogs, diagnosticTestResults,
@@ -360,4 +360,66 @@ export async function getCourseById(courseId: number) {
 export async function getLessonsByCourseId(courseId: number) {
   const data = (global as any).mockData?.lessons || [];
   return data.filter((l: any) => l.courseId === courseId);
+}
+export async function saveLoginLink(data: {
+  userId: number;
+  tokenHash: string;
+  rememberDevice: boolean;
+}): Promise<boolean> {
+  if (
+    !Number.isSafeInteger(data.userId) || data.userId <= 0 ||
+    !/^[a-f0-9]{64}$/.test(data.tokenHash) ||
+    typeof data.rememberDevice !== "boolean"
+  ) {
+    throw new Error("Invalid sign-in link data.");
+  }
+
+  const db = await getDb();
+  const links = schema.loginLinks;
+
+  return db.transaction(async (tx: any) => {
+    const [user] = await tx.select().from(users)
+      .where(eq(users.id, data.userId)).limit(1).for("update");
+
+    if (
+      !user || user.accountStatus !== "active" || !user.email ||
+      !["student", "parent", "teacher", "consultant", "admin"]
+        .includes(user.role)
+    ) {
+      return false;
+    }
+
+    const now = new Date();
+    const recentLinks = await tx.select({
+      createdAt: links.createdAt,
+    })
+      .from(links)
+      .where(and(
+        eq(links.userId, user.id),
+        gte(
+          links.createdAt,
+          new Date(now.getTime() - 60 * 60 * 1000)
+        )
+      ))
+      .orderBy(desc(links.createdAt)).limit(5);
+
+    if (
+      recentLinks.length >= 5 ||
+      (recentLinks.length > 0 &&
+        now.getTime() - recentLinks[0].createdAt.getTime() < 60000)
+    ) {
+      return false;
+    }
+
+    await tx.insert(links).values({
+      userId: user.id,
+      tokenHash: data.tokenHash,
+      rememberDevice:
+        ["student", "parent"].includes(user.role) &&
+        data.rememberDevice,
+      expiresAt: new Date(now.getTime() + 15 * 60 * 1000),
+    });
+
+    return true;
+  });
 }
