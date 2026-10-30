@@ -1,8 +1,6 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
-import jwt from "jsonwebtoken";
-import { eq } from "drizzle-orm";
-import { getDb } from "../db.js";
-import { users } from "../../drizzle/schema.js";
+import { createHash } from "node:crypto";
+import { getLoginSessionUser } from "../db.js";
 
 export type SessionUser = {
   id: number;
@@ -17,67 +15,29 @@ export async function createContext({
   res,
 }: CreateExpressContextOptions) {
   let user: SessionUser | null = null;
-  const secret = process.env.JWT_SECRET;
+  let sessionTokenHash: string | null = null;
+  const cookieName = "__Host-schrool_session=";
 
   const matches = (req.headers.cookie || "")
     .split(";")
     .map((cookie) => cookie.trim())
-    .filter((cookie) =>
-      cookie.startsWith("__Host-schrool_session=")
-    );
+    .filter((cookie) => cookie.startsWith(cookieName));
 
-  let userId: number | undefined;
+  if (matches.length === 1) {
+    const token = matches[0].slice(cookieName.length);
 
-  if (secret && secret.length >= 64 && matches.length === 1) {
-    try {
-      const token = decodeURIComponent(
-        matches[0].slice("__Host-schrool_session=".length)
-      );
+    if (/^[a-f0-9]{64}$/.test(token)) {
+      sessionTokenHash = createHash("sha256")
+        .update(token).digest("hex");
 
-      const payload = jwt.verify(token, secret, {
-        algorithms: ["HS256"],
-        issuer: "schrool-platform",
-        audience: "schrool-session",
-      });
-
-      if (
-        typeof payload !== "string" &&
-        payload.purpose === "session" &&
-        typeof payload.exp === "number" &&
-        typeof payload.sub === "string" &&
-        /^[1-9]\d*$/.test(payload.sub)
-      ) {
-        const id = Number(payload.sub);
-        if (Number.isSafeInteger(id)) userId = id;
-      }
-    } catch {
-      // Invalid or expired sessions remain signed out.
+      user = (await getLoginSessionUser(sessionTokenHash)) ?? null;
     }
   }
 
-  if (userId !== undefined) {
-    const db = await getDb();
+  return { req, res, user, sessionTokenHash };
+}
 
-    const [account] = await db.select({
-      id: users.id,
-      name: users.name,
-      email: users.email,
-      role: users.role,
-      accountStatus: users.accountStatus,
-    }).from(users)
-      .where(eq(users.id, userId))
-      .limit(1);
-
-    if (
-      account &&
-      account.accountStatus === "active" &&
-      ["student", "parent", "teacher", "consultant", "admin"]
-        .includes(account.role)
-    ) {
-      user = account;
-    }
-  }
-
+export type Context = Awaited<ReturnType<typeof createContext>>;
   return { req, res, user };
 }
 
