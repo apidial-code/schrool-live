@@ -82,7 +82,7 @@ export default function StudentHome() {
                   </p>
                   <p>Enrolment status: {item.status}</p>
                   <p>Payment status: {item.paymentStatus}</p>
-                  <CourseAccessCheck enrollmentId={item.id} />
+                  <CourseLessons enrollmentId={item.id} />
                 </li>
               ))}
             </ul>
@@ -121,6 +121,51 @@ function CourseAccessCheck({ enrollmentId }: { enrollmentId: number }) {
           <p>
             Access check passed. Lesson opening is not connected yet.
           </p>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
+  const lessons = trpc.lessons.list.useQuery(
+    { enrollmentId },
+    { enabled: false, retry: false, gcTime: 0 },
+  );
+
+  return (
+    <div className="mt-4">
+      <button
+        onClick={() => lessons.refetch()}
+        disabled={lessons.isFetching}
+        className="rounded-lg bg-[#1560B0] px-4 py-2 text-white disabled:opacity-50"
+      >
+        {lessons.isFetching ? "Loading…" : "View lessons"}
+      </button>
+
+      <div role="status" className="mt-3">
+        {!lessons.isFetching && lessons.error ? (
+          <p>
+            {lessons.error.data?.code === "FORBIDDEN"
+              ? "Course access is currently locked."
+              : lessons.error.data?.code === "UNAUTHORIZED"
+                ? "Please sign in again to view lessons."
+                : "Unable to load lessons. Please try again."}
+          </p>
+        ) : !lessons.isFetching && lessons.data ? (
+          lessons.data.length ? (
+            <ul className="space-y-2">
+              {lessons.data.map((lesson, index) => (
+                <li
+                  key={lesson.id}
+                  className="rounded-lg border border-slate-200 p-4"
+                >
+                  {index + 1}. {lesson.title || "Untitled lesson"}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No lessons have been added to this course yet.</p>
+          )
         ) : null}
       </div>
     </div>
