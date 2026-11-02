@@ -82,6 +82,7 @@ export default function StudentHome() {
                   </p>
                   <p>Enrolment status: {item.status}</p>
                   <p>Payment status: {item.paymentStatus}</p>
+                  <CourseAccessCheck enrollmentId={item.id} />
                 </li>
               ))}
             </ul>
@@ -89,5 +90,39 @@ export default function StudentHome() {
         </section>
       </div>
     </main>
+  );
+}
+function CourseAccessCheck({ enrollmentId }: { enrollmentId: number }) {
+  const access = trpc.student.checkCourseAccess.useQuery(
+    { enrollmentId },
+    { enabled: false, retry: false, gcTime: 0 },
+  );
+
+  return (
+    <div className="mt-4">
+      <button
+        onClick={() => access.refetch()}
+        disabled={access.isFetching}
+        className="rounded-lg bg-[#1560B0] px-4 py-2 text-white disabled:opacity-50"
+      >
+        {access.isFetching ? "Checking…" : "Check course access"}
+      </button>
+
+      <div role="status" className="mt-3">
+        {!access.isFetching && access.error ? (
+          <p>
+            {access.error.data?.code === "FORBIDDEN"
+              ? "Course access is currently locked."
+              : access.error.data?.code === "UNAUTHORIZED"
+                ? "Please sign in again to check access."
+                : "Unable to check course access. Please try again."}
+          </p>
+        ) : !access.isFetching && access.data ? (
+          <p>
+            Access check passed. Lesson opening is not connected yet.
+          </p>
+        ) : null}
+      </div>
+    </div>
   );
 }
