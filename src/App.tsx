@@ -8,6 +8,7 @@ import ParentDashboard from "./pages/ParentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import SignIn from "./pages/SignIn.tsx";
+import ProtectedLesson from "./pages/ProtectedLesson.tsx";
 function Notice({ title, children }: {
   title: string;
   children: React.ReactNode;
@@ -82,7 +83,7 @@ export default function App() {
 
       <Route path="/enroll/elite" component={EliteEnrollment} />
       <Route path="/enrollment/success" component={EnrollmentSuccess} />
-
+<Route path="/student/lesson" component={ProtectedLesson} />
       <Route path="/student">
         <DashboardGate role="student">
           <StudentDashboard />
