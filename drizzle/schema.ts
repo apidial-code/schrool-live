@@ -81,6 +81,8 @@ export const lessons = mysqlTable("lessons", {
   courseId: int("course_id"),
   title: varchar("title", { length: 255 }),
   orderIndex: int("order_index"),
+  bunnyLibraryId: int("bunny_library_id"),
+  bunnyVideoId: varchar("bunny_video_id", { length: 36 }),
 });
 export const exercises = mysqlTable("exercises", {
   id: serial("id").primaryKey(),
