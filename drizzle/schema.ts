@@ -130,3 +130,24 @@ export const loginSessions = mysqlTable("login_sessions", {
   expiresAt: timestamp("expires_at").notNull(),
   revokedAt: timestamp("revoked_at"),
 });
+export const lessonQuestions = mysqlTable(
+  "lesson_questions",
+  {
+    id: serial("id").primaryKey(),
+    lessonId: int("lesson_id").notNull(),
+    sourceId: varchar("source_id", { length: 40 }).notNull(),
+    difficulty: varchar("difficulty", { length: 20 }).notNull(),
+    orderIndex: int("order_index").notNull(),
+    questionText: text("question_text").notNull(),
+    diagram: text("diagram"),
+    optionsJson: text("options_json").notNull(),
+    correctAnswer: text("correct_answer").notNull(),
+    solutionVideoId: varchar("solution_video_id", { length: 36 }),
+  },
+  (table) => [
+    uniqueIndex("lesson_question_source")
+      .on(table.lessonId, table.sourceId),
+    uniqueIndex("lesson_question_position")
+      .on(table.lessonId, table.difficulty, table.orderIndex),
+  ],
+);
