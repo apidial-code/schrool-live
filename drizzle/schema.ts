@@ -1,6 +1,6 @@
 import {
   mysqlTable, serial, varchar, timestamp, decimal,
-  int, text, boolean, uniqueIndex
+  int, text, longtext, boolean, uniqueIndex, index
 } from "drizzle-orm/mysql-core";
 // Application roles: student, parent, teacher, consultant, admin.
 export const users = mysqlTable("users", {
@@ -139,7 +139,7 @@ export const lessonQuestions = mysqlTable(
     difficulty: varchar("difficulty", { length: 20 }).notNull(),
     orderIndex: int("order_index").notNull(),
     questionText: text("question_text").notNull(),
-    diagram: text("diagram"),
+    diagram: longtext("diagram"),
     optionsJson: text("options_json").notNull(),
     correctAnswer: text("correct_answer").notNull(),
     solutionVideoId: varchar("solution_video_id", { length: 36 }),
@@ -149,5 +149,37 @@ export const lessonQuestions = mysqlTable(
       .on(table.lessonId, table.sourceId),
     uniqueIndex("lesson_question_position")
       .on(table.lessonId, table.difficulty, table.orderIndex),
+  ],
+);
+export const lessonAttempts = mysqlTable(
+  "lesson_attempts",
+  {
+    id: serial("id").primaryKey(),
+    attemptToken: varchar("attempt_token", { length: 36 })
+      .notNull().unique(),
+    activeKey: varchar("active_key", { length: 100 }).unique(),
+    studentId: int("student_id").notNull(),
+    enrollmentId: int("enrollment_id").notNull(),
+    lessonId: int("lesson_id").notNull(),
+    difficulty: varchar("difficulty", { length: 20 }).notNull(),
+    status: varchar("status", { length: 20 })
+      .notNull().default("in_progress"),
+    questionSnapshot: longtext("question_snapshot").notNull(),
+    answersJson: text("answers_json").notNull(),
+    solutionViewedJson: text("solution_viewed_json").notNull(),
+    rawScore: int("raw_score"),
+    validScore: int("valid_score"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow().onUpdateNow().notNull(),
+    submittedAt: timestamp("submitted_at"),
+  },
+  (table) => [
+    index("lesson_attempt_history").on(
+      table.studentId,
+      table.enrollmentId,
+      table.lessonId,
+      table.difficulty,
+    ),
   ],
 );
