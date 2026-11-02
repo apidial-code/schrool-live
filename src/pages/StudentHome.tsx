@@ -159,7 +159,12 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
                   key={lesson.id}
                   className="rounded-lg border border-slate-200 p-4"
                 >
-                  {index + 1}. {lesson.title || "Untitled lesson"}
+                  <a
+                    href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${lesson.id}`}
+                    className="text-[#1560B0] underline"
+                  >
+                    {index + 1}. {lesson.title || "Untitled lesson"}
+                  </a>
                 </li>
               ))}
             </ul>
