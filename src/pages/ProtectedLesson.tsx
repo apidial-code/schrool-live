@@ -69,9 +69,29 @@ export default function ProtectedLesson() {
               <h1 className="text-2xl font-bold text-[#1560B0]">
                 {lesson.data.title || "Lesson"}
               </h1>
+              {lesson.data.bunnyLibraryId &&
+              lesson.data.bunnyLibraryId > 0 &&
+              lesson.data.bunnyVideoId &&
+              /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
+              lesson.data.bunnyVideoId,
+              ) ? (
+                <div className="relative mt-6 aspect-video overflow-hidden rounded-lg bg-black">
+                  <iframe
+                    src={`https://iframe.mediadelivery.net/embed/${lesson.data.bunnyLibraryId}/${lesson.data.bunnyVideoId}?autoplay=false&loop=false&muted=false&preload=false&responsive=true`}
+                    title={lesson.data.title || "Lesson video"}
+                    className="absolute inset-0 h-full w-full border-0"
+                    loading="lazy"
+                    allow="accelerometer; gyroscope; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <p className="mt-4">Video unavailable for this lesson.</p>
+              )}
+
               <p className="mt-4">
-                Videos and exercises have not been added to this lesson yet.
-              </p>
+                Exercises have not been added to this lesson yet.
+             </p>
             </>
           ) : (
             <p>Lesson unavailable.</p>
