@@ -43,6 +43,8 @@ const lessonProcedure = courseProcedure
         id: lessons.id,
         title: lessons.title,
         orderIndex: lessons.orderIndex,
+        bunnyLibraryId: lessons.bunnyLibraryId,
+        bunnyVideoId: lessons.bunnyVideoId,
       })
       .from(lessons)
       .where(and(
