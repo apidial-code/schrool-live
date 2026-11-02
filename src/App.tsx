@@ -3,7 +3,7 @@ import { Route, Switch } from "wouter";
 import { trpc } from "./lib/trpc";
 import EliteEnrollment from "./pages/EliteEnrollment";
 import EnrollmentSuccess from "./pages/EnrollmentSuccess";
-import StudentDashboard from "./pages/StudentDashboard";
+import StudentDashboard from "./pages/StudentHome.tsx";
 import ParentDashboard from "./pages/ParentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
