@@ -12,6 +12,7 @@ import { getSignInOrigin } from "../_core/signInEmail.js";
 export const enrollmentNewRouter = router({
     saveDraft: consultantProcedure
     .input(z.object({
+      draftRequestId: z.string().uuid(),
       courseKey: z.literal("year5-6"),
       tier: z.enum(["standard", "elite"]),
       paymentOption: z.enum(["full", "deposit50", "deposit25"]),
