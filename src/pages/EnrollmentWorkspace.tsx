@@ -19,6 +19,153 @@ export default function EnrollmentWorkspace() {
   if (session.data.accountStatus !== "active" || !["consultant", "admin"].includes(session.data.role)) return <Notice><h1 className="text-xl font-semibold">Consultant access required</h1><p className="mt-3">This workspace is for authorised consultants and administrators.</p><a href="/" className="mt-4 inline-block underline">Return home</a></Notice>;
   return <>{session.isFetching && <Notice><p role="status">Checking enrolment access…</p></Notice>}<div hidden={session.isFetching}><EnrolmentForm /></div></>;
 }
+function SavedDraftLookup() {
+  const [number, setNumber] = useState("");
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const draft = trpc.enrollmentNew.getDraft.useQuery(
+    { enrollmentId: selectedId ?? 1 },
+    {
+      enabled: selectedId !== null,
+      retry: false,
+      staleTime: 0,
+      gcTime: 0,
+      refetchOnWindowFocus: "always",
+    },
+  );
+  const d = !draft.isFetching && !draft.error
+    ? draft.data : undefined;
+
+  function openDraft(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const id = Number(number);
+    if (!Number.isSafeInteger(id) || id <= 0) return;
+    if (id === selectedId) {
+      void draft.refetch();
+    } else {
+      setSelectedId(id);
+    }
+  }
+
+  return (
+    <section className="my-6 rounded-xl border border-blue-200 bg-white p-6">
+      <h2 className="text-xl font-semibold text-[#1560B0]">
+        Open saved draft
+      </h2>
+      <p className="mt-2 text-sm text-slate-600">
+        View a saved enrolment by its draft number. Opening it
+        does not change its details, payment or access.
+      </p>
+
+      <form onSubmit={openDraft} className="mt-4 flex flex-wrap items-end gap-3">
+        <label className="font-medium">
+          Draft number
+          <input
+            className={field}
+            type="number"
+            min="1"
+            step="1"
+            required
+            value={number}
+            onChange={event => {
+              setNumber(event.target.value);
+              setSelectedId(null);
+            }}
+          />
+        </label>
+        <button
+          className={primary}
+          type="submit"
+          disabled={draft.isFetching}
+        >
+          {draft.isFetching ? "Opening…" : "Open draft"}
+        </button>
+      </form>
+
+      {draft.isFetching && (
+        <p role="status" className="mt-4">Loading saved draft…</p>
+      )}
+      {selectedId !== null && draft.error && (
+        <p role="alert" className="mt-4 text-red-800">
+          {draft.error.message}
+        </p>
+      )}
+
+      {selectedId !== null && d && (
+        <div className="mt-6 space-y-4 border-t pt-5">
+          <h3 className="text-xl font-semibold">
+            Saved draft #{d.enrollmentId}
+          </h3>
+          <p className="rounded-lg bg-amber-50 p-4 text-sm">
+            Status: draft. Payment: unpaid. Course access: locked.
+            This is a read-only view.
+          </p>
+          <dl className="space-y-4">
+            <div>
+              <dt className="font-semibold">Course and package</dt>
+              <dd>
+                {d.quote.courseName} ·
+                {d.quote.tier === "elite" ? " Elite" : " Standard"}
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold">Student</dt>
+              <dd>
+                {d.family.studentName}, age {d.family.studentAge}
+                {" · "}{d.family.studentEmail}
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold">Parent or guardian</dt>
+              <dd>
+                {d.family.parentName} · {d.family.parentEmail}
+                {" · "}{d.family.phone}
+              </dd>
+            </div>
+            {d.zoomPreferences && (
+              <div>
+                <dt className="font-semibold">
+                  Preferred sessions · {d.zoomPreferences.timezone}
+                </dt>
+                <dd>
+                  {d.zoomPreferences.day1} at {d.zoomPreferences.time1};
+                  {" "}{d.zoomPreferences.day2} at {d.zoomPreferences.time2}.
+                  {" "}Subject to confirmation.
+                </dd>
+              </div>
+            )}
+            <div>
+              <dt className="font-semibold">Payment selection</dt>
+              <dd>
+                {d.quote.paymentOption === "full"
+                  ? "Full payment"
+                  : d.quote.paymentOption === "deposit50"
+                    ? "50% deposit"
+                    : "25% deposit"}
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold">Saved total · AUD</dt>
+              <dd>{money(d.quote.totalPayableCents)}</dd>
+            </div>
+          </dl>
+          <h4 className="font-semibold">Saved payment breakdown</h4>
+          <ul className="list-disc space-y-2 pl-5">
+            {d.quote.schedule.map(part => (
+              <li key={part.monthOffset}>
+                {part.monthOffset === 0
+                  ? "At checkout"
+                  : `Month ${part.monthOffset} after deposit`}
+                : {money(part.amountCents)}
+                {part.administrationFeeCents > 0 &&
+                  `, including ${money(part.administrationFeeCents)} administration`}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  );
+}
 function EnrolmentForm() {
   const [tier, setTier] = useState<Tier>(() => window.location.pathname === "/enroll/elite" ? "elite" : "standard");
   const [paymentOption, setPaymentOption] = useState<PaymentOption>("full");
@@ -99,6 +246,7 @@ function EnrolmentForm() {
         <span className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm text-[#1560B0]">Consultant enrolment workspace</span>
       </header>
       <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm">Staging enrolment workspace: review the details, then select Save draft enrolment to store them. Drafts remain unpaid with course access locked. No invitation is sent or payment taken.</div>
+      <SavedDraftLookup />
       <h1 className="text-3xl font-bold">Prepare an enrolment</h1>
       <p className="mt-2 text-slate-600">Select the package, confirm family details and review the payment breakdown.</p>
             <form onSubmit={handleReview} className="mt-7">
