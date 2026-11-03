@@ -211,6 +211,99 @@ export const enrollmentNewRouter = router({
       };
       });
     }),
+    getDraft: consultantProcedure
+    .input(z.object({
+      enrollmentId: z.number().int().positive().safe(),
+    }).strict())
+    .query(async ({ ctx, input }) => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      if (ctx.user.accountStatus !== "active") {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Active consultant access required.",
+        });
+      }
+
+      const db = await getDb();
+      const [row] = await db.select().from(enrollments)
+        .where(eq(enrollments.id, input.enrollmentId))
+        .limit(1);
+
+      if (
+        !row ||
+        (ctx.user.role !== "admin" &&
+          row.consultantId !== ctx.user.id) ||
+        row.status !== "draft" ||
+        row.paymentStatus !== "unpaid" ||
+        row.acceptedAt ||
+        row.activatedAt ||
+        row.accessEndsAt
+      ) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Draft enrolment unavailable.",
+        });
+      }
+
+      const amount = z.number().int().nonnegative();
+      const snapshotSchema = z.object({
+        snapshotVersion: z.literal(1),
+        savedAt: z.string().datetime(),
+        family: z.object({
+          studentName: z.string(),
+          studentEmail: z.string().email(),
+          studentAge: z.string(),
+          parentName: z.string(),
+          parentEmail: z.string().email(),
+          phone: z.string(),
+        }),
+        zoomPreferences: z.object({
+          day1: z.string(),
+          time1: z.string(),
+          day2: z.string(),
+          time2: z.string(),
+          timezone: z.string(),
+        }).nullable(),
+        quote: z.object({
+          courseName: z.string(),
+          tier: z.enum(["standard", "elite"]),
+          paymentOption: z.enum(["full", "deposit50", "deposit25"]),
+          currency: z.literal("AUD"),
+          totalPayableCents: amount,
+          dueNowCents: amount,
+          schedule: z.array(z.object({
+            monthOffset: amount,
+            courseAmountCents: amount,
+            administrationFeeCents: amount,
+            amountCents: amount,
+          })).min(1),
+        }),
+      });
+
+      let snapshot;
+      try {
+        snapshot = snapshotSchema.parse(
+          JSON.parse(row.agreementSnapshot || "null"),
+        );
+      } catch {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This draft needs an administrator review.",
+        });
+      }
+
+      return {
+        enrollmentId: Number(row.id),
+        status: "draft" as const,
+        paymentStatus: "unpaid" as const,
+        accessLocked: true,
+        savedAt: snapshot.savedAt,
+        family: snapshot.family,
+        zoomPreferences: snapshot.zoomPreferences,
+        quote: snapshot.quote,
+      };
+    }),
     getQuote: consultantProcedure
     .input(z.object({
       courseKey: z.literal("year5-6"),
