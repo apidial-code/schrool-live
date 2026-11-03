@@ -78,9 +78,30 @@ export async function sendSignInEmail(email: string, token: string) {
     throw new Error("Sign-in email service is unavailable.");
   }
 
-  await response.body?.cancel();
-
   if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    const parsed = z.object({
+      code: z.enum([
+        "permission_denied",
+        "unauthorized",
+        "invalid_parameter",
+        "missing_parameter",
+        "out_of_range",
+        "not_enough_credits",
+        "account_under_validation",
+        "too_many_requests",
+        "document_not_found",
+        "method_not_allowed",
+      ]),
+    }).safeParse(body);
+
+    console.error("Sign-in email rejected by Brevo", {
+      httpStatus: response.status,
+      code: parsed.success ? parsed.data.code : "unrecognised_error",
+    });
+
     throw new Error(`Sign-in email rejected (HTTP ${response.status}).`);
   }
-}
+
+  await response.body?.cancel();
+
