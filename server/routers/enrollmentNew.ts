@@ -4,7 +4,9 @@ import {
   consultantProcedure, publicProcedure, router
 } from "../_core/trpc.js";
 import { getYear56Quote } from "../enrollmentCatalog.js";
-import { enrollments } from "../../drizzle/schema.js";
+import { enrollments, users } from "../../drizzle/schema.js";
+import { eq } from "drizzle-orm";
+import { createHash } from "node:crypto";
 import { getDb } from "../db.js";
 import { getSignInOrigin } from "../_core/signInEmail.js";
 // Keep the existing form contract while replacing the legacy checkout flow.
@@ -96,7 +98,13 @@ export const enrollmentNewRouter = router({
       const quote = getYear56Quote(input.tier, input.paymentOption);
       const savedAt = new Date();
 
+      const requestFingerprint = createHash("sha256")
+        .update(JSON.stringify(input))
+        .digest("hex");
+
       const snapshot = {
+        draftRequestId: input.draftRequestId,
+        requestFingerprint,
         snapshotVersion: 1,
         stage: "draft",
         savedAt: savedAt.toISOString(),
@@ -108,11 +116,66 @@ export const enrollmentNewRouter = router({
         parentAccepted: false,
       };
 
-      const db = await getDb();
+            const db = await getDb();
 
-      // Insert only: never overwrite accounts, existing enrolments,
-      // family links or learning history.
-      const [result] = await db.insert(enrollments).values({
+      return db.transaction(async (tx: any) => {
+        // Serialise saves by this consultant, including concurrent retries.
+        const [consultant] = await tx.select().from(users)
+          .where(eq(users.id, ctx.user.id))
+          .limit(1).for("update");
+
+        if (
+          !consultant ||
+          consultant.accountStatus !== "active" ||
+          !["consultant", "admin"].includes(consultant.role)
+        ) {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "Active consultant access required.",
+          });
+        }
+
+        const previous = await tx.select().from(enrollments)
+          .where(eq(enrollments.consultantId, ctx.user.id))
+          .for("update");
+
+        for (const row of previous) {
+          let stored;
+          try {
+            stored = JSON.parse(row.agreementSnapshot || "null");
+          } catch {
+            continue;
+          }
+
+          if (stored?.draftRequestId !== input.draftRequestId) {
+            continue;
+          }
+
+          if (
+            stored.requestFingerprint !== requestFingerprint ||
+            row.status !== "draft" ||
+            row.paymentStatus !== "unpaid" ||
+            row.acceptedAt ||
+            row.activatedAt ||
+            row.accessEndsAt
+          ) {
+            throw new TRPCError({
+              code: "CONFLICT",
+              message: "This save reference has already been used. The existing enrolment has not been changed.",
+            });
+          }
+
+          return {
+            enrollmentId: Number(row.id),
+            status: "draft" as const,
+            paymentStatus: "unpaid" as const,
+            accessLocked: true,
+            quote: stored.quote as typeof quote,
+          };
+        }
+
+        // Create a new draft only when this reference has not been saved.
+        const [result] = await tx.insert(enrollments).values({
         consultantId: ctx.user.id,
         yearLevel: input.courseKey,
         studentName: input.family.studentName,
@@ -146,6 +209,7 @@ export const enrollmentNewRouter = router({
         accessLocked: true,
         quote,
       };
+      });
     }),
     getQuote: consultantProcedure
     .input(z.object({
