@@ -29,6 +29,7 @@ function EnrolmentForm() {
     retry: false,
   });
   const savingRef = useRef(false);
+  const [draftRequestId] = useState(() => crypto.randomUUID());
   const [family, setFamily] = useState({ studentName: "", studentEmail: "", studentAge: "", parentName: "", parentEmail: "", phone: "" });
   const [preferences, setPreferences] = useState({ day1: "", time1: "", day2: "", time2: "", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Australia/Sydney" });
   const quote = trpc.enrollmentNew.getQuote.useQuery({ courseKey: "year5-6", tier, paymentOption }, {
@@ -56,6 +57,7 @@ function EnrolmentForm() {
 
     try {
       await saveDraft.mutateAsync({
+        draftRequestId,
         courseKey: "year5-6",
         tier,
         paymentOption,
@@ -96,7 +98,7 @@ function EnrolmentForm() {
         <a href="/" className="text-3xl font-bold text-[#1560B0]" aria-label="Schrool home">Sch<span className="text-[#FF7A00]">r</span>ool</a>
         <span className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm text-[#1560B0]">Consultant enrolment workspace</span>
       </header>
-      <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm">Staging enrolment workspace: review the details, then select Save draft enrolment to store them. Drafts remain unpaid with course access locked. No invitation is sent or payment taken.
+      <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm">Staging enrolment workspace: review the details, then select Save draft enrolment to store them. Drafts remain unpaid with course access locked. No invitation is sent or payment taken.</div>
       <h1 className="text-3xl font-bold">Prepare an enrolment</h1>
       <p className="mt-2 text-slate-600">Select the package, confirm family details and review the payment breakdown.</p>
             <form onSubmit={handleReview} className="mt-7">
