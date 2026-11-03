@@ -25,6 +25,10 @@ function EnrolmentForm() {
   const [review, setReview] = useState(false);
   const [error, setError] = useState("");
   const reviewRef = useRef<HTMLDivElement>(null);
+    const saveDraft = trpc.enrollmentNew.saveDraft.useMutation({
+    retry: false,
+  });
+  const savingRef = useRef(false);
   const [family, setFamily] = useState({ studentName: "", studentEmail: "", studentAge: "", parentName: "", parentEmail: "", phone: "" });
   const [preferences, setPreferences] = useState({ day1: "", time1: "", day2: "", time2: "", timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Australia/Sydney" });
   const quote = trpc.enrollmentNew.getQuote.useQuery({ courseKey: "year5-6", tier, paymentOption }, {
@@ -36,6 +40,39 @@ function EnrolmentForm() {
   const preference = (name: keyof typeof preferences, value: string) => { setPreferences(p => ({ ...p, [name]: value })); setReview(false); setError(""); };
   function selectTier(value: Tier) {
     setTier(value); setPaymentOption("full"); setReview(false); setError("");
+  }
+    async function handleSaveDraft() {
+    if (
+      savingRef.current ||
+      saveDraft.isSuccess ||
+      !review ||
+      !quoteReady
+    ) return;
+
+    type Day = "Monday" | "Tuesday" | "Wednesday" |
+      "Thursday" | "Friday" | "Saturday" | "Sunday";
+
+    savingRef.current = true;
+
+    try {
+      await saveDraft.mutateAsync({
+        courseKey: "year5-6",
+        tier,
+        paymentOption,
+        family,
+        ...(tier === "elite" ? {
+          preferences: {
+            ...preferences,
+            day1: preferences.day1 as Day,
+            day2: preferences.day2 as Day,
+          },
+        } : {}),
+      });
+    } catch {
+      // The mutation error is displayed beside the Save button.
+    } finally {
+      savingRef.current = false;
+    }
   }
   function handleReview(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError("");
@@ -148,8 +185,37 @@ function EnrolmentForm() {
           {tier === "elite" && <div><dt className="font-semibold">Preferred sessions · {preferences.timezone}</dt><dd>{preferences.day1} at {preferences.time1}; {preferences.day2} at {preferences.time2}. Subject to confirmation.</dd></div>}
           <div><dt className="font-semibold">Total payable</dt><dd>{money(q!.totalPayableCents)} AUD; {money(q!.dueNowCents)} at checkout.</dd></div>
         </dl>
-        <p role="status" className="mt-5 rounded-lg bg-amber-50 p-4 text-sm">Review only. This preview has not saved an enrolment, sent an invitation or initiated payment. Parent acceptance and payment will be connected after this form is checked.</p>
-        <button type="button" className={`${secondary} mt-4`} onClick={() => { setReview(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Edit details</button>
+               <p className="mt-5 rounded-lg bg-amber-50 p-4 text-sm">
+          Saving records a draft only. Payment remains unpaid and
+          course access stays locked. No invitation is sent.
+        </p>
+
+        {saveDraft.error && (
+          <p role="alert" className="mt-4 text-red-800">
+            Save could not be confirmed: {saveDraft.error.message}
+          </p>
+        )}
+
+        {saveDraft.data && (
+          <p role="status" className="mt-4 rounded-lg bg-green-50 p-4">
+            Draft #{saveDraft.data.enrollmentId} saved.
+            Status: draft. Payment: unpaid. Course access: locked.
+            Total: {money(saveDraft.data.quote.totalPayableCents)} AUD.
+          </p>
+        )}
+
+        <button
+          type="button"
+          className={`${primary} mt-4 mr-3`}
+          disabled={saveDraft.isPending || saveDraft.isSuccess}
+          onClick={handleSaveDraft}
+        >
+          {saveDraft.isPending
+            ? "Saving draft…"
+            : saveDraft.isSuccess
+              ? "Draft saved"
+              : "Save draft enrolment"}
+        </button> <button type="button" className={`${secondary} mt-4`} onClick={() => { setReview(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Edit details</button>
       </section>}
     </div>
   </main>;
