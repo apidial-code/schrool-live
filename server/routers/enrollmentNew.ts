@@ -1,3 +1,5 @@
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import {
   consultantProcedure, publicProcedure, router
 } from "../_core/trpc.js";
