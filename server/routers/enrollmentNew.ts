@@ -1,10 +1,39 @@
-import { TRPCError } from "@trpc/server";
-import { z } from "zod";
-import { publicProcedure, router } from "../_core/trpc.js";
+import {
+  consultantProcedure, publicProcedure, router
+} from "../_core/trpc.js";
+import { getYear56Quote } from "../enrollmentCatalog.js";
 
 // Keep the existing form contract while replacing the legacy checkout flow.
 // An unavailable payment service must never manufacture a paid enrolment.
 export const enrollmentNewRouter = router({
+    getQuote: consultantProcedure
+    .input(z.object({
+      courseKey: z.literal("year5-6"),
+      tier: z.enum(["standard", "elite"]),
+      paymentOption: z.enum(["full", "deposit50", "deposit25"]),
+    }))
+    .query(({ ctx, input }) => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      if (ctx.user.accountStatus !== "active") {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Active consultant access required.",
+        });
+      }
+
+      if (
+        input.tier === "standard" &&
+        input.paymentOption === "deposit25"
+      ) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "The 25% deposit option is available for Elite only.",
+        });
+      }
+
+      return getYear56Quote(input.tier, input.paymentOption);
+    }),
   createCheckoutSession: publicProcedure
     .input(z.object({
       yearLevel: z.enum(["year5-6", "year7", "year8", "year9"]),
