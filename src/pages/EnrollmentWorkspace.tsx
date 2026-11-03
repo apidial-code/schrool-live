@@ -99,7 +99,11 @@ function EnrolmentForm() {
       <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm">Staging preview: review the form and package figures. Details entered here are not saved; no payment is taken or course access activated.</div>
       <h1 className="text-3xl font-bold">Prepare an enrolment</h1>
       <p className="mt-2 text-slate-600">Select the package, confirm family details and review the payment breakdown.</p>
-      <form onSubmit={handleReview} className="mt-7 space-y-6">
+            <form onSubmit={handleReview} className="mt-7">
+        <fieldset
+          disabled={saveDraft.isPending || saveDraft.isSuccess}
+          className="min-w-0 space-y-6"
+        >
         <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
           <h2 className="text-xl font-semibold">1. Course and package</h2>
           <label className="mt-5 block font-medium" htmlFor="course">Course</label>
@@ -174,7 +178,8 @@ function EnrolmentForm() {
             </div>}
         </section>
         {error && <p role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">{error}</p>}
-        <button className={primary} disabled={!quoteReady} type="submit">Review enrolment</button>
+                <button className={primary} disabled={!quoteReady} type="submit">Review enrolment</button>
+        </fieldset>
       </form>
       {review && quoteReady && <section ref={reviewRef} tabIndex={-1} className="mt-7 scroll-mt-5 rounded-xl border border-blue-200 bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-semibold text-[#1560B0]">Enrolment review</h2>
@@ -215,8 +220,17 @@ function EnrolmentForm() {
             : saveDraft.isSuccess
               ? "Draft saved"
               : "Save draft enrolment"}
-        </button> <button type="button" className={`${secondary} mt-4`} onClick={() => { setReview(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Edit details</button>
-      </section>}
+        </button> <button
+  type="button"
+  className={`${secondary} mt-4`}
+  disabled={saveDraft.isPending || saveDraft.isSuccess}
+  onClick={() => {
+    setReview(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }}
+>
+  Edit details
+</button> </section>}
     </div>
   </main>;
 }
