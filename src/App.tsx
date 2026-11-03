@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "wouter";
 import { trpc } from "./lib/trpc";
-import EliteEnrollment from "./pages/EliteEnrollment";
+import EnrollmentWorkspace from "./pages/EnrollmentWorkspace.tsx";
 import EnrollmentSuccess from "./pages/EnrollmentSuccess";
 import StudentDashboard from "./pages/StudentHome.tsx";
 import ParentDashboard from "./pages/ParentDashboard";
@@ -81,7 +81,8 @@ export default function App() {
     <Switch>
       <Route path="/login" component={SignIn} />
 
-      <Route path="/enroll/elite" component={EliteEnrollment} />
+      <Route path="/enroll" component={EnrollmentWorkspace} />
+      <Route path="/enroll/elite" component={EnrollmentWorkspace} />
       <Route path="/enrollment/success" component={EnrollmentSuccess} />
 <Route path="/student/lesson" component={ProtectedLesson} />
       <Route path="/student">
