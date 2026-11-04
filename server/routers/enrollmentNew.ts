@@ -252,6 +252,13 @@ export const enrollmentNewRouter = router({
       const snapshotSchema = z.object({
         snapshotVersion: z.literal(1),
         savedAt: z.string().datetime(),
+        terms: z.object({
+          version: z.string().min(1),
+          sections: z.array(z.object({
+            title: z.string().min(1),
+            text: z.string().min(1),
+          })).min(1),
+        }).optional(),
         family: z.object({
           studentName: z.string(),
           studentEmail: z.string().email(),
@@ -304,6 +311,7 @@ export const enrollmentNewRouter = router({
         family: snapshot.family,
         zoomPreferences: snapshot.zoomPreferences,
         quote: snapshot.quote,
+        terms: snapshot.terms ?? null,
       };
     }),
     getQuote: consultantProcedure
