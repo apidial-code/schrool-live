@@ -1,5 +1,35 @@
 import { z } from "zod";
+import { fetch, ProxyAgent, type Response } from "undici";
 
+let brevoProxy: ProxyAgent | undefined;
+
+function getBrevoProxy(): ProxyAgent {
+  if (brevoProxy) return brevoProxy;
+
+  const value = process.env.FIXIE_URL?.trim();
+  if (!value) {
+    throw new Error("FIXIE_URL is missing.");
+  }
+
+  const proxy = new URL(value);
+  if (
+    !["http:", "https:"].includes(proxy.protocol) ||
+    !proxy.username || !proxy.password
+  ) {
+    throw new Error("FIXIE_URL is invalid.");
+  }
+
+  const credentials =
+    `${decodeURIComponent(proxy.username)}:` +
+    decodeURIComponent(proxy.password);
+
+  brevoProxy = new ProxyAgent({
+    uri: proxy.origin,
+    token: `Basic ${Buffer.from(credentials).toString("base64")}`,
+  });
+
+  return brevoProxy;
+}
 export function getSignInOrigin(): string {
   const value = process.env.APP_BASE_URL?.trim();
   if (!value || /\s/.test(value)) {
@@ -53,6 +83,7 @@ export async function sendSignInEmail(email: string, token: string) {
 
   try {
     response = await fetch("https://api.brevo.com/v3/smtp/email", {
+      dispatcher: getBrevoProxy(),
       method: "POST",
       redirect: "error",
       signal: AbortSignal.timeout(10000),
@@ -103,7 +134,12 @@ export async function sendSignInEmail(email: string, token: string) {
     throw new Error(`Sign-in email rejected (HTTP ${response.status}).`);
   }
 
-  await response.body?.cancel();
+    await response.body?.cancel();
+
+  console.info("Sign-in email accepted by Brevo", {
+    transport: "fixie",
+    httpStatus: response.status,
+  });
 
   }
   
