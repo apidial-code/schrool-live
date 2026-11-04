@@ -160,7 +160,33 @@ function SavedDraftLookup() {
                   `, including ${money(part.administrationFeeCents)} administration`}
               </li>
             ))}
-          </ul>
+                    </ul>
+
+          {d.terms ? (
+            <section className="rounded-lg border border-slate-200 p-5">
+              <h4 className="text-lg font-semibold">
+                Saved parent enrolment terms
+              </h4>
+              <p className="mt-2 text-sm text-slate-600">
+                Version {d.terms.version}
+              </p>
+              <div className="mt-4 space-y-5">
+                {d.terms.sections.map((section, index) => (
+                  <div key={index}>
+                    <h5 className="font-semibold">{section.title}</h5>
+                    <p className="mt-2 leading-relaxed">
+                      {section.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : (
+            <p className="rounded-lg bg-amber-50 p-4 text-sm">
+              This older draft has no saved enrolment terms.
+              Prepare a new draft for parent acceptance testing.
+            </p>
+          )}
         </div>
       )}
     </section>
