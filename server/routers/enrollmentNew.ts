@@ -3,6 +3,7 @@ import { z } from "zod";
 import {
   consultantProcedure, publicProcedure, router
 } from "../_core/trpc.js";
+import { getEnrollmentTerms } from "../enrollmentTerms.js";
 import { getYear56Quote } from "../enrollmentCatalog.js";
 import { enrollments, users } from "../../drizzle/schema.js";
 import { eq } from "drizzle-orm";
@@ -114,6 +115,7 @@ export const enrollmentNewRouter = router({
           input.tier === "elite" ? input.preferences : null,
         zoomScheduleConfirmed: false,
         parentAccepted: false,
+        terms: getEnrollmentTerms(input.tier),
       };
 
             const db = await getDb();
@@ -191,7 +193,7 @@ export const enrollmentNewRouter = router({
         parentId: null,
         studentId: null,
         courseId: null,
-        termsVersion: null,
+        termsVersion: snapshot.terms.version,
         acceptedAt: null,
         acceptanceLinkExpiresAt: null,
         activatedAt: null,
