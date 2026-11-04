@@ -14,6 +14,83 @@ import { getSignInOrigin } from "../_core/signInEmail.js";
 // Keep the existing form contract while replacing the legacy checkout flow.
 // An unavailable payment service must never manufacture a paid enrolment.
 export const enrollmentNewRouter = router({
+    openParentReview: publicProcedure
+    .input(z.object({
+      enrollmentId: z.number().int().positive().safe(),
+      token: z.string().regex(/^[a-f0-9]{64}$/),
+    }).strict())
+    .mutation(async ({ ctx, input }) => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      if (ctx.req.headers.origin !== getSignInOrigin()) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Invalid request origin.",
+        });
+      }
+
+      const db = await getDb();
+      const [row] = await db.select().from(enrollments)
+        .where(eq(enrollments.id, input.enrollmentId))
+        .limit(1);
+
+      const tokenHash = createHash("sha256")
+        .update(input.token).digest("hex");
+
+      if (
+        !row ||
+        row.verificationToken !== tokenHash ||
+        !row.acceptanceLinkExpiresAt ||
+        row.acceptanceLinkExpiresAt.getTime() <= Date.now() ||
+        row.status !== "draft" ||
+        row.paymentStatus !== "unpaid" ||
+        row.activatedAt ||
+        row.accessEndsAt
+      ) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "This review link is unavailable or has expired. Please contact your consultant.",
+        });
+      }
+
+      let snapshot;
+      try {
+        snapshot = enrollmentSnapshotSchema.parse(
+          JSON.parse(row.agreementSnapshot || "null"),
+        );
+      } catch {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This enrolment needs an administrator review.",
+        });
+      }
+
+      if (
+        !snapshot.terms ||
+        row.termsVersion !== snapshot.terms.version ||
+        row.parentEmail !== snapshot.family.parentEmail ||
+        row.tier !== snapshot.quote.tier ||
+        row.paymentPlan !== snapshot.quote.paymentOption ||
+        row.currency !== snapshot.quote.currency ||
+        row.agreedTotalCents !== snapshot.quote.totalPayableCents
+      ) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This enrolment needs an administrator review.",
+        });
+      }
+
+      return {
+        enrollmentId: Number(row.id),
+        family: snapshot.family,
+        quote: snapshot.quote,
+        zoomPreferences: snapshot.zoomPreferences,
+        terms: snapshot.terms,
+        acceptedAt: row.acceptedAt?.toISOString() ?? null,
+        paymentStatus: "unpaid" as const,
+        accessLocked: true,
+      };
+    }),
     createParentReviewLink: consultantProcedure
     .input(z.object({
       enrollmentId: z.number().int().positive().safe(),
