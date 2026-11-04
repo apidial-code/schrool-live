@@ -116,7 +116,7 @@ export const authRouter = router({
       student: "/student",
       parent: "/parent",
       teacher: "/teacher",
-      consultant: "/",
+      consultant: "/enroll",
       admin: "/admin",
     };
 
