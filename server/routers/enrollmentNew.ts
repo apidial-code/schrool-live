@@ -8,12 +8,117 @@ import { getEnrollmentTerms } from "../enrollmentTerms.js";
 import { getYear56Quote } from "../enrollmentCatalog.js";
 import { enrollments, users } from "../../drizzle/schema.js";
 import { eq } from "drizzle-orm";
-import { createHash } from "node:crypto";
+import { createHash, randomBytes } from "node:crypto";
 import { getDb } from "../db.js";
 import { getSignInOrigin } from "../_core/signInEmail.js";
 // Keep the existing form contract while replacing the legacy checkout flow.
 // An unavailable payment service must never manufacture a paid enrolment.
 export const enrollmentNewRouter = router({
+    createParentReviewLink: consultantProcedure
+    .input(z.object({
+      enrollmentId: z.number().int().positive().safe(),
+    }).strict())
+    .mutation(async ({ ctx, input }) => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      if (
+        ctx.user.accountStatus !== "active" ||
+        ctx.req.headers.origin !== getSignInOrigin()
+      ) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Active consultant access and a valid origin are required.",
+        });
+      }
+
+      const db = await getDb();
+
+      return db.transaction(async (tx: any) => {
+        const [consultant] = await tx.select().from(users)
+          .where(eq(users.id, ctx.user.id))
+          .limit(1).for("update");
+
+        if (
+          !consultant ||
+          consultant.accountStatus !== "active" ||
+          !["consultant", "admin"].includes(consultant.role)
+        ) {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "Active consultant access required.",
+          });
+        }
+
+        const [row] = await tx.select().from(enrollments)
+          .where(eq(enrollments.id, input.enrollmentId))
+          .limit(1).for("update");
+
+        if (
+          !row ||
+          (consultant.role !== "admin" &&
+            row.consultantId !== consultant.id) ||
+          row.status !== "draft" ||
+          row.paymentStatus !== "unpaid" ||
+          row.acceptedAt ||
+          row.activatedAt ||
+          row.accessEndsAt
+        ) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Draft enrolment unavailable.",
+          });
+        }
+
+        let snapshot;
+        try {
+          snapshot = enrollmentSnapshotSchema.parse(
+            JSON.parse(row.agreementSnapshot || "null"),
+          );
+        } catch {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "This draft needs an administrator review.",
+          });
+        }
+
+        if (
+          !snapshot.terms ||
+          row.termsVersion !== snapshot.terms.version ||
+          row.parentEmail !== snapshot.family.parentEmail ||
+          row.tier !== snapshot.quote.tier ||
+          row.paymentPlan !== snapshot.quote.paymentOption ||
+          row.currency !== snapshot.quote.currency ||
+          row.agreedTotalCents !== snapshot.quote.totalPayableCents
+        ) {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "This draft needs complete, matching saved terms and pricing.",
+          });
+        }
+
+        const token = randomBytes(32).toString("hex");
+        const tokenHash = createHash("sha256")
+          .update(token).digest("hex");
+        const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+        await tx.update(enrollments).set({
+          verificationToken: tokenHash,
+          acceptanceLinkExpiresAt: expiresAt,
+        }).where(eq(enrollments.id, row.id));
+
+        const link = new URL("/enrollment/review", getSignInOrigin());
+        link.hash = new URLSearchParams({
+          enrollmentId: String(row.id),
+          token,
+        }).toString();
+
+        return {
+          enrollmentId: Number(row.id),
+          url: link.toString(),
+          expiresAt: expiresAt.toISOString(),
+        };
+      });
+    }),
     saveDraft: consultantProcedure
     .input(z.object({
       draftRequestId: z.string().uuid(),
