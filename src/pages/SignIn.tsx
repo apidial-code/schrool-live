@@ -57,7 +57,9 @@ export default function SignIn() {
 
     try {
       const result = await verify.mutateAsync({ token });
-      const allowed = ["/student", "/parent", "/teacher", "/admin", "/"];
+            const allowed = [
+       "/student", "/parent", "/teacher", "/admin", "/enroll", "/",
+      ];
 
       window.location.replace(
         allowed.includes(result.redirectTo) ? result.redirectTo : "/"
