@@ -4,6 +4,7 @@ import { trpc } from "./lib/trpc";
 import EnrollmentWorkspace from "./pages/EnrollmentWorkspace.tsx";
 import EnrollmentSuccess from "./pages/EnrollmentSuccess";
 import ParentEnrollmentReview from "./pages/ParentEnrollmentReview";
+import EnrollmentPaymentReturn from "./pages/EnrollmentPaymentReturn";
 import StudentDashboard from "./pages/StudentHome.tsx";
 import ParentDashboard from "./pages/ParentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
@@ -89,6 +90,10 @@ export default function App() {
         path="/enrollment/review"
         component={ParentEnrollmentReview}
       />
+      <Route
+  path="/enrollment/payment-return"
+  component={EnrollmentPaymentReturn}
+/>
 <Route path="/student/lesson" component={ProtectedLesson} />
       <Route path="/student">
         <DashboardGate role="student">
