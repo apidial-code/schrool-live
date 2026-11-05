@@ -115,7 +115,9 @@ function SavedDraftLookup() {
           </h3>
           <p className="rounded-lg bg-amber-50 p-4 text-sm">
             Status: draft. Payment: unpaid. Course access: locked.
-            This is a read-only view.
+            {d.acceptedAt
+      ? `Parent acceptance recorded ${new Date(d.acceptedAt).toLocaleString("en-AU")}.`
+      : "Parent acceptance has not been recorded."}
           </p>
           <dl className="space-y-4">
             <div>
@@ -179,7 +181,7 @@ function SavedDraftLookup() {
               </li>
             ))}
                     </ul>
-                    {d.terms && (
+                    {d.terms && !d.acceptedAt && (
             <section className="rounded-lg border border-blue-200 p-5">
               <h4 className="text-lg font-semibold">
                 Parent review link
