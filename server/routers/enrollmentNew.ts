@@ -19,6 +19,44 @@ import { getTestStripe } from "../_core/stripeTest.js";
 // Keep the existing form contract while replacing the legacy checkout flow.
 // An unavailable payment service must never manufacture a paid enrolment.
 export const enrollmentNewRouter = router({
+    getParentCheckoutStatus: publicProcedure
+    .input(z.object({
+      sessionId: z.string().max(255).regex(/^cs_test_[A-Za-z0-9]+$/),
+    }).strict())
+    .mutation(async ({ ctx, input }): Promise<{
+      status: "confirmed" | "pending" | "unavailable";
+    }> => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      const origin = getSignInOrigin();
+
+      if (
+        origin !==
+          "https://schrool-platform-staging-3583c1139100.herokuapp.com" ||
+        ctx.req.headers.origin !== origin
+      ) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Staging payment status requires a valid request origin.",
+        });
+      }
+
+      const db = await getDb();
+      const [payment] = await db.select().from(enrollmentPayments)
+        .where(eq(enrollmentPayments.stripeCheckoutSessionId, input.sessionId))
+        .limit(1);
+
+      if (!payment || payment.livemode !== false) {
+        return { status: "unavailable" };
+      }
+
+      if (payment.status === "paid" && payment.paidAt) {
+        return { status: "confirmed" };
+      }
+
+      return { status: "pending" };
+    }),
+
     createParentCheckout: publicProcedure
     .input(z.object({
       enrollmentId: z.number().int().positive().safe(),
