@@ -183,3 +183,38 @@ export const lessonAttempts = mysqlTable(
     ),
   ],
 );
+export const enrollmentPayments = mysqlTable(
+  "enrollment_payments",
+  {
+    id: serial("id").primaryKey(),
+    enrollmentId: int("enrollment_id").notNull(),
+    attemptKey: varchar("attempt_key", { length: 36 })
+      .notNull().unique(),
+    activeKey: varchar("active_key", { length: 100 })
+      .unique(),
+    stripeCheckoutSessionId: varchar(
+      "stripe_checkout_session_id",
+      { length: 255 },
+    ).unique(),
+    stripePaymentIntentId: varchar(
+      "stripe_payment_intent_id",
+      { length: 255 },
+    ).unique(),
+    reviewDigest: varchar("review_digest", { length: 64 })
+      .notNull(),
+    amountCents: int("amount_cents", { unsigned: true })
+      .notNull(),
+    currency: varchar("currency", { length: 3 })
+      .notNull().default("AUD"),
+    status: varchar("status", { length: 30 })
+      .notNull().default("creating"),
+    livemode: boolean("livemode").notNull().default(false),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow().onUpdateNow().notNull(),
+    paidAt: timestamp("paid_at"),
+  },
+  (table) => [
+    index("enrollment_payment_history").on(table.enrollmentId),
+  ],
+);
