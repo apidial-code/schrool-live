@@ -40,7 +40,23 @@ export default function ParentEnrollmentReview() {
   const [acceptsAgreement, setAcceptsAgreement] = useState(false);
   const [confirmsAuthority, setConfirmsAuthority] = useState(false);
   const submitting = useRef(false);
+  const openingCheckout = useRef(false);
+  const checkout = trpc.enrollmentNew.createParentCheckout.useMutation({
+    retry: false,
+  });
 
+  async function openCheckout() {
+    if (!link || openingCheckout.current) return;
+
+    openingCheckout.current = true;
+
+    try {
+      const { url } = await checkout.mutateAsync(link);
+      window.location.assign(url);
+    } catch {
+      openingCheckout.current = false;
+    }
+  }
   useEffect(() => {
     if (!link || started.current) return;
     started.current = true;
@@ -218,6 +234,26 @@ export default function ParentEnrollmentReview() {
                   <p className="mt-2">
                     Payment remains unpaid. Course access is locked.
                   </p>
+                                    {window.location.origin ===
+                    "https://schrool-platform-staging-3583c1139100.herokuapp.com" && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={openCheckout}
+                        disabled={checkout.isPending}
+                        className="mt-4 rounded-lg bg-[#1560B0] px-6 py-3 font-semibold text-white disabled:opacity-50"
+                      >
+                        {checkout.isPending
+                          ? "Opening Stripe…"
+                          : `Pay ${money(d.quote.dueNowCents)} in Stripe test mode`}
+                      </button>
+                      {checkout.error && (
+                        <p role="alert" className="mt-3 text-red-800">
+                          {checkout.error.message}
+                        </p>
+                      )}
+                    </>
+                  )}
                 </div>
               ) : (
                 <form onSubmit={submit} className="mt-6 border-t pt-5">
