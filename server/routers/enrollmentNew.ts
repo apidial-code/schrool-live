@@ -539,7 +539,6 @@ export const enrollmentNewRouter = router({
           row.consultantId !== ctx.user.id) ||
         row.status !== "draft" ||
         row.paymentStatus !== "unpaid" ||
-        row.acceptedAt ||
         row.activatedAt ||
         row.accessEndsAt
       ) {
@@ -573,6 +572,7 @@ export const enrollmentNewRouter = router({
         zoomPreferences: snapshot.zoomPreferences,
         quote: snapshot.quote,
         terms: snapshot.terms ?? null,
+        acceptedAt: row.acceptedAt?.toISOString() ?? null,
       };
     }),
     getQuote: consultantProcedure
