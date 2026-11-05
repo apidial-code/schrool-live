@@ -20,6 +20,10 @@ export default function EnrollmentWorkspace() {
   return <>{session.isFetching && <Notice><p role="status">Checking enrolment access…</p></Notice>}<div hidden={session.isFetching}><EnrolmentForm /></div></>;
 }
 function SavedDraftLookup() {
+  const reviewLink = trpc.enrollmentNew.createParentReviewLink.useMutation({
+    retry: false,
+  });
+  const generatingLink = useRef(false);
   const [number, setNumber] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const draft = trpc.enrollmentNew.getDraft.useQuery(
@@ -34,6 +38,20 @@ function SavedDraftLookup() {
   );
   const d = !draft.isFetching && !draft.error
     ? draft.data : undefined;
+  async function generateReviewLink() {
+    if (!d || generatingLink.current) return;
+
+    generatingLink.current = true;
+    try {
+      await reviewLink.mutateAsync({
+        enrollmentId: d.enrollmentId,
+      });
+    } catch {
+      // The error is displayed beside the link button.
+    } finally {
+      generatingLink.current = false;
+    }
+  }
 
   function openDraft(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -161,6 +179,67 @@ function SavedDraftLookup() {
               </li>
             ))}
                     </ul>
+                    {d.terms && (
+            <section className="rounded-lg border border-blue-200 p-5">
+              <h4 className="text-lg font-semibold">
+                Parent review link
+              </h4>
+              <p className="mt-2 text-sm text-slate-600">
+                Generate a private link for the named parent to review
+                and accept this saved agreement. Keep the link private.
+              </p>
+
+              <button
+                type="button"
+                className={`${primary} mt-4`}
+                disabled={
+                  reviewLink.isPending ||
+                  reviewLink.data?.enrollmentId === d.enrollmentId
+                }
+                onClick={generateReviewLink}
+              >
+                {reviewLink.isPending
+                  ? "Generating link…"
+                  : reviewLink.data?.enrollmentId === d.enrollmentId
+                    ? "Review link generated"
+                    : "Generate parent review link"}
+              </button>
+
+              {reviewLink.variables?.enrollmentId === d.enrollmentId &&
+                reviewLink.error && (
+                  <p role="alert" className="mt-4 text-red-800">
+                    {reviewLink.error.message}
+                  </p>
+                )}
+
+              {reviewLink.data?.enrollmentId === d.enrollmentId && (
+                <div className="mt-4 space-y-3">
+                  <label className="block font-medium">
+                    Private review link
+                    <input
+                      className={field}
+                      readOnly
+                      value={reviewLink.data.url}
+                      onFocus={event => event.target.select()}
+                    />
+                  </label>
+                  <p className="text-sm">
+                    Expires{" "}
+                    {new Date(reviewLink.data.expiresAt)
+                      .toLocaleString("en-AU")}
+                  </p>
+                  <a
+                    className="inline-block text-[#1560B0] underline"
+                    href={reviewLink.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open parent review
+                  </a>
+                </div>
+              )}
+            </section>
+          )}
 
           {d.terms ? (
             <section className="rounded-lg border border-slate-200 p-5">
