@@ -6,14 +6,290 @@ import {
 import { enrollmentSnapshotSchema } from "../enrollmentAgreement.js";
 import { getEnrollmentTerms } from "../enrollmentTerms.js";
 import { getYear56Quote } from "../enrollmentCatalog.js";
-import { enrollments, users } from "../../drizzle/schema.js";
+import {
+  enrollments, enrollmentPayments, users,
+} from "../../drizzle/schema.js";
 import { eq } from "drizzle-orm";
-import { createHash, randomBytes } from "node:crypto";
+import {
+  createHash, randomBytes, randomUUID,
+} from "node:crypto";
 import { getDb } from "../db.js";
 import { getSignInOrigin } from "../_core/signInEmail.js";
+import { getTestStripe } from "../_core/stripeTest.js";
 // Keep the existing form contract while replacing the legacy checkout flow.
 // An unavailable payment service must never manufacture a paid enrolment.
 export const enrollmentNewRouter = router({
+    createParentCheckout: publicProcedure
+    .input(z.object({
+      enrollmentId: z.number().int().positive().safe(),
+      token: z.string().regex(/^[a-f0-9]{64}$/),
+    }).strict())
+    .mutation(async ({ ctx, input }): Promise<{ url: string }> => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      const origin = getSignInOrigin();
+
+      if (
+        origin !==
+          "https://schrool-platform-staging-3583c1139100.herokuapp.com" ||
+        ctx.req.headers.origin !== origin
+      ) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Staging checkout requires a valid request origin.",
+        });
+      }
+
+      const stripe = getTestStripe();
+      const db = await getDb();
+
+      // Save the attempt before contacting Stripe.
+      const reserved = await db.transaction(async (tx: any) => {
+        const [row] = await tx.select().from(enrollments)
+          .where(eq(enrollments.id, input.enrollmentId))
+          .limit(1).for("update");
+
+        const tokenHash = createHash("sha256")
+          .update(input.token).digest("hex");
+
+        if (
+          !row ||
+          row.verificationToken !== tokenHash ||
+          !row.acceptanceLinkExpiresAt ||
+          row.acceptanceLinkExpiresAt.getTime() <= Date.now() ||
+          !row.acceptedAt ||
+          row.status !== "draft" ||
+          row.paymentStatus !== "unpaid" ||
+          row.activatedAt ||
+          row.accessEndsAt
+        ) {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "An accepted, unpaid agreement and valid review link are required.",
+          });
+        }
+
+        let stored;
+        let snapshot;
+
+        try {
+          stored = JSON.parse(row.agreementSnapshot || "null");
+          snapshot = enrollmentSnapshotSchema.parse(stored);
+        } catch {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "This enrolment needs an administrator review.",
+          });
+        }
+
+        const reviewDigest = createHash("sha256")
+          .update(JSON.stringify(snapshot)).digest("hex");
+
+        if (
+          !snapshot.terms ||
+          stored.parentAccepted !== true ||
+          stored.acceptance?.acceptsAgreement !== true ||
+          stored.acceptance?.confirmsAuthority !== true ||
+          stored.acceptance?.reviewDigest !== reviewDigest ||
+          stored.acceptance?.termsVersion !== snapshot.terms.version ||
+          row.termsVersion !== snapshot.terms.version ||
+          row.parentEmail !== snapshot.family.parentEmail ||
+          row.tier !== snapshot.quote.tier ||
+          row.paymentPlan !== snapshot.quote.paymentOption ||
+          row.currency !== "AUD" ||
+          snapshot.quote.currency !== "AUD" ||
+          row.agreedTotalCents !== snapshot.quote.totalPayableCents ||
+          snapshot.quote.dueNowCents <= 0 ||
+          snapshot.quote.dueNowCents !==
+            snapshot.quote.schedule[0].amountCents ||
+          snapshot.quote.schedule[0].monthOffset !== 0
+        ) {
+          throw new TRPCError({
+            code: "CONFLICT",
+            message: "The accepted agreement and payment details do not match.",
+          });
+        }
+
+        const activeKey = `initial:${row.id}`;
+
+        const [existing] = await tx.select().from(enrollmentPayments)
+          .where(eq(enrollmentPayments.activeKey, activeKey))
+          .limit(1).for("update");
+
+        if (existing) {
+          if (
+            existing.reviewDigest !== reviewDigest ||
+            existing.amountCents !== snapshot.quote.dueNowCents ||
+            existing.currency !== "AUD" ||
+            existing.livemode !== false ||
+            !["creating", "open"].includes(existing.status)
+          ) {
+            throw new TRPCError({
+              code: "CONFLICT",
+              message: "This payment attempt needs an administrator review.",
+            });
+          }
+
+          return { payment: existing, snapshot };
+        }
+
+        const attemptKey = randomUUID();
+
+        const [result] = await tx.insert(enrollmentPayments).values({
+          enrollmentId: Number(row.id),
+          attemptKey,
+          activeKey,
+          reviewDigest,
+          amountCents: snapshot.quote.dueNowCents,
+          currency: "AUD",
+          status: "creating",
+          livemode: false,
+        });
+
+        const [payment] = await tx.select().from(enrollmentPayments)
+          .where(eq(enrollmentPayments.id, result.insertId))
+          .limit(1);
+
+        if (!payment) {
+          throw new Error("Payment attempt could not be retrieved.");
+        }
+
+        return { payment, snapshot };
+      });
+
+      const { payment, snapshot } = reserved;
+
+      // Stop uncertain old attempts before Stripe can discard their retry key.
+      if (
+        !payment.stripeCheckoutSessionId &&
+        Date.now() - payment.createdAt.getTime() >
+          20 * 60 * 60 * 1000
+      ) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This checkout attempt needs an administrator review.",
+        });
+      }
+
+      let session;
+
+      try {
+        session = payment.stripeCheckoutSessionId
+          ? await stripe.checkout.sessions.retrieve(
+              payment.stripeCheckoutSessionId,
+            )
+          : await stripe.checkout.sessions.create({
+              mode: "payment",
+              payment_method_types: ["card"],
+              customer_creation: "always",
+              customer_email: snapshot.family.parentEmail,
+              client_reference_id: String(payment.enrollmentId),
+              line_items: [{
+                quantity: 1,
+                price_data: {
+                  currency: "aud",
+                  unit_amount: payment.amountCents,
+                  product_data: {
+                    name: `${snapshot.quote.courseName} - ${
+                      snapshot.quote.tier
+                    } - ${
+                      snapshot.quote.paymentOption === "full"
+                        ? "full payment"
+                        : "initial deposit"
+                    }`,
+                  },
+                },
+              }],
+              metadata: {
+                enrollmentId: String(payment.enrollmentId),
+                attemptKey: payment.attemptKey,
+                reviewDigest: payment.reviewDigest,
+                purpose: "initial_enrollment",
+              },
+              payment_intent_data: {
+                setup_future_usage:
+                  snapshot.quote.paymentOption === "full"
+                    ? undefined
+                    : "off_session",
+                metadata: {
+                  enrollmentId: String(payment.enrollmentId),
+                  attemptKey: payment.attemptKey,
+                },
+              },
+              success_url:
+                `${origin}/enrollment/payment-return` +
+                "?session_id={CHECKOUT_SESSION_ID}",
+              cancel_url:
+                `${origin}/enrollment/payment-return?cancelled=1`,
+            }, {
+              idempotencyKey: payment.attemptKey,
+            });
+      } catch {
+        throw new TRPCError({
+          code: "SERVICE_UNAVAILABLE",
+          message: "Checkout could not be opened. Please try again or contact your consultant.",
+        });
+      }
+
+      if (
+        session.livemode ||
+        session.mode !== "payment" ||
+        session.client_reference_id !== String(payment.enrollmentId) ||
+        session.metadata?.attemptKey !== payment.attemptKey ||
+        session.metadata?.reviewDigest !== payment.reviewDigest ||
+        session.amount_total !== payment.amountCents ||
+        session.currency !== "aud"
+      ) {
+        throw new TRPCError({
+          code: "CONFLICT",
+          message: "Checkout details could not be verified.",
+        });
+      }
+
+      // Persist the Stripe reference without overwriting a paid status.
+      await db.transaction(async (tx: any) => {
+        const [current] = await tx.select().from(enrollmentPayments)
+          .where(eq(enrollmentPayments.id, payment.id))
+          .limit(1).for("update");
+
+        if (
+          !current ||
+          (current.stripeCheckoutSessionId &&
+            current.stripeCheckoutSessionId !== session.id)
+        ) {
+          throw new Error("Checkout reference does not match.");
+        }
+
+        await tx.update(enrollmentPayments).set({
+          stripeCheckoutSessionId: session.id,
+          ...(current.status === "creating"
+            ? { status: "open" }
+            : {}),
+        }).where(eq(enrollmentPayments.id, payment.id));
+      });
+
+      if (
+        session.status !== "open" ||
+        session.payment_status !== "unpaid" ||
+        !session.url
+      ) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This checkout is completed or expired. Please contact your consultant.",
+        });
+      }
+
+      const checkoutUrl = new URL(session.url);
+
+      if (
+        checkoutUrl.protocol !== "https:" ||
+        checkoutUrl.hostname !== "checkout.stripe.com"
+      ) {
+        throw new Error("Unexpected checkout address.");
+      }
+
+      return { url: checkoutUrl.toString() };
+    }),
     acceptParentReview: publicProcedure
     .input(z.object({
       enrollmentId: z.number().int().positive().safe(),
