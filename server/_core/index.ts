@@ -8,7 +8,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import lessonsApiRouter from "../routes/lessonsApi.js";
-
+import stripeWebhookRouter from "../routes/stripeWebhook.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -16,7 +16,7 @@ async function startServer() {
   console.log("Starting server...");
   const app = express();
   const server = createServer(app);
-
+  app.use("/api/stripe/webhook", stripeWebhookRouter);
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
