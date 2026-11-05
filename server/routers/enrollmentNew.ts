@@ -14,6 +14,122 @@ import { getSignInOrigin } from "../_core/signInEmail.js";
 // Keep the existing form contract while replacing the legacy checkout flow.
 // An unavailable payment service must never manufacture a paid enrolment.
 export const enrollmentNewRouter = router({
+    acceptParentReview: publicProcedure
+    .input(z.object({
+      enrollmentId: z.number().int().positive().safe(),
+      token: z.string().regex(/^[a-f0-9]{64}$/),
+      termsVersion: z.string().min(1).max(100),
+      reviewDigest: z.string().regex(/^[a-f0-9]{64}$/),
+      acceptedName: z.string().trim().min(2).max(255),
+      acceptsAgreement: z.literal(true),
+      confirmsAuthority: z.literal(true),
+    }).strict())
+    .mutation(async ({ ctx, input }) => {
+      ctx.res.setHeader("Cache-Control", "no-store");
+
+      if (ctx.req.headers.origin !== getSignInOrigin()) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Invalid request origin.",
+        });
+      }
+
+      const db = await getDb();
+
+      return db.transaction(async (tx: any) => {
+        const [row] = await tx.select().from(enrollments)
+          .where(eq(enrollments.id, input.enrollmentId))
+          .limit(1).for("update");
+
+        const tokenHash = createHash("sha256")
+          .update(input.token).digest("hex");
+
+        if (
+          !row ||
+          row.verificationToken !== tokenHash ||
+          !row.acceptanceLinkExpiresAt ||
+          row.acceptanceLinkExpiresAt.getTime() <= Date.now() ||
+          row.status !== "draft" ||
+          row.paymentStatus !== "unpaid" ||
+          row.activatedAt ||
+          row.accessEndsAt
+        ) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "This review link is unavailable or has expired. Please contact your consultant.",
+          });
+        }
+
+        let stored;
+        let snapshot;
+
+        try {
+          stored = JSON.parse(row.agreementSnapshot || "null");
+          snapshot = enrollmentSnapshotSchema.parse(stored);
+        } catch {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "This enrolment needs an administrator review.",
+          });
+        }
+
+        const reviewDigest = createHash("sha256")
+          .update(JSON.stringify(snapshot)).digest("hex");
+
+        if (
+          !snapshot.terms ||
+          snapshot.terms.version !== input.termsVersion ||
+          row.termsVersion !== snapshot.terms.version ||
+          reviewDigest !== input.reviewDigest ||
+          row.parentEmail !== snapshot.family.parentEmail ||
+          row.tier !== snapshot.quote.tier ||
+          row.paymentPlan !== snapshot.quote.paymentOption ||
+          row.currency !== snapshot.quote.currency ||
+          row.agreedTotalCents !== snapshot.quote.totalPayableCents
+        ) {
+          throw new TRPCError({
+            code: "CONFLICT",
+            message: "The agreement could not be confirmed. Please reopen your review link.",
+          });
+        }
+
+        // A retry returns the original acceptance.
+        if (row.acceptedAt) {
+          return {
+            enrollmentId: Number(row.id),
+            acceptedAt: row.acceptedAt.toISOString(),
+            paymentStatus: "unpaid" as const,
+            accessLocked: true,
+          };
+        }
+
+        const acceptedAt = new Date();
+
+        await tx.update(enrollments).set({
+          acceptedAt,
+          agreementSnapshot: JSON.stringify({
+            ...stored,
+            parentAccepted: true,
+            acceptance: {
+              acceptedAt: acceptedAt.toISOString(),
+              acceptedName: input.acceptedName,
+              parentEmail: snapshot.family.parentEmail,
+              termsVersion: snapshot.terms.version,
+              reviewDigest,
+              acceptsAgreement: true,
+              confirmsAuthority: true,
+            },
+          }),
+        }).where(eq(enrollments.id, row.id));
+
+        return {
+          enrollmentId: Number(row.id),
+          acceptedAt: acceptedAt.toISOString(),
+          paymentStatus: "unpaid" as const,
+          accessLocked: true,
+        };
+      });
+    }),
     openParentReview: publicProcedure
     .input(z.object({
       enrollmentId: z.number().int().positive().safe(),
@@ -86,6 +202,8 @@ export const enrollmentNewRouter = router({
         quote: snapshot.quote,
         zoomPreferences: snapshot.zoomPreferences,
         terms: snapshot.terms,
+        reviewDigest: createHash("sha256")
+          .update(JSON.stringify(snapshot)).digest("hex"),
         acceptedAt: row.acceptedAt?.toISOString() ?? null,
         paymentStatus: "unpaid" as const,
         accessLocked: true,
