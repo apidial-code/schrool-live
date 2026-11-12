@@ -1,7 +1,8 @@
 import { createHash } from "node:crypto";
 import { eq } from "drizzle-orm";
+import { addYears } from "date-fns";
 import {
-  enrollments, enrollmentPayments,
+  courses, enrollments, enrollmentPayments, users,
 } from "../drizzle/schema.js";
 import { getDb } from "./db.js";
 import { getTestStripe } from "./_core/stripeTest.js";
@@ -103,7 +104,59 @@ export async function recordInitialTestPayment(sessionId: string) {
     }
 
     const paidAt = payment.paidAt ?? new Date();
+          if (
+      row.yearLevel === "year5-6" &&
+      row.tier === "elite" &&
+      row.status === "draft" &&
+      row.paymentStatus === "unpaid" &&
+      row.studentId == null &&
+      row.activatedAt == null
+    ) {
+      const [course] = await tx.select({
+        id: courses.id,
+        title: courses.title,
+      }).from(courses)
+        .where(eq(courses.id, 1))
+        .limit(1);
 
+      if (course?.title !== "STAGING ONLY - Course access test") {
+        throw new Error("The staging course access test record is unavailable.");
+      }
+
+      const studentEmail = snapshot.family.studentEmail.trim().toLowerCase();
+
+      await tx.insert(users).values({
+        name: snapshot.family.studentName,
+        email: studentEmail,
+        role: "student",
+        accountStatus: "active",
+      }).onDuplicateKeyUpdate({
+        set: { email: studentEmail },
+      });
+
+      const [student] = await tx.select({
+        id: users.id,
+        role: users.role,
+        accountStatus: users.accountStatus,
+      }).from(users)
+        .where(eq(users.email, studentEmail))
+        .limit(1).for("update");
+
+      if (student?.role !== "student" || student.accountStatus !== "active") {
+        throw new Error("The enrolment email must belong to an active student account.");
+      }
+
+      const activatedAt = new Date();
+
+      await tx.update(enrollments).set({
+        studentId: student.id,
+        courseId: course.id,
+        status: "active",
+        paymentStatus: "paid",
+        activatedAt,
+        accessEndsAt: addYears(activatedAt, 1),
+      }).where(eq(enrollments.id, enrollmentId));
+    }
     await tx.update(enrollmentPayments).set({
       stripeCheckoutSessionId: session.id,
       stripePaymentIntentId: intent.id,
