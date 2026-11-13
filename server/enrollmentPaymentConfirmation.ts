@@ -116,10 +116,10 @@ export async function recordInitialTestPayment(sessionId: string) {
         id: courses.id,
         title: courses.title,
       }).from(courses)
-        .where(eq(courses.id, 1))
+        .where(eq(courses.id, 2))
         .limit(1);
 
-      if (course?.title !== "STAGING ONLY - Course access test") {
+      if (course?.title !== "Math I Year 5/6") {
         throw new Error("The staging course access test record is unavailable.");
       }
 
