@@ -106,7 +106,7 @@ export async function recordInitialTestPayment(sessionId: string) {
     const paidAt = payment.paidAt ?? new Date();
           if (
       row.yearLevel === "year5-6" &&
-      row.tier === "elite" &&
+      (row.tier === "standard" || row.tier === "elite") &&
       row.status === "draft" &&
       row.paymentStatus === "unpaid" &&
       row.studentId == null &&
