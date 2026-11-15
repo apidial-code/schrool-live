@@ -1,0 +1,491 @@
+{
+  "formatVersion": 1,
+  "sourceFile": "SCHROOL-Y56-2of23-GOLD(1).html",
+  "sourceSha256": "947c7bb3fc1dc88d491ccd9bd6ace8561050adaebc1611b54849099d66e1001b",
+  "sourceLessonNumber": 2,
+  "title": "Equivalent Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "bd91b73a-b05b-4756-b8c8-c9aab7fd195c",
+  "questions": [
+    {
+      "sourceId": "L2-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Fill in the blank: \\\\frac{4}{5} = \\\\frac{□}{15}",
+      "diagram": null,
+      "options": [
+        "10",
+        "15",
+        "20",
+        "16",
+        "12"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "105fcb67-5fb0-4524-b8e0-de24fc28de14"
+    },
+    {
+      "sourceId": "L2-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Fill in the blank: \\\\frac{3}{4} = \\\\frac{18}{□}",
+      "diagram": null,
+      "options": [
+        "15",
+        "24",
+        "22",
+        "20",
+        "28"
+      ],
+      "correctAnswer": "24",
+      "solutionVideoId": "45f4a4c9-4dcf-4818-89f9-2a58b2304e3e"
+    },
+    {
+      "sourceId": "L2-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Fill in the blank: \\\\frac{11}{3} = \\\\frac{44}{□}",
+      "diagram": null,
+      "options": [
+        "20",
+        "15",
+        "10",
+        "12",
+        "6"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "787777b7-6d9a-4211-89d5-4b5fdcc5b99d"
+    },
+    {
+      "sourceId": "L2-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Fill in the blank: \\\\frac{15}{16} = \\\\frac{□}{48}",
+      "diagram": null,
+      "options": [
+        "35",
+        "48",
+        "30",
+        "45",
+        "40"
+      ],
+      "correctAnswer": "45",
+      "solutionVideoId": "e7779ff4-8280-4e0b-a04c-3f271122cab9"
+    },
+    {
+      "sourceId": "L2-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Fill in the blanks: \\\\frac{5}{8} = \\\\frac{□}{40} = \\\\frac{30}{□}",
+      "diagram": null,
+      "options": [
+        "45,33",
+        "10,48",
+        "25,30",
+        "25,48",
+        "20,30"
+      ],
+      "correctAnswer": "25,48",
+      "solutionVideoId": "252db41b-1922-44a9-80ec-59c56fbd8427"
+    },
+    {
+      "sourceId": "L2-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Fill in the blanks: \\\\frac{7}{10} = \\\\frac{21}{□} = \\\\frac{□}{40}",
+      "diagram": null,
+      "options": [
+        "25,30",
+        "20,32",
+        "22,30",
+        "30,20",
+        "30,28"
+      ],
+      "correctAnswer": "30,28",
+      "solutionVideoId": "f39c49b6-7c43-4432-8832-85aef875a4b6"
+    },
+    {
+      "sourceId": "L2-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Fill in the blanks: \\\\frac{11}{12} = \\\\frac{33}{□} = \\\\frac{55}{□}",
+      "diagram": null,
+      "options": [
+        "20,35",
+        "30,60",
+        "20,36",
+        "36,60",
+        "25,30"
+      ],
+      "correctAnswer": "36,60",
+      "solutionVideoId": "c3a36719-7e94-4770-8f5e-9e650893adbd"
+    },
+    {
+      "sourceId": "L2-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Fill in the blanks: \\\\frac{3}{5} = \\\\frac{6}{□} = \\\\frac{9}{□} = \\\\frac{27}{45}",
+      "diagram": null,
+      "options": [
+        "10,15",
+        "20,15",
+        "25,30",
+        "15,20",
+        "20,10"
+      ],
+      "correctAnswer": "10,15",
+      "solutionVideoId": "73601c6a-4c03-4560-a074-1d3a65fa7ba6"
+    },
+    {
+      "sourceId": "L2-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Fill in the blanks: \\\\frac{4}{7} = \\\\frac{□}{21} = \\\\frac{16}{□} = \\\\frac{20}{35}",
+      "diagram": null,
+      "options": [
+        "26,15",
+        "25,30",
+        "12,28",
+        "28,15",
+        "28,32"
+      ],
+      "correctAnswer": "12,28",
+      "solutionVideoId": "4e5fe8fc-7a9f-42a1-a531-66b5fc637a88"
+    },
+    {
+      "sourceId": "L2-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Fill in the blanks: \\\\frac{9}{15} = \\\\frac{18}{□} = \\\\frac{□}{45} = \\\\frac{36}{60}",
+      "diagram": null,
+      "options": [
+        "27,35",
+        "32,27",
+        "30,25",
+        "20,30",
+        "30,27"
+      ],
+      "correctAnswer": "30,27",
+      "solutionVideoId": "8a09fdf7-9a8c-4370-8b51-43752479f475"
+    },
+    {
+      "sourceId": "L2-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Simplify: \\\\frac{6}{15}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{1}{7}",
+        "\\\\frac{5}{7}",
+        "\\\\frac{2}{7}",
+        "\\\\frac{2}{5}",
+        "\\\\frac{1}{5}"
+      ],
+      "correctAnswer": "\\\\frac{2}{5}",
+      "solutionVideoId": "c1b99291-b471-4645-9f77-2fc28f661343"
+    },
+    {
+      "sourceId": "L2-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Simplify: \\\\frac{25}{45}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{6}{9}",
+        "\\\\frac{2}{9}",
+        "\\\\frac{4}{9}",
+        "\\\\frac{3}{5}",
+        "\\\\frac{5}{9}"
+      ],
+      "correctAnswer": "\\\\frac{5}{9}",
+      "solutionVideoId": "f6e5f5cc-a8ed-4529-965f-2805dd55dbb3"
+    },
+    {
+      "sourceId": "L2-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Simplify: \\\\frac{27}{33}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{5}{11}",
+        "\\\\frac{9}{11}",
+        "\\\\frac{2}{11}",
+        "\\\\frac{3}{11}",
+        "\\\\frac{7}{11}"
+      ],
+      "correctAnswer": "\\\\frac{9}{11}",
+      "solutionVideoId": "96ef7b08-0f2f-4b5f-91de-4a88335b4b91"
+    },
+    {
+      "sourceId": "L2-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Simplify: \\\\frac{30}{50}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{2}{5}",
+        "\\\\frac{3}{5}",
+        "\\\\frac{5}{6}",
+        "\\\\frac{6}{5}",
+        "\\\\frac{5}{3}"
+      ],
+      "correctAnswer": "\\\\frac{3}{5}",
+      "solutionVideoId": "956bddbe-54d6-4994-b472-82fb92549bed"
+    },
+    {
+      "sourceId": "L2-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Simplify: \\\\frac{100}{1000}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{3}{10}",
+        "\\\\frac{1}{10}",
+        "\\\\frac{7}{10}",
+        "\\\\frac{8}{10}",
+        "\\\\frac{9}{10}"
+      ],
+      "correctAnswer": "\\\\frac{1}{10}",
+      "solutionVideoId": "1485f2b2-c97d-4824-84ea-6a18182ccf27"
+    },
+    {
+      "sourceId": "L2-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Simplify: \\\\frac{25}{75}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{2}{5}",
+        "\\\\frac{3}{7}",
+        "\\\\frac{2}{3}",
+        "\\\\frac{1}{3}",
+        "\\\\frac{3}{5}"
+      ],
+      "correctAnswer": "\\\\frac{1}{3}",
+      "solutionVideoId": "8b4a24cb-9d28-4f90-a18d-fc1746d277ad"
+    },
+    {
+      "sourceId": "L2-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Simplify: \\\\frac{5}{70}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{5}{14}",
+        "\\\\frac{3}{14}",
+        "\\\\frac{5}{11}",
+        "\\\\frac{1}{14}",
+        "\\\\frac{4}{19}"
+      ],
+      "correctAnswer": "\\\\frac{1}{14}",
+      "solutionVideoId": "3a5f2663-3b73-48fa-b622-b6cccbffe112"
+    },
+    {
+      "sourceId": "L2-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Simplify: \\\\frac{6}{19}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{6}{19}",
+        "\\\\frac{4}{19}",
+        "\\\\frac{5}{19}",
+        "\\\\frac{2}{19}",
+        "\\\\frac{3}{19}"
+      ],
+      "correctAnswer": "\\\\frac{6}{19}",
+      "solutionVideoId": "4774b077-1401-4509-bab8-e7313b7b8192"
+    },
+    {
+      "sourceId": "L2-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Simplify: \\\\frac{36}{30}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{2}{5}",
+        "\\\\frac{3}{5}",
+        "\\\\frac{2}{6}",
+        "\\\\frac{2}{8}",
+        "\\\\frac{6}{5}"
+      ],
+      "correctAnswer": "\\\\frac{6}{5}",
+      "solutionVideoId": "9ac86eb9-e9f6-4517-952c-b8d18c094fc2"
+    },
+    {
+      "sourceId": "L2-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Simplify: \\\\frac{77}{99}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{11}{9}",
+        "\\\\frac{1}{9}",
+        "\\\\frac{7}{9}",
+        "\\\\frac{2}{9}",
+        "\\\\frac{5}{9}"
+      ],
+      "correctAnswer": "\\\\frac{7}{9}",
+      "solutionVideoId": "9db1c03d-bd29-4d02-995b-816840e13564"
+    },
+    {
+      "sourceId": "L2-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Simplify: \\\\frac{8}{40}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{4}{5}",
+        "\\\\frac{3}{5}",
+        "\\\\frac{2}{5}",
+        "\\\\frac{1}{5}",
+        "\\\\frac{2}{7}"
+      ],
+      "correctAnswer": "\\\\frac{1}{5}",
+      "solutionVideoId": "7efa69c0-eede-49e0-8d13-87fd43677f66"
+    },
+    {
+      "sourceId": "L2-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Simplify: \\\\frac{55}{66}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{5}{6}",
+        "\\\\frac{2}{7}",
+        "\\\\frac{3}{7}",
+        "\\\\frac{1}{6}",
+        "\\\\frac{7}{9}"
+      ],
+      "correctAnswer": "\\\\frac{5}{6}",
+      "solutionVideoId": "a628e76c-3d5c-4366-a344-be8b6253f0e2"
+    },
+    {
+      "sourceId": "L2-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Simplify: \\\\frac{14}{56}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{9}{14}",
+        "\\\\frac{1}{4}",
+        "\\\\frac{5}{12}",
+        "\\\\frac{5}{14}",
+        "\\\\frac{3}{14}"
+      ],
+      "correctAnswer": "\\\\frac{1}{4}",
+      "solutionVideoId": "319e0d3f-c75f-441f-aa43-fdcad7113a46"
+    },
+    {
+      "sourceId": "L2-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Simplify: \\\\frac{132}{144}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{11}{13}",
+        "\\\\frac{12}{15}",
+        "\\\\frac{12}{13}",
+        "\\\\frac{11}{12}",
+        "\\\\frac{13}{15}"
+      ],
+      "correctAnswer": "\\\\frac{11}{12}",
+      "solutionVideoId": "70106444-9bd5-471d-b0df-e22b66b14f71"
+    },
+    {
+      "sourceId": "L2-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Simplify: \\\\frac{121}{132}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{13}{12}",
+        "\\\\frac{7}{12}",
+        "\\\\frac{5}{12}",
+        "\\\\frac{6}{12}",
+        "\\\\frac{11}{12}"
+      ],
+      "correctAnswer": "\\\\frac{11}{12}",
+      "solutionVideoId": "75129703-d09f-44bd-911c-5066334c4845"
+    },
+    {
+      "sourceId": "L2-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Simplify: \\\\frac{45}{63}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{3}{7}",
+        "\\\\frac{5}{7}",
+        "\\\\frac{2}{7}",
+        "\\\\frac{1}{7}",
+        "\\\\frac{4}{7}"
+      ],
+      "correctAnswer": "\\\\frac{5}{7}",
+      "solutionVideoId": "b0105acb-2373-41da-a098-c10e49dbf4be"
+    },
+    {
+      "sourceId": "L2-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Simplify: \\\\frac{26}{52}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{1}{4}",
+        "\\\\frac{2}{3}",
+        "\\\\frac{1}{3}",
+        "\\\\frac{1}{2}",
+        "\\\\frac{1}{5}"
+      ],
+      "correctAnswer": "\\\\frac{1}{2}",
+      "solutionVideoId": "f01eec64-f417-4624-b5c8-818eac708aa1"
+    },
+    {
+      "sourceId": "L2-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Simplify: \\\\frac{54}{72}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{3}{4}",
+        "\\\\frac{3}{5}",
+        "\\\\frac{2}{5}",
+        "\\\\frac{1}{5}",
+        "\\\\frac{2}{3}"
+      ],
+      "correctAnswer": "\\\\frac{3}{4}",
+      "solutionVideoId": "cdcce638-6b95-495e-9b58-c3713f72e3e3"
+    },
+    {
+      "sourceId": "L2-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Simplify: \\\\frac{84}{98}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{3}{2}",
+        "\\\\frac{2}{3}",
+        "\\\\frac{2}{5}",
+        "\\\\frac{6}{7}",
+        "\\\\frac{1}{3}"
+      ],
+      "correctAnswer": "\\\\frac{6}{7}",
+      "solutionVideoId": "b1be0560-56ce-4c55-9be9-9537e5f42d46"
+    },
+    {
+      "sourceId": "L2-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Simplify: \\\\frac{120}{180}",
+      "diagram": null,
+      "options": [
+        "\\\\frac{3}{2}",
+        "\\\\frac{4}{3}",
+        "\\\\frac{3}{4}",
+        "\\\\frac{1}{2}",
+        "\\\\frac{2}{3}"
+      ],
+      "correctAnswer": "\\\\frac{2}{3}",
+      "solutionVideoId": "6cf3a63a-8d38-4c86-bce8-68d4bed53158"
+    }
+  ]
+}
