@@ -159,12 +159,17 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
                   key={lesson.id}
                   className="rounded-lg border border-slate-200 p-4"
                 >
-                  <a
-                    href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${lesson.id}`}
-                    className="text-[#1560B0] underline"
-                  >
-                    {index + 1}. {lesson.title || "Untitled lesson"}
-                  </a>
+                  {lesson.unlocked ? (
+                    <a
+                      href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${lesson.id}`}
+                      className="text-[#1560B0] underline"
+                    >
+                      {index + 1}. {lesson.title || "Untitled lesson"}
+                    </a>
+                  ) : (
+                    <span>{index + 1}. {lesson.title || "Untitled lesson"} · Locked</span>
+                  )}
+                  {lesson.completed && <span className="ml-2 text-sm text-green-800">Complete</span>}
                 </li>
               ))}
             </ul>

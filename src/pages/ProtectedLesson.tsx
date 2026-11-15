@@ -91,7 +91,22 @@ function Exercises({ enrollmentId, lessonId }: { enrollmentId: number; lessonId:
   const answered = data ? data.questions.filter(q => data.answers[q.sourceId] !== undefined).length : 0;
   const submitted = data?.status === "submitted";
   const denied = ["FORBIDDEN", "UNAUTHORIZED"].includes(actionError?.data?.code);
+  const justCompleted = submitted && data.difficulty === "challenging" && (data.validScore ?? 0) >= 8;
+  const completion = summary.data.completed && <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-5">
+      <h2 className="text-xl font-semibold">Lesson complete</h2>
+      {summary.data.nextLesson ? (
+        <a className={`${button} mt-3 inline-block`}
+          href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${summary.data.nextLesson.id}`}>
+          Continue to {summary.data.nextLesson.title || "the next lesson"}
+        </a>
+      ) : summary.data.tutorGuided ? (
+        <p className="mt-2">Your tutor will guide you to your next lesson.</p>
+      ) : summary.data.standard && (
+        <p className="mt-2">You have reached the last lesson currently available in this course.</p>
+      )}
+    </div>;
   return <section className="mt-8 border-t border-slate-200 pt-6" aria-label="Lesson exercises">
+    {!justCompleted && completion}
     <h2 className="text-xl font-semibold">Exercises</h2>
     <p className="mt-2 text-slate-600">Answer all 10 questions, then submit. A valid score of 8/10 unlocks the next difficulty.</p>
     <p className="mt-2 text-sm text-slate-600">Opening a solution before submission excludes that question from your valid score for this attempt. Answers are saved after each selection.</p>
@@ -128,6 +143,7 @@ function Exercises({ enrollmentId, lessonId }: { enrollmentId: number; lessonId:
             <p className="mt-2">{(data.validScore ?? 0) >= 8 ? "Passed. Your progress has been saved." : "Keep practising. You need a valid score of 8/10 to pass."}</p>
             <p className="mt-2 text-sm">Use Start above for a new attempt. You can review these questions and their solutions below.</p>
           </div>}
+          {justCompleted && completion}
           <div className="flex flex-wrap gap-2" aria-label="Question navigation">
             {data.questions.map((q, i) => <button key={q.sourceId} disabled={busy}
               aria-label={`Question ${i + 1}${data.answers[q.sourceId] !== undefined ? ", answered" : ""}`}

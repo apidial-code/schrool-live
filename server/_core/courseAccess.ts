@@ -41,6 +41,8 @@ export async function requireCourseAccess(
     .select({
       id: enrollments.id,
       courseId: enrollments.courseId,
+      yearLevel: enrollments.yearLevel,
+      tier: enrollments.tier,
       status: enrollments.status,
       paymentStatus: enrollments.paymentStatus,
       acceptedAt: enrollments.acceptedAt,
@@ -80,5 +82,7 @@ export async function requireCourseAccess(
   return {
     enrollmentId: record.id,
     courseId: record.courseId,
+    yearLevel: record.yearLevel,
+    tier: record.tier,
   };
 }

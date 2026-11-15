@@ -1,6 +1,6 @@
 import { randomInt, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
-import { and, asc, desc, eq, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
 import { enrollments, lessons, lessonQuestions, lessonAttempts } from "../../drizzle/schema.js";
 import { requireCourseAccess } from "../_core/courseAccess.js";
@@ -78,13 +78,52 @@ const courseProcedure = protectedProcedure.input(courseInput).use(async ({ ctx, 
   if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to load lessons." });
   return next({ ctx: { ...ctx, access, db } });
 });
+type CourseLesson = Pick<typeof lessons.$inferSelect, "id" | "title" | "orderIndex">;
+const foundationLength = 7;
+
+async function courseProgress(db: Awaited<ReturnType<typeof getDb>>,
+  studentId: number, access: Awaited<ReturnType<typeof requireCourseAccess>>) {
+  const isYear56 = access.yearLevel === "year5-6";
+  const standard = isYear56 && access.tier === "standard";
+  const tutorGuided = isYear56 && access.tier === "elite";
+  const rows: CourseLesson[] = await db.select({
+    id: lessons.id, title: lessons.title, orderIndex: lessons.orderIndex,
+  }).from(lessons).where(eq(lessons.courseId, access.courseId))
+    .orderBy(asc(lessons.orderIndex), asc(lessons.id));
+  const course = rows.filter(lesson => !isYear56 ||
+    lesson.title?.trim().toLowerCase() !== "access verification");
+  const passed: { lessonId: number; difficulty: string }[] = isYear56 && course.length
+    ? await db.selectDistinct({
+      lessonId: lessonAttempts.lessonId, difficulty: lessonAttempts.difficulty,
+    }).from(lessonAttempts).where(and(
+      eq(lessonAttempts.studentId, studentId), eq(lessonAttempts.enrollmentId, access.enrollmentId),
+      eq(lessonAttempts.status, "submitted"), gte(lessonAttempts.validScore, 8),
+      inArray(lessonAttempts.lessonId, course.map(lesson => lesson.id)),
+    )) : [];
+  let previousLessonsComplete = true;
+  return course.map((lesson, index) => {
+    const completed = difficulty.options.every(level => passed.some(attempt =>
+      attempt.lessonId === lesson.id && attempt.difficulty === level));
+    const unlocked = !standard || previousLessonsComplete;
+    if (index < foundationLength) previousLessonsComplete &&= completed;
+    return { ...lesson, completed, unlocked, standard, tutorGuided };
+  });
+}
+
 const lessonProcedure = courseProcedure.input(lessonInput).use(async ({ ctx, input, next }) => {
   const [lesson] = await ctx.db.select({
     id: lessons.id, title: lessons.title, orderIndex: lessons.orderIndex,
     bunnyLibraryId: lessons.bunnyLibraryId, bunnyVideoId: lessons.bunnyVideoId,
   }).from(lessons).where(and(eq(lessons.id, input.lessonId), eq(lessons.courseId, ctx.access.courseId))).limit(1);
   if (!lesson) unavailable("Lesson unavailable.");
-  return next({ ctx: { ...ctx, lesson } });
+  const course = await courseProgress(ctx.db, ctx.user.id, ctx.access);
+  const index = course.findIndex(item => item.id === lesson.id);
+  const current = course[index];
+  if (!current) unavailable("Lesson unavailable.");
+  if (!current.unlocked) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "Complete the earlier lessons to unlock this lesson." });
+  }
+  return next({ ctx: { ...ctx, lesson, current, following: course[index + 1] } });
 });
 const lessonMutation = lessonProcedure.use(({ ctx, next }) => {
   if (ctx.req.headers.origin !== getSignInOrigin()) {
@@ -139,9 +178,7 @@ async function progress(db: any, studentId: number, enrollmentId: number, lesson
   return result;
 }
 export const lessonsRouter = router({
-  list: courseProcedure.query(({ ctx }) => ctx.db.select({ id: lessons.id,
-    title: lessons.title, orderIndex: lessons.orderIndex }).from(lessons)
-    .where(eq(lessons.courseId, ctx.access.courseId)).orderBy(asc(lessons.orderIndex), asc(lessons.id))),
+  list: courseProcedure.query(({ ctx }) => courseProgress(ctx.db, ctx.user.id, ctx.access)),
   getById: lessonProcedure.query(({ ctx }) => ctx.lesson),
   getExercises: lessonProcedure.query(async ({ ctx, input }) => {
     const levels = await progress(ctx.db, ctx.user.id, input.enrollmentId, input.lessonId);
@@ -157,7 +194,12 @@ export const lessonsRouter = router({
       eq(lessonAttempts.status, "submitted"))).orderBy(desc(lessonAttempts.id)).limit(20);
     const [count] = await ctx.db.select({ count: sql<number>`COUNT(*)` }).from(lessonQuestions)
       .where(eq(lessonQuestions.lessonId, input.lessonId));
-    return { levels, active, history, available: Number(count.count) > 0 };
+    const { completed, standard, tutorGuided } = ctx.current;
+    const nextLesson = standard && completed && ctx.following?.unlocked
+      ? { id: ctx.following.id, title: ctx.following.title }
+      : null;
+    return { levels, active, history, completed, standard, tutorGuided, nextLesson,
+      available: Number(count.count) > 0 };
   }),
   startAttempt: lessonMutation.input(lessonInput.extend({ difficulty })).mutation(async ({ ctx, input }) => {
     return ctx.db.transaction(async (tx: any) => {
