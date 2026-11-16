@@ -98,13 +98,40 @@ async function run() {
     const saved = await tx.select().from(lessonQuestions).where(eq(lessonQuestions.lessonId, lessonId));
     if (sameTitle.length) {
       const savedBySource = new Map(saved.map(question => [question.sourceId, question]));
-      if (saved.length !== questions.length || questions.some(question => {
-        const existing = savedBySource.get(question.sourceId);
-        return !existing || Object.entries(question).some(([field, value]) => existing[field] !== value);
-      })) {
-        throw new Error("Existing Lesson 4 questions differ from the import.");
+      const matches = (existing, expected) => existing &&
+        Object.entries(expected).every(([field, value]) => existing[field] === value);
+      if (saved.length === questions.length &&
+          questions.every(question => matches(savedBySource.get(question.sourceId), question))) {
+        return "already imported";
       }
-      return "already imported";
+
+      // Recognise the original staging import and the two earlier ordering corrections.
+      const originalOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 12, 13, 14, 15, 16, 17, 20, 19, 18];
+      const partialOrder = [...originalOrder];
+      for (const position of [11, 12]) {
+        [partialOrder[position], partialOrder[position + 10]] =
+          [partialOrder[position + 10], partialOrder[position]];
+      }
+      const numberedOrder = Array.from({ length: 30 }, (_, index) => index + 1);
+      const contentFields = ({ questionText, diagram, optionsJson, correctAnswer, solutionVideoId }) =>
+        ({ questionText, diagram, optionsJson, correctAnswer, solutionVideoId });
+      const previousContent = [...questions.slice(10), ...questions.slice(0, 10)].map(contentFields);
+      previousContent[23].solutionVideoId = "343eaca1-f6a5-4409-a5bc-3446711de273";
+      const matchesOrder = order => questions.every((question, index) => {
+        const content = previousContent[order[index] - 1];
+        return matches(savedBySource.get(question.sourceId), { ...question, ...content });
+      });
+      if (saved.length !== questions.length ||
+          ![originalOrder, partialOrder, numberedOrder].some(matchesOrder)) {
+        throw new Error("Existing Lesson 4 questions differ from the expected imports.");
+      }
+      for (const question of questions) {
+        const existing = savedBySource.get(question.sourceId);
+        if (matches(existing, question)) continue;
+        await tx.update(lessonQuestions).set(contentFields(question))
+          .where(eq(lessonQuestions.id, existing.id));
+      }
+      return "updated";
     }
     await tx.insert(lessonQuestions).values(questions);
     return "imported";
