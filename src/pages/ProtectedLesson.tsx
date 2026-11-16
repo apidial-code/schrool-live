@@ -17,7 +17,7 @@ function readId(name: string) {
 // question text escaped and avoiding HTML injection or an external renderer.
 function MathText({ text }: { text: string }) {
   const parts: React.ReactNode[] = [];
-  const pattern = /\\frac\{([^{}]+)\}\{([^{}]+)\}/g;
+  const pattern = /\\{1,2}frac\{([^{}]+)\}\{([^{}]+)\}/g;
   let last = 0, match: RegExpExecArray | null;
   while ((match = pattern.exec(text))) {
     parts.push(text.slice(last, match.index));
