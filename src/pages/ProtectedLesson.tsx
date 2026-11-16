@@ -31,6 +31,48 @@ function MathText({ text }: { text: string }) {
   parts.push(text.slice(last));
   return <>{parts}</>;
 }
+function EquivalentFractionsTeaching() {
+  return (
+    <section className="mt-6 space-y-5 rounded-xl border border-blue-200 bg-blue-50 p-5 sm:p-6"
+      aria-label="Equivalent Fractions written lesson">
+      <div>
+        <h2 className="text-xl font-semibold text-[#1560B0]">Learning goal</h2>
+        <p className="mt-2">Recognise and make equivalent fractions. Explain why different fraction names can describe the same amount of the same-sized whole.</p>
+      </div>
+      <div>
+        <h2 className="text-xl font-semibold text-[#1560B0]">Look</h2>
+        <p className="mt-2">These bars represent wholes of the same size. Compare the shaded amounts.</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {[2, 4].map(parts => (
+            <figure key={parts}>
+              <div className="grid h-12 divide-x-2 divide-[#102a78] border-2 border-[#102a78] bg-white"
+                style={{ gridTemplateColumns: `repeat(${parts}, minmax(0, 1fr))` }}
+                role="img" aria-label={`${parts / 2} of ${parts} equal parts shaded`}>
+                {Array.from({ length: parts }, (_, index) => (
+                  <span key={index} className={index < parts / 2 ? "bg-[#1560B0]" : undefined} />
+                ))}
+              </div>
+              <figcaption className="mt-2 text-center">
+                <MathText text={String.raw`\\frac{${parts / 2}}{${parts}} shaded`} />
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mt-3">What changed about the number and size of the parts? What stayed the same about the shaded amount?</p>
+      </div>
+      <div className="space-y-3">
+        <h2 className="text-xl font-semibold text-[#1560B0]">Learn</h2>
+        <p><strong>Equivalent fractions</strong> name the same amount of a whole. Dividing each half into two equal pieces gives four equal parts, with two shaded.</p>
+        <p><MathText text={String.raw`\\frac{1}{2} = \\frac{2}{4}`} /></p>
+        <p>Multiply the numerator and denominator by the <strong>same non-zero number</strong> to make an equivalent fraction.</p>
+        <p><MathText text={String.raw`\\frac{1}{3} = \\frac{1 × 2}{3 × 2} = \\frac{2}{6}`} /></p>
+        <p>You can also divide both numbers by the same common factor.</p>
+        <p><MathText text={String.raw`\\frac{2}{4} = \\frac{2 ÷ 2}{4 ÷ 2} = \\frac{1}{2}`} /></p>
+        <p>The number of pieces changes, but the amount represented stays the same. When comparing pictures, check that the wholes have the same size.</p>
+      </div>
+    </section>
+  );
+}
 function Video({ url, title }: { url: string; title: string }) {
   return <div className="relative mt-5 aspect-video overflow-hidden rounded-lg bg-black">
     <iframe src={url} title={title} className="absolute inset-0 h-full w-full border-0"
@@ -42,7 +84,11 @@ function message(error: any) {
     : error?.data?.code === "FORBIDDEN" ? "Course access or this difficulty is currently locked."
     : error?.message || "Unable to complete this action. Please try again.";
 }
-function Exercises({ enrollmentId, lessonId }: { enrollmentId: number; lessonId: number }) {
+function Exercises({ enrollmentId, lessonId, lessonTitle }: {
+  enrollmentId: number;
+  lessonId: number;
+  lessonTitle: string;
+}) {
   const input = { enrollmentId, lessonId };
   const utils = trpc.useUtils();
   const summary = trpc.lessons.getExercises.useQuery(input, {
@@ -93,7 +139,7 @@ function Exercises({ enrollmentId, lessonId }: { enrollmentId: number; lessonId:
   const denied = ["FORBIDDEN", "UNAUTHORIZED"].includes(actionError?.data?.code);
   const justCompleted = submitted && data.difficulty === "challenging" && (data.validScore ?? 0) >= 8;
   const completion = summary.data.completed && <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-5">
-      <h2 className="text-xl font-semibold">Lesson complete</h2>
+      <h2 className="text-xl font-semibold">{lessonTitle} complete</h2>
       {summary.data.nextLesson ? (
         <a className={`${button} mt-3 inline-block`}
           href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${summary.data.nextLesson.id}`}>
@@ -105,9 +151,9 @@ function Exercises({ enrollmentId, lessonId }: { enrollmentId: number; lessonId:
         <p className="mt-2">You have reached the last lesson currently available in this course.</p>
       )}
     </div>;
-  return <section className="mt-8 border-t border-slate-200 pt-6" aria-label="Lesson exercises">
+  return <section className="mt-8 border-t border-slate-200 pt-6" aria-label={`${lessonTitle} exercises`}>
     {!justCompleted && completion}
-    <h2 className="text-xl font-semibold">Exercises</h2>
+    <h2 className="text-xl font-semibold">{lessonTitle} exercises</h2>
     <p className="mt-2 text-slate-600">Answer all 10 questions, then submit. A valid score of 8/10 unlocks the next difficulty.</p>
     <p className="mt-2 text-sm text-slate-600">Opening a solution before submission excludes that question from your valid score for this attempt. Answers are saved after each selection.</p>
     <div className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -208,9 +254,15 @@ export default function ProtectedLesson() {
     refetchOnMount: "always", refetchOnWindowFocus: "always",
   });
   const videoId = lesson.data?.bunnyVideoId;
-  return <main className="min-h-screen bg-slate-50 p-4 text-slate-900 sm:p-6">
+  const lessonTitle = lesson.data?.title || "Lesson";
+  const titleKey = lessonTitle.trim().replace(/\?$/, "").toLowerCase();
+  const isFractionIntro = titleKey === "what is a fraction";
+  const isEquivalentFractions = titleKey === "equivalent fractions";
+  const hasFractionLayout = isFractionIntro || isEquivalentFractions;
+  const displayTitle = isFractionIntro ? "What is a Fraction?" : lessonTitle;
+  return <main className={`min-h-screen p-4 text-slate-900 sm:p-6 ${hasFractionLayout ? "bg-gradient-to-br from-[#1560B0] to-[#102a78]" : "bg-slate-50"}`}>
     <div className="mx-auto max-w-4xl">
-      <a href="/student" className="text-[#1560B0] underline">Back to my enrolments</a>
+      <a href="/student" className={`underline ${hasFractionLayout ? "text-white" : "text-[#1560B0]"}`}>Back to my enrolments</a>
       <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
         {!valid ? <h1 className="text-xl font-semibold">Invalid lesson link</h1>
           : lesson.isFetching || lesson.isLoading ? <p role="status">Checking lesson access…</p>
@@ -219,11 +271,26 @@ export default function ProtectedLesson() {
             {lesson.error.data?.code === "UNAUTHORIZED" ? <a href="/login" className="mt-4 inline-block underline">Go to sign in</a>
               : <button onClick={() => lesson.refetch()} className="mt-4 underline">Try again</button>}</div>
           : lesson.data ? <>
-            <h1 className="text-2xl font-bold text-[#1560B0]">{lesson.data.title || "Lesson"}</h1>
+            {hasFractionLayout ? (
+              <header className="rounded-xl bg-gradient-to-br from-[#1560B0] to-[#102a78] px-5 py-8 text-center text-white sm:px-8 sm:py-10">
+                <h1 className="text-3xl font-bold sm:text-4xl">{displayTitle}</h1>
+                <p className="mx-auto mt-3 max-w-lg text-blue-50">
+                  {isFractionIntro ? "Understand fractions and learn to convert between mixed numbers and improper fractions."
+                    : "Recognise and make equivalent fractions."}
+                </p>
+                <a href="#lesson-exercises"
+                  className="mt-5 inline-block rounded-lg bg-white px-5 py-3 font-semibold text-[#102a78] hover:bg-blue-50">
+                  Go to exercises
+                </a>
+              </header>
+            ) : <h1 className="text-2xl font-bold text-[#1560B0]">{lessonTitle}</h1>}
+            {isEquivalentFractions && <EquivalentFractionsTeaching />}
             {lesson.data.bunnyLibraryId && lesson.data.bunnyLibraryId > 0 && videoId && /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(videoId)
               ? <Video url={`https://iframe.mediadelivery.net/embed/${lesson.data.bunnyLibraryId}/${videoId}?autoplay=false&loop=false&muted=false&preload=false&responsive=true`} title={lesson.data.title || "Lesson video"} />
               : <p className="mt-4">Video unavailable for this lesson.</p>}
-            <Exercises key={`${enrollmentId}:${lessonId}`} enrollmentId={enrollmentId} lessonId={lessonId} />
+            <div id="lesson-exercises" tabIndex={-1}>
+              <Exercises key={`${enrollmentId}:${lessonId}`} enrollmentId={enrollmentId} lessonId={lessonId} lessonTitle={lessonTitle} />
+            </div>
           </> : <p>Lesson unavailable.</p>}
       </section>
     </div>
