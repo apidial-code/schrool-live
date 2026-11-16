@@ -1,0 +1,491 @@
+{
+  "formatVersion": 1,
+  "sourceFile": "Addition and Subtraction of Fractions(3).docx",
+  "sourceSha256": "31c2a3e6b60a97609651c74f3e19f76164d393f73ee4f31909aa4dd655c4977f",
+  "sourceLessonNumber": 3,
+  "title": "Addition and Subtraction of Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "cea28b36-ea54-4ddf-86fc-dd45747b8577",
+  "questions": [
+    {
+      "sourceId": "L3-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Simplify:  \\frac{2}{3} + \\frac{5}{9}",
+      "diagram": null,
+      "options": [
+        "2\\frac{1}{9}",
+        "1\\frac{1}{9}",
+        "2\\frac{2}{9}",
+        "1\\frac{2}{9}",
+        "3\\frac{2}{9}"
+      ],
+      "correctAnswer": "1\\frac{2}{9}",
+      "solutionVideoId": "bf711a2b-0fcf-4539-8fe3-b44b4f1b3f66"
+    },
+    {
+      "sourceId": "L3-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Solve:  1\\frac{4}{7} + 2\\frac{5}{21}",
+      "diagram": null,
+      "options": [
+        "2\\frac{13}{21}",
+        "1\\frac{17}{21}",
+        "3\\frac{17}{21}",
+        "3\\frac{15}{21}",
+        "2\\frac{17}{21}"
+      ],
+      "correctAnswer": "3\\frac{17}{21}",
+      "solutionVideoId": "2d0343ad-3c98-45bd-a55d-efb3508f42c6"
+    },
+    {
+      "sourceId": "L3-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Simplify:  \\frac{7}{12}  –  \\frac{4}{12}",
+      "diagram": null,
+      "options": [
+        "\\frac{2}{5}",
+        "\\frac{2}{3}",
+        "\\frac{1}{4}",
+        "\\frac{1}{3}",
+        "\\frac{1}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{4}",
+      "solutionVideoId": "87ee36fa-ae4d-4c48-9196-95951faf832e"
+    },
+    {
+      "sourceId": "L3-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Solve:  9 – 3\\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "4\\frac{1}{5}",
+        "4\\frac{2}{5}",
+        "5\\frac{1}{2}",
+        "4\\frac{1}{3}",
+        "5\\frac{2}{3}"
+      ],
+      "correctAnswer": "5\\frac{1}{2}",
+      "solutionVideoId": "fdba6c6a-04a3-48b4-b3af-ac9b45e95148"
+    },
+    {
+      "sourceId": "L3-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Simplify: 7 + 2\\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "9\\frac{3}{4}",
+        "9\\frac{1}{4}",
+        "7\\frac{1}{4}",
+        "8\\frac{3}{4}",
+        "7\\frac{3}{4}"
+      ],
+      "correctAnswer": "9\\frac{1}{4}",
+      "solutionVideoId": "4e6af70d-1b14-4abd-a8a3-93c5cf8fb544"
+    },
+    {
+      "sourceId": "L3-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Simplify:  \\frac{1}{2} + \\frac{5}{6} + \\frac{2}{3}",
+      "diagram": null,
+      "options": [
+        "2",
+        "6",
+        "1",
+        "3",
+        "5"
+      ],
+      "correctAnswer": "2",
+      "solutionVideoId": "efe906cb-be14-4d37-884d-cb1b5d6504e5"
+    },
+    {
+      "sourceId": "L3-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Simplify:  4\\frac{1}{6} + \\frac{5}{12}",
+      "diagram": null,
+      "options": [
+        "3\\frac{5}{12}",
+        "4\\frac{1}{12}",
+        "4\\frac{5}{12}",
+        "4\\frac{7}{12}",
+        "3\\frac{1}{12}"
+      ],
+      "correctAnswer": "4\\frac{7}{12}",
+      "solutionVideoId": "a8f3bc6d-3004-46ba-a661-baadedea674a"
+    },
+    {
+      "sourceId": "L3-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Solve:  4\\frac{1}{3} - 3\\frac{1}{6}",
+      "diagram": null,
+      "options": [
+        "1\\frac{1}{3}",
+        "2\\frac{1}{3}",
+        "1\\frac{1}{6}",
+        "1\\frac{2}{3}",
+        "2\\frac{1}{6}"
+      ],
+      "correctAnswer": "1\\frac{1}{6}",
+      "solutionVideoId": "d9cc2bdf-3f9c-43c7-b80c-71a16a1842cf"
+    },
+    {
+      "sourceId": "L3-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Simplify:  \\frac{11}{8}  –  \\frac{3}{4}  – \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{8}",
+        "\\frac{1}{8}",
+        "\\frac{5}{8}",
+        "\\frac{7}{8}",
+        "\\frac{1}{9}"
+      ],
+      "correctAnswer": "\\frac{1}{8}",
+      "solutionVideoId": "8f8e2df3-c21f-48ff-81e5-ed0b0ff4f841"
+    },
+    {
+      "sourceId": "L3-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Simplify:  2\\frac{3}{4}  – 1\\frac{1}{3} -  \\frac{5}{6}",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{12}",
+        "\\frac{9}{12}",
+        "\\frac{7}{12}",
+        "\\frac{1}{12}",
+        "\\frac{5}{12}"
+      ],
+      "correctAnswer": "\\frac{7}{12}",
+      "solutionVideoId": "16c12ed0-e03c-4db1-89d2-ff2795acbd45"
+    },
+    {
+      "sourceId": "L3-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Simplify:  1\\frac{1}{2} + 1\\frac{3}{4}  –  \\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "2",
+        "5",
+        "6",
+        "3",
+        "7"
+      ],
+      "correctAnswer": "3",
+      "solutionVideoId": "f2ab7305-7472-4caa-9008-1db4ec7519c0"
+    },
+    {
+      "sourceId": "L3-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Solve:  2\\frac{1}{2}  –  \\frac{5}{8} + \\frac{3}{4}",
+      "diagram": null,
+      "options": [
+        "4\\frac{5}{8}",
+        "3\\frac{5}{8}",
+        "1\\frac{5}{8}",
+        "7\\frac{5}{8}",
+        "2\\frac{5}{8}"
+      ],
+      "correctAnswer": "2\\frac{5}{8}",
+      "solutionVideoId": "ff5be196-c44b-4459-a172-7b1739aacf3e"
+    },
+    {
+      "sourceId": "L3-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Simplify:  \\frac{3}{10} + \\frac{9}{20}- \\frac{3}{5}",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{20}",
+        "\\frac{3}{20}",
+        "\\frac{3}{10}",
+        "\\frac{7}{20}",
+        "\\frac{9}{20}"
+      ],
+      "correctAnswer": "\\frac{3}{20}",
+      "solutionVideoId": "647d3b42-8e74-4162-a212-d120e6e639e6"
+    },
+    {
+      "sourceId": "L3-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Solve:  4\\frac{2}{3} + 1\\frac{1}{6}  – 3\\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "3\\frac{1}{3}",
+        "5\\frac{1}{3}",
+        "4\\frac{1}{3}",
+        "2\\frac{1}{3}",
+        "1\\frac{1}{3}"
+      ],
+      "correctAnswer": "2\\frac{1}{3}",
+      "solutionVideoId": "9248cbfd-68f9-4cf7-bf28-0e88c8847a69"
+    },
+    {
+      "sourceId": "L3-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Simplify:  2\\frac{1}{8}  –  2\\frac{3}{4}  +  \\frac{7}{8}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{4}",
+        "2\\frac{2}{3}",
+        "\\frac{3}{5}",
+        "\\frac{1}{5}",
+        "\\frac{2}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{4}",
+      "solutionVideoId": "0faf3409-b424-4eb5-8cb4-f767073c779c"
+    },
+    {
+      "sourceId": "L3-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Simplify:  5 +  \\frac{2}{7}  -  \\frac{1}{14}",
+      "diagram": null,
+      "options": [
+        "3\\frac{3}{14}",
+        "5\\frac{3}{14}",
+        "2\\frac{3}{14}",
+        "4\\frac{3}{14}",
+        "1\\frac{3}{14}"
+      ],
+      "correctAnswer": "5\\frac{3}{14}",
+      "solutionVideoId": "08e9133b-1b6a-4fce-ac1b-dac91c562b64"
+    },
+    {
+      "sourceId": "L3-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Simplify:  \\frac{11}{8}  +  \\frac{3}{4}  – 2",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{8}",
+        "\\frac{5}{8}",
+        "\\frac{5}{6}",
+        "\\frac{1}{8}",
+        "\\frac{1}{9}"
+      ],
+      "correctAnswer": "\\frac{1}{8}",
+      "solutionVideoId": "a33793fc-bf57-449a-a542-a1c4fd6cfbcd"
+    },
+    {
+      "sourceId": "L3-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Solve:  \\frac{1}{6} + 5\\frac{1}{2}  –  \\frac{2}{3}",
+      "diagram": null,
+      "options": [
+        "3",
+        "2",
+        "5",
+        "4",
+        "7"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "cf285d2b-ca99-4a91-8803-58f5c42f0b2f"
+    },
+    {
+      "sourceId": "L3-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Simplify:  2\\frac{1}{2} + 1\\frac{1}{3}  –  \\frac{5}{6}  – \\frac{2}{3}",
+      "diagram": null,
+      "options": [
+        "1\\frac{1}{3}",
+        "4\\frac{1}{3}",
+        "3\\frac{1}{3}",
+        "5\\frac{1}{3}",
+        "2\\frac{1}{3}"
+      ],
+      "correctAnswer": "2\\frac{1}{3}",
+      "solutionVideoId": "8a3833e8-f57b-4b88-aaad-dd5ed748f59e"
+    },
+    {
+      "sourceId": "L3-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Simplify:  4\\frac{2}{3}  –  \\frac{1}{4}  – 2\\frac{1}{6}  –  \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "5\\frac{3}{4}",
+        "1\\frac{3}{4}",
+        "4\\frac{3}{4}",
+        "2\\frac{3}{4}",
+        "7\\frac{3}{4}"
+      ],
+      "correctAnswer": "1\\frac{3}{4}",
+      "solutionVideoId": "14e3e6aa-8ce7-48d2-ac43-75fcde0658d9"
+    },
+    {
+      "sourceId": "L3-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Find the sum of 7 and \\frac{1}{5}",
+      "diagram": null,
+      "options": [
+        "1\\frac{1}{5}",
+        "2\\frac{1}{5}",
+        "7\\frac{1}{5}",
+        "4\\frac{1}{5}",
+        "3\\frac{1}{5}"
+      ],
+      "correctAnswer": "7\\frac{1}{5}",
+      "solutionVideoId": "0dffd51c-a922-49dc-bfe3-6170e8936884"
+    },
+    {
+      "sourceId": "L3-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Find the sum of 2\\frac{1}{3} and 4.",
+      "diagram": null,
+      "options": [
+        "6\\frac{1}{5}",
+        "5\\frac{1}{3}",
+        "3\\frac{1}{5}",
+        "6\\frac{1}{3}",
+        "2\\frac{1}{3}"
+      ],
+      "correctAnswer": "6\\frac{1}{3}",
+      "solutionVideoId": "2ad4eda3-54ee-490e-a4b2-4f64d2f6ada3"
+    },
+    {
+      "sourceId": "L3-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "What is the difference between \\frac{1}{3} and \\frac{1}{6} ?",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{6}",
+        "\\frac{1}{6}",
+        "\\frac{1}{12}",
+        "\\frac{1}{8}",
+        "\\frac{3}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{6}",
+      "solutionVideoId": "4af25ce3-2679-406a-a0b2-c12dde6bad7b"
+    },
+    {
+      "sourceId": "L3-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Find the difference between 10 and 2\\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "3\\frac{3}{4}",
+        "5\\frac{3}{4}",
+        "4\\frac{3}{4}",
+        "7\\frac{3}{4}",
+        "2\\frac{3}{4}"
+      ],
+      "correctAnswer": "7\\frac{3}{4}",
+      "solutionVideoId": "77980e57-b043-46f4-b1ee-4f0de5904a8c"
+    },
+    {
+      "sourceId": "L3-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Add:  5\\frac{1}{2} + 2 + 3\\frac{1}{6}",
+      "diagram": null,
+      "options": [
+        "8\\frac{2}{3}",
+        "7\\frac{2}{3}",
+        "9\\frac{2}{3}",
+        "10\\frac{2}{3}",
+        "6\\frac{2}{3}"
+      ],
+      "correctAnswer": "10\\frac{2}{3}",
+      "solutionVideoId": "63fddd80-dce9-43c8-849f-8df11bdf54ac"
+    },
+    {
+      "sourceId": "L3-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "What is the difference between 3\\frac{1}{8} and 1\\frac{1}{16} ?",
+      "diagram": null,
+      "options": [
+        "2\\frac{1}{16}",
+        "5\\frac{1}{16}",
+        "3\\frac{1}{16}",
+        "1\\frac{1}{16}",
+        "4\\frac{1}{16}"
+      ],
+      "correctAnswer": "2\\frac{1}{16}",
+      "solutionVideoId": "9219bc1b-3bdc-4545-a3c6-c950d13e246e"
+    },
+    {
+      "sourceId": "L3-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "What is the sum of \\frac{1}{3},  \\frac{4}{9}  and \\frac{5}{12}?",
+      "diagram": null,
+      "options": [
+        "4\\frac{7}{36}",
+        "1\\frac{7}{36}",
+        "3\\frac{7}{36}",
+        "5\\frac{7}{36}",
+        "2\\frac{7}{36}"
+      ],
+      "correctAnswer": "1\\frac{7}{36}",
+      "solutionVideoId": "31c66770-4c5e-41f8-945e-e6fa184cfb19"
+    },
+    {
+      "sourceId": "L3-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Find the sum of 2\\frac{1}{8} , \\frac{5}{16},\\frac{3}{8} and \\frac{7}{24}",
+      "diagram": null,
+      "options": [
+        "6\\frac{5}{48}",
+        "2\\frac{5}{48}",
+        "1\\frac{5}{48}",
+        "5\\frac{5}{48}",
+        "3\\frac{5}{48}"
+      ],
+      "correctAnswer": "3\\frac{5}{48}",
+      "solutionVideoId": "45d9ce85-9766-4aad-bf51-74c162d6c8d5"
+    },
+    {
+      "sourceId": "L3-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Find the difference between 1\\frac{1}{3} and \\frac{5}{6}",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{4}",
+        "\\frac{2}{5}",
+        "\\frac{1}{2}",
+        "\\frac{3}{5}",
+        "\\frac{2}{3}"
+      ],
+      "correctAnswer": "\\frac{1}{2}",
+      "solutionVideoId": "f7a7cdfb-13ae-4ff6-a6e7-22f3e9e2df5b"
+    },
+    {
+      "sourceId": "L3-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "What is the difference between {1\\frac{1}{3} + 2\\frac{3}{4}} and {3 – 2\\frac{1}{2} }?",
+      "diagram": null,
+      "options": [
+        "4\\frac{7}{12}",
+        "1\\frac{7}{12}",
+        "2\\frac{1}{12}",
+        "3\\frac{7}{12}",
+        "1\\frac{5}{12}"
+      ],
+      "correctAnswer": "3\\frac{7}{12}",
+      "solutionVideoId": "9dc07c91-2b1b-42d8-be09-73b8de7dd827"
+    }
+  ]
+}
