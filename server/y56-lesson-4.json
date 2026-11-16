@@ -1,0 +1,491 @@
+{
+  "formatVersion": 1,
+  "sourceFile": "Fractions Multiplication of Fractions.docx",
+  "sourceSha256": "f007f71afa707b2eb31b9fbe0ec0a37d58c9d3889cb115fd12244b29d6569798",
+  "sourceLessonNumber": 4,
+  "title": "Multiplication of Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "aad4a2e1-f031-4f1f-a9b0-f48eb79b832b",
+  "questions": [
+    {
+      "sourceId": "L4-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Simplify \\frac{1}{5} × \\frac{1}{3}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{10}",
+        "\\frac{1}{3}",
+        "\\frac{1}{6}",
+        "\\frac{1}{15}",
+        "\\frac{1}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{15}",
+      "solutionVideoId": "f86d170e-203c-4432-a56c-171e2e65d591"
+    },
+    {
+      "sourceId": "L4-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Solve \\frac{1}{4} × \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{2}",
+        "\\frac{1}{8}",
+        "\\frac{1}{6}",
+        "\\frac{2}{3}",
+        "\\frac{1}{4}"
+      ],
+      "correctAnswer": "\\frac{1}{8}",
+      "solutionVideoId": "411a7121-0ec3-49a5-bfa6-a294b923c4ea"
+    },
+    {
+      "sourceId": "L4-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Simplify  \\frac{5}{7} × \\frac{5}{7}",
+      "diagram": null,
+      "options": [
+        "\\frac{19}{45}",
+        "\\frac{17}{49}",
+        "\\frac{15}{49}",
+        "\\frac{23}{45}",
+        "\\frac{25}{49}"
+      ],
+      "correctAnswer": "\\frac{25}{49}",
+      "solutionVideoId": "05f066b7-5f7c-4174-91c6-9be1479b984a"
+    },
+    {
+      "sourceId": "L4-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Solve  \\frac{6}{7} × \\frac{42}{48}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{4}",
+        "\\frac{1}{5}",
+        "\\frac{1}{6}",
+        "\\frac{2}{3}",
+        "\\frac{3}{4}"
+      ],
+      "correctAnswer": "\\frac{3}{4}",
+      "solutionVideoId": "e1cd32cd-436f-4d01-8a3b-210926ded13e"
+    },
+    {
+      "sourceId": "L4-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Simplify  \\frac{2}{12} × 6",
+      "diagram": null,
+      "options": [
+        "1",
+        "\\frac{1}{4}",
+        "\\frac{2}{5}",
+        "\\frac{10}{13}",
+        "\\frac{1}{5}"
+      ],
+      "correctAnswer": "1",
+      "solutionVideoId": "abb749a6-e494-4715-9218-78dfddea414a"
+    },
+    {
+      "sourceId": "L4-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Solve 2 \\frac{1}{3} × 1 \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "3 \\frac{1}{2}",
+        "2 \\frac{1}{2}",
+        "2 \\frac{1}{4}",
+        "1 \\frac{1}{2}",
+        "3 \\frac{1}{4}"
+      ],
+      "correctAnswer": "3 \\frac{1}{2}",
+      "solutionVideoId": "ab8de1fc-0540-4edd-a0e7-0b1f5ca0383d"
+    },
+    {
+      "sourceId": "L4-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Simplify \\frac{3}{4} × 1 \\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "\\frac{13}{16}",
+        "\\frac{11}{18}",
+        "\\frac{15}{16}",
+        "\\frac{15}{18}",
+        "\\frac{10}{13}"
+      ],
+      "correctAnswer": "\\frac{15}{16}",
+      "solutionVideoId": "1a20f9b5-284c-414a-81d1-742366f86bc7"
+    },
+    {
+      "sourceId": "L4-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Solve  \\frac{3}{11} × \\frac{55}{60}",
+      "diagram": null,
+      "options": [
+        "\\frac{2}{3}",
+        "\\frac{1}{3}",
+        "\\frac{1}{6}",
+        "\\frac{1}{5}",
+        "\\frac{1}{4}"
+      ],
+      "correctAnswer": "\\frac{1}{4}",
+      "solutionVideoId": "5e026206-c5f0-46f0-9282-37446c5594c0"
+    },
+    {
+      "sourceId": "L4-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Simplify  5 × \\frac{4}{25}",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{5}",
+        "\\frac{2}{3}",
+        "\\frac{2}{5}",
+        "\\frac{4}{5}",
+        "\\frac{1}{6}"
+      ],
+      "correctAnswer": "\\frac{4}{5}",
+      "solutionVideoId": "dda4a1a9-08fc-44ba-9d22-176eb0b98d75"
+    },
+    {
+      "sourceId": "L4-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Solve  \\frac{6}{24} × \\frac{12}{24}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{6}",
+        "\\frac{1}{8}",
+        "\\frac{2}{3}",
+        "\\frac{3}{2}",
+        "\\frac{2}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{8}",
+      "solutionVideoId": "0e66ef7e-0a18-4a45-af4f-29b92db6370a"
+    },
+    {
+      "sourceId": "L4-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Simplify  \\frac{1}{3} × \\frac{1}{2} × \\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{25}",
+        "\\frac{3}{20}",
+        "\\frac{1}{24}",
+        "\\frac{1}{20}",
+        "\\frac{2}{25}"
+      ],
+      "correctAnswer": "\\frac{1}{24}",
+      "solutionVideoId": "25837d29-50e6-4db6-8464-f31d3fa596eb"
+    },
+    {
+      "sourceId": "L4-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "What is one fifth of twenty-five?",
+      "diagram": null,
+      "options": [
+        "12",
+        "6",
+        "5",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "6a55da6c-3380-4848-b37f-e495de979338"
+    },
+    {
+      "sourceId": "L4-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "What is the product of 8 and \\frac{3}{4}?",
+      "diagram": null,
+      "options": [
+        "3",
+        "9",
+        "6",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "6",
+      "solutionVideoId": "685e2a21-23a3-4c73-9946-140db3b494c7"
+    },
+    {
+      "sourceId": "L4-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "What is \\frac{1}{3} of $6.00?",
+      "diagram": null,
+      "options": [
+        "$2.00",
+        "$3.00",
+        "$6.00",
+        "$4.00",
+        "$1.00"
+      ],
+      "correctAnswer": "$2.00",
+      "solutionVideoId": "8b07419a-1926-49bc-a2ad-bdbf5ae22fe0"
+    },
+    {
+      "sourceId": "L4-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "What is \\frac{2}{3} of 18 bananas?",
+      "diagram": null,
+      "options": [
+        "16",
+        "8",
+        "10",
+        "14",
+        "12"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "343eaca1-f6a5-4409-a5bc-3446711de273"
+    },
+    {
+      "sourceId": "L4-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Find \\frac{2}{3}  of 15.",
+      "diagram": null,
+      "options": [
+        "15",
+        "16",
+        "22",
+        "18",
+        "10"
+      ],
+      "correctAnswer": "10",
+      "solutionVideoId": "17012b22-0311-4e63-b6c6-0cb8261d5c4c"
+    },
+    {
+      "sourceId": "L4-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Find the product of \\frac{5}{16} and 32.",
+      "diagram": null,
+      "options": [
+        "10",
+        "14",
+        "20",
+        "12",
+        "16"
+      ],
+      "correctAnswer": "10",
+      "solutionVideoId": "ce04ea09-1773-4a8c-a2fb-b3d9c99d2e8e"
+    },
+    {
+      "sourceId": "L4-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "How much is \\frac{1}{4} of $2.00?",
+      "diagram": null,
+      "options": [
+        "45 cents",
+        "48 cents",
+        "50 cents",
+        "54 cents",
+        "52 cents"
+      ],
+      "correctAnswer": "50 cents",
+      "solutionVideoId": "6eefe241-f295-4f99-8f81-50788c6bc30d"
+    },
+    {
+      "sourceId": "L4-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "What is \\frac{2}{5} of 1 metre?",
+      "diagram": null,
+      "options": [
+        "38 cm",
+        "44 cm",
+        "46 cm",
+        "42 cm",
+        "40 cm"
+      ],
+      "correctAnswer": "40 cm",
+      "solutionVideoId": "a589ce8b-9841-4c5c-ae2c-969e52b4ace8"
+    },
+    {
+      "sourceId": "L4-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "How much is \\frac{1}{4} of a litre?",
+      "diagram": null,
+      "options": [
+        "100 mL",
+        "250 mL",
+        "550 mL",
+        "150 mL",
+        "750 mL"
+      ],
+      "correctAnswer": "250 mL",
+      "solutionVideoId": "973285c5-adb6-43b7-9b6b-b78951d9fc89"
+    },
+    {
+      "sourceId": "L4-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Find \\frac{3}{4} of eighty.",
+      "diagram": null,
+      "options": [
+        "62",
+        "50",
+        "64",
+        "65",
+        "60"
+      ],
+      "correctAnswer": "60",
+      "solutionVideoId": "e1816538-71f6-48c2-afd6-4d0a79953c67"
+    },
+    {
+      "sourceId": "L4-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Simplify 1 × \\frac{1}{5} × \\frac{1}{6}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{20}",
+        "\\frac{2}{15}",
+        "\\frac{1}{18}",
+        "\\frac{3}{20}",
+        "\\frac{1}{30}"
+      ],
+      "correctAnswer": "\\frac{1}{30}",
+      "solutionVideoId": "af600bad-bbe7-4221-a15a-e7494740862e"
+    },
+    {
+      "sourceId": "L4-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Simplify 2 \\frac{1}{3} × \\frac{1}{2} × 1",
+      "diagram": null,
+      "options": [
+        "1 \\frac{5}{6}",
+        "2 \\frac{1}{6}",
+        "3 \\frac{1}{6}",
+        "2 \\frac{5}{6}",
+        "1 \\frac{1}{6}"
+      ],
+      "correctAnswer": "1 \\frac{1}{6}",
+      "solutionVideoId": "1963d77e-1570-4ac8-98da-ec4de971c34f"
+    },
+    {
+      "sourceId": "L4-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Solve  \\frac{1}{4} of 16",
+      "diagram": null,
+      "options": [
+        "2",
+        "6",
+        "4",
+        "8",
+        "5"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "6edb216e-e83a-4c2f-ba6d-7581bd2fa431"
+    },
+    {
+      "sourceId": "L4-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Solve  \\frac{1}{6} of 24",
+      "diagram": null,
+      "options": [
+        "4",
+        "2",
+        "6",
+        "8",
+        "10"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "72b3053f-21f5-46c7-8305-fb178186ae92"
+    },
+    {
+      "sourceId": "L4-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Solve (\\frac{2}{7})³",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{343}",
+        "\\frac{8}{341}",
+        "\\frac{7}{343}",
+        "\\frac{6}{343}",
+        "\\frac{8}{343}"
+      ],
+      "correctAnswer": "\\frac{8}{343}",
+      "solutionVideoId": "f3f473e6-cf3f-4e67-b0a7-89f90ab10c9c"
+    },
+    {
+      "sourceId": "L4-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Solve (3 \\frac{1}{2})²",
+      "diagram": null,
+      "options": [
+        "12 \\frac{1}{2}",
+        "12 \\frac{1}{4}",
+        "12 \\frac{2}{5}",
+        "13 \\frac{2}{5}",
+        "13 \\frac{1}{5}"
+      ],
+      "correctAnswer": "12 \\frac{1}{4}",
+      "solutionVideoId": "5a3266ac-9d91-4814-bae0-3ecf3cc491c8"
+    },
+    {
+      "sourceId": "L4-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Simplify (2 \\frac{2}{3} × 1 \\frac{1}{3}) × \\frac{1}{8} × 3",
+      "diagram": null,
+      "options": [
+        "1 \\frac{3}{5}",
+        "2 \\frac{1}{3}",
+        "1 \\frac{1}{3}",
+        "1 \\frac{1}{4}",
+        "3 \\frac{2}{3}"
+      ],
+      "correctAnswer": "1 \\frac{1}{3}",
+      "solutionVideoId": "0e684da6-d682-4573-bde0-e03e1ce2ffcb"
+    },
+    {
+      "sourceId": "L4-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Simplify  \\frac{5}{12} × \\frac{6}{7} × 2 \\frac{6}{7}",
+      "diagram": null,
+      "options": [
+        "2 \\frac{1}{49}",
+        "1 \\frac{1}{39}",
+        "2 \\frac{1}{33}",
+        "3 \\frac{1}{49}",
+        "1 \\frac{1}{49}"
+      ],
+      "correctAnswer": "1 \\frac{1}{49}",
+      "solutionVideoId": "f76001b9-9d66-467a-95d7-c589dd29438c"
+    },
+    {
+      "sourceId": "L4-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Simplify 4 \\frac{1}{6} × 6 \\frac{1}{2} × 5 \\frac{2}{3}",
+      "diagram": null,
+      "options": [
+        "315 \\frac{17}{36}",
+        "136 \\frac{15}{36}",
+        "135 \\frac{17}{36}",
+        "150 \\frac{17}{36}",
+        "153 \\frac{17}{36}"
+      ],
+      "correctAnswer": "153 \\frac{17}{36}",
+      "solutionVideoId": "27365a25-f337-413b-8d7d-76d7efc61316"
+    }
+  ]
+}
