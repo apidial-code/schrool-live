@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 7,
+  "title": "What is a Decimal?",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "c75d29f1-f067-498a-b466-f3ac4a1a1a35",
+  "questions": [
+    {
+      "sourceId": "L7-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "What is 5 hundreds, 8 tens, and 6 units?",
+      "diagram": null,
+      "options": [
+        "685",
+        "658",
+        "856",
+        "568",
+        "586"
+      ],
+      "correctAnswer": "586",
+      "solutionVideoId": "c7cf86e6-f8d3-440c-9a8f-db399b0cfa3a"
+    },
+    {
+      "sourceId": "L7-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "What is 7 hundreds, 8 tens, and 8 units?",
+      "diagram": null,
+      "options": [
+        "1788",
+        "887",
+        "878",
+        "1878",
+        "788"
+      ],
+      "correctAnswer": "788",
+      "solutionVideoId": "4ed39378-ca0c-45a9-bd3c-ca829a219dc9"
+    },
+    {
+      "sourceId": "L7-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "What is 2 thousands, 4 hundreds, 9 tens, and 7 units?",
+      "diagram": null,
+      "options": [
+        "2479",
+        "2947",
+        "4297",
+        "9247",
+        "2497"
+      ],
+      "correctAnswer": "2497",
+      "solutionVideoId": "84667467-769c-46b9-82c7-04adaeffc0ee"
+    },
+    {
+      "sourceId": "L7-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "What is 4 thousands, 6 hundreds and 4 tens?",
+      "diagram": null,
+      "options": [
+        "4381",
+        "4581",
+        "4678",
+        "4650",
+        "4640"
+      ],
+      "correctAnswer": "4640",
+      "solutionVideoId": "d5bb67f9-689b-4ae5-9145-ea5bac29e081"
+    },
+    {
+      "sourceId": "L7-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "What is 7 thousands, 4 hundreds, 8 tens and 7 units?",
+      "diagram": null,
+      "options": [
+        "7784",
+        "7847",
+        "4787",
+        "8747",
+        "7487"
+      ],
+      "correctAnswer": "7487",
+      "solutionVideoId": "842458dc-dd9b-4888-8f6e-35226154ada5"
+    },
+    {
+      "sourceId": "L7-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "What is 4 thousands, 6 hundreds, 3 tens and 8 units?",
+      "diagram": null,
+      "options": [
+        "4863",
+        "4683",
+        "4836",
+        "4368",
+        "4638"
+      ],
+      "correctAnswer": "4638",
+      "solutionVideoId": "4d675490-742a-4c81-99e0-85dcbeab8773"
+    },
+    {
+      "sourceId": "L7-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "What is 5 thousands, 5 hundreds, 4 tens and 5 units?",
+      "diagram": null,
+      "options": [
+        "5454",
+        "4455",
+        "5445",
+        "5455",
+        "5545"
+      ],
+      "correctAnswer": "5545",
+      "solutionVideoId": "fc6bff78-3ddf-4892-86af-805e5993c2de"
+    },
+    {
+      "sourceId": "L7-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "What is 3 thousands, 4 hundreds, 4 tens and 3 units?",
+      "diagram": null,
+      "options": [
+        "3433",
+        "3434",
+        "3043",
+        "3344",
+        "3443"
+      ],
+      "correctAnswer": "3443",
+      "solutionVideoId": "8c531187-5958-4755-87ed-8d8086894c57"
+    },
+    {
+      "sourceId": "L7-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "What is 2 thousands, 2 hundreds, 9 tens and 5 units?",
+      "diagram": null,
+      "options": [
+        "2595",
+        "2095",
+        "2205",
+        "2925",
+        "2295"
+      ],
+      "correctAnswer": "2295",
+      "solutionVideoId": "ef12b19d-c7ed-4773-97cf-f18d14e85106"
+    },
+    {
+      "sourceId": "L7-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "What is 3 thousands, 8 hundreds, 7 units, 4 tenths and 8 hundredths?",
+      "diagram": null,
+      "options": [
+        "3048.87",
+        "3087.48",
+        "380748",
+        "3870.84",
+        "3807.48"
+      ],
+      "correctAnswer": "3807.48",
+      "solutionVideoId": "01ac1a83-1bda-4fc6-b787-0c3496c4da17"
+    },
+    {
+      "sourceId": "L7-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "What is 5 hundreds, 7 tens, 8 units, 5 tenths, 9 hundredths and 4 thousandths?",
+      "diagram": null,
+      "options": [
+        "587945",
+        "5708.594",
+        "5785.94",
+        "587.594",
+        "578.594"
+      ],
+      "correctAnswer": "578.594",
+      "solutionVideoId": "6731a46f-3a83-44a0-a411-e59acbba14de"
+    },
+    {
+      "sourceId": "L7-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "What is 3 thousands, 4 hundreds, 2 tens, 1 unit, 3 tenths and 4 hundredths?",
+      "diagram": null,
+      "options": [
+        "3485.94",
+        "3421.38",
+        "3421.48",
+        "3481.34",
+        "3421.34"
+      ],
+      "correctAnswer": "3421.34",
+      "solutionVideoId": "3e09c844-aaf8-452d-86ba-b9ab3a0e7942"
+    },
+    {
+      "sourceId": "L7-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "What is 8 hundreds, 2 tens, 9 units, 4 tenths, 2 hundredths and 5 thousandths?",
+      "diagram": null,
+      "options": [
+        "8294.25",
+        "892.542",
+        "829.245",
+        "829.524",
+        "829.425"
+      ],
+      "correctAnswer": "829.425",
+      "solutionVideoId": "481906e5-21bd-46d9-beac-216c72977788"
+    },
+    {
+      "sourceId": "L7-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "What is 7 hundreds, 3 tens, 9 units, 3 tenths, 2 hundredths and 5 thousandths?",
+      "diagram": null,
+      "options": [
+        "973.325",
+        "737.325",
+        "739.352",
+        "739.253",
+        "739.325"
+      ],
+      "correctAnswer": "739.325",
+      "solutionVideoId": "91876d1b-8c7a-4ac9-9c60-fceef344b9ce"
+    },
+    {
+      "sourceId": "L7-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "What is 5 hundreds, 3 tens, 4 units, 1 tenth, 3 hundredths and 5 thousandths?",
+      "diagram": null,
+      "options": [
+        "535.135",
+        "391.35",
+        "539.531",
+        "539.351",
+        "534.135"
+      ],
+      "correctAnswer": "534.135",
+      "solutionVideoId": "d6de9f68-8318-47f3-8995-719a60da1da0"
+    },
+    {
+      "sourceId": "L7-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Convert to decimal: \\frac{1}{10} + \\frac{5}{100} + \\frac{7}{1000}",
+      "diagram": null,
+      "options": [
+        "0.771",
+        "0.715",
+        "1.175",
+        "0.175",
+        "0.157"
+      ],
+      "correctAnswer": "0.157",
+      "solutionVideoId": "995b6b22-3a54-4589-aa9f-bcc2f44bc75f"
+    },
+    {
+      "sourceId": "L7-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Convert to decimal: \\frac{2}{10} + \\frac{4}{100} + \\frac{6}{1000}",
+      "diagram": null,
+      "options": [
+        "2.426",
+        "0.686",
+        "2.867",
+        "0.716",
+        "0.246"
+      ],
+      "correctAnswer": "0.246",
+      "solutionVideoId": "65404e14-8ee4-4f62-9904-caf008be4ffd"
+    },
+    {
+      "sourceId": "L7-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Convert to decimal: \\frac{3}{10} + \\frac{7}{100} + \\frac{8}{1000}",
+      "diagram": null,
+      "options": [
+        "0.0783",
+        "0.873",
+        "0.783",
+        "0.0873",
+        "0.378"
+      ],
+      "correctAnswer": "0.378",
+      "solutionVideoId": "725bd73c-ade9-4935-adb3-8f3c56447f30"
+    },
+    {
+      "sourceId": "L7-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Convert to decimal: \\frac{8}{10} + \\frac{7}{100} + \\frac{6}{1000}",
+      "diagram": null,
+      "options": [
+        "0.867",
+        "0.786",
+        "0.678",
+        "0.687",
+        "0.876"
+      ],
+      "correctAnswer": "0.876",
+      "solutionVideoId": "e04cd02c-1562-4f6a-b492-8381db91fa28"
+    },
+    {
+      "sourceId": "L7-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Convert to decimal: \\frac{4}{10} + \\frac{9}{100} + \\frac{3}{1000}",
+      "diagram": null,
+      "options": [
+        "0.439",
+        "0.943",
+        "0.349",
+        "0.394",
+        "0.493"
+      ],
+      "correctAnswer": "0.493",
+      "solutionVideoId": "b82521ac-6d5f-40c3-ba04-9078c8233992"
+    },
+    {
+      "sourceId": "L7-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Convert to decimal: \\frac{5}{100} + \\frac{3}{1000} + \\frac{1}{10}",
+      "diagram": null,
+      "options": [
+        "0.351",
+        "0.315",
+        "0.513",
+        "0.518",
+        "0.153"
+      ],
+      "correctAnswer": "0.153",
+      "solutionVideoId": "6bb3c1c2-99cd-48bb-9913-8870bcafe84d"
+    },
+    {
+      "sourceId": "L7-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Convert to decimal: \\frac{2}{10} + \\frac{8}{1000} + \\frac{4}{100}",
+      "diagram": null,
+      "options": [
+        "0.824",
+        "0.428",
+        "0.482",
+        "0.842",
+        "0.248"
+      ],
+      "correctAnswer": "0.248",
+      "solutionVideoId": "e8bf7ac4-c4b7-4f94-ae1d-1baac97a14e6"
+    },
+    {
+      "sourceId": "L7-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Convert to decimal: \\frac{9}{10} + \\frac{5}{1000} + \\frac{6}{100}",
+      "diagram": null,
+      "options": [
+        "0.695",
+        "0.956",
+        "0.596",
+        "0.569",
+        "0.965"
+      ],
+      "correctAnswer": "0.965",
+      "solutionVideoId": "9533d3a7-7f35-4c19-a479-02facaf93feb"
+    },
+    {
+      "sourceId": "L7-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Convert to decimal: 5 \\frac{2}{10} + \\frac{4}{100} + \\frac{6}{1000}",
+      "diagram": null,
+      "options": [
+        "5.642",
+        "5.426",
+        "5.624",
+        "5.264",
+        "5.246"
+      ],
+      "correctAnswer": "5.246",
+      "solutionVideoId": "6f5bafb8-97fc-4bfe-95d6-7181266520f4"
+    },
+    {
+      "sourceId": "L7-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Convert to decimal: 7 \\frac{2}{10} + \\frac{4}{100} + \\frac{6}{1000}",
+      "diagram": null,
+      "options": [
+        "7.462",
+        "7.264",
+        "7.642",
+        "7.624",
+        "7.246"
+      ],
+      "correctAnswer": "7.246",
+      "solutionVideoId": "0c615466-f890-43d3-930b-7be589137eae"
+    },
+    {
+      "sourceId": "L7-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "What is the place value of 7 in 5.713?",
+      "diagram": null,
+      "options": [
+        "Tens",
+        "Hundredths",
+        "Thousandths",
+        "Units",
+        "Tenths"
+      ],
+      "correctAnswer": "Tenths",
+      "solutionVideoId": "d26f6a7d-675b-44b0-ae3c-d8ed8e7ad764"
+    },
+    {
+      "sourceId": "L7-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "What is the place value of 3 in 329.815?",
+      "diagram": null,
+      "options": [
+        "Units",
+        "Hundredths",
+        "Tens",
+        "Tenths",
+        "Hundreds"
+      ],
+      "correctAnswer": "Hundreds",
+      "solutionVideoId": "6a766b6a-5a97-47a5-8170-57fdfbc4bffa"
+    },
+    {
+      "sourceId": "L7-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "What is the place value of 8 in 870.132?",
+      "diagram": null,
+      "options": [
+        "Tens",
+        "Hundredths",
+        "Thousands",
+        "Units",
+        "Hundreds"
+      ],
+      "correctAnswer": "Hundreds",
+      "solutionVideoId": "e30d123f-85a6-4e63-96d5-8ba4e2af6eaf"
+    },
+    {
+      "sourceId": "L7-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "What is the place value of 7 in 456.187?",
+      "diagram": null,
+      "options": [
+        "Tenths",
+        "Hundredths",
+        "Thousands",
+        "Hundreds",
+        "Thousandths"
+      ],
+      "correctAnswer": "Thousandths",
+      "solutionVideoId": "263e4980-7006-4aa0-9a03-ef0ea3551237"
+    },
+    {
+      "sourceId": "L7-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "What is the place value of 5 in 326.125?",
+      "diagram": null,
+      "options": [
+        "Thousands",
+        "Ten-thousands",
+        "Hundredths",
+        "Hundreds",
+        "Thousandths"
+      ],
+      "correctAnswer": "Thousandths",
+      "solutionVideoId": "380d611d-b2fe-4878-a2b1-13315ff5cdf2"
+    }
+  ]
+}
