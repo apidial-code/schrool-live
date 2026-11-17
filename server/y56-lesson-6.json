@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 6,
+  "title": "Combination of All Principles BODMAS",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "14372a10-334e-44c5-96aa-4eb81ad3be76",
+  "questions": [
+    {
+      "sourceId": "L6-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Simplify: \\frac{1}{4} + \\frac{5}{4} × \\frac{4}{15}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{12}",
+        "\\frac{5}{12}",
+        "\\frac{3}{12}",
+        "\\frac{11}{12}",
+        "\\frac{7}{12}"
+      ],
+      "correctAnswer": "\\frac{7}{12}",
+      "solutionVideoId": "ca5210db-8275-415f-ae2d-52db8587ba82"
+    },
+    {
+      "sourceId": "L6-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Solve: \\frac{5}{7} - \\frac{1}{2} × \\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "\\frac{22}{56}",
+        "\\frac{55}{56}",
+        "\\frac{11}{56}",
+        "\\frac{44}{56}",
+        "\\frac{33}{56}"
+      ],
+      "correctAnswer": "\\frac{33}{56}",
+      "solutionVideoId": "8c5a53bb-3119-423e-880b-242905302145"
+    },
+    {
+      "sourceId": "L6-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Simplify: \\frac{3}{5} × (\\frac{1}{4} − \\frac{1}{8})",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{40}",
+        "\\frac{1}{40}",
+        "\\frac{11}{40}",
+        "\\frac{9}{40}",
+        "\\frac{3}{40}"
+      ],
+      "correctAnswer": "\\frac{3}{40}",
+      "solutionVideoId": "ebbe1eec-852b-454e-a673-a072b21d6776"
+    },
+    {
+      "sourceId": "L6-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Solve: (\\frac{3}{4} + \\frac{3}{8}) × \\frac{2}{3}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{5}",
+        "\\frac{2}{3}",
+        "\\frac{5}{7}",
+        "\\frac{1}{4}",
+        "\\frac{3}{4}"
+      ],
+      "correctAnswer": "\\frac{3}{4}",
+      "solutionVideoId": "4aafee7b-b21b-436e-a14b-c4f0d3d0338e"
+    },
+    {
+      "sourceId": "L6-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Simplify: \\frac{2}{3} × \\frac{3}{8} ÷1 \\frac{1}{4}",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{5}",
+        "\\frac{2}{5}",
+        "\\frac{4}{5}",
+        "\\frac{1}{2}",
+        "\\frac{1}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{5}",
+      "solutionVideoId": "deee8c37-b96d-4979-9a83-a76d4ef893ba"
+    },
+    {
+      "sourceId": "L6-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Solve: 2 \\frac{3}{4} ÷ \\frac{4}{5} × \\frac{1}{6}",
+      "diagram": null,
+      "options": [
+        "\\frac{51}{95}",
+        "\\frac{51}{96}",
+        "\\frac{45}{96}",
+        "\\frac{53}{95}",
+        "\\frac{55}{96}"
+      ],
+      "correctAnswer": "\\frac{55}{96}",
+      "solutionVideoId": "6685dc9f-8de0-4a5d-86ba-0ed667028124"
+    },
+    {
+      "sourceId": "L6-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Simplify:( \\frac{2}{3} + \\frac{2}{5} ) × \\frac{15}{16}",
+      "diagram": null,
+      "options": [
+        "4",
+        "7",
+        "5",
+        "3",
+        "1"
+      ],
+      "correctAnswer": "1",
+      "solutionVideoId": "e92b6d6b-006f-4082-b5ed-26c9211986f1"
+    },
+    {
+      "sourceId": "L6-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Solve: (\\frac{1}{2} − \\frac{1}{4} ) × \\frac{8}{9}",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{9}",
+        "\\frac{1}{9}",
+        "\\frac{8}{9}",
+        "\\frac{5}{9}",
+        "\\frac{2}{9}"
+      ],
+      "correctAnswer": "\\frac{2}{9}",
+      "solutionVideoId": "abe4ecdf-9446-49b7-99a5-1eb79cb76519"
+    },
+    {
+      "sourceId": "L6-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Simplify: \\frac{5}{8}+ \\frac{1}{4} −\\frac{2}{3} × \\frac{3}{4}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{8}",
+        "\\frac{4}{8}",
+        "\\frac{7}{8}",
+        "\\frac{5}{8}",
+        "\\frac{3}{8}"
+      ],
+      "correctAnswer": "\\frac{3}{8}",
+      "solutionVideoId": "f885b64d-5730-4a57-9809-36d43c6ad90b"
+    },
+    {
+      "sourceId": "L6-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Solve: 2 \\frac{2}{3} ÷ 3 \\frac{1}{5} + \\frac{2}{10} × 4",
+      "diagram": null,
+      "options": [
+        "3 \\frac{5}{6}",
+        "2 \\frac{5}{6}",
+        "1 \\frac{5}{6}",
+        "5 \\frac{5}{6}",
+        "1 \\frac{19}{30}"
+      ],
+      "correctAnswer": "1 \\frac{19}{30}",
+      "solutionVideoId": "03168e68-c2bb-41cf-ba3b-6fcaacbc37b4"
+    },
+    {
+      "sourceId": "L6-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Solve: 2 \\frac{1}{2} × 1 \\frac{1}{4} ÷1 \\frac{1}{8}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{7}{9}",
+        "3 \\frac{7}{9}",
+        "5 \\frac{7}{9}",
+        "4 \\frac{7}{9}",
+        "2 \\frac{7}{9}"
+      ],
+      "correctAnswer": "2 \\frac{7}{9}",
+      "solutionVideoId": "9b14dc33-710a-4dbd-8863-d4241027296a"
+    },
+    {
+      "sourceId": "L6-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Simplify: 3 \\frac{1}{4} ÷ 2 \\frac{1}{2} × 1 \\frac{1}{4} + 3",
+      "diagram": null,
+      "options": [
+        "5 \\frac{5}{8}",
+        "2 \\frac{5}{8}",
+        "1 \\frac{5}{8}",
+        "3 \\frac{5}{8}",
+        "4 \\frac{5}{8}"
+      ],
+      "correctAnswer": "4 \\frac{5}{8}",
+      "solutionVideoId": "ed7d18cb-2719-4592-9311-83688de05472"
+    },
+    {
+      "sourceId": "L6-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Solve: √(5 \\frac{4}{9})",
+      "diagram": null,
+      "options": [
+        "6 \\frac{1}{3}",
+        "\\frac{1}{3}",
+        "2 \\frac{1}{4}",
+        "4 \\frac{1}{3}",
+        "2 \\frac{1}{3}"
+      ],
+      "correctAnswer": "2 \\frac{1}{3}",
+      "solutionVideoId": "1a6e686d-1fff-45d6-9967-620aca6cfc2b"
+    },
+    {
+      "sourceId": "L6-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Simplify: \\frac{4}{9} × (\\frac{1}{4} − \\frac{1}{16} )",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{12}",
+        "\\frac{2}{12}",
+        "\\frac{3}{12}",
+        "\\frac{7}{12}",
+        "\\frac{1}{12}"
+      ],
+      "correctAnswer": "\\frac{1}{12}",
+      "solutionVideoId": "739751fc-4136-4b3b-9573-a6391b834066"
+    },
+    {
+      "sourceId": "L6-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Solve: \\frac{6}{10}+\\frac{9}{10} − \\frac{2}{5} × 2",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{10}",
+        "\\frac{2}{10}",
+        "\\frac{1}{10}",
+        "\\frac{3}{10}",
+        "\\frac{7}{10}"
+      ],
+      "correctAnswer": "\\frac{7}{10}",
+      "solutionVideoId": "1a919d81-be91-47a3-a23d-536caf6a15a1"
+    },
+    {
+      "sourceId": "L6-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Simplify: \\frac{5}{8} + \\frac{1}{4} × \\frac{4}{5} + \\frac{3}{4}",
+      "diagram": null,
+      "options": [
+        "3 \\frac{23}{40}",
+        "4 \\frac{23}{40}",
+        "2 \\frac{23}{40}",
+        "5 \\frac{23}{40}",
+        "1 \\frac{23}{40}"
+      ],
+      "correctAnswer": "1 \\frac{23}{40}",
+      "solutionVideoId": "a13d9d9c-5990-4dc1-8c3c-96de5bb94fed"
+    },
+    {
+      "sourceId": "L6-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Solve: 2 − \\frac{5}{8} +\\frac{6}{5} × \\frac{5}{9}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{1}{24}",
+        "7 \\frac{1}{24}",
+        "3 \\frac{1}{24}",
+        "5 \\frac{1}{24}",
+        "2 \\frac{1}{24}"
+      ],
+      "correctAnswer": "2 \\frac{1}{24}",
+      "solutionVideoId": "67b70d18-1df8-435d-8237-7a9aa65da40a"
+    },
+    {
+      "sourceId": "L6-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Simplify: 2 \\frac{4}{5} × (\\frac{1}{2} ÷ 1 \\frac{3}{4})",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{5}",
+        "\\frac{6}{5}",
+        "\\frac{9}{5}",
+        "\\frac{3}{5}",
+        "\\frac{4}{5}"
+      ],
+      "correctAnswer": "\\frac{4}{5}",
+      "solutionVideoId": "0ae19758-409e-4036-8c2a-289c419c2c84"
+    },
+    {
+      "sourceId": "L6-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Solve: √(3 \\frac{6}{25})",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{16}",
+        "\\frac{59}{60}",
+        "\\frac{9}{10}",
+        "1 \\frac{5}{6}",
+        "1 \\frac{4}{5}"
+      ],
+      "correctAnswer": "1 \\frac{4}{5}",
+      "solutionVideoId": "ee232613-efa1-418e-a489-026dd95b8496"
+    },
+    {
+      "sourceId": "L6-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Simplify: { \\frac{3}{4} × (\\frac{1}{4} − \\frac{1}{8} ) + \\frac{9}{10} }",
+      "diagram": null,
+      "options": [
+        "\\frac{161}{164}",
+        "\\frac{262}{264}",
+        "\\frac{161}{640}",
+        "\\frac{165}{264}",
+        "\\frac{159}{160}"
+      ],
+      "correctAnswer": "\\frac{159}{160}",
+      "solutionVideoId": "cc07ef81-9260-4ae6-bbc2-58cf25bc93ba"
+    },
+    {
+      "sourceId": "L6-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Simplify: (3 \\frac{1}{2} ÷ 2 \\frac{2}{3} ) × 2 \\frac{1}{4} + 1",
+      "diagram": null,
+      "options": [
+        "7 \\frac{39}{40}",
+        "5 \\frac{39}{40}",
+        "2 \\frac{39}{40}",
+        "3 \\frac{39}{40}",
+        "3 \\frac{61}{64}"
+      ],
+      "correctAnswer": "3 \\frac{61}{64}",
+      "solutionVideoId": "a346e054-a512-4f65-92f6-c392ba62a676"
+    },
+    {
+      "sourceId": "L6-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Solve: 2 \\frac{1}{2} × \\frac{3}{4} + \\frac{3}{5} − \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{1}{50}",
+        "3 \\frac{40}{50}",
+        "1 \\frac{2}{40}",
+        "3 \\frac{1}{50}",
+        "1 \\frac{39}{40}"
+      ],
+      "correctAnswer": "1 \\frac{39}{40}",
+      "solutionVideoId": "85ca58a2-497b-4d7d-a371-39e47d34549a"
+    },
+    {
+      "sourceId": "L6-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Simplify: 3 \\frac{1}{5} ÷ \\frac{8}{5} × \\frac{4}{5}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{39}{40}",
+        "2 \\frac{3}{5}",
+        "1 \\frac{3}{40}",
+        "1 \\frac{9}{40}",
+        "1 \\frac{3}{5}"
+      ],
+      "correctAnswer": "1 \\frac{3}{5}",
+      "solutionVideoId": "413c8c8a-e1e1-49e8-8f72-3187dabcedd9"
+    },
+    {
+      "sourceId": "L6-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Solve: 15 × \\frac{1}{5} - \\frac{1}{10} +\\frac{3}{10}",
+      "diagram": null,
+      "options": [
+        "5 \\frac{1}{3}",
+        "2 \\frac{7}{8}",
+        "1 \\frac{2}{3}",
+        "3 \\frac{12}{32}",
+        "3 \\frac{1}{5}"
+      ],
+      "correctAnswer": "3 \\frac{1}{5}",
+      "solutionVideoId": "a6039cae-7a72-4478-a752-13bd7fdfa6f3"
+    },
+    {
+      "sourceId": "L6-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Simplify: 1 \\frac{4}{5} × (\\frac{1}{8} ÷ 2 \\frac{3}{4} )",
+      "diagram": null,
+      "options": [
+        "4 \\frac{8}{110}",
+        "\\frac{12}{110}",
+        "1 \\frac{9}{110}",
+        "\\frac{19}{110}",
+        "\\frac{9}{110}"
+      ],
+      "correctAnswer": "\\frac{9}{110}",
+      "solutionVideoId": "e3178240-caa3-4c26-812f-1d9ce6693745"
+    },
+    {
+      "sourceId": "L6-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Solve: \\frac{3}{8} × \\frac{2}{8} + ( \\frac{1}{2} − \\frac{1}{4} ) ÷ \\frac{1}{8}",
+      "diagram": null,
+      "options": [
+        "5 \\frac{3}{32}",
+        "2 \\frac{7}{32}",
+        "1 \\frac{2}{32}",
+        "3 \\frac{2}{32}",
+        "2 \\frac{3}{32}"
+      ],
+      "correctAnswer": "2 \\frac{3}{32}",
+      "solutionVideoId": "bf25b235-8b31-4025-b556-69a212e0494f"
+    },
+    {
+      "sourceId": "L6-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Solve: √(1 \\frac{19}{81})",
+      "diagram": null,
+      "options": [
+        "5 \\frac{2}{5}",
+        "3 \\frac{2}{9}",
+        "4 \\frac{1}{9}",
+        "1 \\frac{2}{5}",
+        "1 \\frac{1}{9}"
+      ],
+      "correctAnswer": "1 \\frac{1}{9}",
+      "solutionVideoId": "9058ab76-47bb-409b-85e9-9c556c0e81af"
+    },
+    {
+      "sourceId": "L6-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Simplify: \\frac{3}{5} ÷ \\frac{1}{10} + \\frac{1}{10} × 2 ÷ \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "6 \\frac{2}{6}",
+        "1 \\frac{5}{9}",
+        "2 \\frac{2}{9}",
+        "1 \\frac{5}{6}",
+        "6 \\frac{2}{5}"
+      ],
+      "correctAnswer": "6 \\frac{2}{5}",
+      "solutionVideoId": "9acd7523-deb5-4164-a098-f63c2f556a5b"
+    },
+    {
+      "sourceId": "L6-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Simplify: {( \\frac{3}{5} − \\frac{1}{4} ) + \\frac{8}{15}} × \\frac{5}{8}",
+      "diagram": null,
+      "options": [
+        "\\frac{12}{48}",
+        "\\frac{2}{88}",
+        "\\frac{52}{96}",
+        "\\frac{37}{98}",
+        "\\frac{53}{96}"
+      ],
+      "correctAnswer": "\\frac{53}{96}",
+      "solutionVideoId": "4ab17b01-82b5-44aa-9efb-8a38f4ecaba1"
+    },
+    {
+      "sourceId": "L6-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Solve: \\frac{5}{6} − \\frac{3}{4} +\\frac{1}{10} × \\frac{5}{8}",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{5}",
+        "\\frac{6}{50}",
+        "1 \\frac{3}{15}",
+        "3 \\frac{1}{5}",
+        "\\frac{7}{48}"
+      ],
+      "correctAnswer": "\\frac{7}{48}",
+      "solutionVideoId": "b2c5f343-028b-426d-b736-6881a3f5712c"
+    }
+  ]
+}
