@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 5,
+  "title": "Division of Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "cd94ffc1-bd59-4448-af2f-67c9cd8d851c",
+  "questions": [
+    {
+      "sourceId": "L5-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Simplify: \\frac{8}{9} ÷ \\frac{2}{3}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{1}{9}",
+        "2 \\frac{1}{9}",
+        "2 \\frac{1}{3}",
+        "1 \\frac{2}{3}",
+        "1 \\frac{1}{3}"
+      ],
+      "correctAnswer": "1 \\frac{1}{3}",
+      "solutionVideoId": "1c51a288-17d6-424a-893c-366b8fa5cc3b"
+    },
+    {
+      "sourceId": "L5-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Solve: \\frac{3}{4} ÷ \\frac{3}{7}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{1}{7}",
+        "2 \\frac{1}{4}",
+        "3 \\frac{3}{7}",
+        "2 \\frac{1}{7}",
+        "1 \\frac{3}{4}"
+      ],
+      "correctAnswer": "1 \\frac{3}{4}",
+      "solutionVideoId": "047afe80-adad-4975-8340-061472f1054d"
+    },
+    {
+      "sourceId": "L5-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Simplify: \\frac{4}{5} ÷ \\frac{8}{15}",
+      "diagram": null,
+      "options": [
+        "7 \\frac{1}{3}",
+        "2 \\frac{1}{2}",
+        "5 \\frac{1}{2}",
+        "3 \\frac{1}{3}",
+        "1 \\frac{1}{2}"
+      ],
+      "correctAnswer": "1 \\frac{1}{2}",
+      "solutionVideoId": "08d66e1b-707d-445e-9895-414fd169e8f9"
+    },
+    {
+      "sourceId": "L5-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Solve: \\frac{11}{15} ÷ \\frac{33}{20}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{1}{4}",
+        "\\frac{3}{4}",
+        "\\frac{2}{3}",
+        "\\frac{1}{5}",
+        "\\frac{4}{9}"
+      ],
+      "correctAnswer": "\\frac{4}{9}",
+      "solutionVideoId": "0bec295c-7cec-4afc-8d23-066411fe2e68"
+    },
+    {
+      "sourceId": "L5-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Simplify: \\frac{7}{8} ÷ \\frac{13}{16}",
+      "diagram": null,
+      "options": [
+        "5 \\frac{2}{15}",
+        "7 \\frac{2}{13}",
+        "5 \\frac{1}{15}",
+        "3 \\frac{1}{3}",
+        "1 \\frac{1}{13}"
+      ],
+      "correctAnswer": "1 \\frac{1}{13}",
+      "solutionVideoId": "1d95481f-fb6c-4aa4-bff2-0788cc6e1a42"
+    },
+    {
+      "sourceId": "L5-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Solve: \\frac{15}{21} ÷ \\frac{5}{7}",
+      "diagram": null,
+      "options": [
+        "4",
+        "3",
+        "6",
+        "10",
+        "1"
+      ],
+      "correctAnswer": "1",
+      "solutionVideoId": "7f81fae5-fe26-4b46-99f5-7a27daf12bb0"
+    },
+    {
+      "sourceId": "L5-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Simplify: \\frac{18}{25} ÷ \\frac{4}{5}",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{18}",
+        "\\frac{11}{12}",
+        "\\frac{15}{16}",
+        "\\frac{7}{10}",
+        "\\frac{9}{10}"
+      ],
+      "correctAnswer": "\\frac{9}{10}",
+      "solutionVideoId": "0d823cdb-b62b-46b4-aa39-7b1a0bc0d803"
+    },
+    {
+      "sourceId": "L5-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Solve: \\frac{5}{6} ÷ \\frac{7}{18}",
+      "diagram": null,
+      "options": [
+        "3 \\frac{1}{7}",
+        "5 \\frac{2}{7}",
+        "5 \\frac{1}{7}",
+        "3 \\frac{2}{7}",
+        "2 \\frac{1}{7}"
+      ],
+      "correctAnswer": "2 \\frac{1}{7}",
+      "solutionVideoId": "0e71d52f-35a4-4f58-9b83-0ff59d5d1758"
+    },
+    {
+      "sourceId": "L5-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Simplify: \\frac{9}{11} ÷ \\frac{27}{33}",
+      "diagram": null,
+      "options": [
+        "4",
+        "2",
+        "3",
+        "6",
+        "1"
+      ],
+      "correctAnswer": "1",
+      "solutionVideoId": "83a7477a-136b-463d-af5f-898916db9ecd"
+    },
+    {
+      "sourceId": "L5-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Solve: \\frac{11}{20} ÷ \\frac{13}{30}",
+      "diagram": null,
+      "options": [
+        "7 \\frac{2}{20}",
+        "1 \\frac{1}{30}",
+        "5 \\frac{1}{26}",
+        "7 \\frac{1}{26}",
+        "1 \\frac{7}{26}"
+      ],
+      "correctAnswer": "1 \\frac{7}{26}",
+      "solutionVideoId": "9cad3936-613e-46cc-b282-ded41e1b34a0"
+    },
+    {
+      "sourceId": "L5-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Simplify: 3 \\frac{1}{4} ÷ 1 \\frac{5}{8}",
+      "diagram": null,
+      "options": [
+        "1",
+        "5",
+        "3",
+        "7",
+        "2"
+      ],
+      "correctAnswer": "2",
+      "solutionVideoId": "d3542dbb-c435-4983-9cf2-7ccbbe4cbe40"
+    },
+    {
+      "sourceId": "L5-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Solve: 1 \\frac{3}{8} ÷ 1 \\frac{1}{16}",
+      "diagram": null,
+      "options": [
+        "1 \\frac{2}{11}",
+        "5 \\frac{2}{17}",
+        "5 \\frac{1}{17}",
+        "1 \\frac{5}{11}",
+        "1 \\frac{5}{17}"
+      ],
+      "correctAnswer": "1 \\frac{5}{17}",
+      "solutionVideoId": "fb21b244-ed29-4bf8-abff-95f07a6cb59f"
+    },
+    {
+      "sourceId": "L5-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Simplify: 15 ÷ 2 \\frac{1}{2}",
+      "diagram": null,
+      "options": [
+        "5",
+        "8",
+        "3",
+        "4",
+        "6"
+      ],
+      "correctAnswer": "6",
+      "solutionVideoId": "bdec1dba-5b70-4074-8f36-eba43cd89e39"
+    },
+    {
+      "sourceId": "L5-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Solve: 5 \\frac{1}{5} ÷ \\frac{6}{15}",
+      "diagram": null,
+      "options": [
+        "12",
+        "16",
+        "15",
+        "14",
+        "13"
+      ],
+      "correctAnswer": "13",
+      "solutionVideoId": "b30ca8dd-4ad0-4d72-b2b4-6533b8fa7df7"
+    },
+    {
+      "sourceId": "L5-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Simplify: 1 \\frac{11}{45} ÷ 7",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{41}",
+        "\\frac{6}{43}",
+        "\\frac{8}{43}",
+        "\\frac{7}{45}",
+        "\\frac{8}{45}"
+      ],
+      "correctAnswer": "\\frac{8}{45}",
+      "solutionVideoId": "c4770059-ae76-4566-8310-1e99f3be2fd2"
+    },
+    {
+      "sourceId": "L5-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Solve: 10 \\frac{1}{9} ÷ \\frac{6}{15}",
+      "diagram": null,
+      "options": [
+        "5 \\frac{7}{11}",
+        "23 \\frac{6}{18}",
+        "25 \\frac{3}{11}",
+        "25 \\frac{5}{11}",
+        "25 \\frac{5}{18}"
+      ],
+      "correctAnswer": "25 \\frac{5}{18}",
+      "solutionVideoId": "fa0e1978-0f34-4dad-a8b7-90ed9c5029e5"
+    },
+    {
+      "sourceId": "L5-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Simplify: 12 ÷ \\frac{20}{32}",
+      "diagram": null,
+      "options": [
+        "13 \\frac{5}{6}",
+        "17 \\frac{2}{5}",
+        "15 \\frac{1}{5}",
+        "12 \\frac{1}{4}",
+        "19 \\frac{1}{5}"
+      ],
+      "correctAnswer": "19 \\frac{1}{5}",
+      "solutionVideoId": "453c2ccf-f415-437a-98b5-215c61d8f3aa"
+    },
+    {
+      "sourceId": "L5-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Solve: 6 \\frac{1}{3} ÷ 1 \\frac{4}{18}",
+      "diagram": null,
+      "options": [
+        "7 \\frac{2}{11}",
+        "5 \\frac{1}{11}",
+        "7 \\frac{1}{11}",
+        "7 \\frac{1}{18}",
+        "5 \\frac{2}{11}"
+      ],
+      "correctAnswer": "5 \\frac{2}{11}",
+      "solutionVideoId": "3544e9f6-cd3b-445f-a2ee-bb33fec5ca2f"
+    },
+    {
+      "sourceId": "L5-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Simplify: \\frac{35}{36} ÷ 1 \\frac{1}{8}",
+      "diagram": null,
+      "options": [
+        "\\frac{79}{81}",
+        "\\frac{75}{81}",
+        "\\frac{60}{81}",
+        "\\frac{73}{81}",
+        "\\frac{70}{81}"
+      ],
+      "correctAnswer": "\\frac{70}{81}",
+      "solutionVideoId": "57565d6f-6ada-4532-914e-8a660524958a"
+    },
+    {
+      "sourceId": "L5-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Solve: 1 \\frac{7}{8} ÷ 4",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{4}",
+        "\\frac{1}{3}",
+        "\\frac{2}{3}",
+        "\\frac{1}{5}",
+        "\\frac{15}{32}"
+      ],
+      "correctAnswer": "\\frac{15}{32}",
+      "solutionVideoId": "4e045c39-7182-4f63-a6c6-d15a66dc70fd"
+    },
+    {
+      "sourceId": "L5-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "What fraction represents 20 cents of $1.00?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{6}",
+        "\\frac{3}{5}",
+        "\\frac{1}{9}",
+        "\\frac{2}{5}",
+        "\\frac{1}{5}"
+      ],
+      "correctAnswer": "\\frac{1}{5}",
+      "solutionVideoId": "37c42c7a-da26-4f63-a6c6-d15a66dc70fd"
+    },
+    {
+      "sourceId": "L5-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "What fraction is 45 minutes of one hour?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{5}",
+        "\\frac{2}{3}",
+        "\\frac{1}{3}",
+        "\\frac{2}{5}",
+        "\\frac{3}{4}"
+      ],
+      "correctAnswer": "\\frac{3}{4}",
+      "solutionVideoId": "23c2daeb-c04a-42b3-9272-a1b4c5ff84e3"
+    },
+    {
+      "sourceId": "L5-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "What fraction is two days of one week?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{4}",
+        "\\frac{3}{4}",
+        "\\frac{4}{7}",
+        "\\frac{1}{7}",
+        "\\frac{2}{7}"
+      ],
+      "correctAnswer": "\\frac{2}{7}",
+      "solutionVideoId": "122aba1b-f2cd-49d0-8660-8a5008b3dc94"
+    },
+    {
+      "sourceId": "L5-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "What fraction is 8 months of a year?",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{4}",
+        "\\frac{1}{4}",
+        "\\frac{1}{5}",
+        "\\frac{4}{5}",
+        "\\frac{2}{3}"
+      ],
+      "correctAnswer": "\\frac{2}{3}",
+      "solutionVideoId": "5bde4f7a-7f6c-4c82-a93d-8a3c4ad8da66"
+    },
+    {
+      "sourceId": "L5-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "What fraction represents 150 mL of a litre?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{20}",
+        "\\frac{1}{10}",
+        "\\frac{2}{5}",
+        "\\frac{2}{3}",
+        "\\frac{3}{20}"
+      ],
+      "correctAnswer": "\\frac{3}{20}",
+      "solutionVideoId": "be959716-5328-448d-8c3b-ffd549adb2e2"
+    },
+    {
+      "sourceId": "L5-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "What fraction represents 100 g of 1 kg?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{5}",
+        "\\frac{2}{5}",
+        "\\frac{3}{10}",
+        "\\frac{1}{20}",
+        "\\frac{1}{10}"
+      ],
+      "correctAnswer": "\\frac{1}{10}",
+      "solutionVideoId": "4a9f336f-e840-4389-89fe-d9d5660f8eb2"
+    },
+    {
+      "sourceId": "L5-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "What fraction of 1 centimetre is 5 millimetres?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{5}",
+        "\\frac{1}{4}",
+        "\\frac{1}{3}",
+        "\\frac{1}{6}",
+        "\\frac{1}{2}"
+      ],
+      "correctAnswer": "\\frac{1}{2}",
+      "solutionVideoId": "caa865b0-a9b8-47ea-8725-c8b272d847f9"
+    },
+    {
+      "sourceId": "L5-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "What fraction of 1 metre is 45 cm?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{20}",
+        "\\frac{3}{20}",
+        "\\frac{4}{15}",
+        "\\frac{2}{15}",
+        "\\frac{9}{20}"
+      ],
+      "correctAnswer": "\\frac{9}{20}",
+      "solutionVideoId": "59309324-5f98-4556-b046-93f3c465e6ad"
+    },
+    {
+      "sourceId": "L5-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "What fraction of an hour is 30 minutes?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{4}",
+        "\\frac{1}{3}",
+        "\\frac{4}{9}",
+        "\\frac{3}{4}",
+        "\\frac{1}{2}"
+      ],
+      "correctAnswer": "\\frac{1}{2}",
+      "solutionVideoId": "541292e3-cc18-45d5-a54a-11bdbcbe6669"
+    },
+    {
+      "sourceId": "L5-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "What fraction of $2.00 is 60 cents?",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{9}",
+        "\\frac{1}{5}",
+        "\\frac{2}{5}",
+        "\\frac{1}{10}",
+        "\\frac{3}{10}"
+      ],
+      "correctAnswer": "\\frac{3}{10}",
+      "solutionVideoId": "46af88dd-37ea-491e-84ef-79dcf9c2040c"
+    }
+  ]
+}
