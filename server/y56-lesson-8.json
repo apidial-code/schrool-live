@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 8,
+  "title": "Ordering Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "b3433d9b-5d2f-4d83-a571-5d5651a56159",
+  "questions": [
+    {
+      "sourceId": "L8-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Arrange these numbers in ascending order: 0.7, 0.1, 0.3, 0.9",
+      "diagram": null,
+      "options": [
+        "0.3, 0.9, 0.7, 0.1",
+        "0.3, 0.1, 0.7, 0.9",
+        "0.7, 0.1, 0.3, 0.9",
+        "0.9, 0.1, 0.3, 0.7",
+        "0.1, 0.3, 0.7, 0.9"
+      ],
+      "correctAnswer": "0.1, 0.3, 0.7, 0.9",
+      "solutionVideoId": "65d5aebd-5e70-4ecd-82fc-b0012678e89c"
+    },
+    {
+      "sourceId": "L8-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Arrange these numbers in descending order: 0.12, 0.2, 0.145, 0.1",
+      "diagram": null,
+      "options": [
+        "0.1, 0.12, 0.2, 0.145",
+        "0.12, 0.1, 0.2, 0.145",
+        "0.1, 0.12, 0.145, 0.2",
+        "0.12, 0.2, 0.145, 0.1",
+        "0.2, 0.145, 0.12, 0.1"
+      ],
+      "correctAnswer": "0.2, 0.145, 0.12, 0.1",
+      "solutionVideoId": "2c567eb4-0494-4644-b557-0bb5124739bc"
+    },
+    {
+      "sourceId": "L8-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Arrange these numbers in ascending order: 0.007, 0.070, 0.707, 0.078",
+      "diagram": null,
+      "options": [
+        "0.007, 0.707, 0.078, 0.070",
+        "0.007, 0.070, 0.078, 0.707",
+        "0.078, 0.070, 0.007, 0.707",
+        "0.007, 0.078, 0.070, 0.707",
+        "0.070, 0.078, 0.707, 0.007"
+      ],
+      "correctAnswer": "0.007, 0.070, 0.078, 0.707",
+      "solutionVideoId": "140b8fcf-8f1d-4cc2-86ba-58f07ac63faf"
+    },
+    {
+      "sourceId": "L8-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Arrange these numbers in descending order: 0.606, 0.006, 0.060, 0.066",
+      "diagram": null,
+      "options": [
+        "0.006, 0.066, 0.060, 0.606",
+        "0.060, 0.006, 0.066, 0.606",
+        "0.066, 0.060, 0.006, 0.606",
+        "0.606, 0.060, 0.006, 0.066",
+        "0.606, 0.066, 0.060, 0.006"
+      ],
+      "correctAnswer": "0.606, 0.066, 0.060, 0.006",
+      "solutionVideoId": "6150af2d-9c59-4527-ba39-5b42c75cd9a4"
+    },
+    {
+      "sourceId": "L8-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Arrange these numbers in ascending order: 0.07, 0.072, 0.08, 0.707",
+      "diagram": null,
+      "options": [
+        "0.07, 0.707, 0.072, 0.08",
+        "0.072, 0.07, 0.08, 0.707",
+        "0.07, 0.072, 0.08, 0.707",
+        "0.07, 0.08, 0.072, 0.707",
+        "0.07, 0.072, 0.707, 0.08"
+      ],
+      "correctAnswer": "0.07, 0.072, 0.08, 0.707",
+      "solutionVideoId": "d7db40b7-b3fb-4599-aa97-67b1f3e1cd50"
+    },
+    {
+      "sourceId": "L8-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Arrange these numbers in descending order: 0.4, 0.402, 0.04, 0.48",
+      "diagram": null,
+      "options": [
+        "0.48, 0.402, 0.4, 0.04",
+        "0.402, 0.4, 0.04, 0.48",
+        "0.4, 0.48, 0.402, 0.04",
+        "0.4, 0.402, 0.04, 0.48",
+        "0.04, 0.402, 0.4, 0.48"
+      ],
+      "correctAnswer": "0.48, 0.402, 0.4, 0.04",
+      "solutionVideoId": "997c30e2-5602-4fcf-99da-259cf5ecbefc"
+    },
+    {
+      "sourceId": "L8-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Arrange these numbers in ascending order: 0.001, 0.101, 0.18, 0.011",
+      "diagram": null,
+      "options": [
+        "0.001, 0.011, 0.18, 0.101",
+        "0.011, 0.18, 0.101, 0.001",
+        "0.001, 0.011, 0.101, 0.18",
+        "0.001, 0.18, 0.101, 0.011",
+        "0.18, 0.101, 0.011, 0.001"
+      ],
+      "correctAnswer": "0.001, 0.011, 0.101, 0.18",
+      "solutionVideoId": "092c2733-df12-4885-92dc-1f0609f95efa"
+    },
+    {
+      "sourceId": "L8-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Arrange these numbers in descending order: 3.4, 3.04, 3.404, 0.34",
+      "diagram": null,
+      "options": [
+        "0.34, 3.04, 3.4, 3.404",
+        "3.404, 3.04, 3.4, 0.34",
+        "3.404, 3.4, 3.04, 0.34",
+        "3.04, 0.34, 3.404, 3.4",
+        "0.34, 3.404, 3.4, 3.04"
+      ],
+      "correctAnswer": "3.404, 3.4, 3.04, 0.34",
+      "solutionVideoId": "cc546a1c-6212-4589-b4cf-a41c3da31d89"
+    },
+    {
+      "sourceId": "L8-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Arrange these numbers in ascending order: 0.2, 0.202, 0.208, 0.252",
+      "diagram": null,
+      "options": [
+        "0.2, 0.202, 0.208, 0.252",
+        "0.202, 0.2, 0.252, 0.208",
+        "0.208, 0.202, 0.2, 0.252",
+        "0.252, 0.208, 0.2, 0.202",
+        "0.202, 0.252, 0.208, 0.2"
+      ],
+      "correctAnswer": "0.2, 0.202, 0.208, 0.252",
+      "solutionVideoId": "744447f9-dc7a-4c36-ac2c-f81556fdac58"
+    },
+    {
+      "sourceId": "L8-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Arrange these numbers in descending order: 0.001, 0.01, 0.0001, 0.1",
+      "diagram": null,
+      "options": [
+        "0.01, 0.1, 0.0001, 0.001",
+        "0.1, 0.01, 0.001, 0.0001",
+        "0.1, 0.01, 0.0001, 0.001",
+        "0.01, 0.1, 0.001, 0.0001",
+        "0.0001, 0.01, 0.001, 0.1"
+      ],
+      "correctAnswer": "0.1, 0.01, 0.001, 0.0001",
+      "solutionVideoId": "156628f1-793e-4542-930a-0276643b58b2"
+    },
+    {
+      "sourceId": "L8-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Arrange these numbers in ascending order: 0.8, 0.808, 0.008, 0.08",
+      "diagram": null,
+      "options": [
+        "0.808, 0.8, 0.008, 0.08",
+        "0.8, 0.08, 0.008, 0.808",
+        "0.008, 0.808, 0.8, 0.08",
+        "0.008, 0.08, 0.8, 0.808",
+        "0.08, 0.8, 0.008, 0.808"
+      ],
+      "correctAnswer": "0.008, 0.08, 0.8, 0.808",
+      "solutionVideoId": "0d8ed500-5307-4acb-9d19-a09710e3ad5e"
+    },
+    {
+      "sourceId": "L8-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Arrange these numbers in descending order: 6.256, 6.652, 6.25, 6.265",
+      "diagram": null,
+      "options": [
+        "6.265, 6.256, 6.25, 6.652",
+        "6.652, 6.265, 6.256, 6.25",
+        "6.652, 6.265, 6.25, 6.256",
+        "6.265, 6.652, 6.25, 6.256",
+        "6.25, 6.256, 6.652, 6.265"
+      ],
+      "correctAnswer": "6.652, 6.265, 6.256, 6.25",
+      "solutionVideoId": "7823b6c4-1584-4356-b5ed-8ab739d6a569"
+    },
+    {
+      "sourceId": "L8-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Arrange these numbers in ascending order: 2.080, 2.808, 2.008, 2.828",
+      "diagram": null,
+      "options": [
+        "2.828, 2.808, 2.008, 2.080",
+        "2.080, 2.828, 2.808, 2.008",
+        "2.080, 2.008, 2.808, 2.828",
+        "2.008, 2.080, 2.808, 2.828",
+        "2.008, 2.808, 2.080, 2.828"
+      ],
+      "correctAnswer": "2.008, 2.080, 2.808, 2.828",
+      "solutionVideoId": "d5c720cc-2169-424c-89a4-504523871a9e"
+    },
+    {
+      "sourceId": "L8-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Arrange these numbers in descending order: 8.077, 8.07, 8.7, 8.0077",
+      "diagram": null,
+      "options": [
+        "8.0077, 8.07, 8.077, 8.7",
+        "8.0077, 8.7, 8.077, 8.07",
+        "8.7, 8.077, 8.07, 8.0077",
+        "8.07, 8.077, 8.0077, 8.7",
+        "8.07, 8.7, 8.077, 8.0077"
+      ],
+      "correctAnswer": "8.7, 8.077, 8.07, 8.0077",
+      "solutionVideoId": "1925980e-62d3-42b6-8486-81cb069b61d7"
+    },
+    {
+      "sourceId": "L8-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Arrange these numbers in ascending order: 0.3, 0.41, 0.21, 0.18",
+      "diagram": null,
+      "options": [
+        "0.18, 0.21, 0.3, 0.41",
+        "0.41, 0.21, 0.3, 0.18",
+        "0.21, 0.41, 0.3, 0.18",
+        "0.18, 0.41, 0.21, 0.3",
+        "0.3, 0.18, 0.41, 0.21"
+      ],
+      "correctAnswer": "0.18, 0.21, 0.3, 0.41",
+      "solutionVideoId": "2d98e69a-579b-454b-869b-4a322fcc2e46"
+    },
+    {
+      "sourceId": "L8-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Arrange these numbers in descending order: 0.03, 0.0003, 0.33, 0.003",
+      "diagram": null,
+      "options": [
+        "0.03, 0.0003, 0.003, 0.33",
+        "0.33, 0.0003, 0.003, 0.03",
+        "0.003, 0.03, 0.33, 0.0003",
+        "0.33, 0.03, 0.003, 0.0003",
+        "0.33, 0.0003, 0.03, 0.003"
+      ],
+      "correctAnswer": "0.33, 0.03, 0.003, 0.0003",
+      "solutionVideoId": "e86b45e6-04e4-401f-8ffd-5e0996833194"
+    },
+    {
+      "sourceId": "L8-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Arrange these numbers in ascending order: 3.6, 3.06, 3.062, 3.006",
+      "diagram": null,
+      "options": [
+        "3.06, 3.6, 3.006, 3.062",
+        "3.06, 3.006, 3.062, 3.6",
+        "3.006, 3.06, 3.062, 3.6",
+        "3.062, 3.6, 3.06, 3.006",
+        "3.006, 3.6, 3.062, 3.06"
+      ],
+      "correctAnswer": "3.006, 3.06, 3.062, 3.6",
+      "solutionVideoId": "24e2380f-b678-4936-9bc0-c5b8a20d36f6"
+    },
+    {
+      "sourceId": "L8-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Arrange these numbers in descending order: 0.52, 0.05, 0.005, 0.525, 0.505",
+      "diagram": null,
+      "options": [
+        "0.525, 0.52, 0.505, 0.05, 0.005",
+        "0.05, 0.005, 0.52, 0.505, 0.525",
+        "0.52, 0.525, 0.05, 0.005, 0.505",
+        "0.505, 0.05, 0.005, 0.525, 0.52",
+        "0.525, 0.05, 0.52, 0.005, 0.505"
+      ],
+      "correctAnswer": "0.525, 0.52, 0.505, 0.05, 0.005",
+      "solutionVideoId": "67788a2f-535d-4fea-a955-744227c361eb"
+    },
+    {
+      "sourceId": "L8-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Arrange these numbers in ascending order: 0.203, 0.0203, 0.23, 0.232",
+      "diagram": null,
+      "options": [
+        "0.232, 0.23, 0.203, 0.0203",
+        "0.203, 0.0203, 0.23, 0.232",
+        "0.0203, 0.203, 0.23, 0.232",
+        "0.23, 0.203, 0.0203, 0.232",
+        "0.203, 0.0203, 0.232, 0.23"
+      ],
+      "correctAnswer": "0.0203, 0.203, 0.23, 0.232",
+      "solutionVideoId": "e05ff7ba-6505-4a58-ba9f-77b8ebd6385e"
+    },
+    {
+      "sourceId": "L8-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Arrange these numbers in descending order: 0.048, 0.48, 0.0048, 0.408",
+      "diagram": null,
+      "options": [
+        "0.48, 0.408, 0.048, 0.0048",
+        "0.408, 0.048, 0.48, 0.0048",
+        "0.408, 0.0048, 0.48, 0.048",
+        "0.048, 0.48, 0.0048, 0.408",
+        "0.48, 0.408, 0.0048, 0.048"
+      ],
+      "correctAnswer": "0.48, 0.408, 0.048, 0.0048",
+      "solutionVideoId": "2e81692e-a0bb-4079-843a-733ef285d6eb"
+    },
+    {
+      "sourceId": "L8-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Arrange these numbers in ascending order: 0.05, 0.505, 0.5, 0.005",
+      "diagram": null,
+      "options": [
+        "0.005, 0.5, 0.505, 0.05",
+        "0.5, 0.505, 0.005, 0.05",
+        "0.05, 0.505, 0.5, 0.005",
+        "0.005, 0.05, 0.5, 0.505",
+        "0.05, 0.505, 0.005, 0.5"
+      ],
+      "correctAnswer": "0.005, 0.05, 0.5, 0.505",
+      "solutionVideoId": "2ad1def7-32aa-48e1-b1cb-133d4a0e57fe"
+    },
+    {
+      "sourceId": "L8-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Arrange these numbers in descending order: 0.444, 0.222, 0.555, 0.111",
+      "diagram": null,
+      "options": [
+        "0.444, 0.111, 0.222, 0.555",
+        "0.555, 0.444, 0.222, 0.111",
+        "0.111, 0.444, 0.222, 0.555",
+        "0.222, 0.444, 0.111, 0.555",
+        "0.555, 0.222, 0.111, 0.444"
+      ],
+      "correctAnswer": "0.555, 0.444, 0.222, 0.111",
+      "solutionVideoId": "77e388bd-d173-4af2-ba26-e9aec4367f95"
+    },
+    {
+      "sourceId": "L8-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Arrange these numbers in ascending order: 36.5, 0.365, 3.65, 356",
+      "diagram": null,
+      "options": [
+        "36.5, 3.65, 0.365, 356",
+        "36.5, 3.65, 356, 0.365",
+        "0.365, 3.65, 36.5, 356",
+        "3.65, 356, 0.365, 36.5",
+        "356, 36.5, 3.65, 0.365"
+      ],
+      "correctAnswer": "0.365, 3.65, 36.5, 356",
+      "solutionVideoId": "60958522-516d-435d-833a-925da2d10890"
+    },
+    {
+      "sourceId": "L8-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Arrange these numbers in descending order: 62.6, 626, 6.26, 0.626",
+      "diagram": null,
+      "options": [
+        "6.26, 626, 0.626, 62.6",
+        "626, 62.6, 6.26, 0.626",
+        "0.626, 6.26, 62.6, 626",
+        "626, 62.6, 0.626, 6.26",
+        "0.626, 626, 62.6, 6.26"
+      ],
+      "correctAnswer": "626, 62.6, 6.26, 0.626",
+      "solutionVideoId": "9fb71e9a-2893-4df1-95bc-6cf47dc16806"
+    },
+    {
+      "sourceId": "L8-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Arrange these numbers in ascending order: 4.24, 424, 42.4, 44.24",
+      "diagram": null,
+      "options": [
+        "424, 44.24, 42.4, 4.24",
+        "424, 42.4, 4.24, 44.24",
+        "4.24, 42.4, 44.24, 424",
+        "4.24, 424, 42.4, 44.24",
+        "42.4, 44.24, 424, 4.24"
+      ],
+      "correctAnswer": "4.24, 42.4, 44.24, 424",
+      "solutionVideoId": "de2839d7-d0a8-4083-bd64-ab65754c0012"
+    },
+    {
+      "sourceId": "L8-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Arrange these numbers in descending order: 0.404, 0.44, 0.044, 0.0044",
+      "diagram": null,
+      "options": [
+        "0.44, 0.404, 0.044, 0.0044",
+        "0.044, 0.44, 0.0044, 0.404",
+        "0.044, 0.44, 0.404, 0.0044",
+        "0.0044, 0.404, 0.044, 0.44",
+        "0.404, 0.044, 0.44, 0.0044"
+      ],
+      "correctAnswer": "0.44, 0.404, 0.044, 0.0044",
+      "solutionVideoId": "4785993a-31b4-4372-aeff-de7ece04eb79"
+    },
+    {
+      "sourceId": "L8-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Arrange these numbers in ascending order: 0.23, 0.023, 0.203, 0.0023",
+      "diagram": null,
+      "options": [
+        "0.023, 0.23, 0.203, 0.0023",
+        "0.203, 0.0023, 0.023, 0.23",
+        "0.23, 0.023, 0.203, 0.0023",
+        "0.0023, 0.023, 0.203, 0.23",
+        "0.0023, 0.203, 0.023, 0.23"
+      ],
+      "correctAnswer": "0.0023, 0.023, 0.203, 0.23",
+      "solutionVideoId": "0bf6df24-f799-41d7-95c3-040467d0a8c3"
+    },
+    {
+      "sourceId": "L8-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Arrange these numbers in descending order: 0.08, 0.008, 0.0008, 0.8",
+      "diagram": null,
+      "options": [
+        "0.0008, 0.08, 0.008, 0.8",
+        "0.8, 0.08, 0.008, 0.0008",
+        "0.008, 0.0008, 0.8, 0.08",
+        "0.8, 0.08, 0.0008, 0.008",
+        "0.0008, 0.8, 0.008, 0.08"
+      ],
+      "correctAnswer": "0.8, 0.08, 0.008, 0.0008",
+      "solutionVideoId": "578e708f-5260-4d69-a51c-e76cc2f4899f"
+    },
+    {
+      "sourceId": "L8-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Arrange these numbers in ascending order: 0.84, 0.99, 0.62, 0.31",
+      "diagram": null,
+      "options": [
+        "0.99, 0.31, 0.62, 0.84",
+        "0.99, 0.84, 0.62, 0.31",
+        "0.31, 0.62, 0.84, 0.99",
+        "0.31, 0.99, 0.84, 0.62",
+        "0.84, 0.62, 0.31, 0.99"
+      ],
+      "correctAnswer": "0.31, 0.62, 0.84, 0.99",
+      "solutionVideoId": "83e0bd82-12f9-46c0-b4dd-bab47bd0a3b0"
+    },
+    {
+      "sourceId": "L8-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Arrange these numbers in descending order: 0.99, 0.099, 0.0099, 0.991",
+      "diagram": null,
+      "options": [
+        "0.991, 0.99, 0.099, 0.0099",
+        "0.99, 0.099, 0.991, 0.0099",
+        "0.0099, 0.991, 0.99, 0.099",
+        "0.0099, 0.099, 0.991, 0.99",
+        "0.99, 0.099, 0.0099, 0.991"
+      ],
+      "correctAnswer": "0.991, 0.99, 0.099, 0.0099",
+      "solutionVideoId": "77010e25-7e9e-489f-bd2e-f6e9c78313c0"
+    }
+  ]
+}
