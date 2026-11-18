@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 11,
+  "title": "Change Easy Fractions to Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "9da0183e-911e-40ec-ba16-946c55c46f52",
+  "questions": [
+    {
+      "sourceId": "L11-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Convert \\frac{2}{10} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.6",
+        "0.2",
+        "0.5",
+        "0.3",
+        "0.4"
+      ],
+      "correctAnswer": "0.2",
+      "solutionVideoId": "671a860a-d817-4809-8c4b-823be5754242"
+    },
+    {
+      "sourceId": "L11-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Change \\frac{3}{10} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.4",
+        "0.5",
+        "0.8",
+        "0.3",
+        "0.2"
+      ],
+      "correctAnswer": "0.3",
+      "solutionVideoId": "3b97ea9e-3ecc-433d-8201-b6ca56364214"
+    },
+    {
+      "sourceId": "L11-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Express \\frac{5}{10} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.2",
+        "0.5",
+        "0.4",
+        "0.9",
+        "0.3"
+      ],
+      "correctAnswer": "0.5",
+      "solutionVideoId": "1722d44e-381b-400b-807c-0858add778ba"
+    },
+    {
+      "sourceId": "L11-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "What is \\frac{21}{100} as a decimal?",
+      "diagram": null,
+      "options": [
+        "0.21",
+        "0.51",
+        "2.01",
+        "2.1",
+        "0.12"
+      ],
+      "correctAnswer": "0.21",
+      "solutionVideoId": "a7b73f11-af2c-49f0-aff3-ec15b98f7766"
+    },
+    {
+      "sourceId": "L11-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Express \\frac{5}{100} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.5",
+        "0.0005",
+        "0.005",
+        "0.51",
+        "0.05"
+      ],
+      "correctAnswer": "0.05",
+      "solutionVideoId": "94e687ed-1ecf-48ff-854f-92e9f1fbecbd"
+    },
+    {
+      "sourceId": "L11-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Convert \\frac{7}{100} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.7",
+        "0.0007",
+        "0.78",
+        "0.07",
+        "0.007"
+      ],
+      "correctAnswer": "0.07",
+      "solutionVideoId": "40d5425a-b7ba-4d37-990b-29e8129b80e2"
+    },
+    {
+      "sourceId": "L11-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Change \\frac{81}{100} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.018",
+        "0.081",
+        "0.81",
+        "0.0081",
+        "0.9"
+      ],
+      "correctAnswer": "0.81",
+      "solutionVideoId": "2b479b8d-872b-43aa-8d91-8cd80981b620"
+    },
+    {
+      "sourceId": "L11-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "How would you write \\frac{95}{100} as a decimal?",
+      "diagram": null,
+      "options": [
+        "0.095",
+        "0.0095",
+        "9.5",
+        "0.95",
+        "0.00095"
+      ],
+      "correctAnswer": "0.95",
+      "solutionVideoId": "0fa739e8-8d79-4831-8418-885ab8b8d2ab"
+    },
+    {
+      "sourceId": "L11-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Rewrite \\frac{7}{1000} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.07",
+        "0.0007",
+        "0.7",
+        "1.7",
+        "0.007"
+      ],
+      "correctAnswer": "0.007",
+      "solutionVideoId": "32e9a40c-af81-4372-ba4e-33734f73bf41"
+    },
+    {
+      "sourceId": "L11-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Convert \\frac{8}{1000} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.008",
+        "0.8",
+        "0.08",
+        "0.0008",
+        "0.18"
+      ],
+      "correctAnswer": "0.008",
+      "solutionVideoId": "f871750e-5045-4c53-bc7f-f5e66b5251db"
+    },
+    {
+      "sourceId": "L11-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Express \\frac{89}{100} as a decimal.",
+      "diagram": null,
+      "options": [
+        "8.9",
+        "0.98",
+        "0.809",
+        "0.89",
+        "0.0089"
+      ],
+      "correctAnswer": "0.89",
+      "solutionVideoId": "236fa4f6-6d52-4b27-8aca-e6bc895a971e"
+    },
+    {
+      "sourceId": "L11-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Convert \\frac{71}{1000} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.71",
+        "0.071",
+        "0.0017",
+        "0.17",
+        "0.017"
+      ],
+      "correctAnswer": "0.071",
+      "solutionVideoId": "0d745e99-1691-460d-8b41-3a252450f6ec"
+    },
+    {
+      "sourceId": "L11-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Rewrite \\frac{1}{10} + \\frac{5}{100} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.16",
+        "1.05",
+        "1.005",
+        "0.15",
+        "1.5"
+      ],
+      "correctAnswer": "0.15",
+      "solutionVideoId": "c3a213a0-3cdc-4672-88dc-aef7a737b61f"
+    },
+    {
+      "sourceId": "L11-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Change \\frac{6}{10} + \\frac{8}{100} to decimal.",
+      "diagram": null,
+      "options": [
+        "6.008",
+        "6.08",
+        "68",
+        "6.8",
+        "0.68"
+      ],
+      "correctAnswer": "0.68",
+      "solutionVideoId": "714a48ba-ed90-4bd9-90ba-bbdbd8c295ef"
+    },
+    {
+      "sourceId": "L11-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Show \\frac{6}{10} + \\frac{7}{1000} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.607",
+        "0.067",
+        "6.7",
+        "6.007",
+        "6.07"
+      ],
+      "correctAnswer": "0.607",
+      "solutionVideoId": "e3afe9d3-bfee-4cc2-ba2c-f7ed3fcf30b3"
+    },
+    {
+      "sourceId": "L11-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "What is \\frac{8}{10} + \\frac{9}{1000} as a decimal?",
+      "diagram": null,
+      "options": [
+        "80.9",
+        "8.009",
+        "9.08",
+        "0.809",
+        "8.09"
+      ],
+      "correctAnswer": "0.809",
+      "solutionVideoId": "8003eace-50e6-4f28-9d80-5f4bfb798ea4"
+    },
+    {
+      "sourceId": "L11-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Convert \\frac{7}{8} to decimal.",
+      "diagram": null,
+      "options": [
+        "8.075",
+        "0.875",
+        "87.5",
+        "8.75",
+        "0.087"
+      ],
+      "correctAnswer": "0.875",
+      "solutionVideoId": "c69f0e71-6d20-4646-b349-6be4d8a07f94"
+    },
+    {
+      "sourceId": "L11-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Show \\frac{2}{5} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.3",
+        "0.5",
+        "0.4",
+        "0.2",
+        "0.1"
+      ],
+      "correctAnswer": "0.4",
+      "solutionVideoId": "f87d75bd-c034-4c67-adf1-174a5e68f89f"
+    },
+    {
+      "sourceId": "L11-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "How is \\frac{3}{5} represented as a decimal?",
+      "diagram": null,
+      "options": [
+        "0.5",
+        "0.4",
+        "0.3",
+        "0.6",
+        "0.7"
+      ],
+      "correctAnswer": "0.6",
+      "solutionVideoId": "672c601a-aad4-48b8-bb42-531d149b2f64"
+    },
+    {
+      "sourceId": "L11-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Change \\frac{6}{5} to decimal.",
+      "diagram": null,
+      "options": [
+        "1.02",
+        "1.21",
+        "1.12",
+        "2.1",
+        "1.2"
+      ],
+      "correctAnswer": "1.2",
+      "solutionVideoId": "67b44b27-6acf-41c1-8b1a-4cb3e97b7b55"
+    },
+    {
+      "sourceId": "L11-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Show \\frac{1}{20} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.005",
+        "0.05",
+        "5",
+        "0.5",
+        "1.05"
+      ],
+      "correctAnswer": "0.05",
+      "solutionVideoId": "6757da00-e7fc-47d9-af86-f5f6e72bd0ee"
+    },
+    {
+      "sourceId": "L11-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Convert \\frac{4}{5} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.8",
+        "0.08",
+        "8",
+        "0.008",
+        "0.5"
+      ],
+      "correctAnswer": "0.8",
+      "solutionVideoId": "4cc14fb0-97ac-493d-b57a-95ad9fa58c84"
+    },
+    {
+      "sourceId": "L11-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Express \\frac{1}{5} as a decimal.",
+      "diagram": null,
+      "options": [
+        "0.5",
+        "0.3",
+        "0.2",
+        "0.1",
+        "0.4"
+      ],
+      "correctAnswer": "0.2",
+      "solutionVideoId": "04a26350-5173-495f-b9cc-ab2f74326519"
+    },
+    {
+      "sourceId": "L11-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Rewrite \\frac{9}{20} as a decimal.",
+      "diagram": null,
+      "options": [
+        "45",
+        "4.5",
+        "0.55",
+        "0.45",
+        "0.54"
+      ],
+      "correctAnswer": "0.45",
+      "solutionVideoId": "925c0058-6d34-472e-a9e9-7cdcc3824f8e"
+    },
+    {
+      "sourceId": "L11-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "What is \\frac{13}{10} as a decimal?",
+      "diagram": null,
+      "options": [
+        "13",
+        "1.3",
+        "13.1",
+        "1.03",
+        "3.1"
+      ],
+      "correctAnswer": "1.3",
+      "solutionVideoId": "ef09c68f-2142-4c98-9bb2-351dc97d1845"
+    },
+    {
+      "sourceId": "L11-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "How would you write \\frac{15}{10} as a decimal?",
+      "diagram": null,
+      "options": [
+        "1.5",
+        "5.1",
+        "1.05",
+        "51",
+        "15"
+      ],
+      "correctAnswer": "1.5",
+      "solutionVideoId": "267b87df-c7cd-44bb-ba65-cd98d0519576"
+    },
+    {
+      "sourceId": "L11-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Convert \\frac{200}{100} to decimal.",
+      "diagram": null,
+      "options": [
+        "0.2",
+        "20",
+        "0.02",
+        "4",
+        "2"
+      ],
+      "correctAnswer": "2",
+      "solutionVideoId": "8f37d4fe-0959-4fae-bd2e-b124bd1a0daa"
+    },
+    {
+      "sourceId": "L11-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Can you change \\frac{256}{100} to a decimal?",
+      "diagram": null,
+      "options": [
+        "48.8",
+        "488",
+        "5.65",
+        "2.56",
+        "26.5"
+      ],
+      "correctAnswer": "2.56",
+      "solutionVideoId": "576e1912-1b46-4bc5-858c-a1d253024cc7"
+    },
+    {
+      "sourceId": "L11-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Express \\frac{488}{100} as a decimal.",
+      "diagram": null,
+      "options": [
+        "4.08",
+        "0.48",
+        "4.88",
+        "0.84",
+        "4.84"
+      ],
+      "correctAnswer": "4.88",
+      "solutionVideoId": "f3c2318a-d9f2-430e-bf1b-9d2bea6b2058"
+    },
+    {
+      "sourceId": "L11-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Convert \\frac{565}{100} to decimal.",
+      "diagram": null,
+      "options": [
+        "6.56",
+        "65.6",
+        "7.56",
+        "6.55",
+        "5.65"
+      ],
+      "correctAnswer": "5.65",
+      "solutionVideoId": "8617bc3d-c3ad-4fc4-8c6d-071c9721598c"
+    }
+  ]
+}
