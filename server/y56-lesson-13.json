@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 13,
+  "title": "The Factor Tree",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "8db02d8e-d9a1-46ab-b7a5-ef127a1e00bd",
+  "questions": [
+    {
+      "sourceId": "L13-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Which list of factors multiplies to give 300?",
+      "diagram": null,
+      "options": [
+        "4, 4, 4, 5, 7",
+        "10, 17, 15, 2, 2",
+        "4, 18, 2, 5, 1",
+        "5, 17, 14, 13, 2",
+        "3, 5, 5, 2, 2"
+      ],
+      "correctAnswer": "3, 5, 5, 2, 2",
+      "solutionVideoId": "d2cee96f-bf50-4f52-a077-715670c202a9"
+    },
+    {
+      "sourceId": "L13-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Which list of factors multiplies to give 112?",
+      "diagram": null,
+      "options": [
+        "4, 3, 5, 6, 1",
+        "4, 4, 4, 5, 7",
+        "2, 2, 7, 2, 2",
+        "8, 6, 4, 2, 1",
+        "5, 4, 3, 2, 1"
+      ],
+      "correctAnswer": "2, 2, 7, 2, 2",
+      "solutionVideoId": "e635ed0b-310f-4741-b722-6742c3657393"
+    },
+    {
+      "sourceId": "L13-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Which list of factors multiplies to give 169?",
+      "diagram": null,
+      "options": [
+        "7, 9, 8, 1",
+        "2, 5, 6, 7",
+        "13, 13",
+        "4, 3, 5, 6, 1",
+        "13, 12, 11, 1"
+      ],
+      "correctAnswer": "13, 13",
+      "solutionVideoId": "adaceecc-5adb-444f-ae11-f65b58221662"
+    },
+    {
+      "sourceId": "L13-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Which list of factors multiplies to give 200?",
+      "diagram": null,
+      "options": [
+        "7, 9, 8, 1",
+        "4, 5, 2, 3",
+        "4, 3, 5, 6, 1",
+        "2, 2, 2, 5, 5",
+        "12, 13, 11, 1"
+      ],
+      "correctAnswer": "2, 2, 2, 5, 5",
+      "solutionVideoId": "ba2c109a-d42c-409a-97d8-577abfd7090d"
+    },
+    {
+      "sourceId": "L13-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Which list of factors multiplies to give 336?",
+      "diagram": null,
+      "options": [
+        "13, 13, 12, 1",
+        "4, 3, 5, 6, 1",
+        "3, 4, 8, 9, 1",
+        "12, 11, 13, 2, 1",
+        "2, 2, 2, 2, 7, 3"
+      ],
+      "correctAnswer": "2, 2, 2, 2, 7, 3",
+      "solutionVideoId": "48609b06-f136-421a-89f5-eed4426fc04e"
+    },
+    {
+      "sourceId": "L13-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Which list of factors multiplies to give 282?",
+      "diagram": null,
+      "options": [
+        "11, 12, 14, 1",
+        "2, 3, 47",
+        "4, 3, 2, 1",
+        "13, 5, 7, 4",
+        "8, 6, 5, 4, 1"
+      ],
+      "correctAnswer": "2, 3, 47",
+      "solutionVideoId": "290ecd8b-ba15-48e4-9fb6-f063425de0f6"
+    },
+    {
+      "sourceId": "L13-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Which list of factors multiplies to give 500?",
+      "diagram": null,
+      "options": [
+        "3, 4, 29, 1",
+        "8, 12, 7, 4",
+        "5, 5, 5, 2, 2",
+        "6, 8, 12, 11, 1",
+        "6, 8, 11, 11, 1"
+      ],
+      "correctAnswer": "5, 5, 5, 2, 2",
+      "solutionVideoId": "baf7f74a-7f6f-4b05-a9ad-4a50867392ae"
+    },
+    {
+      "sourceId": "L13-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Which list of factors multiplies to give 348?",
+      "diagram": null,
+      "options": [
+        "4, 3, 29",
+        "7, 4, 11, 9",
+        "4, 2, 8, 11",
+        "6, 8, 11, 5",
+        "4, 6, 7, 11"
+      ],
+      "correctAnswer": "4, 3, 29",
+      "solutionVideoId": "30e8e907-ac84-4fb2-a027-634236f52254"
+    },
+    {
+      "sourceId": "L13-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Which list of factors multiplies to give 750?",
+      "diagram": null,
+      "options": [
+        "4, 3, 7, 9, 1",
+        "4, 2, 8, 14",
+        "5, 25, 36, 1",
+        "5, 5, 5, 3, 2",
+        "6, 9, 11, 12"
+      ],
+      "correctAnswer": "5, 5, 5, 3, 2",
+      "solutionVideoId": "389c2a49-e9c4-4e39-906b-4dc46d63be00"
+    },
+    {
+      "sourceId": "L13-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Which list of factors multiplies to give 288?",
+      "diagram": null,
+      "options": [
+        "8, 14, 17, 1",
+        "9, 14, 18, 17",
+        "8, 11, 14, 18",
+        "36, 11, 12, 1",
+        "2, 2, 2, 3, 3, 4"
+      ],
+      "correctAnswer": "2, 2, 2, 3, 3, 4",
+      "solutionVideoId": "8b23cda5-ba9f-4a84-b49d-3e37e7a0dd3c"
+    },
+    {
+      "sourceId": "L13-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Which list of factors multiplies to give 400?",
+      "diagram": null,
+      "options": [
+        "2, 2, 2, 5, 5, 5",
+        "5, 5, 5, 5, 2",
+        "11, 15, 2, 1",
+        "2, 2, 2, 2, 5, 5",
+        "4, 8, 9, 1"
+      ],
+      "correctAnswer": "2, 2, 2, 2, 5, 5",
+      "solutionVideoId": "f5d05aea-fa96-490e-a176-7ee41ee7ce88"
+    },
+    {
+      "sourceId": "L13-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Which list of factors multiplies to give 1500?",
+      "diagram": null,
+      "options": [
+        "1, 3, 9, 27",
+        "2, 2, 3, 5, 5, 5",
+        "5, 5, 5, 5, 3, 2",
+        "6, 7, 9, 1, 8",
+        "11, 12, 1, 14"
+      ],
+      "correctAnswer": "2, 2, 3, 5, 5, 5",
+      "solutionVideoId": "f5d2cef6-73d9-4dec-a27a-1c4006d6fed2"
+    },
+    {
+      "sourceId": "L13-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Which list of factors multiplies to give 450?",
+      "diagram": null,
+      "options": [
+        "3, 2, 5, 11, 3, 3",
+        "5, 3, 2, 5, 7",
+        "3, 2, 5, 7, 9",
+        "5, 3, 3, 2, 5",
+        "7, 9, 5, 3, 13"
+      ],
+      "correctAnswer": "5, 3, 3, 2, 5",
+      "solutionVideoId": "8a52ef38-d7ed-4783-a943-6f60261337d1"
+    },
+    {
+      "sourceId": "L13-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Which list of factors multiplies to give 576?",
+      "diagram": null,
+      "options": [
+        "2, 3, 3, 3, 5, 7",
+        "2, 2, 2, 2, 2, 3, 3",
+        "3, 7, 9, 2, 2, 2",
+        "2, 2, 2, 2, 3, 3",
+        "2, 2, 2, 2, 2, 2, 3, 3"
+      ],
+      "correctAnswer": "2, 2, 2, 2, 2, 2, 3, 3",
+      "solutionVideoId": "8c93965b-bca3-4e59-adf0-90c81f68f799"
+    },
+    {
+      "sourceId": "L13-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Which list of factors multiplies to give 1225?",
+      "diagram": null,
+      "options": [
+        "5, 4, 5, 4, 1",
+        "5, 7, 7, 11, 13",
+        "5, 7, 11, 13",
+        "5, 5, 7, 7",
+        "3, 5, 7, 11, 2, 1"
+      ],
+      "correctAnswer": "5, 5, 7, 7",
+      "solutionVideoId": "c8e33888-1767-4c7b-97fe-68a59fe220b7"
+    },
+    {
+      "sourceId": "L13-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Which list of factors multiplies to give 504?",
+      "diagram": null,
+      "options": [
+        "7, 3, 3, 2, 2, 2",
+        "2, 3, 7, 9, 11",
+        "7, 3, 2, 2, 2, 2",
+        "3, 7, 2, 2",
+        "3, 7, 2, 7, 11"
+      ],
+      "correctAnswer": "7, 3, 3, 2, 2, 2",
+      "solutionVideoId": "0a93d046-050b-46d2-9f64-f94fd7f44597"
+    },
+    {
+      "sourceId": "L13-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Which list of factors multiplies to give 216?",
+      "diagram": null,
+      "options": [
+        "3, 3, 5, 7",
+        "2, 3, 5, 19",
+        "3, 3, 3, 2, 2, 2",
+        "3, 7, 5, 11",
+        "2, 3, 7, 5, 3"
+      ],
+      "correctAnswer": "3, 3, 3, 2, 2, 2",
+      "solutionVideoId": "710d1a45-2e65-4f16-a681-304825294e16"
+    },
+    {
+      "sourceId": "L13-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Which list of factors multiplies to give 675?",
+      "diagram": null,
+      "options": [
+        "5, 5, 3, 3, 11",
+        "5, 3, 5, 7",
+        "3, 5, 7, 11, 7",
+        "5, 5, 3, 3, 3",
+        "4, 5, 2, 3, 11"
+      ],
+      "correctAnswer": "5, 5, 3, 3, 3",
+      "solutionVideoId": "496a0b8c-aab2-41ac-b757-1abe925a97be"
+    },
+    {
+      "sourceId": "L13-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Which list of factors multiplies to give 735?",
+      "diagram": null,
+      "options": [
+        "2, 3, 5, 7",
+        "2, 2, 2, 3, 3, 5, 7",
+        "3, 5, 7, 11, 13",
+        "3, 5, 7, 7",
+        "2, 3, 5, 7, 11"
+      ],
+      "correctAnswer": "3, 5, 7, 7",
+      "solutionVideoId": "adfa95ea-5d80-4406-8683-606c23f80ee3"
+    },
+    {
+      "sourceId": "L13-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Which list of factors multiplies to give 1125?",
+      "diagram": null,
+      "options": [
+        "3, 3, 5, 5, 5, 5, 5",
+        "3, 5, 5, 7",
+        "3, 3, 3, 5, 5",
+        "3, 3, 3, 3, 3, 5",
+        "5, 5, 5, 3, 3"
+      ],
+      "correctAnswer": "5, 5, 5, 3, 3",
+      "solutionVideoId": "33641b3f-01f2-41ee-bbdd-96a12601e01a"
+    },
+    {
+      "sourceId": "L13-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Which list of factors multiplies to give 1232?",
+      "diagram": null,
+      "options": [
+        "11, 7, 2, 2, 2",
+        "2, 2, 2, 11, 11, 7",
+        "2, 2, 2, 2, 11, 7",
+        "2, 2, 2, 11, 5",
+        "2, 2, 2, 2, 2, 2"
+      ],
+      "correctAnswer": "2, 2, 2, 2, 11, 7",
+      "solutionVideoId": "c0388915-93ab-4daa-abfa-bb209d340d4e"
+    },
+    {
+      "sourceId": "L13-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Which list of factors multiplies to give 1323?",
+      "diagram": null,
+      "options": [
+        "3, 3, 3, 3, 7, 7",
+        "3, 3, 3, 3, 7, 7, 7",
+        "3, 3, 3, 7, 7",
+        "3, 3, 7, 7",
+        "3, 3, 3, 7, 7, 7"
+      ],
+      "correctAnswer": "3, 3, 3, 7, 7",
+      "solutionVideoId": "d044f452-bd61-483b-9473-58febf67b9e1"
+    },
+    {
+      "sourceId": "L13-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Which list of factors multiplies to give 3375?",
+      "diagram": null,
+      "options": [
+        "3, 3, 3, 5, 5, 5",
+        "3, 5, 3, 5, 11",
+        "3, 3, 3, 3, 3, 5, 5",
+        "3, 3, 5, 5, 5",
+        "3, 5, 5, 5"
+      ],
+      "correctAnswer": "3, 3, 3, 5, 5, 5",
+      "solutionVideoId": "ed128fba-442c-421c-adc9-cfc9bd40c539"
+    },
+    {
+      "sourceId": "L13-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Which list of factors multiplies to give 1080?",
+      "diagram": null,
+      "options": [
+        "3, 3, 3, 3, 2, 2, 2, 2, 5",
+        "3, 3, 2, 2, 2, 5",
+        "3, 3, 3, 2, 2, 2, 2, 5",
+        "3, 3, 2, 2, 5",
+        "3, 3, 3, 2, 2, 2, 5"
+      ],
+      "correctAnswer": "3, 3, 3, 2, 2, 2, 5",
+      "solutionVideoId": "2ef9f10f-f338-4d9c-a8a8-1a545469282f"
+    },
+    {
+      "sourceId": "L13-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Which list of factors multiplies to give 8232?",
+      "diagram": null,
+      "options": [
+        "2, 2, 3, 2, 3, 4, 3",
+        "2, 3, 2, 3, 5, 5, 5",
+        "2, 2, 2, 3, 7, 7, 7",
+        "2, 3, 3, 3, 5, 5, 5",
+        "2, 2, 3, 3, 3, 5, 5"
+      ],
+      "correctAnswer": "2, 2, 2, 3, 7, 7, 7",
+      "solutionVideoId": "416882d7-6b8f-4ab6-9d04-42879bc714dc"
+    },
+    {
+      "sourceId": "L13-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Which list of factors multiplies to give 1538?",
+      "diagram": null,
+      "options": [
+        "2, 2, 2, 7, 6",
+        "2, 2, 2, 2, 13, 13",
+        "2, 2, 2, 13",
+        "2, 769",
+        "2, 2, 2, 13, 14"
+      ],
+      "correctAnswer": "2, 769",
+      "solutionVideoId": "a309b359-6f88-4ba4-be82-1122de4cd568"
+    },
+    {
+      "sourceId": "L13-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Which list of factors multiplies to give 4116?",
+      "diagram": null,
+      "options": [
+        "2, 2, 3, 3, 11",
+        "3, 3, 4, 5",
+        "13, 13, 4, 2, 2",
+        "11, 11, 7, 8, 4",
+        "2, 2, 3, 7, 7, 7"
+      ],
+      "correctAnswer": "2, 2, 3, 7, 7, 7",
+      "solutionVideoId": "170f5b2e-1357-425e-8381-44f3cde32783"
+    },
+    {
+      "sourceId": "L13-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Which list of factors multiplies to give 1120?",
+      "diagram": null,
+      "options": [
+        "2, 2, 2, 2, 2, 7, 5",
+        "2, 2, 2, 2, 7, 5",
+        "2, 2, 2, 2, 2, 7",
+        "2, 2, 2, 2, 2, 5",
+        "2, 2, 2, 2, 7"
+      ],
+      "correctAnswer": "2, 2, 2, 2, 2, 7, 5",
+      "solutionVideoId": "bc3b7c47-baab-4029-a3cd-f168818c2ec5"
+    },
+    {
+      "sourceId": "L13-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Which list of factors multiplies to give 2744?",
+      "diagram": null,
+      "options": [
+        "2, 2, 12, 13, 1",
+        "2, 2, 2, 13, 13",
+        "2, 13, 12, 11",
+        "2, 2, 2, 7, 7, 7",
+        "2, 2, 13, 12, 12"
+      ],
+      "correctAnswer": "2, 2, 2, 7, 7, 7",
+      "solutionVideoId": "725fa9ca-fc15-4133-9104-dc8c2417f860"
+    },
+    {
+      "sourceId": "L13-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Which list of factors multiplies to give 2704?",
+      "diagram": null,
+      "options": [
+        "7, 7, 4, 3, 2",
+        "2, 2, 2, 4, 3",
+        "3, 7, 13, 13",
+        "2, 2, 13, 13",
+        "2, 2, 2, 2, 13, 13"
+      ],
+      "correctAnswer": "2, 2, 2, 2, 13, 13",
+      "solutionVideoId": "c668ff3c-ea7c-4808-911a-8856430e52fe"
+    }
+  ]
+}
