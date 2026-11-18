@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 12,
+  "title": "Percentages are Special Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "05f0ff76-892d-4c75-8845-ac7d10dac24d",
+  "questions": [
+    {
+      "sourceId": "L12-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "What is the discount amount for 10% off $60?",
+      "diagram": null,
+      "options": [
+        "$66",
+        "$3",
+        "$6",
+        "$1",
+        "$60"
+      ],
+      "correctAnswer": "$6",
+      "solutionVideoId": "79e065ce-8d7f-453f-826d-5e61796bb857"
+    },
+    {
+      "sourceId": "L12-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Find the discount amount for 10% off $140.",
+      "diagram": null,
+      "options": [
+        "$14",
+        "$11",
+        "$13",
+        "$41",
+        "$12"
+      ],
+      "correctAnswer": "$14",
+      "solutionVideoId": "9d56f34c-7e04-407b-b4d1-06ecf5ae4ef2"
+    },
+    {
+      "sourceId": "L12-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "What is the discount amount for 20% off $70?",
+      "diagram": null,
+      "options": [
+        "$20",
+        "$10",
+        "$2",
+        "$14",
+        "$41"
+      ],
+      "correctAnswer": "$14",
+      "solutionVideoId": "7294a69c-eb42-4e1a-a67f-13f399c642b5"
+    },
+    {
+      "sourceId": "L12-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "What is the discount amount for 30% off $200?",
+      "diagram": null,
+      "options": [
+        "$70",
+        "$60",
+        "$40",
+        "$20",
+        "$30"
+      ],
+      "correctAnswer": "$60",
+      "solutionVideoId": "4a702ab8-1eee-4dbb-98ae-6ae0ebab55b3"
+    },
+    {
+      "sourceId": "L12-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Find the discount amount for 50% off $180.",
+      "diagram": null,
+      "options": [
+        "$50",
+        "$40",
+        "$90",
+        "$80",
+        "$18"
+      ],
+      "correctAnswer": "$90",
+      "solutionVideoId": "886aa58a-72da-438e-ad0d-511c786aa6d4"
+    },
+    {
+      "sourceId": "L12-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Find the sale price of an item if the discount is 10% on $300.",
+      "diagram": null,
+      "options": [
+        "$270",
+        "$260",
+        "$250",
+        "$230",
+        "$220"
+      ],
+      "correctAnswer": "$270",
+      "solutionVideoId": "43815dcc-2a99-44dc-a69f-19364cfa7fda"
+    },
+    {
+      "sourceId": "L12-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "There is a 20% discount on an item marked at $280. What is the sale price?",
+      "diagram": null,
+      "options": [
+        "$210",
+        "$220",
+        "$214",
+        "$200",
+        "$224"
+      ],
+      "correctAnswer": "$224",
+      "solutionVideoId": "3cbf4df5-ed2f-49a5-82bd-01338c280762"
+    },
+    {
+      "sourceId": "L12-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Find the price if there is a 50% discount on $800.",
+      "diagram": null,
+      "options": [
+        "$300",
+        "$600",
+        "$400",
+        "$200",
+        "$5"
+      ],
+      "correctAnswer": "$400",
+      "solutionVideoId": "d08d29de-b48e-4b9b-829f-3f07406ca449"
+    },
+    {
+      "sourceId": "L12-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Find the price if there is a 40% discount on $160.",
+      "diagram": null,
+      "options": [
+        "$84",
+        "$96",
+        "$86",
+        "$76",
+        "$66"
+      ],
+      "correctAnswer": "$96",
+      "solutionVideoId": "bc19595e-ce02-46c7-9465-8cde1c3aea79"
+    },
+    {
+      "sourceId": "L12-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Find the price if there is a 20% discount on $700.",
+      "diagram": null,
+      "options": [
+        "$595",
+        "$570",
+        "$560",
+        "$580",
+        "$590"
+      ],
+      "correctAnswer": "$560",
+      "solutionVideoId": "20ed18f5-6f50-4560-890e-4839e90ee489"
+    },
+    {
+      "sourceId": "L12-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Find the selling price if there is a 10% profit on $500.",
+      "diagram": null,
+      "options": [
+        "$510",
+        "$540",
+        "$550",
+        "$530",
+        "$520"
+      ],
+      "correctAnswer": "$550",
+      "solutionVideoId": "8b760cfe-5c2c-4584-b5e7-00d67ad10ef2"
+    },
+    {
+      "sourceId": "L12-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "If the profit is 15% on $250, what is the selling price?",
+      "diagram": null,
+      "options": [
+        "$287.50",
+        "$275.30",
+        "$285.30",
+        "$286.50",
+        "$288.75"
+      ],
+      "correctAnswer": "$287.50",
+      "solutionVideoId": "372f36ae-fa8c-491f-b223-51f2dd8f3258"
+    },
+    {
+      "sourceId": "L12-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Find the selling price if there is a 20% loss on $300.",
+      "diagram": null,
+      "options": [
+        "$320",
+        "$240",
+        "$250",
+        "$230",
+        "$220"
+      ],
+      "correctAnswer": "$240",
+      "solutionVideoId": "50340a16-67c3-42f2-b6a0-0b1a29041b5a"
+    },
+    {
+      "sourceId": "L12-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Find the selling price if there is a 30% loss on $150.",
+      "diagram": null,
+      "options": [
+        "$103",
+        "$106",
+        "$107",
+        "$105",
+        "$104"
+      ],
+      "correctAnswer": "$105",
+      "solutionVideoId": "23a00259-109a-41e3-9621-2d3e1a51b307"
+    },
+    {
+      "sourceId": "L12-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Find the selling price if there is a 5% loss on $400.",
+      "diagram": null,
+      "options": [
+        "$365",
+        "$385",
+        "$380",
+        "$375",
+        "$360"
+      ],
+      "correctAnswer": "$380",
+      "solutionVideoId": "d7053143-2964-4056-a7bf-ebc2fc5b9cff"
+    },
+    {
+      "sourceId": "L12-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "What is a commission of 5% on $600?",
+      "diagram": null,
+      "options": [
+        "$70",
+        "$40",
+        "$50",
+        "$60",
+        "$30"
+      ],
+      "correctAnswer": "$30",
+      "solutionVideoId": "e5363085-dc30-4a68-b528-cbd30fbe67a5"
+    },
+    {
+      "sourceId": "L12-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "What is 10% commission on $1200?",
+      "diagram": null,
+      "options": [
+        "$170",
+        "$130",
+        "$110",
+        "$120",
+        "$180"
+      ],
+      "correctAnswer": "$120",
+      "solutionVideoId": "ef6a535a-b740-4dbd-9ded-df5ebcf88573"
+    },
+    {
+      "sourceId": "L12-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "What is 15% commission on $1500?",
+      "diagram": null,
+      "options": [
+        "$210",
+        "$230",
+        "$220",
+        "$225",
+        "$215"
+      ],
+      "correctAnswer": "$225",
+      "solutionVideoId": "c0933651-62ca-4de3-b8b0-24410e5c2c77"
+    },
+    {
+      "sourceId": "L12-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "What is 30% commission on $800?",
+      "diagram": null,
+      "options": [
+        "$240",
+        "$210",
+        "$220",
+        "$200",
+        "$218"
+      ],
+      "correctAnswer": "$240",
+      "solutionVideoId": "22c1c0c0-5007-41b5-89c7-93a19013886c"
+    },
+    {
+      "sourceId": "L12-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "What is 2% commission on $900?",
+      "diagram": null,
+      "options": [
+        "$12",
+        "$18",
+        "$17",
+        "$15",
+        "$14"
+      ],
+      "correctAnswer": "$18",
+      "solutionVideoId": "28f446a9-f9d5-4c41-a696-f79a50bd25d3"
+    },
+    {
+      "sourceId": "L12-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "If a salesperson gets 10% commission on $450 and his salary is $300, what is his total income?",
+      "diagram": null,
+      "options": [
+        "$371",
+        "$343",
+        "$345",
+        "$312",
+        "$333"
+      ],
+      "correctAnswer": "$345",
+      "solutionVideoId": "13fbac34-6e88-4570-9430-269b941e08b1"
+    },
+    {
+      "sourceId": "L12-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "If a salesperson gets 3% commission on $600 and his salary is $450, what is his total income?",
+      "diagram": null,
+      "options": [
+        "$428",
+        "$468",
+        "$458",
+        "$464",
+        "$437"
+      ],
+      "correctAnswer": "$468",
+      "solutionVideoId": "95e154da-9b65-4c86-a98c-085e341d6821"
+    },
+    {
+      "sourceId": "L12-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "What is the selling price of a teddy bear if its cost price is $50 and it is sold at a profit of 8%?",
+      "diagram": null,
+      "options": [
+        "$53",
+        "$48",
+        "$24",
+        "$54",
+        "$36"
+      ],
+      "correctAnswer": "$54",
+      "solutionVideoId": "cd325a3b-0164-4d38-9fbb-fe536ed4c32d"
+    },
+    {
+      "sourceId": "L12-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Find the selling price of a fabric marked at $60 and sold at a discount of 10%.",
+      "diagram": null,
+      "options": [
+        "$54",
+        "$50",
+        "$24",
+        "$36",
+        "$48"
+      ],
+      "correctAnswer": "$54",
+      "solutionVideoId": "66ac0837-f69d-4c8a-8da6-c4409bdba369"
+    },
+    {
+      "sourceId": "L12-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Find the selling price of a book bought at $150 and sold at a profit of 5%.",
+      "diagram": null,
+      "options": [
+        "$159.50",
+        "$154.50",
+        "$151.50",
+        "$148.25",
+        "$157.50"
+      ],
+      "correctAnswer": "$157.50",
+      "solutionVideoId": "56bd1199-0cfb-48fc-bfec-b04dd17e9c6a"
+    },
+    {
+      "sourceId": "L12-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "What is 5% interest on $2000?",
+      "diagram": null,
+      "options": [
+        "$101",
+        "$130",
+        "$100",
+        "$128",
+        "$129"
+      ],
+      "correctAnswer": "$100",
+      "solutionVideoId": "03f77b1d-1a24-4e8b-aa2d-2408b551973c"
+    },
+    {
+      "sourceId": "L12-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Jill invests $5000 at the rate of 6% per annum for 2 years. How much simple interest will she earn?",
+      "diagram": null,
+      "options": [
+        "$548",
+        "$581",
+        "$524",
+        "$600",
+        "$538"
+      ],
+      "correctAnswer": "$600",
+      "solutionVideoId": "5d968e95-da03-4cc9-8ec6-719a4e2e32b7"
+    },
+    {
+      "sourceId": "L12-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "What is the simple interest earned by Linda in 2.5 years, if she invests $6000 at a rate of 3% per annum?",
+      "diagram": null,
+      "options": [
+        "$450",
+        "$420",
+        "$470",
+        "$410",
+        "$480"
+      ],
+      "correctAnswer": "$450",
+      "solutionVideoId": "8176d0f6-e300-4818-988b-6d61677c9e25"
+    },
+    {
+      "sourceId": "L12-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "What is the simple interest earned by Monica in 3 years, if she invests $3000 at a rate of 5.5% per annum?",
+      "diagram": null,
+      "options": [
+        "$475",
+        "$425",
+        "$441",
+        "$465",
+        "$495"
+      ],
+      "correctAnswer": "$495",
+      "solutionVideoId": "70b15a01-8ea2-4314-ac83-15a22b6e5801"
+    },
+    {
+      "sourceId": "L12-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Sam and Nathan bought a set of books marked at $150. They got a 15% discount which they shared equally. How much discount did each person receive?",
+      "diagram": null,
+      "options": [
+        "$18.50",
+        "$14.80",
+        "$11.25",
+        "$9.80",
+        "$10.50"
+      ],
+      "correctAnswer": "$11.25",
+      "solutionVideoId": "86699f09-e324-472d-9f79-c4df4af07719"
+    }
+  ]
+}
