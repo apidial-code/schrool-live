@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 14,
+  "title": "Factors and Multiples",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "e9e61563-4825-44b5-9dbc-fe2073c95e51",
+  "questions": [
+    {
+      "sourceId": "L14-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Which of the following is a factor of 6?",
+      "diagram": null,
+      "options": [
+        "9",
+        "4",
+        "5",
+        "7",
+        "3"
+      ],
+      "correctAnswer": "3",
+      "solutionVideoId": "022ecf43-df92-4b9c-a754-63de3de795d4"
+    },
+    {
+      "sourceId": "L14-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Which of the following is a factor of 13?",
+      "diagram": null,
+      "options": [
+        "7",
+        "13",
+        "9",
+        "17",
+        "3"
+      ],
+      "correctAnswer": "13",
+      "solutionVideoId": "b37c89ff-b1a6-4259-9176-63bf6d96ae0c"
+    },
+    {
+      "sourceId": "L14-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Which of the following is a factor of 7?",
+      "diagram": null,
+      "options": [
+        "11",
+        "8",
+        "9",
+        "7",
+        "5"
+      ],
+      "correctAnswer": "7",
+      "solutionVideoId": "1d0dce80-781e-422e-b478-127fd3c6ba78"
+    },
+    {
+      "sourceId": "L14-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Which of the following is a factor of 8?",
+      "diagram": null,
+      "options": [
+        "6",
+        "7",
+        "2",
+        "5",
+        "3"
+      ],
+      "correctAnswer": "2",
+      "solutionVideoId": "e9fb48dc-98aa-4353-827b-91699796d4c6"
+    },
+    {
+      "sourceId": "L14-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Which of the following is a factor of 12?",
+      "diagram": null,
+      "options": [
+        "4",
+        "11",
+        "5",
+        "7",
+        "9"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "9ccf4161-d18c-404b-aae0-0b5f51b3fe44"
+    },
+    {
+      "sourceId": "L14-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Which of the following is a factor of 36?",
+      "diagram": null,
+      "options": [
+        "14",
+        "13",
+        "4",
+        "17",
+        "5"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "c0edfee4-aa79-4eb7-886d-e203e9263862"
+    },
+    {
+      "sourceId": "L14-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Which of the following is a factor of 72?",
+      "diagram": null,
+      "options": [
+        "13",
+        "5",
+        "9",
+        "7",
+        "11"
+      ],
+      "correctAnswer": "9",
+      "solutionVideoId": "9c133096-8594-4ddd-bea2-65c5c9b3bdc4"
+    },
+    {
+      "sourceId": "L14-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Which of the following is a factor of 112?",
+      "diagram": null,
+      "options": [
+        "9",
+        "5",
+        "11",
+        "16",
+        "17"
+      ],
+      "correctAnswer": "16",
+      "solutionVideoId": "8d600c81-0fc3-46ad-b25a-bb57956ed9a2"
+    },
+    {
+      "sourceId": "L14-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Which of the following is a factor of 169?",
+      "diagram": null,
+      "options": [
+        "2",
+        "11",
+        "18",
+        "13",
+        "6"
+      ],
+      "correctAnswer": "13",
+      "solutionVideoId": "c4fc954f-f4a6-4939-882d-3c650f6be46c"
+    },
+    {
+      "sourceId": "L14-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Which of the following is a factor of 195?",
+      "diagram": null,
+      "options": [
+        "25",
+        "7",
+        "9",
+        "11",
+        "3"
+      ],
+      "correctAnswer": "3",
+      "solutionVideoId": "967080df-f96f-4945-9683-5986d47558cb"
+    },
+    {
+      "sourceId": "L14-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Which of the following is a factor of 132?",
+      "diagram": null,
+      "options": [
+        "4",
+        "5",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "eb692c18-224d-49af-8d12-be698bfc3143"
+    },
+    {
+      "sourceId": "L14-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Which of the following is a factor of 300?",
+      "diagram": null,
+      "options": [
+        "19",
+        "9",
+        "6",
+        "13",
+        "17"
+      ],
+      "correctAnswer": "6",
+      "solutionVideoId": "797a16c2-6f48-4172-9de5-bfa7397cf8a5"
+    },
+    {
+      "sourceId": "L14-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Which of the following is a factor of 336?",
+      "diagram": null,
+      "options": [
+        "17",
+        "5",
+        "6",
+        "9",
+        "71"
+      ],
+      "correctAnswer": "6",
+      "solutionVideoId": "09ff82f5-4603-4c0e-b572-420e287015fb"
+    },
+    {
+      "sourceId": "L14-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Which of the following is a factor of 282?",
+      "diagram": null,
+      "options": [
+        "11",
+        "9",
+        "19",
+        "3",
+        "5"
+      ],
+      "correctAnswer": "3",
+      "solutionVideoId": "4e452bf6-e8e7-43ec-bc57-f0b0398f2e0f"
+    },
+    {
+      "sourceId": "L14-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Which of the following is a factor of 1500?",
+      "diagram": null,
+      "options": [
+        "5",
+        "923",
+        "91",
+        "81",
+        "226"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "ab9ad664-28d7-488f-aaa3-2461a8fc072d"
+    },
+    {
+      "sourceId": "L14-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Which of the following is a multiple of 6?",
+      "diagram": null,
+      "options": [
+        "18",
+        "21",
+        "5",
+        "17",
+        "19"
+      ],
+      "correctAnswer": "18",
+      "solutionVideoId": "85e506b6-5590-4e01-8b78-77d33d58c33b"
+    },
+    {
+      "sourceId": "L14-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Which of the following is a multiple of 13?",
+      "diagram": null,
+      "options": [
+        "36",
+        "14",
+        "18",
+        "30",
+        "39"
+      ],
+      "correctAnswer": "39",
+      "solutionVideoId": "5ea3580b-db7b-4d82-a9b5-ad2134ce0572"
+    },
+    {
+      "sourceId": "L14-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Which of the following is a multiple of 7?",
+      "diagram": null,
+      "options": [
+        "15",
+        "17",
+        "13",
+        "21",
+        "18"
+      ],
+      "correctAnswer": "21",
+      "solutionVideoId": "12f814d5-bfe9-480f-97e5-cfd3fee844e4"
+    },
+    {
+      "sourceId": "L14-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Which of the following is a multiple of 8?",
+      "diagram": null,
+      "options": [
+        "41",
+        "32",
+        "49",
+        "30",
+        "31"
+      ],
+      "correctAnswer": "32",
+      "solutionVideoId": "28a60b48-1dfe-4052-a5c9-a8425e7ea257"
+    },
+    {
+      "sourceId": "L14-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Which of the following is a multiple of 12?",
+      "diagram": null,
+      "options": [
+        "11",
+        "18",
+        "36",
+        "17",
+        "13"
+      ],
+      "correctAnswer": "36",
+      "solutionVideoId": "5697792d-cbb6-451b-a599-222b79b4a789"
+    },
+    {
+      "sourceId": "L14-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Which of the following is a multiple of 36?",
+      "diagram": null,
+      "options": [
+        "112",
+        "15",
+        "72",
+        "13",
+        "78"
+      ],
+      "correctAnswer": "72",
+      "solutionVideoId": "794dedb5-eea3-4c1d-b5cf-2a5d697818e4"
+    },
+    {
+      "sourceId": "L14-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Which of the following is a multiple of 132?",
+      "diagram": null,
+      "options": [
+        "264",
+        "348",
+        "672",
+        "527",
+        "287"
+      ],
+      "correctAnswer": "264",
+      "solutionVideoId": "a39f8422-02ee-4e29-830a-314b9a13a8e7"
+    },
+    {
+      "sourceId": "L14-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Which of the following is a multiple of 300?",
+      "diagram": null,
+      "options": [
+        "700",
+        "400",
+        "520",
+        "900",
+        "540"
+      ],
+      "correctAnswer": "900",
+      "solutionVideoId": "b0a04dee-1550-4444-a864-4ef4f7ae734d"
+    },
+    {
+      "sourceId": "L14-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Which of the following is a multiple of 282?",
+      "diagram": null,
+      "options": [
+        "278",
+        "1128",
+        "1347",
+        "356",
+        "290"
+      ],
+      "correctAnswer": "1128",
+      "solutionVideoId": "993e7c64-1d5e-4922-8cdc-b32eec296454"
+    },
+    {
+      "sourceId": "L14-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Which of the following is a multiple of 356?",
+      "diagram": null,
+      "options": [
+        "520",
+        "640",
+        "720",
+        "1068",
+        "350"
+      ],
+      "correctAnswer": "1068",
+      "solutionVideoId": "725719fa-8903-4cab-9adf-9eb33fdce4bf"
+    },
+    {
+      "sourceId": "L14-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Which of the following is a multiple of 750?",
+      "diagram": null,
+      "options": [
+        "920",
+        "900",
+        "800",
+        "820",
+        "3000"
+      ],
+      "correctAnswer": "3000",
+      "solutionVideoId": "97226ba5-6b03-4c0f-9f52-f63cb5fb5edc"
+    },
+    {
+      "sourceId": "L14-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Which of the following is a multiple of 873?",
+      "diagram": null,
+      "options": [
+        "3000",
+        "2782",
+        "2619",
+        "2002",
+        "2772"
+      ],
+      "correctAnswer": "2619",
+      "solutionVideoId": "32d6a093-10cd-4961-b80f-6d2d74aaef57"
+    },
+    {
+      "sourceId": "L14-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Which of the following is a multiple of 900?",
+      "diagram": null,
+      "options": [
+        "1000",
+        "700",
+        "800",
+        "2700",
+        "918"
+      ],
+      "correctAnswer": "2700",
+      "solutionVideoId": "3bb47666-3c4b-413a-83ee-f89146b80db0"
+    },
+    {
+      "sourceId": "L14-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Which of the following is a multiple of 1200?",
+      "diagram": null,
+      "options": [
+        "3600",
+        "2490",
+        "3005",
+        "3000",
+        "4850"
+      ],
+      "correctAnswer": "3600",
+      "solutionVideoId": "768b0d26-5881-4bcf-ad50-f2cb109f497f"
+    },
+    {
+      "sourceId": "L14-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Which of the following is a multiple of 1500?",
+      "diagram": null,
+      "options": [
+        "3500",
+        "5200",
+        "4800",
+        "6000",
+        "7550"
+      ],
+      "correctAnswer": "6000",
+      "solutionVideoId": "13adbdfe-9935-4180-9f6c-9a71c70f9950"
+    }
+  ]
+}
