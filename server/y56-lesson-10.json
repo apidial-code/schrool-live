@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 10,
+  "title": "Subtraction of Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "b1b0f60f-539b-4f1c-a584-4bac2cf431ba",
+  "questions": [
+    {
+      "sourceId": "L10-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Find 0.9 - 0.4",
+      "diagram": null,
+      "options": [
+        "0.1",
+        "3.1",
+        "0.5",
+        "0.3",
+        "0.2"
+      ],
+      "correctAnswer": "0.5",
+      "solutionVideoId": "faf303d1-0c61-4106-8e45-1d940b5fc39a"
+    },
+    {
+      "sourceId": "L10-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "What is 1.3 - 0.5?",
+      "diagram": null,
+      "options": [
+        "0.8",
+        "0.6",
+        "0.7",
+        "0.5",
+        "0.9"
+      ],
+      "correctAnswer": "0.8",
+      "solutionVideoId": "21abd8fb-fae7-43c8-b81d-2cf6506ca127"
+    },
+    {
+      "sourceId": "L10-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Subtract 0.3 from 0.8",
+      "diagram": null,
+      "options": [
+        "0.8",
+        "1",
+        "0.5",
+        "1.2",
+        "1.5"
+      ],
+      "correctAnswer": "0.5",
+      "solutionVideoId": "42bf6697-d8ef-4b8b-8912-19a12f9be52b"
+    },
+    {
+      "sourceId": "L10-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "What is 2.9 - 1.8?",
+      "diagram": null,
+      "options": [
+        "1.8",
+        "1.3",
+        "1.2",
+        "1.4",
+        "1.1"
+      ],
+      "correctAnswer": "1.1",
+      "solutionVideoId": "d092d1ae-60dd-4792-ba21-ead2dc60fb7f"
+    },
+    {
+      "sourceId": "L10-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Calculate 4.8 - 2.7",
+      "diagram": null,
+      "options": [
+        "1.73",
+        "1.8",
+        "1.9",
+        "2.1",
+        "1.72"
+      ],
+      "correctAnswer": "2.1",
+      "solutionVideoId": "320913e6-a5c1-44d6-a217-e9498ee5582d"
+    },
+    {
+      "sourceId": "L10-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Find 5.9 - 3.4",
+      "diagram": null,
+      "options": [
+        "2.5",
+        "2.7",
+        "2.8",
+        "2.4",
+        "2.6"
+      ],
+      "correctAnswer": "2.5",
+      "solutionVideoId": "8a913639-2707-48d2-8e0e-aea410df4a95"
+    },
+    {
+      "sourceId": "L10-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "What is 5.3 - 2.8?",
+      "diagram": null,
+      "options": [
+        "3.12",
+        "2.4",
+        "2.5",
+        "2.3",
+        "3.2"
+      ],
+      "correctAnswer": "2.5",
+      "solutionVideoId": "da3c7e9e-b55f-4af9-bf7e-29e67aeaf40d"
+    },
+    {
+      "sourceId": "L10-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Subtract 2.8 from 4.9",
+      "diagram": null,
+      "options": [
+        "72",
+        "0.27",
+        "7.2",
+        "2.1",
+        "27"
+      ],
+      "correctAnswer": "2.1",
+      "solutionVideoId": "850e93d5-5bfb-40c3-9949-0270c82cfc5e"
+    },
+    {
+      "sourceId": "L10-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Take away 4.7 from 8.1",
+      "diagram": null,
+      "options": [
+        "5.3",
+        "4.8",
+        "8.4",
+        "3.4",
+        "4.3"
+      ],
+      "correctAnswer": "3.4",
+      "solutionVideoId": "97549ff8-268e-4a63-abad-80d6dd941783"
+    },
+    {
+      "sourceId": "L10-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Calculate: 7.5 - 3.8",
+      "diagram": null,
+      "options": [
+        "3.7",
+        "72",
+        "7.3",
+        "73",
+        "37"
+      ],
+      "correctAnswer": "3.7",
+      "solutionVideoId": "a1e9bd4c-f4b2-43fe-802c-3feb1824f3c7"
+    },
+    {
+      "sourceId": "L10-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "6.5 minus 2.8",
+      "diagram": null,
+      "options": [
+        "3.5",
+        "3.2",
+        "3.6",
+        "3.7",
+        "3.3"
+      ],
+      "correctAnswer": "3.7",
+      "solutionVideoId": "2e12cad7-5357-4073-acfe-9d2aa8075485"
+    },
+    {
+      "sourceId": "L10-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "11.3 take away 4.9",
+      "diagram": null,
+      "options": [
+        "0.64",
+        "6.4",
+        "4.6",
+        "46",
+        "64"
+      ],
+      "correctAnswer": "6.4",
+      "solutionVideoId": "5a0e8c0f-66dc-4219-bae4-7871b2f5b5fd"
+    },
+    {
+      "sourceId": "L10-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "25.5 subtract 18.9",
+      "diagram": null,
+      "options": [
+        "6.6",
+        "7.6",
+        "6.5",
+        "5.6",
+        "6.7"
+      ],
+      "correctAnswer": "6.6",
+      "solutionVideoId": "a6f1a386-0f02-446c-a31d-f8ef52049d54"
+    },
+    {
+      "sourceId": "L10-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "35.8 less than 64.6",
+      "diagram": null,
+      "options": [
+        "28.3",
+        "28.8",
+        "2.888",
+        "0.028",
+        "0.0028"
+      ],
+      "correctAnswer": "28.8",
+      "solutionVideoId": "1ebcdc63-c812-4cc1-8da1-eab1bdce8542"
+    },
+    {
+      "sourceId": "L10-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "What is 72.89 - 53.71?",
+      "diagram": null,
+      "options": [
+        "19.18",
+        "19.81",
+        "1.981",
+        "191.8",
+        "0.1918"
+      ],
+      "correctAnswer": "19.18",
+      "solutionVideoId": "5d0d6c94-e1c4-4444-a746-f2865de73caa"
+    },
+    {
+      "sourceId": "L10-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "What is 63.5 take away 33.89?",
+      "diagram": null,
+      "options": [
+        "316.4",
+        "3164",
+        "29.61",
+        "0.3164",
+        "0.0316"
+      ],
+      "correctAnswer": "29.61",
+      "solutionVideoId": "5e5b02e3-4437-4356-ab8c-dc69aad42d5a"
+    },
+    {
+      "sourceId": "L10-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Find 78.4 subtract 43.96",
+      "diagram": null,
+      "options": [
+        "0.0034",
+        "3.44",
+        "0.344",
+        "34.44",
+        "0.034"
+      ],
+      "correctAnswer": "34.44",
+      "solutionVideoId": "5391d43c-4dec-40b0-ba49-69e5990e9d92"
+    },
+    {
+      "sourceId": "L10-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "What is 85.69 subtracted from 91.77?",
+      "diagram": null,
+      "options": [
+        "0.01413",
+        "1.413",
+        "0.1413",
+        "141.3",
+        "6.08"
+      ],
+      "correctAnswer": "6.08",
+      "solutionVideoId": "d8cbba72-68a5-4efb-92e0-c5353c43b08c"
+    },
+    {
+      "sourceId": "L10-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Find 85.47 minus 77.64",
+      "diagram": null,
+      "options": [
+        "1.69",
+        "7.83",
+        "106.9",
+        "5.9",
+        "1.069"
+      ],
+      "correctAnswer": "7.83",
+      "solutionVideoId": "582a7909-7067-47b2-a21b-20145c5426ab"
+    },
+    {
+      "sourceId": "L10-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "What is 62.99 less than 73.68?",
+      "diagram": null,
+      "options": [
+        "0.0008",
+        "0.8",
+        "0.08",
+        "10.69",
+        "0.008"
+      ],
+      "correctAnswer": "10.69",
+      "solutionVideoId": "d5f3fb4a-0944-4e64-921c-88ddfecea0bd"
+    },
+    {
+      "sourceId": "L10-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "What is 54.78 minus 22.90?",
+      "diagram": null,
+      "options": [
+        "31.88",
+        "0.318",
+        "3.188",
+        "0.3188",
+        "3.187"
+      ],
+      "correctAnswer": "31.88",
+      "solutionVideoId": "d1a5d9ff-262d-4948-878d-ce66ff46fdb7"
+    },
+    {
+      "sourceId": "L10-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Find 33.54 subtracted from 88.54",
+      "diagram": null,
+      "options": [
+        "5.5",
+        "0.055",
+        "0.0055",
+        "55",
+        "55.5"
+      ],
+      "correctAnswer": "55",
+      "solutionVideoId": "59c412d7-7c98-4fa4-ba97-7983cbe0b803"
+    },
+    {
+      "sourceId": "L10-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Find 324.000 reduced by 123.967",
+      "diagram": null,
+      "options": [
+        "832.321",
+        "382.123",
+        "200.033",
+        "283.321",
+        "832.123"
+      ],
+      "correctAnswer": "200.033",
+      "solutionVideoId": "6ab2a6f4-3ff6-4c77-b75d-032c0a7d8804"
+    },
+    {
+      "sourceId": "L10-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Find 261.785 short of 643.908",
+      "diagram": null,
+      "options": [
+        "382.123",
+        "512.671",
+        "125.176",
+        "215.176",
+        "512.176"
+      ],
+      "correctAnswer": "382.123",
+      "solutionVideoId": "7fb0303c-1e02-4bd3-b18b-0cd9a0c5b557"
+    },
+    {
+      "sourceId": "L10-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Find 453.008 reduced by 237.832",
+      "diagram": null,
+      "options": [
+        "7223.622",
+        "3272.622",
+        "7322.622",
+        "215.176",
+        "2327.622"
+      ],
+      "correctAnswer": "215.176",
+      "solutionVideoId": "9ef10dea-3a7b-4461-8bd4-643624d6b86f"
+    },
+    {
+      "sourceId": "L10-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "What is 2308.998 subtracted from 4681.62?",
+      "diagram": null,
+      "options": [
+        "9217.997",
+        "1988.997",
+        "9198.997",
+        "2372.622",
+        "9120.997"
+      ],
+      "correctAnswer": "2372.622",
+      "solutionVideoId": "c96debf2-f959-4647-911e-caefa8916dd1"
+    },
+    {
+      "sourceId": "L10-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Find 2107.823 taken off 2306.82",
+      "diagram": null,
+      "options": [
+        "198.997",
+        "198.908",
+        "198.996",
+        "198.995",
+        "198.998"
+      ],
+      "correctAnswer": "198.997",
+      "solutionVideoId": "b78d03f5-7b17-41db-8ee4-ce36c8d10b9f"
+    },
+    {
+      "sourceId": "L10-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "What is 764.802 reduced by 432.889?",
+      "diagram": null,
+      "options": [
+        "331.56",
+        "331.913",
+        "331.72",
+        "331.61",
+        "331.65"
+      ],
+      "correctAnswer": "331.913",
+      "solutionVideoId": "7b28258b-894f-43fa-a88f-1eb5357888c2"
+    },
+    {
+      "sourceId": "L10-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Subtract 3254.998 from 6481.003",
+      "diagram": null,
+      "options": [
+        "3226.815",
+        "3226.525",
+        "3226.255",
+        "3226.005",
+        "3226.725"
+      ],
+      "correctAnswer": "3226.005",
+      "solutionVideoId": "ccf22044-a1e5-4498-be67-aeef50973d9b"
+    },
+    {
+      "sourceId": "L10-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "What is 3468.003 subtracted from 5524.255?",
+      "diagram": null,
+      "options": [
+        "2055.36",
+        "2054.252",
+        "2056.253",
+        "2054.205",
+        "2056.252"
+      ],
+      "correctAnswer": "2056.252",
+      "solutionVideoId": "e5d7d8ad-6215-473f-8e28-2d7f5e866c14"
+    }
+  ]
+}
