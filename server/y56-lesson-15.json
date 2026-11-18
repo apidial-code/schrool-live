@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 15,
+  "title": "Highest Common Factor (HCF)",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "191857b2-c0d5-4b5b-be86-429acbfef425",
+  "questions": [
+    {
+      "sourceId": "L15-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Find the highest common factor of 8 and 24.",
+      "diagram": null,
+      "options": [
+        "6",
+        "8",
+        "12",
+        "18",
+        "24"
+      ],
+      "correctAnswer": "8",
+      "solutionVideoId": "02422613-37c3-4e9b-abaf-d161a5f7270e"
+    },
+    {
+      "sourceId": "L15-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Find the highest common factor of 60 and 300.",
+      "diagram": null,
+      "options": [
+        "2",
+        "10",
+        "60",
+        "1",
+        "5"
+      ],
+      "correctAnswer": "60",
+      "solutionVideoId": "82e32367-af75-46d9-9c97-bba760fe5534"
+    },
+    {
+      "sourceId": "L15-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Find the highest common factor of 90 and 270.",
+      "diagram": null,
+      "options": [
+        "50",
+        "70",
+        "20",
+        "90",
+        "40"
+      ],
+      "correctAnswer": "90",
+      "solutionVideoId": "0715eabb-ec20-4d72-ba99-b98e05d05280"
+    },
+    {
+      "sourceId": "L15-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Find the highest common factor of 120 and 360.",
+      "diagram": null,
+      "options": [
+        "130",
+        "120",
+        "110",
+        "100",
+        "115"
+      ],
+      "correctAnswer": "120",
+      "solutionVideoId": "7aa2e3b0-afcd-4873-8ad4-d7f286ec099b"
+    },
+    {
+      "sourceId": "L15-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Find the highest common factor of 280 and 720.",
+      "diagram": null,
+      "options": [
+        "20",
+        "15",
+        "50",
+        "30",
+        "40"
+      ],
+      "correctAnswer": "40",
+      "solutionVideoId": "d177f9b2-b739-4737-812b-f385939ae129"
+    },
+    {
+      "sourceId": "L15-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Find the highest common factor of 360 and 840.",
+      "diagram": null,
+      "options": [
+        "120",
+        "70",
+        "110",
+        "90",
+        "80"
+      ],
+      "correctAnswer": "120",
+      "solutionVideoId": "efcfab8c-d3c9-44a5-ad65-487e5ed7dc50"
+    },
+    {
+      "sourceId": "L15-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Find the highest common factor of 324 and 1890.",
+      "diagram": null,
+      "options": [
+        "1",
+        "4",
+        "5",
+        "54",
+        "2"
+      ],
+      "correctAnswer": "54",
+      "solutionVideoId": "8429a417-e94e-4b8a-ba47-866c30e14ff4"
+    },
+    {
+      "sourceId": "L15-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Find the highest common factor of 272 and 564.",
+      "diagram": null,
+      "options": [
+        "9",
+        "7",
+        "4",
+        "5",
+        "8"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "55375be2-8a80-497f-8752-c552556cfc71"
+    },
+    {
+      "sourceId": "L15-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Find the highest common factor of 275 and 650.",
+      "diagram": null,
+      "options": [
+        "25",
+        "20",
+        "35",
+        "15",
+        "45"
+      ],
+      "correctAnswer": "25",
+      "solutionVideoId": "e5482cd4-ba1e-4144-a65f-8e5e0771958d"
+    },
+    {
+      "sourceId": "L15-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Find the highest common factor of 385 and 590.",
+      "diagram": null,
+      "options": [
+        "25",
+        "10",
+        "15",
+        "5",
+        "20"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "29a39e0a-12e6-4cce-8cc2-66deb2fb2068"
+    },
+    {
+      "sourceId": "L15-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Find the highest common factor of 1890 and 4900.",
+      "diagram": null,
+      "options": [
+        "30",
+        "11",
+        "70",
+        "15",
+        "25"
+      ],
+      "correctAnswer": "70",
+      "solutionVideoId": "28c3dea2-cac2-428b-b1e8-10d392d75583"
+    },
+    {
+      "sourceId": "L15-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Find the highest common factor of 1960 and 3375.",
+      "diagram": null,
+      "options": [
+        "30",
+        "20",
+        "10",
+        "5",
+        "35"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "ae7d5e5e-f917-40ee-ab65-0142900c914e"
+    },
+    {
+      "sourceId": "L15-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Find the highest common factor of 8232 and 1568.",
+      "diagram": null,
+      "options": [
+        "392",
+        "329",
+        "239",
+        "293",
+        "932"
+      ],
+      "correctAnswer": "392",
+      "solutionVideoId": "e0ee7717-7955-4134-9a8d-4ce45d4a3283"
+    },
+    {
+      "sourceId": "L15-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Find the highest common factor of 1568 and 3375.",
+      "diagram": null,
+      "options": [
+        "30",
+        "21",
+        "23",
+        "25",
+        "1"
+      ],
+      "correctAnswer": "1",
+      "solutionVideoId": "b35d61df-0bd3-4366-8a8c-3055f238d0a1"
+    },
+    {
+      "sourceId": "L15-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Find the highest common factor of 12 and 48.",
+      "diagram": null,
+      "options": [
+        "21",
+        "11",
+        "12",
+        "15",
+        "18"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "dfb9000f-6c68-4d2b-9758-73928fc77f0a"
+    },
+    {
+      "sourceId": "L15-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Find the highest common factor of 40 and 60.",
+      "diagram": null,
+      "options": [
+        "4",
+        "3",
+        "11",
+        "20",
+        "7"
+      ],
+      "correctAnswer": "20",
+      "solutionVideoId": "9ae2af1d-d4a8-4f08-a643-bdd61e12735e"
+    },
+    {
+      "sourceId": "L15-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Find the highest common factor of 12 and 72.",
+      "diagram": null,
+      "options": [
+        "4",
+        "11",
+        "7",
+        "12",
+        "5"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "a35d193f-d0dc-4d9e-88a5-4022d3558733"
+    },
+    {
+      "sourceId": "L15-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Find the highest common factor of 20 and 100.",
+      "diagram": null,
+      "options": [
+        "20",
+        "7",
+        "17",
+        "43",
+        "44"
+      ],
+      "correctAnswer": "20",
+      "solutionVideoId": "d52a9b80-491e-4dae-8b27-5be5d9028300"
+    },
+    {
+      "sourceId": "L15-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Find the highest common factor of 500 and 1500.",
+      "diagram": null,
+      "options": [
+        "300",
+        "500",
+        "250",
+        "260",
+        "320"
+      ],
+      "correctAnswer": "500",
+      "solutionVideoId": "5ce8373c-4909-4fa1-b131-87beef8754d0"
+    },
+    {
+      "sourceId": "L15-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Find the highest common factor of 12 and 64.",
+      "diagram": null,
+      "options": [
+        "11",
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "0d12864d-38b1-4ab3-842b-91feb493a6f2"
+    },
+    {
+      "sourceId": "L15-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Find the highest common factor of 32 and 72.",
+      "diagram": null,
+      "options": [
+        "11",
+        "8",
+        "4",
+        "5",
+        "7"
+      ],
+      "correctAnswer": "8",
+      "solutionVideoId": "157947c9-0ee4-4dae-a86e-77d627d3daa1"
+    },
+    {
+      "sourceId": "L15-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Find the highest common factor of 120 and 288.",
+      "diagram": null,
+      "options": [
+        "24",
+        "12",
+        "32",
+        "40",
+        "18"
+      ],
+      "correctAnswer": "24",
+      "solutionVideoId": "13510ffe-693c-416e-b422-63be8cf7a7a8"
+    },
+    {
+      "sourceId": "L15-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Find the highest common factor of 200 and 1400.",
+      "diagram": null,
+      "options": [
+        "300",
+        "100",
+        "135",
+        "200",
+        "250"
+      ],
+      "correctAnswer": "200",
+      "solutionVideoId": "2e3b48fa-947f-4292-a024-a1b6648772c3"
+    },
+    {
+      "sourceId": "L15-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Find the highest common factor of 9 and 81.",
+      "diagram": null,
+      "options": [
+        "11",
+        "9",
+        "4",
+        "5",
+        "13"
+      ],
+      "correctAnswer": "9",
+      "solutionVideoId": "f34d1cfc-dfe0-47d6-a733-d8a062f4c2b3"
+    },
+    {
+      "sourceId": "L15-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Find the highest common factor of 24 and 60.",
+      "diagram": null,
+      "options": [
+        "6",
+        "3",
+        "12",
+        "5",
+        "4"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "8bc2a8a1-8d87-4631-b861-97e9d190dff6"
+    },
+    {
+      "sourceId": "L15-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Find the highest common factor of 30 and 120.",
+      "diagram": null,
+      "options": [
+        "30",
+        "45",
+        "22",
+        "70",
+        "60"
+      ],
+      "correctAnswer": "30",
+      "solutionVideoId": "df9b52a0-7ef8-4848-a986-3b5baeb55610"
+    },
+    {
+      "sourceId": "L15-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Find the highest common factor of 612 and 36.",
+      "diagram": null,
+      "options": [
+        "27",
+        "35",
+        "30",
+        "36",
+        "20"
+      ],
+      "correctAnswer": "36",
+      "solutionVideoId": "0c5b1fec-89ad-41a5-b475-1482b9ee7ec2"
+    },
+    {
+      "sourceId": "L15-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Find the highest common factor of 2744 and 28.",
+      "diagram": null,
+      "options": [
+        "20",
+        "25",
+        "26",
+        "28",
+        "27"
+      ],
+      "correctAnswer": "28",
+      "solutionVideoId": "12fe8663-a838-4560-b147-aedd9fd61bef"
+    },
+    {
+      "sourceId": "L15-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Find the highest common factor of 882 and 294.",
+      "diagram": null,
+      "options": [
+        "294",
+        "280",
+        "292",
+        "290",
+        "293"
+      ],
+      "correctAnswer": "294",
+      "solutionVideoId": "89202fc6-0d46-4412-97c5-5defd1ad6605"
+    },
+    {
+      "sourceId": "L15-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Find the highest common factor of 1050 and 70.",
+      "diagram": null,
+      "options": [
+        "40",
+        "10",
+        "70",
+        "20",
+        "50"
+      ],
+      "correctAnswer": "70",
+      "solutionVideoId": "d3b52af4-c828-4af4-86c3-956ea8c70470"
+    }
+  ]
+}
