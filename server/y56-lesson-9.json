@@ -345,16 +345,16 @@
       "sourceId": "L9-C2",
       "difficulty": "challenging",
       "orderIndex": 2,
-      "questionText": "Add: 7.5 + 8.3 + 2.6 + 9.5",
+      "questionText": "Add: 3.8 + 2.7 + 5.6 + 3.8",
       "diagram": null,
       "options": [
         "61.1",
         "25.9",
         "16.8",
-        "57.8",
-        "27.9"
+        "15.9",
+        "57.8"
       ],
-      "correctAnswer": "27.9",
+      "correctAnswer": "15.9",
       "solutionVideoId": "72890daa-9826-4b69-8c55-4eb02c32f202"
     },
     {

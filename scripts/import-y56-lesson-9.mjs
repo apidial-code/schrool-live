@@ -105,6 +105,25 @@ async function run() {
         return "already imported";
       }
 
+      const correctedQuestion = questions.find(question => question.sourceId === "L9-C2");
+      const previousQuestion = {
+        ...correctedQuestion,
+        questionText: "Add: 7.5 + 8.3 + 2.6 + 9.5",
+        optionsJson: JSON.stringify(["61.1", "25.9", "16.8", "57.8", "27.9"]),
+        correctAnswer: "27.9",
+      };
+      if (saved.length === questions.length &&
+          questions.every(question => matches(savedBySource.get(question.sourceId),
+            question.sourceId === "L9-C2" ? previousQuestion : question))) {
+        const existing = savedBySource.get("L9-C2");
+        await tx.update(lessonQuestions).set({
+          questionText: correctedQuestion.questionText,
+          optionsJson: correctedQuestion.optionsJson,
+          correctAnswer: correctedQuestion.correctAnswer,
+        }).where(eq(lessonQuestions.id, existing.id));
+        return "Challenging Q2 corrected";
+      }
+
       throw new Error("Existing Lesson 9 questions differ from this import.");
     }
     await tx.insert(lessonQuestions).values(questions);
