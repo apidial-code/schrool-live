@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 9,
+  "title": "Adding Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "b1305af3-9e74-484c-b7f3-be57f33e15b7",
+  "questions": [
+    {
+      "sourceId": "L9-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Add 0.3 to 0.2",
+      "diagram": null,
+      "options": [
+        "0.7",
+        "0.3",
+        "0.4",
+        "0.6",
+        "0.5"
+      ],
+      "correctAnswer": "0.5",
+      "solutionVideoId": "ca73d6a3-ae91-4a02-bd2b-1a8ef343cd81"
+    },
+    {
+      "sourceId": "L9-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "0.8 + 0.5",
+      "diagram": null,
+      "options": [
+        "13",
+        "0.13",
+        "0.3",
+        "0.31",
+        "1.3"
+      ],
+      "correctAnswer": "1.3",
+      "solutionVideoId": "e5b9c1de-0ecf-4776-b673-cc6116be1664"
+    },
+    {
+      "sourceId": "L9-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "4.2 plus 6.3",
+      "diagram": null,
+      "options": [
+        "1.5",
+        "1.05",
+        "0.15",
+        "0.015",
+        "10.5"
+      ],
+      "correctAnswer": "10.5",
+      "solutionVideoId": "6416ff44-11c5-433b-8445-96420ee0f0e3"
+    },
+    {
+      "sourceId": "L9-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "What is 5 added to 4.1?",
+      "diagram": null,
+      "options": [
+        "6.8",
+        "7.8",
+        "6.7",
+        "7.5",
+        "9.1"
+      ],
+      "correctAnswer": "9.1",
+      "solutionVideoId": "48e20d85-e752-42f5-8952-a735695b73e7"
+    },
+    {
+      "sourceId": "L9-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "The answer to 3 + 6.1 is:",
+      "diagram": null,
+      "options": [
+        "9.8",
+        "8.8",
+        "9.3",
+        "9.5",
+        "9.1"
+      ],
+      "correctAnswer": "9.1",
+      "solutionVideoId": "00bea2d2-b04e-482c-aa3d-b55f2cf4ce6c"
+    },
+    {
+      "sourceId": "L9-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Simplify: 7.0 + 8.9",
+      "diagram": null,
+      "options": [
+        "9.8",
+        "8.8",
+        "9.3",
+        "9.5",
+        "15.9"
+      ],
+      "correctAnswer": "15.9",
+      "solutionVideoId": "3e4c02fe-e0fc-4d7e-bfad-c00cd112a82a"
+    },
+    {
+      "sourceId": "L9-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "What is 16.5 + 2.8?",
+      "diagram": null,
+      "options": [
+        "15.9",
+        "15.7",
+        "13.9",
+        "14.8",
+        "19.3"
+      ],
+      "correctAnswer": "19.3",
+      "solutionVideoId": "5afe3988-f7e4-4ec0-984d-ae63e07aed2d"
+    },
+    {
+      "sourceId": "L9-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Add 2.8 to 5.9",
+      "diagram": null,
+      "options": [
+        "6.1",
+        "7.8",
+        "9.1",
+        "7.7",
+        "8.7"
+      ],
+      "correctAnswer": "8.7",
+      "solutionVideoId": "c97c1061-7c20-455a-9078-f39cf01f3c4b"
+    },
+    {
+      "sourceId": "L9-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "What is the answer to 9.5 + 8.7 + 6.3?",
+      "diagram": null,
+      "options": [
+        "23.4",
+        "11.13",
+        "20.71",
+        "21.8",
+        "24.5"
+      ],
+      "correctAnswer": "24.5",
+      "solutionVideoId": "82640322-f5e3-4221-86b8-896384522d85"
+    },
+    {
+      "sourceId": "L9-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Simplify: 2.5 + 7.3 + 8.9",
+      "diagram": null,
+      "options": [
+        "14.8",
+        "19.8",
+        "20.1",
+        "23.8",
+        "18.7"
+      ],
+      "correctAnswer": "18.7",
+      "solutionVideoId": "ac2981e3-d4ab-411c-b12c-1190b48e1a07"
+    },
+    {
+      "sourceId": "L9-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Simplify: 9.7 + 5.4 + 7.8",
+      "diagram": null,
+      "options": [
+        "19.9",
+        "19.8",
+        "20.1",
+        "15.8",
+        "22.9"
+      ],
+      "correctAnswer": "22.9",
+      "solutionVideoId": "93d24e8e-973a-47d9-96b1-b7cf3dc1b168"
+    },
+    {
+      "sourceId": "L9-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Add together: 1.8 + 9.56 + 11.6",
+      "diagram": null,
+      "options": [
+        "19.8",
+        "21.9",
+        "18.9",
+        "17.9",
+        "22.96"
+      ],
+      "correctAnswer": "22.96",
+      "solutionVideoId": "1e9ca26f-61c0-42eb-8f8c-ef9ade029e54"
+    },
+    {
+      "sourceId": "L9-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Find the total of 7.8 + 3.4 + 9.4",
+      "diagram": null,
+      "options": [
+        "18.9",
+        "21.9",
+        "17.8",
+        "14.91",
+        "20.6"
+      ],
+      "correctAnswer": "20.6",
+      "solutionVideoId": "31009b24-09f8-4875-9e78-7e0445836191"
+    },
+    {
+      "sourceId": "L9-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "What is the sum of 4.2 + 5.3 + 8.1?",
+      "diagram": null,
+      "options": [
+        "16.5",
+        "20.6",
+        "19.8",
+        "19.81",
+        "17.6"
+      ],
+      "correctAnswer": "17.6",
+      "solutionVideoId": "848cfa31-3ebd-4f22-b3c1-39f332463f22"
+    },
+    {
+      "sourceId": "L9-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Find the total of 3.8 + 2.7 + 5.6 + 3.8",
+      "diagram": null,
+      "options": [
+        "17.9",
+        "7.8",
+        "15.6",
+        "14.8",
+        "15.9"
+      ],
+      "correctAnswer": "15.9",
+      "solutionVideoId": "ca802800-7cd6-4737-b3a9-8f0e1f13c649"
+    },
+    {
+      "sourceId": "L9-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Solve: 7.3 plus 8.2 plus 9.4",
+      "diagram": null,
+      "options": [
+        "19.9",
+        "19.8",
+        "14.8",
+        "18.9",
+        "24.9"
+      ],
+      "correctAnswer": "24.9",
+      "solutionVideoId": "54e31c97-ab3a-4373-8e2d-98308e52d571"
+    },
+    {
+      "sourceId": "L9-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Simplify: 2.8 + 3.5 + 4.8",
+      "diagram": null,
+      "options": [
+        "14.8",
+        "23.6",
+        "22.8",
+        "9.8",
+        "11.1"
+      ],
+      "correctAnswer": "11.1",
+      "solutionVideoId": "4fecc603-7d03-4fba-b085-817b247f5455"
+    },
+    {
+      "sourceId": "L9-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Add together: 4.2 + 2.8 + 3.2",
+      "diagram": null,
+      "options": [
+        "13.4",
+        "12.6",
+        "9.8",
+        "7.9",
+        "10.2"
+      ],
+      "correctAnswer": "10.2",
+      "solutionVideoId": "5abe56ff-3b6a-4c1b-a257-6cddf3a211f7"
+    },
+    {
+      "sourceId": "L9-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "What is 5.8 + 5.2 + 4.9?",
+      "diagram": null,
+      "options": [
+        "14.7",
+        "18.4",
+        "17.6",
+        "15.7",
+        "15.9"
+      ],
+      "correctAnswer": "15.9",
+      "solutionVideoId": "f1b7cb56-8699-4331-a4ee-e605d39bd4b9"
+    },
+    {
+      "sourceId": "L9-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Simplify: 4.3 + 9.1 + 8.5",
+      "diagram": null,
+      "options": [
+        "13.6",
+        "18.7",
+        "17.8",
+        "18.9",
+        "21.9"
+      ],
+      "correctAnswer": "21.9",
+      "solutionVideoId": "cbba13ed-b486-4c98-9a1e-ce9e00718faf"
+    },
+    {
+      "sourceId": "L9-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Add together 11.7, 14.8 and 32.9",
+      "diagram": null,
+      "options": [
+        "55.8",
+        "54.5",
+        "58.9",
+        "57.8",
+        "59.4"
+      ],
+      "correctAnswer": "59.4",
+      "solutionVideoId": "5ed593cc-84ac-425a-a7b7-c14a6adb458b"
+    },
+    {
+      "sourceId": "L9-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Add: 7.5 + 8.3 + 2.6 + 9.5",
+      "diagram": null,
+      "options": [
+        "61.1",
+        "25.9",
+        "16.8",
+        "57.8",
+        "27.9"
+      ],
+      "correctAnswer": "27.9",
+      "solutionVideoId": "72890daa-9826-4b69-8c55-4eb02c32f202"
+    },
+    {
+      "sourceId": "L9-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "What is 8.6 + 4.9 + 3.5 + 1.4?",
+      "diagram": null,
+      "options": [
+        "14.5",
+        "23.4",
+        "15.8",
+        "17.5",
+        "18.4"
+      ],
+      "correctAnswer": "18.4",
+      "solutionVideoId": "33db0a1f-f85b-440a-a8cf-67994f8daee2"
+    },
+    {
+      "sourceId": "L9-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "What do we get when we add 5.8, 3.6, 2.6 and 1.8 together?",
+      "diagram": null,
+      "options": [
+        "17.1",
+        "12.8",
+        "11.9",
+        "18.8",
+        "13.8"
+      ],
+      "correctAnswer": "13.8",
+      "solutionVideoId": "aa778848-6b76-40d8-b1a9-92b336cac63b"
+    },
+    {
+      "sourceId": "L9-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Calculate: 12.8 + 15.9 + 11.5 + 71.89",
+      "diagram": null,
+      "options": [
+        "118.9",
+        "111.09",
+        "110.09",
+        "113.09",
+        "112.09"
+      ],
+      "correctAnswer": "112.09",
+      "solutionVideoId": "12464c91-0fe5-4af8-86a5-10ce05326d76"
+    },
+    {
+      "sourceId": "L9-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Add together: 14.25 + 62.891 + 45.92",
+      "diagram": null,
+      "options": [
+        "114.081",
+        "111.861",
+        "112.861",
+        "113.071",
+        "123.061"
+      ],
+      "correctAnswer": "123.061",
+      "solutionVideoId": "428baa04-b3f7-4448-b9d2-20e7116a21fd"
+    },
+    {
+      "sourceId": "L9-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Simplify: 23.18 + 42.313 + 71.82",
+      "diagram": null,
+      "options": [
+        "137.823",
+        "110.713",
+        "91.813",
+        "90.713",
+        "137.313"
+      ],
+      "correctAnswer": "137.313",
+      "solutionVideoId": "3319db65-eba3-4445-892c-0e6000416b82"
+    },
+    {
+      "sourceId": "L9-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "What do you get when you add the following: 53.78 + 71.82 + 93.675?",
+      "diagram": null,
+      "options": [
+        "281.525",
+        "912.525",
+        "192.255",
+        "182.525",
+        "219.275"
+      ],
+      "correctAnswer": "219.275",
+      "solutionVideoId": "5efc263e-4943-422f-b0c7-6e38d3252cf8"
+    },
+    {
+      "sourceId": "L9-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "What is the answer to 81.57 + 92.732 + 35.101 + 34.828?",
+      "diagram": null,
+      "options": [
+        "442.231",
+        "244.321",
+        "424.321",
+        "424.231",
+        "244.231"
+      ],
+      "correctAnswer": "244.231",
+      "solutionVideoId": "db25f9d1-cc29-4fb6-89aa-9398274d8a4a"
+    },
+    {
+      "sourceId": "L9-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Add together the following: 72.818, 91.484, 101.82, 32.87",
+      "diagram": null,
+      "options": [
+        "829.992",
+        "424.321",
+        "892.992",
+        "289.992",
+        "298.992"
+      ],
+      "correctAnswer": "298.992",
+      "solutionVideoId": "f376cef6-0078-475b-953b-8e4196502462"
+    }
+  ]
+}
