@@ -62,6 +62,19 @@ export default function EnrollmentPaymentReturn() {
         <p role="status" className="mt-4">
           {isPending ? "Checking payment status…" : message}
         </p>
+        {confirmed && (
+          <section className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-5" aria-label="Student sign-in instructions">
+            <h2 className="text-xl font-semibold">Next step: student sign-in</h2>
+            <p className="mt-3">Use the student email address recorded on your enrolment. The student signs in separately from the parent or consultant.</p>
+            <ol className="mt-3 list-decimal space-y-2 pl-6">
+              <li>Open the sign-in page below and enter the student email address.</li>
+              <li>Request a sign-in link, then open the new email and follow the link within 15 minutes.</li>
+              <li>On My enrolments, select View lessons and open the first available lesson.</li>
+            </ol>
+            <a href="/login" className="mt-5 inline-block rounded-lg bg-[#1560B0] px-5 py-3 font-semibold text-white">Go to student sign-in</a>
+            <p className="mt-4 text-sm">You can sign in even if the welcome email has not arrived. Check Spam for the requested sign-in email. If your course is unavailable after signing in, contact your consultant. Do not pay again.</p>
+          </section>
+        )}
         {!cancelled && sessionId && !confirmed && (
           <button
             type="button"

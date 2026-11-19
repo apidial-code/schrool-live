@@ -144,3 +144,70 @@ export async function sendSignInEmail(email: string, token: string) {
   }
   
 
+
+
+// Welcome messages contain no authentication token. Students request a fresh,
+// single-use sign-in link when they are ready to learn.
+export async function sendStudentWelcomeEmail(email: string) {
+  const recipient = z.string().trim().email().max(254).parse(email);
+  const senderEmail = z.string().email().max(254).parse(process.env.BREVO_FROM_EMAIL?.trim());
+  const apiKey = process.env.BREVO_API_KEY?.trim();
+  if (!apiKey || apiKey === "test-brevo-key") throw new Error("Welcome email configuration is incomplete.");
+  const link = new URL("/login", getSignInOrigin()).toString();
+  const safeLink = link.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+  const text = [
+    "Welcome to Schrool! Your Year 5/6 course access is ready.",
+    "Open this page to sign in: " + link,
+    "Enter this student email address: " + recipient,
+    "Select Send sign-in link, then open the new email and follow its link. The sign-in link expires in 15 minutes and can be used once.",
+    "On My enrolments, select View lessons and open What is a Fraction. Watch the lesson, then start Easy.",
+    "Answer all 10 questions and submit. A valid score of at least 8/10 unlocks the next difficulty. Your answers are saved as you go.",
+    "If you need help signing in, contact your Schrool consultant.",
+    "This email relates to your Schrool staging test enrolment.",
+  ].join("\n\n");
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    dispatcher: getBrevoProxy(), method: "POST", redirect: "error",
+    signal: AbortSignal.timeout(10000),
+    headers: { "api-key": apiKey, "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      sender: { email: senderEmail, name: process.env.BREVO_FROM_NAME?.trim() || "Schrool" },
+      to: [{ email: recipient }], subject: "Welcome to Schrool · Your Year 5/6 course is ready",
+      textContent: text,
+      htmlContent: `<h1>Welcome to Schrool!</h1><p>Your Year 5/6 course access is ready.</p>
+        <p><a href="${safeLink}">Sign in to start learning</a></p>
+        <ol><li>Enter your student email address and select <strong>Send sign-in link</strong>.</li>
+        <li>Open the new sign-in email and follow its link within 15 minutes.</li>
+        <li>On <strong>My enrolments</strong>, select <strong>View lessons</strong> and open <strong>What is a Fraction</strong>.</li>
+        <li>Watch the lesson, then start Easy. Answer all 10 questions and submit. A valid score of 8/10 unlocks the next difficulty.</li></ol>
+        <p>Your answers are saved as you go. Contact your Schrool consultant if you need help signing in.</p>
+        <p>This email relates to your Schrool staging test enrolment.</p>`,
+      tags: ["schrool-student-welcome"],
+    }),
+  });
+  await response.body?.cancel();
+  if (!response.ok) throw new Error(`Welcome email rejected (HTTP ${response.status}).`);
+}
+
+export async function sendAdminEnrollmentEmail(enrollmentId: number, summary: string) {
+  const recipient = "5qmhpro@gmail.com";
+  const senderEmail = z.string().email().max(254).parse(process.env.BREVO_FROM_EMAIL?.trim());
+  const apiKey = process.env.BREVO_API_KEY?.trim();
+  if (!apiKey || apiKey === "test-brevo-key") throw new Error("Admin email configuration is incomplete.");
+  if (getSignInOrigin() !== "https://schrool-platform-staging-3583c1139100.herokuapp.com") {
+    throw new Error("Staging enrolment notification required.");
+  }
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    dispatcher: getBrevoProxy(), method: "POST", redirect: "error",
+    signal: AbortSignal.timeout(10000),
+    headers: { "api-key": apiKey, "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      sender: { email: senderEmail, name: process.env.BREVO_FROM_NAME?.trim() || "Schrool" },
+      to: [{ email: recipient }],
+      subject: `[STAGING] Enrolment #${enrollmentId} · Payment recorded and access activated`,
+      textContent: summary,
+      tags: ["schrool-admin-enrolment"],
+    }),
+  });
+  await response.body?.cancel();
+  if (!response.ok) throw new Error(`Admin email rejected (HTTP ${response.status}).`);
+}
