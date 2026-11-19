@@ -1,3 +1,4 @@
+import { lessonScores } from "../../shared/courseProgress.js";
 import { randomInt, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
 import { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";
@@ -178,7 +179,25 @@ async function progress(db: any, studentId: number, enrollmentId: number, lesson
   return result;
 }
 export const lessonsRouter = router({
-  list: courseProcedure.query(({ ctx }) => courseProgress(ctx.db, ctx.user.id, ctx.access)),
+  list: courseProcedure.query(async ({ ctx }) => {
+    const course = await courseProgress(ctx.db, ctx.user.id, ctx.access);
+    // Scope every score to this student, enrolment and course. In-progress
+    // attempts have no score and must never look like a submitted zero.
+    const scores: { lessonId: number; difficulty: string; best: number | null; submitted: number; active: number }[] = course.length ? await ctx.db.select({
+      lessonId: lessonAttempts.lessonId,
+      difficulty: lessonAttempts.difficulty,
+      best: sql<number | null>`MAX(CASE WHEN ${lessonAttempts.status} = 'submitted' THEN ${lessonAttempts.validScore} ELSE NULL END)`,
+      submitted: sql<number>`SUM(CASE WHEN ${lessonAttempts.status} = 'submitted' THEN 1 ELSE 0 END)`,
+      active: sql<number>`SUM(CASE WHEN ${lessonAttempts.status} = 'in_progress' THEN 1 ELSE 0 END)`,
+    }).from(lessonAttempts).where(and(
+      eq(lessonAttempts.studentId, ctx.user.id),
+      eq(lessonAttempts.enrollmentId, ctx.access.enrollmentId),
+      inArray(lessonAttempts.lessonId, course.map(lesson => lesson.id)),
+    )).groupBy(lessonAttempts.lessonId, lessonAttempts.difficulty) : [];
+    return course.map(lesson => ({ ...lesson,
+      levelScores: lessonScores(scores.filter(score => score.lessonId === lesson.id)),
+    }));
+  }),
   getById: lessonProcedure.query(({ ctx }) => ctx.lesson),
   getExercises: lessonProcedure.query(async ({ ctx, input }) => {
     const levels = await progress(ctx.db, ctx.user.id, input.enrollmentId, input.lessonId);

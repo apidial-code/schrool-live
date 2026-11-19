@@ -1,4 +1,5 @@
 import React from "react";
+import { courseOverview, courseLevels } from "../../shared/courseProgress";
 import { trpc } from "../lib/trpc";
 
 export default function StudentHome() {
@@ -82,6 +83,7 @@ export default function StudentHome() {
                   </p>
                   <p>Enrolment status: {item.status}</p>
                   <p>Payment status: {item.paymentStatus}</p>
+                  {item.accessEndsAt && <p className="mt-2 text-sm text-slate-600">Access ends {new Date(item.accessEndsAt).toLocaleDateString("en-AU", { timeZone: "Australia/Sydney" })}</p>}
                   <CourseLessons enrollmentId={item.id} />
                 </li>
               ))}
@@ -92,46 +94,15 @@ export default function StudentHome() {
     </main>
   );
 }
-function CourseAccessCheck({ enrollmentId }: { enrollmentId: number }) {
-  const access = trpc.student.checkCourseAccess.useQuery(
-    { enrollmentId },
-    { enabled: false, retry: false, gcTime: 0 },
-  );
-
-  return (
-    <div className="mt-4">
-      <button
-        onClick={() => access.refetch()}
-        disabled={access.isFetching}
-        className="rounded-lg bg-[#1560B0] px-4 py-2 text-white disabled:opacity-50"
-      >
-        {access.isFetching ? "Checking…" : "Check course access"}
-      </button>
-
-      <div role="status" className="mt-3">
-        {!access.isFetching && access.error ? (
-          <p>
-            {access.error.data?.code === "FORBIDDEN"
-              ? "Course access is currently locked."
-              : access.error.data?.code === "UNAUTHORIZED"
-                ? "Please sign in again to check access."
-                : "Unable to check course access. Please try again."}
-          </p>
-        ) : !access.isFetching && access.data ? (
-          <p>
-            Access check passed. Lesson opening is not connected yet.
-          </p>
-        ) : null}
-      </div>
-    </div>
-  );
-}
 function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
   const lessons = trpc.lessons.list.useQuery(
     { enrollmentId },
-    { enabled: false, retry: false, gcTime: 0 },
+    { enabled: false, retry: false, gcTime: 0, staleTime: 0 },
   );
 
+  const overview = courseOverview(lessons.data ?? []);
+  const names = { easy: "Easy", medium: "Medium", challenging: "Challenging" };
+  const lessonUrl = (id: number) => `/student/lesson?enrollmentId=${enrollmentId}&lessonId=${id}`;
   return (
     <div className="mt-4">
       <button
@@ -139,7 +110,7 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
         disabled={lessons.isFetching}
         className="rounded-lg bg-[#1560B0] px-4 py-2 text-white disabled:opacity-50"
       >
-        {lessons.isFetching ? "Loading…" : "View lessons"}
+        {lessons.isFetching ? "Loading…" : lessons.data ? "Refresh progress" : "View lessons"}
       </button>
 
       <div role="status" className="mt-3">
@@ -153,6 +124,19 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
           </p>
         ) : !lessons.isFetching && lessons.data ? (
           lessons.data.length ? (
+            <>
+            <section className="mb-5 rounded-lg border border-blue-200 bg-blue-50 p-5" aria-label="Course progress">
+              <h3 className="text-xl font-semibold">{overview.courseComplete ? "Course complete" : "Your course progress"}</h3>
+              <p className="mt-2">{overview.completed} of {overview.total} lessons completed · {overview.percentage}%</p>
+              <progress className="mt-3 h-4 w-full accent-[#1560B0]" max={overview.total} value={overview.completed} aria-label="Lessons completed" />
+              <p className="mt-3 text-sm">A lesson is complete when Easy, Medium and Challenging each have a best valid score of at least 8/10.</p>
+              {overview.courseComplete ? <p className="mt-3 font-semibold text-green-800">Well done! You have passed all three difficulties in every lesson. You can revisit lessons while your course access remains active.</p>
+                : overview.nextLesson && !overview.nextLesson.tutorGuided ? <a className="mt-4 inline-block rounded-lg bg-[#1560B0] px-5 py-3 font-semibold text-white" href={lessonUrl(overview.nextLesson.id)}>
+                  Continue learning: {overview.nextLesson.title || "Next lesson"}
+                </a> : null}
+              {lessons.data[0]?.tutorGuided && <p className="mt-3">These totals show exercise progress. Your tutor guides lesson progression and confirms your Elite course requirements.</p>}
+            </section>
+            <p className="mb-3 text-sm text-slate-600">Scores below are your best valid scores from submitted attempts. Opening a worked solution before submission excludes that question from the valid score.</p>
             <ul className="space-y-2">
               {lessons.data.map((lesson, index) => (
                 <li
@@ -161,7 +145,7 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
                 >
                   {lesson.unlocked ? (
                     <a
-                      href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${lesson.id}`}
+                      href={lessonUrl(lesson.id)}
                       className="text-[#1560B0] underline"
                     >
                       {index + 1}. {lesson.title || "Untitled lesson"}
@@ -169,10 +153,22 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
                   ) : (
                     <span>{index + 1}. {lesson.title || "Untitled lesson"} · Locked</span>
                   )}
-                  {lesson.completed && <span className="ml-2 text-sm text-green-800">Complete</span>}
+                  {lesson.completed ? <span className="ml-2 text-sm font-semibold text-green-800">Complete</span>
+                    : lesson.unlocked && <span className="ml-2 text-sm text-slate-600">{courseLevels.some(level => lesson.levelScores[level].active || lesson.levelScores[level].attempts > 0) ? "In progress" : "Not started"}</span>}
+                  <dl className="mt-3 grid gap-3 sm:grid-cols-3">
+                    {courseLevels.map(level => {
+                      const score = lesson.levelScores[level];
+                      return <div key={level} className="rounded border border-slate-200 bg-slate-50 p-3">
+                        <dt className="font-semibold">{names[level]}</dt>
+                        <dd>{score.bestScore === null ? "No submitted score" : `${score.bestScore}/10${score.bestScore >= 8 ? " · Passed" : " · Keep practising"}`}</dd>
+                        <dd className="mt-1 text-sm text-slate-600">{score.attempts} submitted {score.attempts === 1 ? "attempt" : "attempts"}{score.active ? " · Attempt saved" : ""}</dd>
+                      </div>;
+                    })}
+                  </dl>
                 </li>
               ))}
             </ul>
+            </>
           ) : (
             <p>No lessons have been added to this course yet.</p>
           )
