@@ -1,21 +1,55 @@
 import { studentSupportRouter } from "./studentSupport.js";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { and, asc, desc, eq, inArray, like, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, like, or, sql, lte, gt } from "drizzle-orm";
 import { router, adminProcedure } from "../_core/trpc.js";
 import { getDb } from "../db.js";
-import { enrollments, enrollmentPayments, lessons, lessonAttempts } from "../../drizzle/schema.js";
+import { enrollments, enrollmentPayments, lessons, lessonAttempts, users } from "../../drizzle/schema.js";
 import { enrollmentSnapshotSchema } from "../enrollmentAgreement.js";
 import { lessonScores, courseLevels } from "../../shared/courseProgress.js";
 
 const records = adminProcedure.use(async ({ ctx, next }) => {
   ctx.res.setHeader("Cache-Control", "no-store");
+  if (ctx.user.accountStatus !== "active") throw new TRPCError({ code: "FORBIDDEN", message: "Active Admin account required." });
   const db = await getDb();
   if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Student records unavailable." });
   return next({ ctx: { ...ctx, db } });
 });
 export const adminRouter = router({
   support: studentSupportRouter,
+  getDashboardStats: records.query(async ({ ctx }) => {
+    const now = new Date();
+    const [accounts] = await ctx.db.select({
+      totalUsers: sql<number>`COUNT(*)`,
+      activeTeachers: sql<number>`COALESCE(SUM(CASE WHEN ${users.role} = 'teacher' AND ${users.accountStatus} = 'active' THEN 1 ELSE 0 END),0)`,
+      pendingTeachers: sql<number>`COALESCE(SUM(CASE WHEN ${users.role} = 'teacher' AND ${users.accountStatus} = 'pending' THEN 1 ELSE 0 END),0)`,
+    }).from(users);
+    const [enrolments] = await ctx.db.select({ totalEnrollments: sql<number>`COUNT(*)`,
+      draftEnrollments: sql<number>`COALESCE(SUM(CASE WHEN ${enrollments.status} = 'draft' THEN 1 ELSE 0 END),0)`,
+    }).from(enrollments);
+    // Count students once even when they hold multiple active enrolments.
+    const [active] = await ctx.db.select({ activeStudents: sql<number>`COUNT(DISTINCT ${enrollments.studentId})`,
+      standardEnrollments: sql<number>`COALESCE(SUM(CASE WHEN ${enrollments.tier} = 'standard' THEN 1 ELSE 0 END),0)`,
+      eliteEnrollments: sql<number>`COALESCE(SUM(CASE WHEN ${enrollments.tier} = 'elite' THEN 1 ELSE 0 END),0)`,
+    }).from(enrollments).innerJoin(users,eq(users.id,enrollments.studentId)).where(and(
+      eq(enrollments.status,"active"), eq(enrollments.paymentStatus,"paid"),
+      eq(users.role,"student"), eq(users.accountStatus,"active"),
+      lte(enrollments.acceptedAt,now), lte(enrollments.activatedAt,now), gt(enrollments.accessEndsAt,now),
+    ));
+    return { totalUsers: Number(accounts.totalUsers), activeTeachers: Number(accounts.activeTeachers),
+      pendingTeachers: Number(accounts.pendingTeachers), totalEnrollments: Number(enrolments.totalEnrollments),
+      draftEnrollments: Number(enrolments.draftEnrollments), activeStudents: Number(active.activeStudents),
+      standardEnrollments: Number(active.standardEnrollments), eliteEnrollments: Number(active.eliteEnrollments), checkedAt: now };
+  }),
+  getRecentActivity: records.input(z.object({limit:z.number().int().min(1).max(20).default(10)}))
+    .query(async ({ctx,input}) => {
+      const rows: { id: number; studentName: string | null; yearLevel: string | null; tier: string | null; status: string; paymentStatus: string; activatedAt: Date | null }[] = await ctx.db.select({id:enrollments.id, studentName:enrollments.studentName,
+      yearLevel:enrollments.yearLevel, tier:enrollments.tier, status:enrollments.status,
+      paymentStatus:enrollments.paymentStatus, activatedAt:enrollments.activatedAt,
+    }).from(enrollments).where(lte(enrollments.activatedAt,new Date()))
+      .orderBy(desc(enrollments.activatedAt),desc(enrollments.id)).limit(input.limit);
+      return rows;
+    }),
   studentFiles: records.input(z.object({ search: z.string().trim().max(100).default(""), page: z.number().int().min(0).max(100000).default(0) }))
     .query(async ({ ctx, input }) => {
       const search = input.search.replace(/[\\%_]/g, "\\$&");

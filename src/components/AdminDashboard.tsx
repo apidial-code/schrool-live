@@ -75,7 +75,7 @@ export default function AdminDashboard() {
     { id: "payments", label: "Teacher Payments", icon: DollarSign },
     { id: "analytics", label: "System Analytics", icon: BarChart3 },
     { id: "courses", label: "Course Management", icon: BookOpen },
-    { id: "enrollments", label: "Enrollments", icon: FileText },
+    { id: "enrollments", label: "Enrolments and student files", icon: FileText },
     { id: "audit", label: "Audit Log", icon: Shield },
     { id: "email-automation", label: "Email Automation", icon: MessageSquare },
     { id: "settings", label: "Settings", icon: Settings },
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
             return (
               <button
                 key={section.id}
-                onClick={() => setActiveSection(section.id as Section)}
+                onClick={() => section.id === "enrollments" ? setLocation("/admin/students") : setActiveSection(section.id as Section)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
                   activeSection === section.id
                     ? "bg-blue-700 text-white"

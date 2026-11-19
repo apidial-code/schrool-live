@@ -11,7 +11,10 @@ export default function AdminStudentFiles() {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(0);
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<number | null>(() => {
+    const id = Number(new URLSearchParams(window.location.search).get("enrollmentId"));
+    return Number.isSafeInteger(id) && id > 0 ? id : null;
+  });
   const list = trpc.admin.studentFiles.useQuery({ search: query, page }, { retry: false, staleTime: 0 });
   const file = trpc.admin.studentFile.useQuery({ enrollmentId: selected ?? 0 }, { enabled: selected != null, retry: false, staleTime: 0, gcTime: 0 });
   const data = file.data;
