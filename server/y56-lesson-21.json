@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 21,
+  "title": "Multiplication of Directed Numbers",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "f098b391-0070-4885-8624-f88bb430d18a",
+  "questions": [
+    {
+      "sourceId": "L21-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Solve: 5 × 2",
+      "diagram": null,
+      "options": [
+        "10",
+        "4",
+        "5",
+        "6",
+        "3"
+      ],
+      "correctAnswer": "10",
+      "solutionVideoId": "3ecfa30a-eba3-4817-925f-abdae7f1d6f2"
+    },
+    {
+      "sourceId": "L21-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Solve: 3 × 8",
+      "diagram": null,
+      "options": [
+        "23",
+        "4",
+        "24",
+        "1",
+        "2"
+      ],
+      "correctAnswer": "24",
+      "solutionVideoId": "f976be62-2122-4934-8b99-d0429600c0c2"
+    },
+    {
+      "sourceId": "L21-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Solve: 5 × 4",
+      "diagram": null,
+      "options": [
+        "4",
+        "20",
+        "5",
+        "10",
+        "21"
+      ],
+      "correctAnswer": "20",
+      "solutionVideoId": "73fab94e-b87a-462d-8afb-796a205c135f"
+    },
+    {
+      "sourceId": "L21-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Solve: 7 × 6",
+      "diagram": null,
+      "options": [
+        "42",
+        "15",
+        "46",
+        "40",
+        "49"
+      ],
+      "correctAnswer": "42",
+      "solutionVideoId": "dfe9d9ae-e200-4fa3-adf4-6e6aee7b1a73"
+    },
+    {
+      "sourceId": "L21-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Solve: 5 × 5",
+      "diagram": null,
+      "options": [
+        "20",
+        "15",
+        "24",
+        "25",
+        "21"
+      ],
+      "correctAnswer": "25",
+      "solutionVideoId": "504cc1db-0b4f-4c6f-bde8-c744b2a10411"
+    },
+    {
+      "sourceId": "L21-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Solve: 4 × 3",
+      "diagram": null,
+      "options": [
+        "11",
+        "9",
+        "8",
+        "12",
+        "7"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "27877984-0141-46c6-913b-b3b46abf86db"
+    },
+    {
+      "sourceId": "L21-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Solve: 3 × 9",
+      "diagram": null,
+      "options": [
+        "37",
+        "−27",
+        "16",
+        "18",
+        "27"
+      ],
+      "correctAnswer": "27",
+      "solutionVideoId": "cd33f62e-07d6-47f3-8bbc-0700505e5f0f"
+    },
+    {
+      "sourceId": "L21-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Solve: 8 × 2",
+      "diagram": null,
+      "options": [
+        "15",
+        "13",
+        "12",
+        "16",
+        "8"
+      ],
+      "correctAnswer": "16",
+      "solutionVideoId": "72c43ac7-b1bb-4eb2-bbd9-77f6dfcc628d"
+    },
+    {
+      "sourceId": "L21-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Solve: 1 × (−1)",
+      "diagram": null,
+      "options": [
+        "−1",
+        "5",
+        "7",
+        "6",
+        "2"
+      ],
+      "correctAnswer": "−1",
+      "solutionVideoId": "340b4ca5-b738-4bb8-8b5d-6a47b5dd94fa"
+    },
+    {
+      "sourceId": "L21-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Solve: 1 × (−2)",
+      "diagram": null,
+      "options": [
+        "1",
+        "5",
+        "3",
+        "4",
+        "−2"
+      ],
+      "correctAnswer": "−2",
+      "solutionVideoId": "52d5cc4e-9573-4fec-a707-bf04da294da3"
+    },
+    {
+      "sourceId": "L21-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Solve: (−3) × 1",
+      "diagram": null,
+      "options": [
+        "5",
+        "2",
+        "−3",
+        "4",
+        "3"
+      ],
+      "correctAnswer": "−3",
+      "solutionVideoId": "56cbafb6-4d43-48e5-979e-f2162a8e6a21"
+    },
+    {
+      "sourceId": "L21-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Solve: 4 × (−3)",
+      "diagram": null,
+      "options": [
+        "5",
+        "−4",
+        "−8",
+        "−12",
+        "10"
+      ],
+      "correctAnswer": "−12",
+      "solutionVideoId": "893c9d56-b0f2-4161-b242-b8087f0b8ac7"
+    },
+    {
+      "sourceId": "L21-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Solve: 6 × (−3)",
+      "diagram": null,
+      "options": [
+        "14",
+        "−1",
+        "−18",
+        "16",
+        "15"
+      ],
+      "correctAnswer": "−18",
+      "solutionVideoId": "3fffac4c-8730-441e-9393-d96679656f7b"
+    },
+    {
+      "sourceId": "L21-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Solve: (−11) × 4",
+      "diagram": null,
+      "options": [
+        "44",
+        "42",
+        "−44",
+        "−40",
+        "14"
+      ],
+      "correctAnswer": "−44",
+      "solutionVideoId": "8fd672ae-231d-4812-9591-eed9a07062eb"
+    },
+    {
+      "sourceId": "L21-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Solve: (−8) × 2",
+      "diagram": null,
+      "options": [
+        "−16",
+        "17",
+        "18",
+        "15",
+        "12"
+      ],
+      "correctAnswer": "−16",
+      "solutionVideoId": "f0a1ad20-4ba2-4453-8915-0128762b2de6"
+    },
+    {
+      "sourceId": "L21-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Solve: 4 × (−5)",
+      "diagram": null,
+      "options": [
+        "13",
+        "12",
+        "14",
+        "−20",
+        "15"
+      ],
+      "correctAnswer": "−20",
+      "solutionVideoId": "d5d66d15-0929-40ff-bd29-d223a041e5a6"
+    },
+    {
+      "sourceId": "L21-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Solve: 5 × (−5)",
+      "diagram": null,
+      "options": [
+        "20",
+        "24",
+        "26",
+        "25",
+        "−25"
+      ],
+      "correctAnswer": "−25",
+      "solutionVideoId": "889078f0-06ff-4164-a33f-c6cf5c0ea571"
+    },
+    {
+      "sourceId": "L21-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Solve: (−5) × (−60)",
+      "diagram": null,
+      "options": [
+        "−600",
+        "300",
+        "500",
+        "600",
+        "100"
+      ],
+      "correctAnswer": "300",
+      "solutionVideoId": "5a76195d-88e0-42f0-8b70-88297a5ea0d5"
+    },
+    {
+      "sourceId": "L21-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Solve: (−3) × (−15)",
+      "diagram": null,
+      "options": [
+        "42",
+        "43",
+        "41",
+        "45",
+        "44"
+      ],
+      "correctAnswer": "45",
+      "solutionVideoId": "cf594aef-c840-45d8-9b28-5e9a5c2b8d78"
+    },
+    {
+      "sourceId": "L21-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Solve: (−6) × (−3)",
+      "diagram": null,
+      "options": [
+        "16",
+        "15",
+        "14",
+        "20",
+        "18"
+      ],
+      "correctAnswer": "18",
+      "solutionVideoId": "531a347e-9b2a-44a6-934d-785f9117badc"
+    },
+    {
+      "sourceId": "L21-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Solve: (−2) × (−2) × (−2)",
+      "diagram": null,
+      "options": [
+        "7",
+        "5",
+        "4",
+        "−8",
+        "3"
+      ],
+      "correctAnswer": "−8",
+      "solutionVideoId": "5d7ff05f-7260-4639-80a0-123b860e2246"
+    },
+    {
+      "sourceId": "L21-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Solve: (−3) × (−3) × (−3)",
+      "diagram": null,
+      "options": [
+        "25",
+        "24",
+        "29",
+        "−27",
+        "30"
+      ],
+      "correctAnswer": "−27",
+      "solutionVideoId": "343bcc78-9c19-4220-a4b5-7d5706a82650"
+    },
+    {
+      "sourceId": "L21-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Solve: (−4) × (−4) × (−4)",
+      "diagram": null,
+      "options": [
+        "54",
+        "−64",
+        "74",
+        "84",
+        "91"
+      ],
+      "correctAnswer": "−64",
+      "solutionVideoId": "03ed8b14-fd8e-45a3-bdfd-83d6abb10214"
+    },
+    {
+      "sourceId": "L21-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Solve: (−6) × (−8) × (−7)",
+      "diagram": null,
+      "options": [
+        "312",
+        "321",
+        "311",
+        "318",
+        "−336"
+      ],
+      "correctAnswer": "−336",
+      "solutionVideoId": "ba9f45f6-9b9f-4753-a9bf-a591d18708bb"
+    },
+    {
+      "sourceId": "L21-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Solve: (−2) × (−3) × (−5)",
+      "diagram": null,
+      "options": [
+        "40",
+        "50",
+        "20",
+        "−30",
+        "10"
+      ],
+      "correctAnswer": "−30",
+      "solutionVideoId": "7fb60a5e-ea62-40da-8d9a-ecccb8610a82"
+    },
+    {
+      "sourceId": "L21-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Solve: (−3) × (−2) × (−1)",
+      "diagram": null,
+      "options": [
+        "−6",
+        "3",
+        "5",
+        "4",
+        "2"
+      ],
+      "correctAnswer": "−6",
+      "solutionVideoId": "d07e25b0-d248-4915-b1b7-c8092e39a270"
+    },
+    {
+      "sourceId": "L21-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Solve: (−4) × (−2) × (−3)",
+      "diagram": null,
+      "options": [
+        "21",
+        "−24",
+        "23",
+        "−12",
+        "−8"
+      ],
+      "correctAnswer": "−24",
+      "solutionVideoId": "9c2842b3-867c-4ee8-a881-0e17445de93a"
+    },
+    {
+      "sourceId": "L21-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Solve: (−1) × (−2) × (−3)",
+      "diagram": null,
+      "options": [
+        "−5",
+        "−6",
+        "−8",
+        "−9",
+        "−10"
+      ],
+      "correctAnswer": "−6",
+      "solutionVideoId": "6340b52e-3630-45ca-a5ad-8c088b9854c9"
+    },
+    {
+      "sourceId": "L21-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Solve: (−2) × (−5) × (−7)",
+      "diagram": null,
+      "options": [
+        "20",
+        "50",
+        "60",
+        "−70",
+        "30"
+      ],
+      "correctAnswer": "−70",
+      "solutionVideoId": "c493f990-711e-45e8-9f3e-b2485d208db4"
+    },
+    {
+      "sourceId": "L21-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Solve: (−3) × (−6) × (−9)",
+      "diagram": null,
+      "options": [
+        "250",
+        "−150",
+        "20",
+        "−45",
+        "−162"
+      ],
+      "correctAnswer": "−162",
+      "solutionVideoId": "b6102407-a58f-45fe-a22d-f96c0e8ee6cb"
+    }
+  ]
+}
