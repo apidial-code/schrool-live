@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 22,
+  "title": "The Number Line",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "1546dfa1-03d9-477e-b4d0-9b703ac8fb0b",
+  "questions": [
+    {
+      "sourceId": "L22-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Choose the symbol that makes this statement true: 10 ◯ 15 × 2 − 25",
+      "diagram": null,
+      "options": [
+        "=",
+        "<",
+        "all",
+        ">",
+        "none"
+      ],
+      "correctAnswer": ">",
+      "solutionVideoId": "94be4b99-a4eb-4077-8d9d-1a7c3e9be64c"
+    },
+    {
+      "sourceId": "L22-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Choose the symbol that makes this statement true: 7 ◯ 3 × 2 − 5",
+      "diagram": null,
+      "options": [
+        "=",
+        "<",
+        "all",
+        ">",
+        "none"
+      ],
+      "correctAnswer": ">",
+      "solutionVideoId": "4663bb61-da96-4b1c-a9be-3f865ca32c01"
+    },
+    {
+      "sourceId": "L22-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Choose the symbol that makes this statement true: 5 + 3 ◯ 2 × 2 − 5",
+      "diagram": null,
+      "options": [
+        "=",
+        "<",
+        "all",
+        ">",
+        "none"
+      ],
+      "correctAnswer": ">",
+      "solutionVideoId": "2cd79a7f-60b5-4f3d-94e1-b1c593c43fef"
+    },
+    {
+      "sourceId": "L22-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Choose the symbol that makes this statement true: 14 + 3 ◯ 16 − 8",
+      "diagram": null,
+      "options": [
+        "=",
+        "<",
+        "all",
+        ">",
+        "none"
+      ],
+      "correctAnswer": ">",
+      "solutionVideoId": "5eccc882-ec2b-4981-ad47-687849036cf3"
+    },
+    {
+      "sourceId": "L22-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Choose the symbol that makes this statement true: 2 × 2 ◯ 13 × 2 − 8",
+      "diagram": null,
+      "options": [
+        "=",
+        "<",
+        "all",
+        ">",
+        "none"
+      ],
+      "correctAnswer": "<",
+      "solutionVideoId": "0117231f-3292-4ee4-b153-d66f92f0bc30"
+    },
+    {
+      "sourceId": "L22-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Evaluate: −10 + 5",
+      "diagram": null,
+      "options": [
+        "−5",
+        "5",
+        "3",
+        "−3",
+        "−4"
+      ],
+      "correctAnswer": "−5",
+      "solutionVideoId": "67330f09-e20e-40c2-8f8e-5f758fff8e63"
+    },
+    {
+      "sourceId": "L22-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Evaluate: 5 + 6",
+      "diagram": null,
+      "options": [
+        "−10",
+        "10",
+        "11",
+        "−11",
+        "9"
+      ],
+      "correctAnswer": "11",
+      "solutionVideoId": "253cb500-a134-4af1-b4a5-21dd9cb14db9"
+    },
+    {
+      "sourceId": "L22-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Evaluate: 8 + 3",
+      "diagram": null,
+      "options": [
+        "11",
+        "−11",
+        "−12",
+        "10",
+        "12"
+      ],
+      "correctAnswer": "11",
+      "solutionVideoId": "8e618daf-415e-4827-a139-957fd1e3560f"
+    },
+    {
+      "sourceId": "L22-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Evaluate: 8 − 3",
+      "diagram": null,
+      "options": [
+        "5",
+        "4",
+        "3",
+        "−3",
+        "−4"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "77af0724-5afd-43b2-835d-132e4eb8feef"
+    },
+    {
+      "sourceId": "L22-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Evaluate: −5 − 4",
+      "diagram": null,
+      "options": [
+        "−3",
+        "−2",
+        "2",
+        "−9",
+        "3"
+      ],
+      "correctAnswer": "−9",
+      "solutionVideoId": "0e6c3700-9097-4d05-b9fa-7d3776f22249"
+    },
+    {
+      "sourceId": "L22-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Evaluate: −10 + 20",
+      "diagram": null,
+      "options": [
+        "9",
+        "−10",
+        "10",
+        "8",
+        "−9"
+      ],
+      "correctAnswer": "10",
+      "solutionVideoId": "ead57b23-0ed1-4a67-813b-7f30a073e1dc"
+    },
+    {
+      "sourceId": "L22-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Evaluate: −3 − 4",
+      "diagram": null,
+      "options": [
+        "−7",
+        "7",
+        "−5",
+        "6",
+        "5"
+      ],
+      "correctAnswer": "−7",
+      "solutionVideoId": "8585bdf3-b85a-428e-a2d3-4f63611ff1d3"
+    },
+    {
+      "sourceId": "L22-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Evaluate: −5 + 2",
+      "diagram": null,
+      "options": [
+        "−3",
+        "−2",
+        "4",
+        "−4",
+        "3"
+      ],
+      "correctAnswer": "−3",
+      "solutionVideoId": "43192838-83bd-40ec-8b10-ac50492e3f45"
+    },
+    {
+      "sourceId": "L22-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Evaluate: −10 + 8",
+      "diagram": null,
+      "options": [
+        "−3",
+        "−4",
+        "−2",
+        "4",
+        "3"
+      ],
+      "correctAnswer": "−2",
+      "solutionVideoId": "1b9b6a5f-6b79-49be-9d8b-edaafba1c569"
+    },
+    {
+      "sourceId": "L22-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Evaluate: 8 + (−3)",
+      "diagram": null,
+      "options": [
+        "5",
+        "4",
+        "−3",
+        "3",
+        "−5"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "7567d7eb-a863-4f81-966f-7784bd37ac12"
+    },
+    {
+      "sourceId": "L22-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Evaluate: (−8) + (−3)",
+      "diagram": null,
+      "options": [
+        "−9",
+        "10",
+        "9",
+        "−11",
+        "−10"
+      ],
+      "correctAnswer": "−11",
+      "solutionVideoId": "75df50d9-a176-45cf-9ca4-6be5716993ff"
+    },
+    {
+      "sourceId": "L22-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Evaluate: (−9) + (−6)",
+      "diagram": null,
+      "options": [
+        "11",
+        "15",
+        "14",
+        "−15",
+        "−11"
+      ],
+      "correctAnswer": "−15",
+      "solutionVideoId": "afed91f9-24f0-4426-bda3-b3e2a13afefc"
+    },
+    {
+      "sourceId": "L22-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Evaluate: −(−8)",
+      "diagram": null,
+      "options": [
+        "5",
+        "8",
+        "−8",
+        "7",
+        "−5"
+      ],
+      "correctAnswer": "8",
+      "solutionVideoId": "e29652f4-9cce-4387-83f6-6bec3909f5f6"
+    },
+    {
+      "sourceId": "L22-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Evaluate: 3 − (−2)",
+      "diagram": null,
+      "options": [
+        "8",
+        "−4",
+        "5",
+        "−5",
+        "4"
+      ],
+      "correctAnswer": "5",
+      "solutionVideoId": "f27b4d96-bac7-47c0-b1bc-b1cbb42ae252"
+    },
+    {
+      "sourceId": "L22-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Evaluate: (−6) − (−3)",
+      "diagram": null,
+      "options": [
+        "3",
+        "−7",
+        "6",
+        "−6",
+        "−3"
+      ],
+      "correctAnswer": "−3",
+      "solutionVideoId": "f8168dd5-b8bd-45e9-8f3c-e9d747c4c454"
+    },
+    {
+      "sourceId": "L22-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Evaluate: (−7) − (−4)",
+      "diagram": null,
+      "options": [
+        "4",
+        "−5",
+        "3",
+        "5",
+        "−3"
+      ],
+      "correctAnswer": "−3",
+      "solutionVideoId": "462b5cfb-7b55-4404-8ad0-3f9833e8d917"
+    },
+    {
+      "sourceId": "L22-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Evaluate: −2 − (−8)",
+      "diagram": null,
+      "options": [
+        "4",
+        "−5",
+        "−6",
+        "5",
+        "6"
+      ],
+      "correctAnswer": "6",
+      "solutionVideoId": "78a82d70-fdf8-4d91-856e-2a47ed09bf94"
+    },
+    {
+      "sourceId": "L22-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Evaluate: 3 − (−2) − (−1)",
+      "diagram": null,
+      "options": [
+        "4",
+        "5",
+        "−5",
+        "−6",
+        "6"
+      ],
+      "correctAnswer": "6",
+      "solutionVideoId": "24afcf07-ef7d-446b-bc5c-2ea69f5318c4"
+    },
+    {
+      "sourceId": "L22-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Evaluate: −5 − (−1 + 10)",
+      "diagram": null,
+      "options": [
+        "14",
+        "13",
+        "−14",
+        "15",
+        "−15"
+      ],
+      "correctAnswer": "−14",
+      "solutionVideoId": "a0c0c8a2-bca7-47bc-bad9-73cc25d125ee"
+    },
+    {
+      "sourceId": "L22-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Evaluate: (−2) + (−3) + (−8)",
+      "diagram": null,
+      "options": [
+        "−13",
+        "−14",
+        "12",
+        "14",
+        "13"
+      ],
+      "correctAnswer": "−13",
+      "solutionVideoId": "45411eb1-8832-4a43-8114-63bdf6db0407"
+    },
+    {
+      "sourceId": "L22-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Evaluate: 5 + (−2) + (−7)",
+      "diagram": null,
+      "options": [
+        "3",
+        "4",
+        "−5",
+        "−4",
+        "5"
+      ],
+      "correctAnswer": "−4",
+      "solutionVideoId": "5897ad20-4ba9-431f-a3bf-91874f8bccb1"
+    },
+    {
+      "sourceId": "L22-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Evaluate: (−5) + (−6) + (−7)",
+      "diagram": null,
+      "options": [
+        "18",
+        "17",
+        "19",
+        "−19",
+        "−18"
+      ],
+      "correctAnswer": "−18",
+      "solutionVideoId": "e1dd369e-ee92-4d25-8685-d9ad8615358c"
+    },
+    {
+      "sourceId": "L22-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Evaluate: 6 − (−3 + 2)",
+      "diagram": null,
+      "options": [
+        "7",
+        "−7",
+        "6",
+        "−6",
+        "5"
+      ],
+      "correctAnswer": "7",
+      "solutionVideoId": "0a7d8d75-f3e8-4fcc-922b-1493783ffcad"
+    },
+    {
+      "sourceId": "L22-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Evaluate: (−3) − (−8 + 9)",
+      "diagram": null,
+      "options": [
+        "3",
+        "−4",
+        "5",
+        "4",
+        "−5"
+      ],
+      "correctAnswer": "−4",
+      "solutionVideoId": "b2a885f3-0df4-4518-93f3-d4185e871e3b"
+    },
+    {
+      "sourceId": "L22-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Evaluate: (−7) + (−2) + (−8)",
+      "diagram": null,
+      "options": [
+        "16",
+        "−16",
+        "−18",
+        "17",
+        "−17"
+      ],
+      "correctAnswer": "−17",
+      "solutionVideoId": "e42828d3-d01a-49b9-aa0f-8a3af9bce4dd"
+    }
+  ]
+}
