@@ -61,7 +61,7 @@ export const adminRouter = router({
         paidAt: enrollmentPayments.paidAt, createdAt: enrollmentPayments.createdAt,
       }).from(enrollmentPayments).where(eq(enrollmentPayments.enrollmentId, record.id)).orderBy(desc(enrollmentPayments.id));
       const { agreementSnapshot, ...enrollment } = record;
-      return { enrollment, family: snapshot?.family ?? null, courseName: snapshot?.quote.courseName ?? null,
+      return { enrollment, draftSavedAt: snapshot?.savedAt ?? null, family: snapshot?.family ?? null, courseName: snapshot?.quote.courseName ?? null,
         schedule: snapshot?.quote.schedule ?? [], snapshotAvailable: !!snapshot, progress, payments,
         lastActivity: scores.map(s => s.lastActivity).filter(Boolean).map(d => new Date(d!).getTime()).filter(Number.isFinite).sort((a,b) => b-a)[0] ?? null };
     }),
