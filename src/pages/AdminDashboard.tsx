@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useLocation } from "wouter";
 import { Loader2 } from "lucide-react";
-import AdminDashboardComponent from "@/components/AdminDashboard";
+import AdminDashboardComponent from "@/components/AdminDashboard.tsx";
 
 export default function AdminDashboard() {
   const { user, loading } = useAuth();

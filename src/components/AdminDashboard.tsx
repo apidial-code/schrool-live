@@ -16,7 +16,7 @@ import {
   LogOut,
   Shield
 } from "lucide-react";
-import AdminOverview from "./AdminOverview";
+import AdminOverview from "./AdminOverview.tsx";
 import AdminUserManagement from "./AdminUserManagement";
 import AdminTeacherPayments from "./AdminTeacherPayments";
 import AdminMessaging from "./AdminMessaging";

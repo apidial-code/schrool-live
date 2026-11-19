@@ -9,7 +9,7 @@ import EnrollmentPaymentReturn from "./pages/EnrollmentPaymentReturn";
 import StudentDashboard from "./pages/StudentHome.tsx";
 import ParentDashboard from "./pages/ParentDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/AdminDashboard.tsx";
 import SignIn from "./pages/SignIn.tsx";
 import ProtectedLesson from "./pages/ProtectedLesson.tsx";
 function Notice({ title, children }: {
