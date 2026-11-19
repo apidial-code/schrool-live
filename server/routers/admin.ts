@@ -1,3 +1,4 @@
+import { studentSupportRouter } from "./studentSupport.js";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { and, asc, desc, eq, inArray, like, or, sql } from "drizzle-orm";
@@ -14,6 +15,7 @@ const records = adminProcedure.use(async ({ ctx, next }) => {
   return next({ ctx: { ...ctx, db } });
 });
 export const adminRouter = router({
+  support: studentSupportRouter,
   studentFiles: records.input(z.object({ search: z.string().trim().max(100).default(""), page: z.number().int().min(0).max(100000).default(0) }))
     .query(async ({ ctx, input }) => {
       const search = input.search.replace(/[\\%_]/g, "\\$&");

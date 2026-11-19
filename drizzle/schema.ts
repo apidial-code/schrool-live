@@ -218,3 +218,16 @@ export const enrollmentPayments = mysqlTable(
     index("enrollment_payment_history").on(table.enrollmentId),
   ],
 );
+
+// Append-only Admin notes and Standard support calls, scoped to an enrolment.
+export const studentFileEntries = mysqlTable("student_file_entries", {
+  id: serial("id").primaryKey(),
+  enrollmentId: int("enrollment_id").notNull(),
+  authorId: int("author_id").notNull(),
+  requestId: varchar("request_id", { length: 36 }).notNull().unique(),
+  kind: varchar("kind", { length: 20 }).notNull(),
+  entryDate: varchar("entry_date", { length: 10 }).notNull(),
+  minutes: int("minutes").notNull().default(0),
+  content: text("content").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+}, table => [index("student_file_entry_history").on(table.enrollmentId, table.id)]);
