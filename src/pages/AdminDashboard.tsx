@@ -37,5 +37,8 @@ export default function AdminDashboard() {
     return null;
   }
 
-  return <AdminDashboardComponent />;
+  return <>
+    <div className="bg-blue-50 p-4"><a className="font-semibold text-blue-800 underline" href="/admin/students">Open live student files</a></div>
+    <AdminDashboardComponent />
+  </>;
 }

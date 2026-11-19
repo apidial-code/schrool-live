@@ -1,4 +1,5 @@
 import React from "react";
+import AdminStudentFiles from "./pages/AdminStudentFiles";
 import { Route, Switch } from "wouter";
 import { trpc } from "./lib/trpc";
 import EnrollmentWorkspace from "./pages/EnrollmentWorkspace.tsx";
@@ -111,6 +112,10 @@ export default function App() {
         <DashboardGate role="teacher">
           <TeacherDashboard />
         </DashboardGate>
+      </Route>
+
+      <Route path="/admin/students">
+        <DashboardGate role="admin"><AdminStudentFiles /></DashboardGate>
       </Route>
 
       <Route path="/admin">
