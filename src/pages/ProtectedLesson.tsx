@@ -175,7 +175,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
         {actionError.data?.code === "UNAUTHORIZED" ? "Go to sign in" : "Back to my enrolments"}</a>}
       {!denied && <p className="mt-1 text-sm">The last action could not be confirmed. Resume the difficulty to reload its saved state before continuing.</p>}
     </div>}
-    {busy && <p className="mt-3" role="status">Saving…</p>}
+    <p className="mt-3 h-6" role="status" aria-live="polite">{busy ? "Saving…" : ""}</p>
     {token && !denied && <div className="mt-6">
       {attempt.isLoading || attempt.isFetching ? <p role="status">Loading saved attempt…</p>
         : attempt.error ? <div role="alert"><p>{message(attempt.error)}</p>
@@ -212,7 +212,11 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
                 <span><MathText text={option} /></span>
               </label>)}
             </fieldset>
-            {data.answers[question.sourceId] !== undefined && !busy && !actionError && <p className="mt-3 text-sm text-slate-600">{submitted ? "Submitted answer" : "Answer saved"}</p>}
+            <p className="mt-3 min-h-5 text-sm text-slate-600" role="status" aria-live="polite">
+              {data.answers[question.sourceId] !== undefined && !busy && !actionError
+                ? submitted ? "Submitted answer" : "Answer saved"
+                : ""}
+            </p>
             {data.solutionViewed.includes(question.sourceId) && <p className="mt-3 text-sm text-amber-800">Solution opened before submission. This question does not count towards this attempt’s valid score.</p>}
             <button className={`${secondary} mt-5`} disabled={busy || !question.hasSolution || !!actionError}
               onClick={() => act(async () => { const response = await view.mutateAsync({ ...attemptInput, sourceId: question.sourceId }); remember(response.attempt); setSolution({ sourceId: response.sourceId, url: response.url }); })}>
