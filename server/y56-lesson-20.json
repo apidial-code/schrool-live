@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 20,
+  "title": "Directed Numbers",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "d6384b26-3f39-4011-a46d-5f374dd2fb94",
+  "questions": [
+    {
+      "sourceId": "L20-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "What does a profit of $50 mean?",
+      "diagram": null,
+      "options": [
+        "$30",
+        "−$50",
+        "+$50",
+        "−$30",
+        "+$25"
+      ],
+      "correctAnswer": "+$50",
+      "solutionVideoId": "0ef2c570-3c01-48f1-9f13-81d6ba785b7e"
+    },
+    {
+      "sourceId": "L20-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "What does 50 km west mean, taking east as positive?",
+      "diagram": null,
+      "options": [
+        "+10 km",
+        "−10 km",
+        "+5 km",
+        "+50 km",
+        "−50 km"
+      ],
+      "correctAnswer": "−50 km",
+      "solutionVideoId": "eac69764-3554-417d-80a3-e16ebe5d1834"
+    },
+    {
+      "sourceId": "L20-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "What does 20 km south mean, taking north as positive?",
+      "diagram": null,
+      "options": [
+        "+20 km",
+        "+10 km",
+        "−30 km",
+        "−20 km",
+        "−10 km"
+      ],
+      "correctAnswer": "−20 km",
+      "solutionVideoId": "a50e84c3-dc53-4ebb-bfdd-cfe81786ee78"
+    },
+    {
+      "sourceId": "L20-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "What does losing $50 mean?",
+      "diagram": null,
+      "options": [
+        "−$20",
+        "+$30",
+        "−$10",
+        "−$50",
+        "+$50"
+      ],
+      "correctAnswer": "−$50",
+      "solutionVideoId": "65cc41f7-063c-4bf8-87a1-3f8e0c4f84d4"
+    },
+    {
+      "sourceId": "L20-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "What does 25 degrees above zero mean?",
+      "diagram": null,
+      "options": [
+        "−25°",
+        "+25°",
+        "−10°",
+        "−30°",
+        "+30°"
+      ],
+      "correctAnswer": "+25°",
+      "solutionVideoId": "5ca28d28-8fdf-4944-a503-b8e5dfc3986d"
+    },
+    {
+      "sourceId": "L20-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "What does 10 cm to the left mean, taking right as positive?",
+      "diagram": null,
+      "options": [
+        "+8 cm",
+        "+10 cm",
+        "+5 cm",
+        "−10 cm",
+        "−5 cm"
+      ],
+      "correctAnswer": "−10 cm",
+      "solutionVideoId": "32bbbbda-088d-422e-8d50-7c3f41f2fba2"
+    },
+    {
+      "sourceId": "L20-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "The water level has dropped 5 m. Express the change as a directed number.",
+      "diagram": null,
+      "options": [
+        "+5 m",
+        "−5 m",
+        "+15 m",
+        "+3 m",
+        "+25 m"
+      ],
+      "correctAnswer": "−5 m",
+      "solutionVideoId": "07f8b258-1d43-46ea-9b83-4258ab283ab5"
+    },
+    {
+      "sourceId": "L20-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Lisa lost $15. Express the change as a directed number.",
+      "diagram": null,
+      "options": [
+        "+$10",
+        "+$15",
+        "−$5",
+        "−$10",
+        "−$15"
+      ],
+      "correctAnswer": "−$15",
+      "solutionVideoId": "5c8fa39c-88d2-40b2-9873-e12dc81ab16a"
+    },
+    {
+      "sourceId": "L20-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "What does 45 km north mean, taking north as positive?",
+      "diagram": null,
+      "options": [
+        "−45 km",
+        "+45 km",
+        "+30 km",
+        "−30 km",
+        "+15 km"
+      ],
+      "correctAnswer": "+45 km",
+      "solutionVideoId": "0717b411-45d6-48d3-a7a0-624ce1d0186b"
+    },
+    {
+      "sourceId": "L20-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "The ball is 10 m above ground. Express its height relative to ground level.",
+      "diagram": null,
+      "options": [
+        "−10 m",
+        "+9 m",
+        "+10 m",
+        "−9 m",
+        "+11 m"
+      ],
+      "correctAnswer": "+10 m",
+      "solutionVideoId": "7c77167a-c557-437c-b684-97903571f9a5"
+    },
+    {
+      "sourceId": "L20-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "An increase of 75 kg means:",
+      "diagram": null,
+      "options": [
+        "−75 kg",
+        "+80 kg",
+        "−80 kg",
+        "+75 kg",
+        "+20 kg"
+      ],
+      "correctAnswer": "+75 kg",
+      "solutionVideoId": "0f832447-a1af-4c17-8461-074a2168d7bf"
+    },
+    {
+      "sourceId": "L20-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "The plane is flying 1000 m above the ground. Express its height relative to ground level.",
+      "diagram": null,
+      "options": [
+        "+500 m",
+        "−500 m",
+        "−1000 m",
+        "+1500 m",
+        "+1000 m"
+      ],
+      "correctAnswer": "+1000 m",
+      "solutionVideoId": "8d739704-2bb1-48d2-9869-f0dad7724c54"
+    },
+    {
+      "sourceId": "L20-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "What does 100 m below sea level mean?",
+      "diagram": null,
+      "options": [
+        "+150 m",
+        "+50 m",
+        "−50 m",
+        "−100 m",
+        "+100 m"
+      ],
+      "correctAnswer": "−100 m",
+      "solutionVideoId": "6d047040-0599-49c1-9c81-3d3e26864e5b"
+    },
+    {
+      "sourceId": "L20-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Dean travelled 5 km east and 8 km west. What is his position relative to his starting point, taking east as positive?",
+      "diagram": null,
+      "options": [
+        "3 km south",
+        "−4 km",
+        "+3 km",
+        "+4 km",
+        "−3 km"
+      ],
+      "correctAnswer": "−3 km",
+      "solutionVideoId": "2c5b80c9-e5f0-4507-b08d-d7bfe7acc557"
+    },
+    {
+      "sourceId": "L20-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "John climbed 15 steps up and 20 steps down. What is his position relative to his starting point, taking up as positive?",
+      "diagram": null,
+      "options": [
+        "−5 steps",
+        "+5 steps",
+        "−4 steps",
+        "+4 steps",
+        "+6 steps"
+      ],
+      "correctAnswer": "−5 steps",
+      "solutionVideoId": "684fd445-eeae-48b2-9c67-c88249f152eb"
+    },
+    {
+      "sourceId": "L20-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Mr. Warrington gained $500 and lost $200. What is his net gain?",
+      "diagram": null,
+      "options": [
+        "+$200",
+        "−$200",
+        "+$100",
+        "+$300",
+        "−$100"
+      ],
+      "correctAnswer": "+$300",
+      "solutionVideoId": "2e5f498c-e25c-4192-adca-e9f8c75bcfcc"
+    },
+    {
+      "sourceId": "L20-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Monica is overdrawn by $200. What is her current bank balance?",
+      "diagram": null,
+      "options": [
+        "+$200",
+        "−$100",
+        "−$250",
+        "−$200",
+        "+$150"
+      ],
+      "correctAnswer": "−$200",
+      "solutionVideoId": "442764ee-80b2-4b9b-a771-32c951b92610"
+    },
+    {
+      "sourceId": "L20-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "The lift is one level below ground level. Express its position as a directed number, taking ground level as zero.",
+      "diagram": null,
+      "options": [
+        "+1",
+        "1 level north",
+        "1 level east",
+        "1 level up",
+        "−1"
+      ],
+      "correctAnswer": "−1",
+      "solutionVideoId": "af0f156e-fcd3-4415-a7bc-733cd6aa4e89"
+    },
+    {
+      "sourceId": "L20-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Gaining 50 points means:",
+      "diagram": null,
+      "options": [
+        "+75",
+        "+500",
+        "+25",
+        "−50",
+        "+50"
+      ],
+      "correctAnswer": "+50",
+      "solutionVideoId": "c9916c58-a21b-470e-9539-f2bceae1541d"
+    },
+    {
+      "sourceId": "L20-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "The temperature is 2 degrees below zero. Express it as a directed number.",
+      "diagram": null,
+      "options": [
+        "+2°",
+        "−2°",
+        "+7°",
+        "+8°",
+        "−8°"
+      ],
+      "correctAnswer": "−2°",
+      "solutionVideoId": "04e5f415-288b-490d-b03b-4a0fde7aff32"
+    },
+    {
+      "sourceId": "L20-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "What does 60 km west mean, taking east as positive?",
+      "diagram": null,
+      "options": [
+        "+50 km",
+        "+40 km",
+        "−30 km",
+        "+30 km",
+        "−60 km"
+      ],
+      "correctAnswer": "−60 km",
+      "solutionVideoId": "4cdef43d-694f-40ca-ae72-03ad9c1f12f5"
+    },
+    {
+      "sourceId": "L20-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "What does 70 km east mean, taking east as positive?",
+      "diagram": null,
+      "options": [
+        "+70 km",
+        "−70 km",
+        "+50 km",
+        "−50 km",
+        "+30 km"
+      ],
+      "correctAnswer": "+70 km",
+      "solutionVideoId": "dab19dc7-9504-4d67-8036-05dfd8f127db"
+    },
+    {
+      "sourceId": "L20-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "What does 180 km north mean, taking north as positive?",
+      "diagram": null,
+      "options": [
+        "+150 km",
+        "+90 km",
+        "−150 km",
+        "+180 km",
+        "−180 km"
+      ],
+      "correctAnswer": "+180 km",
+      "solutionVideoId": "8c486e5b-8249-45b2-a709-f19c715560ac"
+    },
+    {
+      "sourceId": "L20-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "What does 120 km south mean, taking north as positive?",
+      "diagram": null,
+      "options": [
+        "+120 km",
+        "−120 km",
+        "−60 km",
+        "+59 km",
+        "+60 km"
+      ],
+      "correctAnswer": "−120 km",
+      "solutionVideoId": "d3f200f4-1182-4cc2-b5ed-b68a387fa7e5"
+    },
+    {
+      "sourceId": "L20-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Combine a loss of 8 and a gain of 4.",
+      "diagram": null,
+      "options": [
+        "−4",
+        "+6",
+        "+4",
+        "−5",
+        "+3"
+      ],
+      "correctAnswer": "−4",
+      "solutionVideoId": "7bfde03f-6ea1-409e-8e94-303b81150168"
+    },
+    {
+      "sourceId": "L20-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Find the position relative to the starting point of a person who walks 75 km north, 15 km south and then 18 km further south.",
+      "diagram": null,
+      "options": [
+        "14 km east",
+        "28 km north",
+        "17 km north",
+        "42 km north",
+        "33 km south"
+      ],
+      "correctAnswer": "42 km north",
+      "solutionVideoId": "0854d028-8efb-4733-94d5-e26b9de7799b"
+    },
+    {
+      "sourceId": "L20-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Find the position relative to the starting point of a person who walks 30 km east, then 50 km west and a further 20 km west.",
+      "diagram": null,
+      "options": [
+        "20 km east",
+        "40 km west",
+        "20 km west",
+        "30 km north",
+        "20 km south"
+      ],
+      "correctAnswer": "40 km west",
+      "solutionVideoId": "a40fb2a9-5142-4662-9f46-633eb66b3158"
+    },
+    {
+      "sourceId": "L20-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Arrange these directed numbers from smallest to largest: 8, −7, 9, −10, 11, −12.",
+      "diagram": null,
+      "options": [
+        "−10, −12, 9, −7, 11, 8",
+        "8, 9, −7, −10, −12, 11",
+        "11, −12, −10, −7, 8, 9",
+        "−7, −12, −10, 8, 9, 11",
+        "−12, −10, −7, 8, 9, 11"
+      ],
+      "correctAnswer": "−12, −10, −7, 8, 9, 11",
+      "solutionVideoId": "b3079d13-f821-4cf1-bef5-48689c6a1f8f"
+    },
+    {
+      "sourceId": "L20-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Arrange these directed numbers from largest to smallest: 33, −30, −20, −11, 35, 37.",
+      "diagram": null,
+      "options": [
+        "35, 37, 33, −11, −20, −30",
+        "−11, 35, 37, −30, −20, 33",
+        "35, 33, −30, −20, −11, 37",
+        "37, 35, 33, −11, −20, −30",
+        "−11, −20, −30, 33, 37, 35"
+      ],
+      "correctAnswer": "37, 35, 33, −11, −20, −30",
+      "solutionVideoId": "f49197a3-e8ac-48dd-88f3-c8bfe12deb40"
+    },
+    {
+      "sourceId": "L20-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Arrange these directed numbers from smallest to largest: 0.5, −1.5, −0.5, 2, −2, 3.",
+      "diagram": null,
+      "options": [
+        "−2, −1.5, −0.5, 0.5, 2, 3",
+        "0.5, −1.5, −0.5, −2, 2, 3",
+        "3, −2, −1.5, −0.5, 0.5, 2",
+        "−1.5, −0.5, −2, 2, 0.5, 3",
+        "3, −2, −0.5, 0.5, −1.5, 2"
+      ],
+      "correctAnswer": "−2, −1.5, −0.5, 0.5, 2, 3",
+      "solutionVideoId": "3d92c1c5-2108-4935-a0cf-54d57bd0a961"
+    }
+  ]
+}
