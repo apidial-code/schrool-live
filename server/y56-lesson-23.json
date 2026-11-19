@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 23,
+  "title": "Multiplication by 2 Digits",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "3916da3d-78aa-46c2-8893-68b5ebb47bcf",
+  "questions": [
+    {
+      "sourceId": "L23-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Multiply 63 by 23.",
+      "diagram": null,
+      "options": [
+        "4419",
+        "1449",
+        "9441",
+        "1944",
+        "4491"
+      ],
+      "correctAnswer": "1449",
+      "solutionVideoId": "185e6e2e-b3c4-4aab-a2ed-7d6a8b67549d"
+    },
+    {
+      "sourceId": "L23-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Multiply 75 by 32.",
+      "diagram": null,
+      "options": [
+        "4200",
+        "2004",
+        "2040",
+        "2400",
+        "4020"
+      ],
+      "correctAnswer": "2400",
+      "solutionVideoId": "1fe71997-41d3-448d-8f73-3558a3d48bf3"
+    },
+    {
+      "sourceId": "L23-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Multiply 67 by 45.",
+      "diagram": null,
+      "options": [
+        "1530",
+        "1053",
+        "3015",
+        "3051",
+        "5130"
+      ],
+      "correctAnswer": "3015",
+      "solutionVideoId": "9af06456-5dd5-4a2e-87b5-aed7d13d6948"
+    },
+    {
+      "sourceId": "L23-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Multiply 89 by 62.",
+      "diagram": null,
+      "options": [
+        "5518",
+        "9853",
+        "9385",
+        "8539",
+        "3598"
+      ],
+      "correctAnswer": "5518",
+      "solutionVideoId": "46fe4197-99e4-4f76-aa13-ddea86fbabd3"
+    },
+    {
+      "sourceId": "L23-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Multiply 54 by 36.",
+      "diagram": null,
+      "options": [
+        "4419",
+        "1494",
+        "4941",
+        "1449",
+        "1944"
+      ],
+      "correctAnswer": "1944",
+      "solutionVideoId": "c2050e15-94a3-4015-b1fe-5ff599ecb28d"
+    },
+    {
+      "sourceId": "L23-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Multiply 87 by 29.",
+      "diagram": null,
+      "options": [
+        "2325",
+        "3252",
+        "5223",
+        "2235",
+        "2523"
+      ],
+      "correctAnswer": "2523",
+      "solutionVideoId": "755871d1-7862-4fa3-96bc-22e0188664ae"
+    },
+    {
+      "sourceId": "L23-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Multiply 48 by 52.",
+      "diagram": null,
+      "options": [
+        "2496",
+        "9426",
+        "2694",
+        "4964",
+        "4496"
+      ],
+      "correctAnswer": "2496",
+      "solutionVideoId": "56c04ac9-0d03-45b7-90c4-0edcf809875a"
+    },
+    {
+      "sourceId": "L23-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Multiply 97 by 63.",
+      "diagram": null,
+      "options": [
+        "1611",
+        "1161",
+        "1116",
+        "6111",
+        "6106"
+      ],
+      "correctAnswer": "6111",
+      "solutionVideoId": "92ad7dde-cab5-4d25-b877-a3b3652178bc"
+    },
+    {
+      "sourceId": "L23-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Multiply 27 by 45.",
+      "diagram": null,
+      "options": [
+        "2124",
+        "4122",
+        "1215",
+        "2412",
+        "2241"
+      ],
+      "correctAnswer": "1215",
+      "solutionVideoId": "b87e1c24-4749-4382-88c5-7aea7e5d0522"
+    },
+    {
+      "sourceId": "L23-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Multiply 79 by 68.",
+      "diagram": null,
+      "options": [
+        "3725",
+        "5372",
+        "5237",
+        "7523",
+        "3527"
+      ],
+      "correctAnswer": "5372",
+      "solutionVideoId": "6b17ab84-ea4f-4874-aa65-f5227d475461"
+    },
+    {
+      "sourceId": "L23-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Multiply 212 by 32.",
+      "diagram": null,
+      "options": [
+        "4678",
+        "8674",
+        "8764",
+        "8476",
+        "6784"
+      ],
+      "correctAnswer": "6784",
+      "solutionVideoId": "fd1f4379-7e86-4732-8952-d6d4e2ff6b2b"
+    },
+    {
+      "sourceId": "L23-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Multiply 632 by 42.",
+      "diagram": null,
+      "options": [
+        "54426",
+        "26544",
+        "24456",
+        "65442",
+        "24465"
+      ],
+      "correctAnswer": "26544",
+      "solutionVideoId": "0521f3ec-980e-4a24-b4a8-e9bbf916b7d6"
+    },
+    {
+      "sourceId": "L23-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Multiply 732 by 62.",
+      "diagram": null,
+      "options": [
+        "44358",
+        "45384",
+        "43584",
+        "45348",
+        "43548"
+      ],
+      "correctAnswer": "45384",
+      "solutionVideoId": "5a25c348-9a99-47ed-ac4d-5469a9ec6552"
+    },
+    {
+      "sourceId": "L23-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Multiply 345 by 25.",
+      "diagram": null,
+      "options": [
+        "5286",
+        "2865",
+        "6825",
+        "8625",
+        "8652"
+      ],
+      "correctAnswer": "8625",
+      "solutionVideoId": "50fd2842-b385-4c28-8e19-40eba6792ac0"
+    },
+    {
+      "sourceId": "L23-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Multiply 766 by 83.",
+      "diagram": null,
+      "options": [
+        "63758",
+        "63587",
+        "63785",
+        "63578",
+        "36758"
+      ],
+      "correctAnswer": "63578",
+      "solutionVideoId": "30bf0de1-2c09-4917-96e8-876544c1061c"
+    },
+    {
+      "sourceId": "L23-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Multiply 349 by 24.",
+      "diagram": null,
+      "options": [
+        "8376",
+        "3786",
+        "6873",
+        "7683",
+        "3768"
+      ],
+      "correctAnswer": "8376",
+      "solutionVideoId": "b21c15c9-9c56-456d-9975-72260b327e29"
+    },
+    {
+      "sourceId": "L23-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Multiply 447 by 89.",
+      "diagram": null,
+      "options": [
+        "39783",
+        "39837",
+        "83739",
+        "38973",
+        "39738"
+      ],
+      "correctAnswer": "39783",
+      "solutionVideoId": "bb8f0def-457d-4865-af5f-3a6d58e1137c"
+    },
+    {
+      "sourceId": "L23-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Multiply 632 by 29.",
+      "diagram": null,
+      "options": [
+        "18823",
+        "18832",
+        "18328",
+        "18238",
+        "81328"
+      ],
+      "correctAnswer": "18328",
+      "solutionVideoId": "c1e7271e-219d-46cb-b76e-1181fc8e7267"
+    },
+    {
+      "sourceId": "L23-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Multiply 991 by 36.",
+      "diagram": null,
+      "options": [
+        "35766",
+        "36567",
+        "35676",
+        "37566",
+        "35667"
+      ],
+      "correctAnswer": "35676",
+      "solutionVideoId": "1f0667c0-37b3-4523-a50b-404104dcff73"
+    },
+    {
+      "sourceId": "L23-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Multiply 673 by 64.",
+      "diagram": null,
+      "options": [
+        "72043",
+        "43027",
+        "72340",
+        "72034",
+        "43072"
+      ],
+      "correctAnswer": "43072",
+      "solutionVideoId": "9ec1b9e3-8488-42e5-81ee-8f3e4090d6ff"
+    },
+    {
+      "sourceId": "L23-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Multiply 889 by 89.",
+      "diagram": null,
+      "options": [
+        "71129",
+        "79112",
+        "79121",
+        "71921",
+        "12179"
+      ],
+      "correctAnswer": "79121",
+      "solutionVideoId": "c7e6de0b-e71e-4fb9-94ab-a7e7995f7c6a"
+    },
+    {
+      "sourceId": "L23-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Multiply 3142 by 63.",
+      "diagram": null,
+      "options": [
+        "479619",
+        "199746",
+        "197946",
+        "196479",
+        "194792"
+      ],
+      "correctAnswer": "197946",
+      "solutionVideoId": "3c0d632f-be5d-4c37-a145-dea8bc03af63"
+    },
+    {
+      "sourceId": "L23-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Multiply 7642 by 45.",
+      "diagram": null,
+      "options": [
+        "389043",
+        "438390",
+        "343890",
+        "439830",
+        "430389"
+      ],
+      "correctAnswer": "343890",
+      "solutionVideoId": "90db7c24-de14-46b7-8048-7b323e065016"
+    },
+    {
+      "sourceId": "L23-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Multiply 1666 by 72.",
+      "diagram": null,
+      "options": [
+        "121995",
+        "119529",
+        "119295",
+        "119952",
+        "119592"
+      ],
+      "correctAnswer": "119952",
+      "solutionVideoId": "e000afc7-a7e8-4ac2-a2e5-b112316afa73"
+    },
+    {
+      "sourceId": "L23-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Multiply 9712 by 83.",
+      "diagram": null,
+      "options": [
+        "806096",
+        "809066",
+        "800966",
+        "809660",
+        "806906"
+      ],
+      "correctAnswer": "806096",
+      "solutionVideoId": "1c60ff26-26f2-4bff-bbf9-bd6b3c52fc06"
+    },
+    {
+      "sourceId": "L23-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Multiply 6849 by 79.",
+      "diagram": null,
+      "options": [
+        "541701",
+        "540171",
+        "547110",
+        "541107",
+        "541071"
+      ],
+      "correctAnswer": "541071",
+      "solutionVideoId": "c5a01fc2-9553-484b-8030-649a1df8b965"
+    },
+    {
+      "sourceId": "L23-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Multiply 8627 by 89.",
+      "diagram": null,
+      "options": [
+        "767308",
+        "767803",
+        "767083",
+        "776308",
+        "773608"
+      ],
+      "correctAnswer": "767803",
+      "solutionVideoId": "296c32be-5f46-4505-89e9-338de4ee2adf"
+    },
+    {
+      "sourceId": "L23-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Multiply 9779 by 98.",
+      "diagram": null,
+      "options": [
+        "958324",
+        "958342",
+        "958234",
+        "958243",
+        "925843"
+      ],
+      "correctAnswer": "958342",
+      "solutionVideoId": "97c21dd4-4b97-4687-8f51-6c8d2ce317c2"
+    },
+    {
+      "sourceId": "L23-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Multiply 8972 by 79.",
+      "diagram": null,
+      "options": [
+        "787088",
+        "788708",
+        "887708",
+        "708788",
+        "778808"
+      ],
+      "correctAnswer": "708788",
+      "solutionVideoId": "04f11ab5-f868-481c-af05-cb43c436d246"
+    },
+    {
+      "sourceId": "L23-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Multiply 6975 by 59.",
+      "diagram": null,
+      "options": [
+        "411525",
+        "411255",
+        "421155",
+        "511254",
+        "455112"
+      ],
+      "correctAnswer": "411525",
+      "solutionVideoId": "8245227a-f62c-481f-b328-606d0dd7743f"
+    }
+  ]
+}
