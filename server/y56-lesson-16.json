@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 16,
+  "title": "Lowest Common Multiple (LCM)",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "c08ddcf4-65c1-4e96-a032-08633595e21d",
+  "questions": [
+    {
+      "sourceId": "L16-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Find the lowest common multiple of 3 and 5.",
+      "diagram": null,
+      "options": [
+        "15",
+        "10",
+        "11",
+        "13",
+        "12"
+      ],
+      "correctAnswer": "15",
+      "solutionVideoId": "078c6d98-a673-41de-846f-47971fc2a67a"
+    },
+    {
+      "sourceId": "L16-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Find the lowest common multiple of 6 and 9.",
+      "diagram": null,
+      "options": [
+        "14",
+        "11",
+        "18",
+        "17",
+        "15"
+      ],
+      "correctAnswer": "18",
+      "solutionVideoId": "c5952842-2566-4bad-becc-7212b34ed405"
+    },
+    {
+      "sourceId": "L16-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Find the lowest common multiple of 4 and 8.",
+      "diagram": null,
+      "options": [
+        "7",
+        "8",
+        "5",
+        "5.5",
+        "4"
+      ],
+      "correctAnswer": "8",
+      "solutionVideoId": "1a5ae9be-5034-4e0a-9526-3833ace7582a"
+    },
+    {
+      "sourceId": "L16-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Find the lowest common multiple of 5 and 6.",
+      "diagram": null,
+      "options": [
+        "28",
+        "25",
+        "21",
+        "30",
+        "22"
+      ],
+      "correctAnswer": "30",
+      "solutionVideoId": "7a18b7ab-841f-4214-8f31-060edaeb3886"
+    },
+    {
+      "sourceId": "L16-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Find the lowest common multiple of 7 and 8.",
+      "diagram": null,
+      "options": [
+        "41",
+        "13",
+        "15",
+        "22",
+        "56"
+      ],
+      "correctAnswer": "56",
+      "solutionVideoId": "07c1bd8d-2410-4490-97fb-183732763beb"
+    },
+    {
+      "sourceId": "L16-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Find the lowest common multiple of 9 and 11.",
+      "diagram": null,
+      "options": [
+        "80",
+        "33",
+        "22",
+        "99",
+        "11"
+      ],
+      "correctAnswer": "99",
+      "solutionVideoId": "1d287bfd-c9d2-406e-b069-1db4a5efa17a"
+    },
+    {
+      "sourceId": "L16-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Find the lowest common multiple of 9 and 12.",
+      "diagram": null,
+      "options": [
+        "16",
+        "36",
+        "18",
+        "19",
+        "17"
+      ],
+      "correctAnswer": "36",
+      "solutionVideoId": "ae881a94-958d-489f-94b1-93e2697dd282"
+    },
+    {
+      "sourceId": "L16-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Find the lowest common multiple of 16 and 20.",
+      "diagram": null,
+      "options": [
+        "70",
+        "20",
+        "80",
+        "60",
+        "50"
+      ],
+      "correctAnswer": "80",
+      "solutionVideoId": "0535c3fc-9637-4eb6-bfa5-7598fcfee076"
+    },
+    {
+      "sourceId": "L16-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Find the lowest common multiple of 15 and 12.",
+      "diagram": null,
+      "options": [
+        "60",
+        "40",
+        "10",
+        "20",
+        "30"
+      ],
+      "correctAnswer": "60",
+      "solutionVideoId": "a9137270-e2b8-40b6-ad48-c755d3aca8d3"
+    },
+    {
+      "sourceId": "L16-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Find the lowest common multiple of 11 and 13.",
+      "diagram": null,
+      "options": [
+        "140",
+        "153",
+        "130",
+        "143",
+        "132"
+      ],
+      "correctAnswer": "143",
+      "solutionVideoId": "4c6103b7-a7b5-4dd5-8749-a30b208755e7"
+    },
+    {
+      "sourceId": "L16-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Find the lowest common multiple of 14 and 18.",
+      "diagram": null,
+      "options": [
+        "172",
+        "126",
+        "132",
+        "154",
+        "148"
+      ],
+      "correctAnswer": "126",
+      "solutionVideoId": "3b017867-7b1f-4d15-90d5-c323b29f454b"
+    },
+    {
+      "sourceId": "L16-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Find the lowest common multiple of 20 and 21.",
+      "diagram": null,
+      "options": [
+        "830",
+        "402",
+        "410",
+        "380",
+        "420"
+      ],
+      "correctAnswer": "420",
+      "solutionVideoId": "b63500ce-fff8-4c02-8d11-6dded95cc4cc"
+    },
+    {
+      "sourceId": "L16-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Find the lowest common multiple of 18 and 19.",
+      "diagram": null,
+      "options": [
+        "234",
+        "3420",
+        "352",
+        "342",
+        "432"
+      ],
+      "correctAnswer": "342",
+      "solutionVideoId": "bc754f2d-43bf-4250-aea8-6039606c5b37"
+    },
+    {
+      "sourceId": "L16-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Find the lowest common multiple of 16 and 18.",
+      "diagram": null,
+      "options": [
+        "441",
+        "451",
+        "144",
+        "461",
+        "414"
+      ],
+      "correctAnswer": "144",
+      "solutionVideoId": "2be7d96d-27ec-4d1b-a282-643c1b9f5621"
+    },
+    {
+      "sourceId": "L16-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Find the lowest common multiple of 19 and 11.",
+      "diagram": null,
+      "options": [
+        "209",
+        "292",
+        "929",
+        "920",
+        "902"
+      ],
+      "correctAnswer": "209",
+      "solutionVideoId": "4b2268d5-5d2c-44c1-b34e-c152ec359782"
+    },
+    {
+      "sourceId": "L16-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Find the lowest common multiple of 21 and 25.",
+      "diagram": null,
+      "options": [
+        "255",
+        "555",
+        "755",
+        "525",
+        "557"
+      ],
+      "correctAnswer": "525",
+      "solutionVideoId": "e855076f-b5d9-43d6-a4fd-2601efd75c89"
+    },
+    {
+      "sourceId": "L16-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Find the lowest common multiple of 19 and 23.",
+      "diagram": null,
+      "options": [
+        "237",
+        "734",
+        "347",
+        "723",
+        "437"
+      ],
+      "correctAnswer": "437",
+      "solutionVideoId": "57f2afb3-5190-49ae-88b4-fae881743539"
+    },
+    {
+      "sourceId": "L16-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Find the lowest common multiple of 20 and 25.",
+      "diagram": null,
+      "options": [
+        "50",
+        "100",
+        "110",
+        "70",
+        "60"
+      ],
+      "correctAnswer": "100",
+      "solutionVideoId": "fae57d25-bc5b-4d95-a728-2acc711f4bef"
+    },
+    {
+      "sourceId": "L16-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Find the lowest common multiple of 31 and 42.",
+      "diagram": null,
+      "options": [
+        "3120",
+        "2310",
+        "1032",
+        "1302",
+        "1023"
+      ],
+      "correctAnswer": "1302",
+      "solutionVideoId": "643f2971-d39c-4315-9745-6f099d7ed6ed"
+    },
+    {
+      "sourceId": "L16-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Find the lowest common multiple of 43 and 50.",
+      "diagram": null,
+      "options": [
+        "512",
+        "152",
+        "2150",
+        "5120",
+        "521"
+      ],
+      "correctAnswer": "2150",
+      "solutionVideoId": "ab4a5d3c-a50e-45e3-8f40-bca59a18dc24"
+    },
+    {
+      "sourceId": "L16-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Find the lowest common multiple of 45 and 55.",
+      "diagram": null,
+      "options": [
+        "495",
+        "549",
+        "559",
+        "955",
+        "959"
+      ],
+      "correctAnswer": "495",
+      "solutionVideoId": "3eda3af1-a1e4-4611-8d08-6176138a67ae"
+    },
+    {
+      "sourceId": "L16-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Find the lowest common multiple of 50 and 60.",
+      "diagram": null,
+      "options": [
+        "520",
+        "200",
+        "100",
+        "300",
+        "150"
+      ],
+      "correctAnswer": "300",
+      "solutionVideoId": "01e7ee86-e0f0-43f2-803c-2f8b9a36e841"
+    },
+    {
+      "sourceId": "L16-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Find the lowest common multiple of 50 and 57.",
+      "diagram": null,
+      "options": [
+        "2805",
+        "8250",
+        "8520",
+        "2580",
+        "2850"
+      ],
+      "correctAnswer": "2850",
+      "solutionVideoId": "c6555fc3-3676-4d5b-8862-6bf42b20cb11"
+    },
+    {
+      "sourceId": "L16-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Find the lowest common multiple of 60 and 70.",
+      "diagram": null,
+      "options": [
+        "930",
+        "420",
+        "240",
+        "410",
+        "400"
+      ],
+      "correctAnswer": "420",
+      "solutionVideoId": "be7be3b3-0336-41e3-9b17-fa6c54fed52f"
+    },
+    {
+      "sourceId": "L16-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Find the lowest common multiple of 65 and 78.",
+      "diagram": null,
+      "options": [
+        "820",
+        "420",
+        "399",
+        "390",
+        "280"
+      ],
+      "correctAnswer": "390",
+      "solutionVideoId": "449d9fc2-3977-429b-82d4-cae89932e24a"
+    },
+    {
+      "sourceId": "L16-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Find the lowest common multiple of 75 and 85.",
+      "diagram": null,
+      "options": [
+        "5712",
+        "1275",
+        "5172",
+        "1375",
+        "2175"
+      ],
+      "correctAnswer": "1275",
+      "solutionVideoId": "a762ef08-fba2-4744-bff2-48e8df3a9051"
+    },
+    {
+      "sourceId": "L16-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Find the lowest common multiple of 85 and 95.",
+      "diagram": null,
+      "options": [
+        "5161",
+        "1561",
+        "1651",
+        "1615",
+        "1565"
+      ],
+      "correctAnswer": "1615",
+      "solutionVideoId": "c1de7adf-3962-4bb0-972f-6fab6df531d8"
+    },
+    {
+      "sourceId": "L16-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Find the lowest common multiple of 105 and 195.",
+      "diagram": null,
+      "options": [
+        "1365",
+        "5857",
+        "5485",
+        "4857",
+        "4854"
+      ],
+      "correctAnswer": "1365",
+      "solutionVideoId": "f6d857f7-615f-4c41-88db-3ddfbfc0851a"
+    },
+    {
+      "sourceId": "L16-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Find the lowest common multiple of 205 and 300.",
+      "diagram": null,
+      "options": [
+        "32100",
+        "31200",
+        "23100",
+        "12300",
+        "20130"
+      ],
+      "correctAnswer": "12300",
+      "solutionVideoId": "14ef86fb-f6e9-450c-affe-e0cbff16aea9"
+    },
+    {
+      "sourceId": "L16-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Find the lowest common multiple of 305 and 425.",
+      "diagram": null,
+      "options": [
+        "52925",
+        "92525",
+        "29552",
+        "25925",
+        "95522"
+      ],
+      "correctAnswer": "25925",
+      "solutionVideoId": "135ff239-27c5-4662-a9b0-96ee7f876c4c"
+    }
+  ]
+}
