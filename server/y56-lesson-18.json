@@ -1,0 +1,489 @@
+{
+  "formatVersion": 1,
+  "sourceLessonNumber": 18,
+  "title": "Square and Cube Roots",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "f863006b-0b1b-43da-a536-75458f6ee5ce",
+  "questions": [
+    {
+      "sourceId": "L18-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "If 4 × 4 = 16, what is √16?",
+      "diagram": null,
+      "options": [
+        "5",
+        "14",
+        "17",
+        "16",
+        "4"
+      ],
+      "correctAnswer": "4",
+      "solutionVideoId": "42d4ae7a-8701-48c1-9b5a-342c91461d2f"
+    },
+    {
+      "sourceId": "L18-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "If 9 × 9 = 81, what is √81?",
+      "diagram": null,
+      "options": [
+        "8",
+        "10",
+        "5",
+        "6",
+        "9"
+      ],
+      "correctAnswer": "9",
+      "solutionVideoId": "b41e5863-75bb-4b15-a7bf-1685e485e62c"
+    },
+    {
+      "sourceId": "L18-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "If 11 × 11 = 121, what is √121?",
+      "diagram": null,
+      "options": [
+        "14",
+        "18",
+        "19",
+        "20",
+        "11"
+      ],
+      "correctAnswer": "11",
+      "solutionVideoId": "3cdbb344-798e-42eb-b88d-3a4242ed12a9"
+    },
+    {
+      "sourceId": "L18-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "If 2 × 2 × 2 = 8, what is ∛8?",
+      "diagram": null,
+      "options": [
+        "3",
+        "9",
+        "8",
+        "1",
+        "2"
+      ],
+      "correctAnswer": "2",
+      "solutionVideoId": "9a416eec-b9bc-4268-aa14-4df419859dda"
+    },
+    {
+      "sourceId": "L18-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "If 7 × 7 × 7 = 343, what is ∛343?",
+      "diagram": null,
+      "options": [
+        "5",
+        "6",
+        "11",
+        "9",
+        "7"
+      ],
+      "correctAnswer": "7",
+      "solutionVideoId": "cd665a4a-6d5a-4d8f-a465-4447c744bce5"
+    },
+    {
+      "sourceId": "L18-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "If 9 × 9 × 9 = 729, what is ∛729?",
+      "diagram": null,
+      "options": [
+        "8",
+        "4",
+        "3",
+        "5",
+        "9"
+      ],
+      "correctAnswer": "9",
+      "solutionVideoId": "b9dfa9f8-9d5b-4986-a418-c7654ce7ce92"
+    },
+    {
+      "sourceId": "L18-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "If 30 × 30 × 30 = 27000, what is ∛27000?",
+      "diagram": null,
+      "options": [
+        "20",
+        "50",
+        "57",
+        "40",
+        "30"
+      ],
+      "correctAnswer": "30",
+      "solutionVideoId": "9884fa10-8d42-4898-8fab-36a6e2129828"
+    },
+    {
+      "sourceId": "L18-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "If (3 × 5 × 7)³ = 1157625, find ∛1157625.",
+      "diagram": null,
+      "options": [
+        "108",
+        "107",
+        "119",
+        "117",
+        "105"
+      ],
+      "correctAnswer": "105",
+      "solutionVideoId": "954aa9c9-1a09-40f7-a3d8-61b9530e419e"
+    },
+    {
+      "sourceId": "L18-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "If (2 × 3 × 7)³ = 74088, find ∛74088.",
+      "diagram": null,
+      "options": [
+        "45",
+        "48",
+        "47",
+        "41",
+        "42"
+      ],
+      "correctAnswer": "42",
+      "solutionVideoId": "60c9caa9-f601-4da5-9276-927a6bf89dc0"
+    },
+    {
+      "sourceId": "L18-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Find ∛3375.",
+      "diagram": null,
+      "options": [
+        "13",
+        "17",
+        "35",
+        "25",
+        "15"
+      ],
+      "correctAnswer": "15",
+      "solutionVideoId": "b9f1c52a-9360-4eca-a0ef-a279a19a1ea6"
+    },
+    {
+      "sourceId": "L18-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "If (2 × 3 × 5) × (2 × 3 × 5) = 900, what is √900?",
+      "diagram": null,
+      "options": [
+        "20",
+        "25",
+        "10",
+        "60",
+        "30"
+      ],
+      "correctAnswer": "30",
+      "solutionVideoId": "c52aa607-1797-4988-bafc-9ead423b0693"
+    },
+    {
+      "sourceId": "L18-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "If ((5 + 3) × 8) × ((5 + 3) × 8) = 4096, what is √4096?",
+      "diagram": null,
+      "options": [
+        "44",
+        "54",
+        "60",
+        "80",
+        "64"
+      ],
+      "correctAnswer": "64",
+      "solutionVideoId": "9e0c58c1-dae1-474e-b56f-dea6af9513ab"
+    },
+    {
+      "sourceId": "L18-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "If (5 × (7 + 2)) × (5 × (7 + 2)) = 2025, what is √2025?",
+      "diagram": null,
+      "options": [
+        "52",
+        "50",
+        "43",
+        "44",
+        "45"
+      ],
+      "correctAnswer": "45",
+      "solutionVideoId": "8e49c402-f4f5-4efe-8662-f4a035dc0b10"
+    },
+    {
+      "sourceId": "L18-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "If ((2 + 3) × 4) × ((2 + 3) × 4) = 400, what is √400?",
+      "diagram": null,
+      "options": [
+        "30",
+        "40",
+        "50",
+        "10",
+        "20"
+      ],
+      "correctAnswer": "20",
+      "solutionVideoId": "d0906d96-f544-4fe9-8106-37d6b42310a1"
+    },
+    {
+      "sourceId": "L18-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "If (4 × 5 + 3) × (4 × 5 + 3) × (4 × 5 + 3) = 12167, what is ∛12167?",
+      "diagram": null,
+      "options": [
+        "20",
+        "22",
+        "25",
+        "24",
+        "23"
+      ],
+      "correctAnswer": "23",
+      "solutionVideoId": "81091fd5-4da3-44bd-ac31-73f34ac4a5f7"
+    },
+    {
+      "sourceId": "L18-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "If 25 × 25 × 25 = 15625, what is ∛15625?",
+      "diagram": null,
+      "options": [
+        "24",
+        "22",
+        "21",
+        "23",
+        "25"
+      ],
+      "correctAnswer": "25",
+      "solutionVideoId": "571a7b58-5eb7-4aa5-b98d-36690d8815c4"
+    },
+    {
+      "sourceId": "L18-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Find √(2 × 2 × 7 × 7 × 11 × 11).",
+      "diagram": null,
+      "options": [
+        "164",
+        "153",
+        "175",
+        "180",
+        "154"
+      ],
+      "correctAnswer": "154",
+      "solutionVideoId": "6bf02024-7d82-4f1a-87cb-820ecea26f0e"
+    },
+    {
+      "sourceId": "L18-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Find ∛(9 × 9 × 9 × 8 × 8 × 8 × 5 × 5 × 5).",
+      "diagram": null,
+      "options": [
+        "630",
+        "365",
+        "356",
+        "366",
+        "360"
+      ],
+      "correctAnswer": "360",
+      "solutionVideoId": "0224efb8-8fff-4fdf-90cf-6d1d6a2750ea"
+    },
+    {
+      "sourceId": "L18-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Find ∛((2 + 3) × 8 × (2 + 3) × 8 × (2 + 3) × 8).",
+      "diagram": null,
+      "options": [
+        "50",
+        "60",
+        "70",
+        "80",
+        "40"
+      ],
+      "correctAnswer": "40",
+      "solutionVideoId": "8f8cc53d-05fe-4f73-b6b0-0d58940b66bb"
+    },
+    {
+      "sourceId": "L18-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Find √529 using a calculator.",
+      "diagram": null,
+      "options": [
+        "22",
+        "27",
+        "25",
+        "26",
+        "23"
+      ],
+      "correctAnswer": "23",
+      "solutionVideoId": "7d097ecd-25d6-4e4a-9305-a47d883d87f2"
+    },
+    {
+      "sourceId": "L18-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Find √2025 using a calculator.",
+      "diagram": null,
+      "options": [
+        "54",
+        "52",
+        "60",
+        "43",
+        "45"
+      ],
+      "correctAnswer": "45",
+      "solutionVideoId": "ed9857a5-25f0-40e2-aab3-dfdcc7ef947b"
+    },
+    {
+      "sourceId": "L18-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Find √1600 using a calculator.",
+      "diagram": null,
+      "options": [
+        "30",
+        "20",
+        "50",
+        "80",
+        "40"
+      ],
+      "correctAnswer": "40",
+      "solutionVideoId": "ff0aea69-0a03-4579-b39b-cf8932bc5267"
+    },
+    {
+      "sourceId": "L18-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Find √(625𝑎²) using a calculator, where 𝑎 ≥ 0.",
+      "diagram": null,
+      "options": [
+        "35",
+        "24",
+        "28",
+        "31",
+        "25𝑎"
+      ],
+      "correctAnswer": "25𝑎",
+      "solutionVideoId": "4215b3e0-4197-4361-bc05-61df2547900f"
+    },
+    {
+      "sourceId": "L18-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Find √(3⁴) × √(8⁴) using a calculator.",
+      "diagram": null,
+      "options": [
+        "675",
+        "657",
+        "658",
+        "856",
+        "576"
+      ],
+      "correctAnswer": "576",
+      "solutionVideoId": "e729ad7e-ce02-4bcd-b0ec-116da64a750b"
+    },
+    {
+      "sourceId": "L18-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Find ∛4096 using a calculator.",
+      "diagram": null,
+      "options": [
+        "15",
+        "21",
+        "23",
+        "24",
+        "16"
+      ],
+      "correctAnswer": "16",
+      "solutionVideoId": "320bbdac-37c3-4678-a92f-a39195c80b4f"
+    },
+    {
+      "sourceId": "L18-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Find ∛1331 using a calculator.",
+      "diagram": null,
+      "options": [
+        "13",
+        "10",
+        "12",
+        "14",
+        "11"
+      ],
+      "correctAnswer": "11",
+      "solutionVideoId": "5e42ad61-e582-4cb0-b879-5bc4d1424122"
+    },
+    {
+      "sourceId": "L18-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Find ∛512 using a calculator.",
+      "diagram": null,
+      "options": [
+        "9",
+        "7",
+        "6",
+        "12",
+        "8"
+      ],
+      "correctAnswer": "8",
+      "solutionVideoId": "0b731fdc-cfd0-4063-af67-bf37b7c0a3f5"
+    },
+    {
+      "sourceId": "L18-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Find ∛1728 using a calculator.",
+      "diagram": null,
+      "options": [
+        "11",
+        "15",
+        "17",
+        "19",
+        "12"
+      ],
+      "correctAnswer": "12",
+      "solutionVideoId": "37d3d0ad-45df-4446-a287-e1abea4fe227"
+    },
+    {
+      "sourceId": "L18-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Find ∛27000 using a calculator.",
+      "diagram": null,
+      "options": [
+        "20",
+        "50",
+        "70",
+        "90",
+        "30"
+      ],
+      "correctAnswer": "30",
+      "solutionVideoId": "c28e2db8-626a-45d6-a772-33aa061d8595"
+    },
+    {
+      "sourceId": "L18-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Find ∛(8472 ÷ 48) using a calculator. Give your answer to one decimal place.",
+      "diagram": null,
+      "options": [
+        "6.1",
+        "8.7",
+        "9.3",
+        "5.8",
+        "5.6"
+      ],
+      "correctAnswer": "5.6",
+      "solutionVideoId": "4f61c223-52d3-4821-b983-ae368932f25a"
+    }
+  ]
+}
