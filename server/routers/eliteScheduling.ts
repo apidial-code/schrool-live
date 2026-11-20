@@ -1,6 +1,6 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
-import { and, asc, desc, eq, inArray } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
 import { router, protectedProcedure, publicProcedure } from "../_core/trpc.js";
 import { getDb } from "../db.js";
@@ -79,9 +79,12 @@ async function matching(tx:any,schedule:ReturnType<typeof buildTeachingSchedule>
     .innerJoin(users,eq(users.id,eliteTutors.teacherId)).where(and(eq(eliteTutors.approved,true),
       eq(users.role,"teacher"),eq(users.accountStatus,"active"))).orderBy(asc(eliteTutors.teacherId));
   const booked: typeof eliteTeachingSessions.$inferSelect[]=await tx.select().from(eliteTeachingSessions);
-  // Existing legacy bookings also reserve the tutor's time.
+  // This optional legacy table was not installed in the rebuilt staging DB.
+  // Preserve conflicts when it exists, without requiring it for new scheduling.
   const { zoomSessions }=await import("../../drizzle/schema.js");
-  const legacy=await tx.select().from(zoomSessions);
+  const [legacyTables]=await tx.execute(sql`SELECT TABLE_NAME FROM information_schema.TABLES
+    WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'zoom_sessions'`);
+  const legacy=legacyTables.length ? await tx.select().from(zoomSessions) : [];
   return profiles.filter((profile:any)=>{
     if(!profile.commitmentAt) return false;
     let windows:AvailabilityWindow[];
