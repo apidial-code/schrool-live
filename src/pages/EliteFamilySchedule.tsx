@@ -22,7 +22,7 @@ export default function EliteFamilySchedule() {
   async function preview(){setMessage("");try{await check.mutateAsync(input);setChecked(fingerprint);}catch(e){setMessage(e instanceof Error?e.message:"Unable to check times.");}}
   async function reserve(){setMessage("");try{await book.mutateAsync({...input,parentName,confirmsTimes:true});await details.mutateAsync(key);}catch(e){setMessage(e instanceof Error?e.message:"Unable to confirm.");}}
   return <main className="mx-auto max-w-3xl space-y-5 p-6">
-    <h1 className="text-2xl font-semibold">Choose your Elite teaching times</h1>
+    <h1 className="text-2xl font-semibold">{details.data?.allocation ? "Your confirmed Elite teaching schedule" : "Choose your Elite teaching times"}</h1>
     {details.isPending?<p>Loading your private scheduling link…</p>:details.error?<p role="alert">{details.error.message}</p>:details.data && <>
       <p>Student: {details.data.studentName}</p>
       {details.data.allocation?<section className="rounded border p-5 space-y-3"><h2 className="text-xl font-semibold">Teaching schedule confirmed</h2>
