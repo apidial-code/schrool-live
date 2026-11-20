@@ -231,3 +231,59 @@ export const studentFileEntries = mysqlTable("student_file_entries", {
   content: text("content").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 }, table => [index("student_file_entry_history").on(table.enrollmentId, table.id)]);
+
+
+// Dedicated scheduling tables keep the legacy demonstration zoom_sessions separate.
+export const eliteScheduleLock = mysqlTable("elite_schedule_lock", {
+  id: int("id").primaryKey(),
+});
+export const eliteTutors = mysqlTable("elite_tutors", {
+  teacherId: int("teacher_id").primaryKey(),
+  approved: boolean("approved").notNull().default(false),
+  approvedBy: int("approved_by").notNull(),
+  timezone: varchar("timezone", { length: 100 }).notNull().default("Australia/Sydney"),
+  windowsJson: text("windows_json").notNull(),
+  commitmentAt: timestamp("commitment_at"),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
+});
+export const eliteFamilyInvites = mysqlTable("elite_family_invites", {
+  issuedBy: int("issued_by").notNull(),
+  enrollmentId: int("enrollment_id").primaryKey(),
+  tokenHash: varchar("token_hash", { length:64 }).notNull().unique(),
+  expiresAt: timestamp("expires_at").notNull(),
+});
+export const eliteAllocations = mysqlTable("elite_allocations", {
+  enrollmentId: int("enrollment_id").primaryKey(),
+  teacherId: int("teacher_id").notNull(),
+  timezone: varchar("timezone", { length:100 }).notNull(),
+  weekStart: varchar("week_start", { length:10 }).notNull(),
+  slotsJson: text("slots_json").notNull(),
+  parentConfirmedAt: timestamp("parent_confirmed_at").notNull(),
+  tutorCommitmentAt: timestamp("tutor_commitment_at").notNull(),
+  parentName: varchar("parent_name", { length:255 }).notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+export const eliteTeachingSessions = mysqlTable("elite_teaching_sessions", {
+  id: serial("id").primaryKey(),
+  enrollmentId: int("enrollment_id").notNull(),
+  teacherId: int("teacher_id").notNull(),
+  studentId: int("student_id").notNull(),
+  sequence: int("sequence").notNull(),
+  lessonId: int("lesson_id").notNull(),
+  startsAt: timestamp("starts_at").notNull(),
+  endsAt: timestamp("ends_at").notNull(),
+  status: varchar("status", { length:30 }).notNull().default("scheduled"),
+}, t => [uniqueIndex("elite_session_sequence").on(t.enrollmentId,t.sequence), index("elite_teacher_calendar").on(t.teacherId,t.startsAt)]);
+export const eliteSessionReports = mysqlTable("elite_session_reports", {
+  id: serial("id").primaryKey(),
+  sessionId: int("session_id").notNull(),
+  authorId: int("author_id").notNull(),
+  requestId: varchar("request_id", { length:36 }).notNull().unique(),
+  revisionOf: int("revision_of"),
+  lessonUnderstanding: text("lesson_understanding").notNull(),
+  nextObjectives: text("next_objectives").notNull(),
+  progressDifficulties: text("progress_difficulties").notNull(),
+  assignedWork: text("assigned_work").notNull(),
+  tutorComments: text("tutor_comments").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+}, t => [index("elite_session_report_history").on(t.sessionId,t.id)]);

@@ -1,3 +1,4 @@
+import EliteScheduleView from "../components/EliteScheduleView.tsx";
 import AdminEliteLifecycle from "../components/AdminEliteLifecycle.tsx";
 import { useEffect, useRef, useState } from "react";
 import AdminStudentSupport from "../components/AdminStudentSupport";
@@ -34,7 +35,7 @@ export default function AdminStudentFiles() {
     } else setSelected(enrollmentId);
   };
   return <main className="min-h-screen bg-slate-50 p-6 text-slate-900"><div className="mx-auto max-w-6xl space-y-6">
-    <header><a href="/admin" className="text-blue-700 underline">Back to Admin dashboard</a><h1 className="mt-4 text-3xl font-bold">Student files</h1><p>Review enrolments, payments and learning progress. Dates use Australia/Sydney time.</p></header>
+    <header><a href="/admin" className="text-blue-700 underline">Back to Admin dashboard</a><h1 className="mt-4 text-3xl font-bold">Student files</h1><p><a href="/admin/tutors" className="text-blue-800 underline">Manage Elite tutors</a></p><p>Review enrolments, payments and learning progress. Dates use Australia/Sydney time.</p></header>
     <section className={box}><h2 className="text-xl font-semibold">Find an enrolment</h2>
       <form className="flex flex-wrap gap-3" onSubmit={e => { e.preventDefault(); setSelected(null); setPage(0); setQuery(search.trim()); }}>
         <label className="flex-1">Student name, parent email or enrolment number<input className="mt-1 block w-full rounded border p-3" value={search} maxLength={100} onChange={e => setSearch(e.target.value)} /></label><button className={button}>Search</button>
@@ -56,6 +57,7 @@ export default function AdminStudentFiles() {
         <section className={box}><h3 className="text-xl font-semibold">Enrolment and access</h3><p>{data.courseName ?? data.enrollment.yearLevel} · {data.enrollment.tier}</p><p>Status: {data.enrollment.status} · Payment: {data.enrollment.paymentStatus}</p><p>Draft saved: {date(data.draftSavedAt)}</p><p>Enrolment date: {date(data.enrollment.enrolledAt ?? data.enrollment.activatedAt)}</p>{!data.enrollment.enrolledAt && data.enrollment.activatedAt && <p className="text-sm">Enrolment date shown from the recorded access activation.</p>}<p>Agreement accepted: {date(data.enrollment.acceptedAt)}</p><p>Access activated: {date(data.enrollment.activatedAt)}</p><p>Access ends: {data.enrollment.tier === "elite" && !data.enrollment.accessEndsAt ? "On confirmed course completion" : date(data.enrollment.accessEndsAt)}</p></section>
         {data.enrollment.tier === "standard" && <section className={box}><h3 className="text-xl font-semibold">Standard phone support</h3><p>Up to 30 minutes each week during the first three months. Unused minutes do not carry forward.</p><p>The student learns independently through their student dashboard. Parents can request a progress report from Admin.</p><p>Record calls and follow-up notes in the Admin notes section below.</p></section>}
         {data.enrollment.tier === "elite" && <AdminEliteLifecycle key={`elite-${selected}`} enrollmentId={selected} status={data.enrollment.status} hasExpiry={!!data.enrollment.accessEndsAt} onSaved={() => { void file.refetch(); void list.refetch(); }} />}
+        {data.enrollment.tier === "elite" && <EliteScheduleView key={`schedule-${selected}`} enrollmentId={selected} admin />}
         <AdminStudentSupport key={selected} enrollmentId={selected} standard={data.enrollment.tier === "standard"} />
         <section className={box}><h3 className="text-xl font-semibold">Payments</h3><p>Agreed total: {money(data.enrollment.agreedTotalCents, data.enrollment.currency)} · Plan: {data.enrollment.paymentPlan ?? "Not recorded"}</p>
           <div className="overflow-x-auto"><table className="w-full text-left"><caption className="text-left">Recorded payment attempts</caption><thead><tr>{["Recorded", "Amount", "Status", "Mode"].map(t => <th className="p-2" key={t}>{t}</th>)}</tr></thead><tbody>{data.payments.map(p => <tr key={p.id}><td className="p-2">{date(p.paidAt ?? p.createdAt)}</td><td className="p-2">{money(p.amountCents,p.currency)}</td><td className="p-2">{p.status}</td><td className="p-2">{p.livemode ? "Live" : "Test"}</td></tr>)}</tbody></table></div>{!data.payments.length && <p>No payment attempts recorded.</p>}

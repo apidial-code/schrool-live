@@ -1,3 +1,6 @@
+import AdminEliteTutors from "./pages/AdminEliteTutors.tsx";
+import EliteFamilySchedule from "./pages/EliteFamilySchedule.tsx";
+import TeacherElitePortal from "./pages/TeacherElitePortal.tsx";
 import React from "react";
 import AdminStudentFiles from "./pages/AdminStudentFiles";
 import { Route, Switch } from "wouter";
@@ -8,7 +11,6 @@ import ParentEnrollmentReview from "./pages/ParentEnrollmentReview";
 import EnrollmentPaymentReturn from "./pages/EnrollmentPaymentReturn";
 import StudentDashboard from "./pages/StudentHome.tsx";
 import ParentDashboard from "./pages/ParentDashboard";
-import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import SignIn from "./pages/SignIn.tsx";
 import ProtectedLesson from "./pages/ProtectedLesson.tsx";
@@ -108,9 +110,12 @@ export default function App() {
         </DashboardGate>
       </Route>
 
+      <Route path="/elite/schedule" component={EliteFamilySchedule} />
+      <Route path="/teacher/elite"><DashboardGate role="teacher"><TeacherElitePortal /></DashboardGate></Route>
+      <Route path="/admin/tutors"><DashboardGate role="admin"><AdminEliteTutors /></DashboardGate></Route>
       <Route path="/teacher">
         <DashboardGate role="teacher">
-          <TeacherDashboard />
+          <TeacherElitePortal />
         </DashboardGate>
       </Route>
 

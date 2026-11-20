@@ -1,3 +1,4 @@
+import EliteScheduleView from "../components/EliteScheduleView.tsx";
 import React from "react";
 import { courseOverview, courseLevels } from "../../shared/courseProgress";
 import { trpc } from "../lib/trpc";
@@ -85,6 +86,7 @@ export default function StudentHome() {
                   <p>Payment status: {item.paymentStatus}</p>
                   {item.tier === "elite" && <p className="mt-2 text-sm text-slate-600">46 one-hour teaching sessions, normally two each week across 23 teaching weeks. Learning access ends when course completion is confirmed.</p>}
                   {item.accessEndsAt && <p className="mt-2 text-sm text-slate-600">Access ends {new Date(item.accessEndsAt).toLocaleDateString("en-AU", { timeZone: "Australia/Sydney" })}</p>}
+                  {item.tier === "elite" && <EliteScheduleView enrollmentId={item.id} />}
                   {item.status === "completed" ? <p className="mt-3 font-semibold">Your course is completed. Learning access is closed.</p> : <CourseLessons enrollmentId={item.id} />}
                 </li>
               ))}
