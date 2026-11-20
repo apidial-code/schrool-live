@@ -32,19 +32,19 @@ export default function EnrollmentPaymentReturn() {
 
   const confirmed = data?.status === "confirmed";
 
-  let message = "Checking whether Schrool has recorded your test payment…";
+  let message = "Checking whether Schrool has recorded your payment…";
 
   if (cancelled) {
     message =
       "You returned from checkout. Reopen your original enrolment review link to continue.";
   } else if (!sessionId) {
     message =
-      "The Stripe test checkout reference is missing or invalid. Please contact your consultant.";
+      "The payment reference is missing or invalid. Please contact your consultant.";
   } else if (isError) {
     message =
       "We couldn’t check the payment status. Try checking again below.";
   } else if (confirmed) {
-    message = "Schrool has recorded your initial test payment.";
+    message = "Thank you for your payment. Schrool has recorded your payment.";
   } else if (data?.status === "pending") {
     message =
       "Payment confirmation is pending. Wait a few seconds, then check again.";
@@ -57,7 +57,7 @@ export default function EnrollmentPaymentReturn() {
     <main className="min-h-screen bg-slate-50 px-4 py-8 text-slate-900">
       <section className="mx-auto max-w-2xl rounded-xl border bg-white p-6 shadow-sm">
         <h1 className="text-2xl font-semibold text-[#1560B0]">
-          {confirmed ? "Test payment recorded" : "Stripe test checkout"}
+          {confirmed ? "Payment recorded" : "Payment status"}
         </h1>
         <p role="status" className="mt-4">
           {isPending ? "Checking payment status…" : message}
@@ -65,10 +65,10 @@ export default function EnrollmentPaymentReturn() {
         {confirmed && (
           <section className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-5" aria-label="Student sign-in instructions">
             <h2 className="text-xl font-semibold">Next step: student sign-in</h2>
-            <p className="mt-3">Use the student email address recorded on your enrolment. The student signs in separately from the parent or consultant.</p>
+            <p className="mt-3">Use the student email address recorded on your enrolment. The student signs in separately from the parent. No password is needed.</p>
             <ol className="mt-3 list-decimal space-y-2 pl-6">
               <li>Open the sign-in page below and enter the student email address.</li>
-              <li>Request a sign-in link, then open the new email and follow the link within 15 minutes.</li>
+              <li>Request a sign-in link (magic link), then open the email sent to the student and follow the link within 15 minutes.</li>
               <li>On My enrolments, select View lessons and open the first available lesson.</li>
             </ol>
             <a href="/login" className="mt-5 inline-block rounded-lg bg-[#1560B0] px-5 py-3 font-semibold text-white">Go to student sign-in</a>
