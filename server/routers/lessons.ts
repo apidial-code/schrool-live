@@ -1,3 +1,4 @@
+import { accessPeriodOpen } from "../../shared/courseAccessPeriod.js";
 import { lessonScores } from "../../shared/courseProgress.js";
 import { randomInt, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
@@ -141,8 +142,8 @@ async function lockAccess(tx: any, studentId: number, enrollmentId: number, cour
   const now = Date.now();
   if (!record || record.courseId !== courseId || record.status !== "active" ||
       record.paymentStatus !== "paid" || !record.acceptedAt || !record.activatedAt ||
-      !record.accessEndsAt || !(record.acceptedAt.getTime() <= now) ||
-      !(record.activatedAt.getTime() <= now) || !(record.accessEndsAt.getTime() > now)) {
+      !accessPeriodOpen(record.tier, record.accessEndsAt, now) || !(record.acceptedAt.getTime() <= now) ||
+      !(record.activatedAt.getTime() <= now)) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Course access unavailable." });
   }
 }

@@ -1,3 +1,4 @@
+import { accessPeriodOpen } from "../shared/courseAccessPeriod.js";
 import { createHash } from "node:crypto";
 import { eq } from "drizzle-orm";
 import { addYears } from "date-fns";
@@ -155,7 +156,7 @@ export async function recordInitialTestPayment(sessionId: string) {
         status: "active",
         paymentStatus: "paid",
         activatedAt,
-        accessEndsAt: addYears(activatedAt, 1),
+        accessEndsAt: row.tier === "elite" ? null : addYears(activatedAt, 1),
       }).where(eq(enrollments.id, enrollmentId));
     }
     await tx.update(enrollmentPayments).set({
@@ -185,8 +186,8 @@ async function deliverStudentWelcome(enrollmentId: number) {
     const [row] = await tx.select().from(enrollments)
       .where(eq(enrollments.id, enrollmentId)).limit(1).for("update");
     if (!row || row.status !== "active" || row.paymentStatus !== "paid" ||
-        !row.studentId || !row.activatedAt || !row.accessEndsAt ||
-        row.accessEndsAt.getTime() <= Date.now()) return null;
+        !row.studentId || !row.activatedAt ||
+        !accessPeriodOpen(row.tier, row.accessEndsAt, Date.now())) return null;
     const stored = JSON.parse(row.agreementSnapshot || "null");
     const snapshot = enrollmentSnapshotSchema.parse(stored);
     if (stored.studentWelcomeDelivery) return null;
@@ -222,7 +223,8 @@ async function deliverAdminConfirmation(enrollmentId: number) {
     const [row] = await tx.select().from(enrollments)
       .where(eq(enrollments.id, enrollmentId)).limit(1).for("update");
     if (!row || row.status !== "active" || row.paymentStatus !== "paid" ||
-        !row.studentId || !row.activatedAt || !row.accessEndsAt) return null;
+        !row.studentId || !row.activatedAt ||
+        !accessPeriodOpen(row.tier, row.accessEndsAt, Date.now())) return null;
     const stored = JSON.parse(row.agreementSnapshot || "null");
     if (stored.adminEnrollmentDelivery) return null;
     // A simultaneous webhook may still be sending the student message.
@@ -255,7 +257,7 @@ async function deliverAdminConfirmation(enrollmentId: number) {
       "Accepted payment schedule:",
       ...snapshot.quote.schedule.map(item => `${item.monthOffset === 0 ? "At checkout" : item.monthOffset + " calendar month(s) after initial payment"}: ${money(item.amountCents)}`),
       `Access activated: ${date(row.activatedAt)}`,
-      `Access expires: ${date(row.accessEndsAt)}`,
+      row.tier === "elite" ? "Learning access ends when course completion is confirmed." : `Access expires: ${date(row.accessEndsAt!)}`,
       `Student welcome email: ${welcome}`,
       "This is a Stripe sandbox payment. No live payment was collected.",
     ].join("\n\n");

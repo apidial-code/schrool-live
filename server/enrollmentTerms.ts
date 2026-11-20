@@ -1,6 +1,7 @@
 // Draft terms for staging acceptance tests.
 // Preserve each accepted version in the enrolment agreement snapshot.
 export const ENROLLMENT_TERMS_VERSION = "2026-11-04-staging-v1";
+export const ELITE_TERMS_VERSION = "2026-11-20-staging-v2";
 
 export function getEnrollmentTerms(tier: "standard" | "elite") {
   const sections = [
@@ -51,6 +52,12 @@ export function getEnrollmentTerms(tier: "standard" | "elite") {
 
   if (tier === "elite") {
     sections.push({
+      title: "Elite teaching and course completion",
+      text: "Your Elite package includes 46 one-hour tutor-assisted Zoom teaching sessions, normally two per week across 23 teaching weeks. " +
+        "Your tutor guides weekly progress and confirms the course requirements. Learning access ends when course completion is confirmed; " +
+        "Elite does not include 12 months of continuing course access. Any optional end-of-course discussion is separate from teaching and learning access.",
+    });
+    sections.push({
       title: "Missed tutoring sessions and replacements",
       text:
         "If your child will miss a scheduled tutoring session, notify the " +
@@ -58,6 +65,8 @@ export function getEnrollmentTerms(tier: "standard" | "elite") {
         "one-hour replacement within two weeks of the original session, " +
         "subject to availability. The original session remains part of " +
         "your package. A replacement costs an additional $80 AUD. " +
+        "Ordinary student sickness, school commitments and family obligations follow this paid replacement rule. " +
+        "Exceptional cancellations involving bereavement, an accident or hospitalisation may be referred to administration for individual review. " +
         "You must approve the replacement time and fee in the dashboard " +
         "before it is booked. Once delivered, Schrool will charge a payment " +
         "method you have authorised for that charge or issue an invoice " +
@@ -75,7 +84,7 @@ export function getEnrollmentTerms(tier: "standard" | "elite") {
   });
 
   return {
-    version: ENROLLMENT_TERMS_VERSION,
+    version: tier === "elite" ? ELITE_TERMS_VERSION : ENROLLMENT_TERMS_VERSION,
     sections,
   };
 }

@@ -83,8 +83,9 @@ export default function StudentHome() {
                   </p>
                   <p>Enrolment status: {item.status}</p>
                   <p>Payment status: {item.paymentStatus}</p>
+                  {item.tier === "elite" && <p className="mt-2 text-sm text-slate-600">46 one-hour teaching sessions, normally two each week across 23 teaching weeks. Learning access ends when course completion is confirmed.</p>}
                   {item.accessEndsAt && <p className="mt-2 text-sm text-slate-600">Access ends {new Date(item.accessEndsAt).toLocaleDateString("en-AU", { timeZone: "Australia/Sydney" })}</p>}
-                  <CourseLessons enrollmentId={item.id} />
+                  {item.status === "completed" ? <p className="mt-3 font-semibold">Your course is completed. Learning access is closed.</p> : <CourseLessons enrollmentId={item.id} />}
                 </li>
               ))}
             </ul>
@@ -126,11 +127,11 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
           lessons.data.length ? (
             <>
             <section className="mb-5 rounded-lg border border-blue-200 bg-blue-50 p-5" aria-label="Course progress">
-              <h3 className="text-xl font-semibold">{overview.courseComplete ? "Course complete" : "Your course progress"}</h3>
+              <h3 className="text-xl font-semibold">{overview.courseComplete ? (lessons.data[0]?.tutorGuided ? "Exercises completed" : "Course complete") : "Your course progress"}</h3>
               <p className="mt-2">{overview.completed} of {overview.total} lessons completed · {overview.percentage}%</p>
               <progress className="mt-3 h-4 w-full accent-[#1560B0]" max={overview.total} value={overview.completed} aria-label="Lessons completed" />
               <p className="mt-3 text-sm">A lesson is complete when Easy, Medium and Challenging each have a best valid score of at least 8/10.</p>
-              {overview.courseComplete ? <p className="mt-3 font-semibold text-green-800">Well done! You have passed all three difficulties in every lesson. You can revisit lessons while your course access remains active.</p>
+              {overview.courseComplete ? <p className="mt-3 font-semibold text-green-800">Well done! You have passed all three difficulties in every lesson. {lessons.data[0]?.tutorGuided ? "Your tutor must confirm the remaining Elite course requirements. Learning access ends on confirmed course completion." : "You can revisit lessons while your course access remains active."}</p>
                 : overview.nextLesson && !overview.nextLesson.tutorGuided ? <a className="mt-4 inline-block rounded-lg bg-[#1560B0] px-5 py-3 font-semibold text-white" href={lessonUrl(overview.nextLesson.id)}>
                   Continue learning: {overview.nextLesson.title || "Next lesson"}
                 </a> : null}

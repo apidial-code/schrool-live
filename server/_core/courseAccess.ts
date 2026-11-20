@@ -1,3 +1,4 @@
+import { accessPeriodOpen } from "../../shared/courseAccessPeriod.js";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "drizzle-orm";
 import { enrollments } from "../../drizzle/schema.js";
@@ -69,9 +70,7 @@ export async function requireCourseAccess(
     !record.activatedAt ||
     !Number.isFinite(record.activatedAt.getTime()) ||
     record.activatedAt.getTime() > now ||
-    !record.accessEndsAt ||
-    !Number.isFinite(record.accessEndsAt.getTime()) ||
-    record.accessEndsAt.getTime() <= now
+    !accessPeriodOpen(record.tier, record.accessEndsAt, now)
   ) {
     throw new TRPCError({
       code: "FORBIDDEN",

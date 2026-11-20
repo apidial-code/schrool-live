@@ -1,7 +1,8 @@
+import { eliteLifecycleRouter } from "./eliteLifecycle.js";
 import { studentSupportRouter } from "./studentSupport.js";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { and, asc, desc, eq, inArray, like, or, sql, lte, gt } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, like, or, sql, lte, gt, isNull } from "drizzle-orm";
 import { router, adminProcedure } from "../_core/trpc.js";
 import { getDb } from "../db.js";
 import { enrollments, enrollmentPayments, lessons, lessonAttempts, users } from "../../drizzle/schema.js";
@@ -17,6 +18,7 @@ const records = adminProcedure.use(async ({ ctx, next }) => {
 });
 export const adminRouter = router({
   support: studentSupportRouter,
+  eliteLifecycle: eliteLifecycleRouter,
   getDashboardStats: records.query(async ({ ctx }) => {
     const now = new Date();
     const [accounts] = await ctx.db.select({
@@ -34,7 +36,7 @@ export const adminRouter = router({
     }).from(enrollments).innerJoin(users,eq(users.id,enrollments.studentId)).where(and(
       eq(enrollments.status,"active"), eq(enrollments.paymentStatus,"paid"),
       eq(users.role,"student"), eq(users.accountStatus,"active"),
-      lte(enrollments.acceptedAt,now), lte(enrollments.activatedAt,now), gt(enrollments.accessEndsAt,now),
+      lte(enrollments.acceptedAt,now), lte(enrollments.activatedAt,now), or(gt(enrollments.accessEndsAt,now), and(eq(enrollments.tier,"elite"),isNull(enrollments.accessEndsAt))),
     ));
     return { totalUsers: Number(accounts.totalUsers), activeTeachers: Number(accounts.activeTeachers),
       pendingTeachers: Number(accounts.pendingTeachers), totalEnrollments: Number(enrolments.totalEnrollments),
