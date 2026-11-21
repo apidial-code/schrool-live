@@ -1,4 +1,5 @@
 import { trpc } from "../lib/trpc";
+import { AdminEliteCovers } from "./EliteCover.tsx";
 import { ReplacementCases } from "./EliteReplacement.tsx";
 export const reportLabels = [
   ["lessonUnderstanding","1. Lesson taught and the student's understanding at the start"],
@@ -9,8 +10,8 @@ export const reportLabels = [
 ] as const;
 export const sessionDate=(value:Date|string,timezone="Australia/Sydney")=>
   new Date(value).toLocaleString("en-AU",{timeZone:timezone,dateStyle:"medium",timeStyle:"short"});
-export function EliteReports({enrollmentId}:{enrollmentId:number}) {
-  const reports=trpc.eliteScheduling.reports.useQuery({enrollmentId},{retry:false,staleTime:0});
+export function EliteReports({enrollmentId,sessionId}:{enrollmentId:number;sessionId?:number}) {
+  const reports=trpc.eliteScheduling.reports.useQuery({enrollmentId,sessionId},{retry:false,staleTime:0});
   return <section className="mt-4 space-y-3"><h3 className="text-lg font-semibold">Tutor session reports</h3>
     {reports.isLoading?<p>Loading reports…</p>:reports.error?<p role="alert">Unable to load reports.</p>:!reports.data?.length?<p>No reports submitted yet.</p>:reports.data.map(r=><details key={r.id} className="rounded border p-3">
       <summary>Session {r.sequence} · {r.author} · {sessionDate(r.createdAt)}{r.revisionOf? " · Correction of report #"+r.revisionOf:""} · Report #{r.id}</summary>
@@ -27,7 +28,7 @@ export default function EliteScheduleView({enrollmentId,admin=false}:{enrollment
       <p>Tutor: {schedule.data.allocation.tutorName} · Time zone: {schedule.data.allocation.timezone}</p>
       <p>One committed tutor and 46 delivered teaching hours. Each lesson has two one-hour sessions. Missed bookings and approved additional hours remain in the record.</p>
       <details><summary className="cursor-pointer font-semibold">View all {schedule.data.sessions.length} teaching bookings</summary>
-        <ol className="mt-3 divide-y">{schedule.data.sessions.map(s=><li key={s.id} className="py-2">{s.sequence}. {sessionDate(s.startsAt,schedule.data!.allocation!.timezone)} · {s.lessonTitle} · {s.status}</li>)}</ol>
+        <ol className="mt-3 divide-y">{schedule.data.sessions.map(s=><li key={s.id} className="py-2">{s.sequence}. {sessionDate(s.startsAt,schedule.data!.allocation!.timezone)} · {s.lessonTitle} · {s.status}{s.teacherId!==schedule.data!.allocation!.teacherId?" · Covering tutor: "+s.tutorName:""}</li>)}</ol>
       </details>
     </>:<p>The family has not yet confirmed a teaching schedule.</p>}
     {admin && <>
@@ -37,6 +38,7 @@ export default function EliteScheduleView({enrollmentId,admin=false}:{enrollment
         {link.error && <p role="alert">{link.error.message}</p>}
         {link.data && <label className="block">Private family link<input readOnly className="mt-1 block w-full rounded border p-2" value={link.data.url} onFocus={e=>e.target.select()} /></label>}
       </>}
+      <AdminEliteCovers enrollmentId={enrollmentId} onSaved={()=>{void schedule.refetch();}}/>
       <ReplacementCases enrollmentId={enrollmentId} admin onSaved={()=>{void schedule.refetch();}}/>
       <EliteReports enrollmentId={enrollmentId}/>
     </>}

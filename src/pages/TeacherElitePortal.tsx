@@ -3,9 +3,11 @@ import { trpc } from "../lib/trpc";
 import { weekdays, type AvailabilityWindow } from "../../shared/eliteSchedule";
 import { EliteReports, reportLabels, sessionDate } from "../components/EliteScheduleView.tsx";
 
+import { CoverHandover, CoverReturns } from "../components/EliteCover.tsx";
 import { MissedSession, ReplacementCases } from "../components/EliteReplacement.tsx";
 
 export default function TeacherElitePortal() {
+  const utils=trpc.useUtils();
   const availability=trpc.eliteScheduling.myAvailability.useQuery(undefined,{retry:false,staleTime:0});
   const [page,setPage]=useState(0);
   const sessions=trpc.eliteScheduling.mySessions.useQuery({page},{retry:false,staleTime:0});
@@ -16,6 +18,7 @@ export default function TeacherElitePortal() {
   const [selected,setSelected]=useState<number|null>(null);
   useEffect(()=>{if(availability.data){setTimezone(availability.data.timezone);if(availability.data.windows.length)setWindows(availability.data.windows);setCommit(availability.data.committed);}},[availability.data]);
   const selectedSession=sessions.data?.rows.find(s=>s.id===selected);
+  useEffect(()=>{if(selected!==null)document.getElementById("selected-teaching-session")?.scrollIntoView({behavior:"smooth",block:"start"});},[selected]);
   const clock=(minute:number)=>String(Math.floor(minute/60)).padStart(2,"0")+":"+String(minute%60).padStart(2,"0");
   const minute=(value:string)=>{const [h,m]=value.split(":").map(Number);return h*60+m;};
   return <main className="mx-auto max-w-5xl space-y-5 p-6">
@@ -36,15 +39,29 @@ export default function TeacherElitePortal() {
     </section>
     <section className="rounded border p-5 space-y-3"><h2 className="text-xl font-semibold">My teaching sessions</h2>
       <p>Times below use {availability.data?.timezone??"Australia/Sydney"}. Open a session to review the teaching record and document delivery.</p>
-      {sessions.isLoading?<p>Loading sessions…</p>:sessions.error?<p role="alert">Unable to load sessions.</p>:!sessions.data?.rows.length?<p>No sessions allocated yet.</p>:<ul className="max-h-96 overflow-auto divide-y">{sessions.data.rows.map(s=><li key={s.id} className="py-2"><button className="text-left text-blue-800 underline" onClick={()=>setSelected(s.id)}>{sessionDate(s.startsAt,availability.data?.timezone)} · {s.studentName} · Session {s.sequence} · {s.lessonTitle} · {s.status}</button></li>)}</ul>}
+      {sessions.isLoading?<p>Loading sessions…</p>:sessions.error?<p role="alert">Unable to load sessions.</p>:!sessions.data?.rows.length?<p>No sessions allocated yet.</p>:<ul className="max-h-96 overflow-auto divide-y">{sessions.data.rows.map(s=><li key={s.id} className="py-2"><button className="text-left text-blue-800 underline" onClick={()=>setSelected(s.id)}>{sessionDate(s.startsAt,availability.data?.timezone)} · {s.studentName} · Session {s.sequence} · {s.lessonTitle} · {s.status}{s.teacherId!==s.regularTeacherId?" · Exceptional cover":""}</button></li>)}</ul>}
       <nav className="flex gap-4" aria-label="Teaching session pages"><button disabled={!page || sessions.isFetching} onClick={()=>{setSelected(null);setPage(page-1);}}>Previous</button><span>Page {page+1}</span><button disabled={!sessions.data?.hasMore || sessions.isFetching} onClick={()=>{setSelected(null);setPage(page+1);}}>Next</button></nav>
     </section>
-    {selectedSession && <><MissedSession key={"missed-"+selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();}}/><ReplacementCases key={"replacement-"+selectedSession.id+selectedSession.status} enrollmentId={selectedSession.enrollmentId} onSaved={()=>{void sessions.refetch();}}/><SessionReport key={selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();}}/></>}
+    <CoverReturns/>
+    {selectedSession && <section id="selected-teaching-session" className="space-y-4">
+      <h2 className="rounded border border-blue-200 bg-blue-50 p-4 text-xl font-semibold">Selected: {selectedSession.studentName} · Session {selectedSession.sequence} · Booking #{selectedSession.id}</h2>
+      {selectedSession.status==="missed" && <p>This is the original missed hour. Its delivery report is locked; select the approved replacement booking from My teaching sessions.</p>}
+      {selectedSession.teacherId===selectedSession.regularTeacherId ? <>
+        <MissedSession key={"missed-"+selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();}}/>
+        <ReplacementCases key={"replacement-"+selectedSession.id+selectedSession.status} enrollmentId={selectedSession.enrollmentId} onSaved={()=>{void sessions.refetch();}}/>
+      </>:<CoverHandover key={"cover-"+selectedSession.id} sessionId={selectedSession.id} enrollmentId={selectedSession.enrollmentId} onSaved={()=>{void utils.eliteScheduling.coverDetails.invalidate({sessionId:selectedSession.id});}}/>}
+      <SessionReport key={selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();void utils.eliteScheduling.myCoverReturns.invalidate();}}/>
+    </section>}
+
   </main>;
 }
-type Session={id:number;enrollmentId:number;sequence:number;studentName:string|null;lessonTitle:string|null;startsAt:Date|string;endsAt:Date|string;status:string};
+type Session={id:number;enrollmentId:number;sequence:number;studentName:string|null;lessonTitle:string|null;startsAt:Date|string;endsAt:Date|string;status:string;teacherId:number;regularTeacherId:number|null};
 function SessionReport({session,onSaved}:{session:Session;onSaved:()=>void}) {
-  const history=trpc.eliteScheduling.reports.useQuery({enrollmentId:session.enrollmentId},{retry:false,staleTime:0});
+  const cover=trpc.eliteScheduling.coverDetails.useQuery({sessionId:session.id},{retry:false,staleTime:0});
+  const isCover=session.teacherId!==session.regularTeacherId;
+  const [returnNote,setReturnNote]=useState("");
+  useEffect(()=>{setReturnNote(cover.data?.returnNote??"");},[cover.data?.returnNote]);
+  const history=trpc.eliteScheduling.reports.useQuery({enrollmentId:session.enrollmentId,sessionId:session.id},{retry:false,staleTime:0});
   const latest=history.data?.find(r=>r.sessionId===session.id);
   const empty={lessonUnderstanding:"",nextObjectives:"",progressDifficulties:"",assignedWork:"",tutorComments:""};
   const [fields,setFields]=useState(empty),[delivered,setDelivered]=useState(false),[message,setMessage]=useState("");
@@ -56,13 +73,16 @@ function SessionReport({session,onSaved}:{session:Session;onSaved:()=>void}) {
     <h2 className="text-xl font-semibold">{session.studentName} · Session {session.sequence} · {session.lessonTitle}</h2>
     <p>Review earlier reports below before teaching. Submit the five-part report after this session. Corrections create a new version and preserve the original.</p>
     {!ended && <p>Reporting opens after the scheduled session ends.</p>}
+    {isCover && !cover.data?.reviewCurrent && <p>Review and acknowledge the current covering handover above before reporting delivery.</p>}
+    {cover.error && <p role="alert">Load the covering assignment status before reporting.</p>}
     {history.error && <p role="alert">Load report history successfully before submitting.</p>}
-    <fieldset disabled={submit.isPending || !ended || !["scheduled","delivered"].includes(session.status) || history.isLoading || !!history.error} className="space-y-3">
+    <fieldset disabled={submit.isPending || !ended || !["scheduled","delivered"].includes(session.status) || history.isLoading || !!history.error || cover.isLoading || !!cover.error || isCover && !cover.data?.reviewCurrent} className="space-y-3">
       {reportLabels.map(([key,label])=><label key={key} className="block">{label}<textarea maxLength={2000} className="mt-1 block w-full rounded border p-3" rows={3} value={fields[key]} onChange={e=>{setFields({...fields,[key]:e.target.value});setRequestId(crypto.randomUUID());}}/></label>)}
+      {isCover && <label className="block">Return note for the regular tutor: where teaching finished and what to continue next<textarea maxLength={2000} className="mt-1 block w-full rounded border p-3" rows={3} value={returnNote} onChange={e=>{setReturnNote(e.target.value);setRequestId(crypto.randomUUID());}}/></label>}
       <label className="block"><input type="checkbox" checked={delivered} onChange={e=>setDelivered(e.target.checked)}/> I delivered this teaching session and confirm this report accurately records it.</label>
-      <button disabled={!delivered || Object.values(fields).some(v=>v.trim().length<10)} className="rounded bg-[#1560B0] px-4 py-3 text-white disabled:opacity-50" onClick={async()=>{setMessage("");try{await submit.mutateAsync({...fields,sessionId:session.id,requestId,revisionOf:latest?.id,confirmsDelivered:true});setMessage("Session report saved.");await history.refetch();onSaved();}catch(e){setMessage(e instanceof Error?e.message:"Unable to save.");}}}>{latest?"Save report correction":"Submit session report"}</button>
+      <button disabled={!delivered || Object.values(fields).some(v=>v.trim().length<10) || isCover && returnNote.trim().length<10} className="rounded bg-[#1560B0] px-4 py-3 text-white disabled:opacity-50" onClick={async()=>{setMessage("");try{await submit.mutateAsync({...fields,sessionId:session.id,requestId,revisionOf:latest?.id,confirmsDelivered:true,coverReturnNote:isCover?returnNote:undefined});setMessage("Session report saved.");await history.refetch();onSaved();}catch(e){setMessage(e instanceof Error?e.message:"Unable to save.");}}}>{latest?"Save report correction":"Submit session report"}</button>
     </fieldset>
     {message && <p role="status">{message}</p>}
-    <EliteReports enrollmentId={session.enrollmentId}/>
+    <EliteReports enrollmentId={session.enrollmentId} sessionId={session.id}/>
   </section>;
 }

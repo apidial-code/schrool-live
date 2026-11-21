@@ -310,3 +310,28 @@ export const eliteReplacements = mysqlTable("elite_replacements", {
   billingReference: varchar("billing_reference", { length:255 }),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 }, t => [index("elite_replacement_enrollment").on(t.enrollmentId)]);
+
+// Each exceptional assignment is retained, including cancelled cover decisions.
+export const eliteSessionCovers = mysqlTable("elite_session_covers", {
+  id: serial("id").primaryKey(),
+  sessionId: int("session_id").notNull(),
+  enrollmentId: int("enrollment_id").notNull(),
+  regularTeacherId: int("regular_teacher_id").notNull(),
+  coverTeacherId: int("cover_teacher_id").notNull(),
+  approvedBy: int("approved_by").notNull(),
+  reason: text("reason").notNull(),
+  handover: text("handover").notNull(),
+  familyNotice: text("family_notice").notNull(),
+  status: varchar("status", { length:30 }).notNull().default("assigned"),
+  reviewKey: varchar("review_key", { length:64 }),
+  acknowledgedAt: timestamp("acknowledged_at"),
+  returnNote: text("return_note"),
+  returnedReportId: int("returned_report_id"),
+  returnedAt: timestamp("returned_at"),
+  cancelledBy: int("cancelled_by"),
+  cancellationReason: text("cancellation_reason"),
+  lateReviewApprovedBy: int("late_review_approved_by"),
+  lateReviewReason: text("late_review_reason"),
+  lateReviewApprovedAt: timestamp("late_review_approved_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+}, t => [index("elite_cover_session").on(t.sessionId,t.id),index("elite_cover_regular_tutor").on(t.regularTeacherId,t.id)]);

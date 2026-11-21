@@ -31,7 +31,7 @@ function FamilyTeachingSchedule() {
       <p>Student: {details.data.studentName}</p>
       {details.data.allocation?<section className="rounded border p-5 space-y-3"><h2 className="text-xl font-semibold">Teaching schedule confirmed</h2>
         <p>Tutor: {details.data.allocation.tutorName}. All times use {details.data.allocation.timezone}.</p>
-        <ol className="divide-y">{details.data.sessions.map(s=><li className="py-2" key={s.id}>{s.sequence}. {sessionDate(s.startsAt,details.data!.allocation!.timezone)} · {s.lessonTitle} · {s.status}</li>)}</ol>
+        <ol className="divide-y">{details.data.sessions.map(s=><li className="py-2" key={s.id}>{s.sequence}. {sessionDate(s.startsAt,details.data!.allocation!.timezone)} · {s.lessonTitle} · {s.status}{s.teacherId!==details.data!.allocation!.teacherId?" · Covering tutor: "+s.tutorName:""}</li>)}</ol>
       </section>:<>
         <p>Choose two different days each week. One tutor must be available for both times across all 23 teaching weeks. Times are reserved only when you confirm the complete 46-session schedule.</p>
         <label className="block">Monday of the first teaching week<input type="date" className="ml-3 rounded border p-2" value={weekStart} onChange={e=>setWeekStart(e.target.value)}/></label>

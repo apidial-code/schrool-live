@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
 import { and, eq, gte, inArray } from "drizzle-orm";
 import { z } from "zod";
-import { enrollments, lessons, lessonAttempts, studentFileEntries, eliteTeachingSessions, eliteSessionReports, eliteReplacements, eliteScheduleLock } from "../../drizzle/schema.js";
+import { enrollments, lessons, lessonAttempts, studentFileEntries, eliteTeachingSessions, eliteSessionReports, eliteReplacements, eliteScheduleLock, eliteSessionCovers } from "../../drizzle/schema.js";
 import { adminProcedure, router } from "../_core/trpc.js";
 import { getDb } from "../db.js";
 import { getSignInOrigin } from "../_core/signInEmail.js";
@@ -59,6 +59,9 @@ export const eliteLifecycleRouter = router({
         const replacements=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,row.id));
         if(!teachingComplete(teaching,replacements,reports.map(r=>r.sessionId)))
           throw new TRPCError({code:"PRECONDITION_FAILED",message:"All 46 teaching hours must be delivered and documented, including approved replacements for missed bookings."});
+        const covers=await tx.select().from(eliteSessionCovers).where(eq(eliteSessionCovers.enrollmentId,row.id));
+        if(covers.some((c:any)=>!["cancelled","returned"].includes(c.status)))
+          throw new TRPCError({code:"PRECONDITION_FAILED",message:"The regular tutor must review all exceptional covering reports and return notes before course completion."});
         content = "Elite course completion confirmed by Admin. Teaching requirements, tutor approval and five student-created questions per lesson confirmed. Evidence: " +
           input.evidence + ". Learning access closed. Optional internal discussions do not reopen learning access.";
       }

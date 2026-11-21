@@ -1,6 +1,6 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
-import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, sql, ne, or, lt } from "drizzle-orm";
 import { z } from "zod";
 import { router, protectedProcedure, publicProcedure } from "../_core/trpc.js";
 import { getDb } from "../db.js";
@@ -10,9 +10,11 @@ import { accessPeriodOpen } from "../../shared/courseAccessPeriod.js";
 import { buildTeachingSchedule, covered, overlaps, reportReady, validDay, type AvailabilityWindow } from "../../shared/eliteSchedule.js";
 import { sydneyDate } from "../../shared/standardSupport.js";
 import { users, enrollments, lessons, studentFileEntries, eliteTutors, eliteScheduleLock,
-  eliteFamilyInvites, eliteAllocations, eliteTeachingSessions, eliteSessionReports, eliteReplacements } from "../../drizzle/schema.js";
+  eliteFamilyInvites, eliteAllocations, eliteTeachingSessions, eliteSessionReports, eliteReplacements, eliteSessionCovers } from "../../drizzle/schema.js";
 
 import { replacementPlan, bookingFingerprint, nextReplacement, type ReplacementPlan } from "../../shared/eliteReplacement.js";
+
+import { coverReviewSnapshot, coverNeedsReturn } from "../../shared/eliteCover.js";
 
 const id = z.number().int().positive().safe();
 const timezone = z.string().min(1).max(100).refine(value => {
@@ -106,14 +108,15 @@ async function scheduleView(db:any,enrollmentId:number) {
     .where(eq(eliteAllocations.enrollmentId,enrollmentId)).limit(1);
   const sessions=await db.select({id:eliteTeachingSessions.id,sequence:eliteTeachingSessions.sequence,
     lessonId:eliteTeachingSessions.lessonId,lessonTitle:lessons.title,startsAt:eliteTeachingSessions.startsAt,
-    endsAt:eliteTeachingSessions.endsAt,status:eliteTeachingSessions.status})
-    .from(eliteTeachingSessions).innerJoin(lessons,eq(lessons.id,eliteTeachingSessions.lessonId))
+    endsAt:eliteTeachingSessions.endsAt,status:eliteTeachingSessions.status,teacherId:eliteTeachingSessions.teacherId,tutorName:users.name})
+    .from(eliteTeachingSessions).innerJoin(lessons,eq(lessons.id,eliteTeachingSessions.lessonId)).innerJoin(users,eq(users.id,eliteTeachingSessions.teacherId))
     .where(eq(eliteTeachingSessions.enrollmentId,enrollmentId)).orderBy(asc(eliteTeachingSessions.startsAt),asc(eliteTeachingSessions.sequence));
   return {allocation:allocation??null,sessions};
 }
 const replacementKey=z.object({replacementId:id,token:z.string().regex(/^[a-f0-9]{64}$/)}).strict();
 export const eliteSchedulingRouter=router({
   ...replacementProcedures(),
+  ...coverProcedures(),
   registerTutor:admin.input(z.object({name:z.string().trim().min(2).max(255),email:z.string().trim().email().max(255).transform(v=>v.toLowerCase())}).strict()).mutation(async({ctx,input})=>{
     origin(ctx);const db=await getDb();
     return db.transaction(async(tx:any)=>{
@@ -154,7 +157,8 @@ export const eliteSchedulingRouter=router({
         await lock(tx);
         const [profile]=await tx.select().from(eliteTutors).where(eq(eliteTutors.teacherId,ctx.user.id)).limit(1);
         if(!profile?.approved) throw new TRPCError({code:"FORBIDDEN",message:"Admin must approve you for this course first."});
-        const booked: typeof eliteTeachingSessions.$inferSelect[]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.teacherId,ctx.user.id));
+        const coveredHours=await tx.select({sessionId:eliteSessionCovers.sessionId}).from(eliteSessionCovers).where(and(eq(eliteSessionCovers.regularTeacherId,ctx.user.id),ne(eliteSessionCovers.status,"cancelled")));
+        const booked: typeof eliteTeachingSessions.$inferSelect[]=await tx.select().from(eliteTeachingSessions).where(or(eq(eliteTeachingSessions.teacherId,ctx.user.id),coveredHours.length?inArray(eliteTeachingSessions.id,coveredHours.map((c:any)=>c.sessionId)):undefined));
         if(booked.some(b=>b.status!=="cancelled" && b.endsAt.getTime()>Date.now() && !covered(b.startsAt,b.endsAt,input.timezone,input.windows)))
           throw new TRPCError({code:"CONFLICT",message:"These hours would break an existing teaching commitment. Contact Admin."});
         await tx.update(eliteTutors).set({timezone:input.timezone,windowsJson:JSON.stringify(input.windows),commitmentAt:new Date()})
@@ -219,27 +223,23 @@ export const eliteSchedulingRouter=router({
     const db=await getDb();
     const rows=await db.select({id:eliteTeachingSessions.id,enrollmentId:eliteTeachingSessions.enrollmentId,sequence:eliteTeachingSessions.sequence,
       studentName:enrollments.studentName,lessonTitle:lessons.title,startsAt:eliteTeachingSessions.startsAt,
-      endsAt:eliteTeachingSessions.endsAt,status:eliteTeachingSessions.status}).from(eliteTeachingSessions)
+      endsAt:eliteTeachingSessions.endsAt,status:eliteTeachingSessions.status,regularTeacherId:eliteAllocations.teacherId,teacherId:eliteTeachingSessions.teacherId}).from(eliteTeachingSessions)
       .innerJoin(enrollments,eq(enrollments.id,eliteTeachingSessions.enrollmentId))
-      .innerJoin(lessons,eq(lessons.id,eliteTeachingSessions.lessonId)).where(eq(eliteTeachingSessions.teacherId,ctx.user.id))
+      .innerJoin(lessons,eq(lessons.id,eliteTeachingSessions.lessonId)).innerJoin(eliteAllocations,eq(eliteAllocations.enrollmentId,eliteTeachingSessions.enrollmentId)).where(eq(eliteTeachingSessions.teacherId,ctx.user.id))
       .orderBy(asc(eliteTeachingSessions.startsAt),asc(eliteTeachingSessions.id)).limit(101).offset(input.page*100);
     return {rows:rows.slice(0,100),hasMore:rows.length>100};
   }),
-  reports:read.input(z.object({enrollmentId:id})).query(async({ctx,input})=>{
+  reports:read.input(z.object({enrollmentId:id,sessionId:id.optional()}).strict()).query(async({ctx,input})=>{
     const db=await getDb();
     const [allocation]=await db.select().from(eliteAllocations).where(eq(eliteAllocations.enrollmentId,input.enrollmentId)).limit(1);
-    if(ctx.user.role!=="admin" && !(ctx.user.role==="teacher" && allocation?.teacherId===ctx.user.id))
-      throw new TRPCError({code:"FORBIDDEN",message:"Teaching reports are unavailable."});
-    return db.select({id:eliteSessionReports.id,sessionId:eliteSessionReports.sessionId,sequence:eliteTeachingSessions.sequence,
-      author:users.name,createdAt:eliteSessionReports.createdAt,revisionOf:eliteSessionReports.revisionOf,
-      lessonUnderstanding:eliteSessionReports.lessonUnderstanding,nextObjectives:eliteSessionReports.nextObjectives,
-      progressDifficulties:eliteSessionReports.progressDifficulties,assignedWork:eliteSessionReports.assignedWork,
-      tutorComments:eliteSessionReports.tutorComments}).from(eliteSessionReports)
-      .innerJoin(eliteTeachingSessions,eq(eliteTeachingSessions.id,eliteSessionReports.sessionId))
-      .innerJoin(users,eq(users.id,eliteSessionReports.authorId)).where(eq(eliteTeachingSessions.enrollmentId,input.enrollmentId))
-      .orderBy(desc(eliteSessionReports.id)).limit(200);
+    if(ctx.user.role==="admin" || ctx.user.role==="teacher" && allocation?.teacherId===ctx.user.id)
+      return teachingReports(db,input.enrollmentId);
+    if(ctx.user.role!=="teacher" || !input.sessionId)throw new TRPCError({code:"FORBIDDEN",message:"Teaching reports are unavailable."});
+    const session=await assignedCoverSession(db,input.sessionId,ctx.user.id);
+    if(session.enrollmentId!==input.enrollmentId)throw new TRPCError({code:"FORBIDDEN"});
+    return teachingReports(db,input.enrollmentId,session);
   }),
-  submitReport:teacher.input(reportFields.extend({sessionId:id,requestId:z.string().uuid(),revisionOf:id.optional(),confirmsDelivered:z.literal(true)}))
+  submitReport:teacher.input(reportFields.extend({sessionId:id,requestId:z.string().uuid(),revisionOf:id.optional(),confirmsDelivered:z.literal(true),coverReturnNote:text.optional()}))
     .mutation(async({ctx,input})=>{
       origin(ctx);const db=await getDb();
       return db.transaction(async(tx:any)=>{
@@ -257,7 +257,22 @@ export const eliteSchedulingRouter=router({
           if(retry.sessionId!==session.id || retry.authorId!==ctx.user.id ||
             retry.revisionOf!==(input.revisionOf??null) || Object.entries(fields).some(([key,value])=>retry[key]!==value))
             throw new TRPCError({code:"CONFLICT",message:"This report reference has already been used."});
+          const retryCover=await currentCover(tx,session.id);
+          if(retryCover && retryCover.returnNote!==input.coverReturnNote)throw new TRPCError({code:"CONFLICT",message:"This report reference has already been used with another return note."});
           return {saved:true};
+        }
+        const cover=await currentCover(tx,session.id);
+        if(cover) {
+          if(cover.coverTeacherId!==ctx.user.id || !cover.acknowledgedAt || !input.coverReturnNote)
+            throw new TRPCError({code:"PRECONDITION_FAILED",message:"Acknowledge the covering assignment and complete the return note before reporting."});
+          const prior=await teachingReports(tx,session.enrollmentId,session,true);
+          if(cover.reviewKey!==coverKey(session,cover,prior))
+            throw new TRPCError({code:"CONFLICT",message:"The lesson or earlier reports changed. Review the handover again before submitting."});
+        } else if(session.status==="scheduled") {
+          const previous=await tx.select().from(eliteSessionCovers).where(and(eq(eliteSessionCovers.enrollmentId,session.enrollmentId),ne(eliteSessionCovers.status,"cancelled")));
+          const bookings=previous.length?await replacementBookings(tx,session.enrollmentId):[];
+          if(previous.some((c:any)=>c.regularTeacherId===ctx.user.id && c.status!=="returned" && bookings.some((s:any)=>s.id===c.sessionId && +s.startsAt<+session.startsAt)))
+            throw new TRPCError({code:"PRECONDITION_FAILED",message:"Review and acknowledge the covering tutor's return report before progressing to this session."});
         }
         if(session.status==="scheduled") {
           const unresolved=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,session.enrollmentId));
@@ -270,8 +285,12 @@ export const eliteSchedulingRouter=router({
           .orderBy(desc(eliteSessionReports.id)).limit(1);
         if((latest?.id??undefined)!==input.revisionOf || latest && latest.authorId!==ctx.user.id)
           throw new TRPCError({code:"CONFLICT",message:"Load the latest report before adding a correction."});
-        await tx.insert(eliteSessionReports).values({...fields,sessionId:session.id,authorId:ctx.user.id,requestId:input.requestId,revisionOf:input.revisionOf??null});
+        const [savedReport]=await tx.insert(eliteSessionReports).values({...fields,sessionId:session.id,authorId:ctx.user.id,requestId:input.requestId,revisionOf:input.revisionOf??null});
         await tx.update(eliteTeachingSessions).set({status:"delivered"}).where(eq(eliteTeachingSessions.id,session.id));
+        if(cover) {
+          await tx.update(eliteSessionCovers).set({status:"delivered",returnNote:input.coverReturnNote,returnedAt:null,returnedReportId:null}).where(eq(eliteSessionCovers.id,cover.id));
+          await audit(tx,row.id,ctx.user.id,"Cover assignment #"+cover.id+" delivered; report #"+Number(savedReport.insertId)+" and return note ready for the regular tutor. "+input.coverReturnNote+" No additional parent fee is created by covering a session.");
+        }
         const replacementCases=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,session.enrollmentId));
         let deliveredId=session.id;
         const settled=new Set<number>();
@@ -299,9 +318,9 @@ async function replacementToken(db:any,input:z.infer<typeof replacementKey>) {
   await activeEnrollment(db,row.enrollmentId);
   return row;
 }
-async function replacementConflict(tx:any,sessions:{startsAt:Date;endsAt:Date}[],teacherId:number,studentId:number) {
-  const [profile]=await tx.select({approved:eliteTutors.approved,timezone:eliteTutors.timezone,windowsJson:eliteTutors.windowsJson,commitmentAt:eliteTutors.commitmentAt,accountStatus:users.accountStatus}).from(eliteTutors).innerJoin(users,eq(users.id,eliteTutors.teacherId)).where(eq(eliteTutors.teacherId,teacherId)).limit(1);
-  if(!profile?.approved || profile.accountStatus!=="active" || !profile.commitmentAt)
+async function replacementConflict(tx:any,sessions:{startsAt:Date;endsAt:Date}[],teacherId:number,studentId:number,excludeSessionId=0) {
+  const [profile]=await tx.select({approved:eliteTutors.approved,timezone:eliteTutors.timezone,windowsJson:eliteTutors.windowsJson,commitmentAt:eliteTutors.commitmentAt,accountStatus:users.accountStatus,role:users.role}).from(eliteTutors).innerJoin(users,eq(users.id,eliteTutors.teacherId)).where(eq(eliteTutors.teacherId,teacherId)).limit(1);
+  if(!profile?.approved || profile.accountStatus!=="active" || profile.role!=="teacher" || !profile.commitmentAt)
     throw new TRPCError({code:"CONFLICT",message:"The committed tutor must remain active and approved."});
   const tutor=profile;
   const windows=windowsSchema.parse(JSON.parse(tutor.windowsJson));
@@ -310,7 +329,7 @@ async function replacementConflict(tx:any,sessions:{startsAt:Date;endsAt:Date}[]
   const [tables]=await tx.execute(sql`SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='zoom_sessions'`);
   const legacy=tables.length?await tx.select().from(zoomSessions):[];
   if(sessions.some(s=>!covered(s.startsAt,s.endsAt,tutor.timezone,windows) || booked.some((b:any)=>
-    b.status!=="cancelled" && (b.teacherId===teacherId || b.studentId===studentId) && overlaps(s,b)) || legacy.some((b:any)=>
+    b.id!==excludeSessionId && b.status!=="cancelled" && (b.teacherId===teacherId || b.studentId===studentId) && overlaps(s,b)) || legacy.some((b:any)=>
       b.status!=="cancelled" && b.scheduledAt && (b.teacherId===teacherId || b.studentId===studentId) && overlaps(s,{startsAt:b.scheduledAt,endsAt:new Date(+b.scheduledAt+(b.duration||60)*60000)}))))
     throw new TRPCError({code:"CONFLICT",message:"The additional hour must fit the tutor's committed availability and have no tutor or student booking conflict."});
 }
@@ -322,6 +341,7 @@ function replacementProcedures() {
         await lock(tx);
         const [session]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,input.sessionId)).limit(1);
         if(!session || session.teacherId!==ctx.user.id) throw new TRPCError({code:"FORBIDDEN",message:"Open your own teaching booking."});
+        if(await currentCover(tx,session.id))throw new TRPCError({code:"FORBIDDEN",message:"Contact Admin to record an absence during an exceptional covering assignment."});
         await activeEnrollment(tx,session.enrollmentId);
         const [existing]=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.originalId,session.id)).limit(1);
         if(existing) return {replacementId:existing.id};
@@ -409,6 +429,160 @@ function replacementProcedures() {
         if(row.billingStatus==="paid" || input.status==="invoiced" && row.billingStatus!=="due") throw new TRPCError({code:"CONFLICT",message:"This billing record cannot be moved backwards."});
         await tx.update(eliteReplacements).set({billingStatus:input.status,billingReference:input.reference}).where(eq(eliteReplacements.id,row.id));
         await audit(tx,row.enrollmentId,ctx.user.id,"Replacement #"+row.id+" AUD $80 marked "+input.status+" by Admin. External invoice/payment reference: "+input.reference+". This action records an existing invoice/payment; it does not collect funds.");
+      });return {saved:true};
+    }),
+  };
+}
+
+async function currentCover(db:any,sessionId:number) {
+  const [cover]=await db.select().from(eliteSessionCovers).where(and(eq(eliteSessionCovers.sessionId,sessionId),ne(eliteSessionCovers.status,"cancelled"))).orderBy(desc(eliteSessionCovers.id)).limit(1);
+  return cover;
+}
+async function assignedCoverSession(db:any,sessionId:number,teacherId:number) {
+  const [session]=await db.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,sessionId)).limit(1);
+  const cover=await currentCover(db,sessionId);
+  if(!session || session.teacherId!==teacherId || !cover || cover.coverTeacherId!==teacherId || cover.enrollmentId!==session.enrollmentId)
+    throw new TRPCError({code:"FORBIDDEN",message:"This covering assignment is unavailable."});
+  return session;
+}
+type TeachingReport=Pick<typeof eliteSessionReports.$inferSelect,"id"|"sessionId"|"createdAt"|"revisionOf"|"lessonUnderstanding"|"nextObjectives"|"progressDifficulties"|"assignedWork"|"tutorComments"> & {sequence:number;author:string|null};
+async function teachingReports(db:any,enrollmentId:number,cutoff?:{id:number;startsAt:Date},priorOnly=false):Promise<TeachingReport[]> {
+  const selection={id:eliteSessionReports.id,sessionId:eliteSessionReports.sessionId,sequence:eliteTeachingSessions.sequence,
+    author:users.name,createdAt:eliteSessionReports.createdAt,revisionOf:eliteSessionReports.revisionOf,
+    lessonUnderstanding:eliteSessionReports.lessonUnderstanding,nextObjectives:eliteSessionReports.nextObjectives,
+    progressDifficulties:eliteSessionReports.progressDifficulties,assignedWork:eliteSessionReports.assignedWork,tutorComments:eliteSessionReports.tutorComments};
+  if(cutoff && !priorOnly) {
+    // Own corrections must not push an older handover report out of the review window.
+    const earlier=await teachingReports(db,enrollmentId,cutoff,true);
+    const own=await db.select(selection).from(eliteSessionReports).innerJoin(eliteTeachingSessions,eq(eliteTeachingSessions.id,eliteSessionReports.sessionId))
+      .innerJoin(users,eq(users.id,eliteSessionReports.authorId)).where(and(eq(eliteTeachingSessions.enrollmentId,enrollmentId),eq(eliteTeachingSessions.id,cutoff.id)))
+      .orderBy(desc(eliteSessionReports.id)).limit(200);
+    return [...earlier,...own].sort((a,b)=>b.id-a.id);
+  }
+  return db.select({id:eliteSessionReports.id,sessionId:eliteSessionReports.sessionId,sequence:eliteTeachingSessions.sequence,
+    author:users.name,createdAt:eliteSessionReports.createdAt,revisionOf:eliteSessionReports.revisionOf,
+    lessonUnderstanding:eliteSessionReports.lessonUnderstanding,nextObjectives:eliteSessionReports.nextObjectives,
+    progressDifficulties:eliteSessionReports.progressDifficulties,assignedWork:eliteSessionReports.assignedWork,tutorComments:eliteSessionReports.tutorComments})
+    .from(eliteSessionReports).innerJoin(eliteTeachingSessions,eq(eliteTeachingSessions.id,eliteSessionReports.sessionId))
+    .innerJoin(users,eq(users.id,eliteSessionReports.authorId)).where(and(eq(eliteTeachingSessions.enrollmentId,enrollmentId),
+      cutoff?lt(eliteTeachingSessions.startsAt,cutoff.startsAt):undefined))
+    .orderBy(desc(eliteSessionReports.id)).limit(200);
+}
+function coverKey(session:any,cover:any,reports:{id:number;sessionId:number}[]) {
+  return createHash("sha256").update(coverReviewSnapshot(session,cover,reports)).digest("hex");
+}
+function coverProcedures() {
+  return {
+    coverAssignments:read.input(z.object({enrollmentId:id})).query(async({ctx,input})=>{
+      const db=await getDb();const [allocation]=await db.select().from(eliteAllocations).where(eq(eliteAllocations.enrollmentId,input.enrollmentId)).limit(1);
+      if(ctx.user.role!=="admin" && !(ctx.user.role==="teacher" && allocation?.teacherId===ctx.user.id))throw new TRPCError({code:"FORBIDDEN"});
+      return db.select({id:eliteSessionCovers.id,sessionId:eliteSessionCovers.sessionId,regularTeacherId:eliteSessionCovers.regularTeacherId,
+        coverTeacherId:eliteSessionCovers.coverTeacherId,coverName:users.name,approvedBy:eliteSessionCovers.approvedBy,reason:eliteSessionCovers.reason,
+        handover:eliteSessionCovers.handover,familyNotice:eliteSessionCovers.familyNotice,status:eliteSessionCovers.status,
+        acknowledgedAt:eliteSessionCovers.acknowledgedAt,returnNote:eliteSessionCovers.returnNote,returnedAt:eliteSessionCovers.returnedAt,
+        returnedReportId:eliteSessionCovers.returnedReportId,cancellationReason:eliteSessionCovers.cancellationReason,createdAt:eliteSessionCovers.createdAt,
+        lateReviewApprovedBy:eliteSessionCovers.lateReviewApprovedBy,lateReviewReason:eliteSessionCovers.lateReviewReason})
+        .from(eliteSessionCovers).innerJoin(users,eq(users.id,eliteSessionCovers.coverTeacherId))
+        .where(eq(eliteSessionCovers.enrollmentId,input.enrollmentId)).orderBy(desc(eliteSessionCovers.id));
+    }),
+    assignCover:admin.input(z.object({sessionId:id,teacherId:id,reason:text,handover:text,familyNotice:text,
+      confirmsUnavoidable:z.literal(true),confirmsFamilyNotified:z.literal(true)}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();return db.transaction(async(tx:any)=>{
+        await lock(tx);const [session]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,input.sessionId)).limit(1);
+        if(!session || session.status!=="scheduled" || +session.startsAt<=Date.now())throw new TRPCError({code:"PRECONDITION_FAILED",message:"Assign exceptional cover before a future scheduled hour starts."});
+        const row=await activeEnrollment(tx,session.enrollmentId);
+        const [allocation]=await tx.select().from(eliteAllocations).where(eq(eliteAllocations.enrollmentId,row.id)).limit(1);
+        if(!allocation || allocation.teacherId!==session.teacherId || input.teacherId===allocation.teacherId)
+          throw new TRPCError({code:"CONFLICT",message:"Keep the regular course tutor and choose a different approved covering tutor for this hour."});
+        const existing=await currentCover(tx,session.id);
+        if(existing)throw new TRPCError({code:"CONFLICT",message:"This hour already has exceptional cover. Cancel that assignment before selecting another tutor."});
+        const [report]=await tx.select().from(eliteSessionReports).where(eq(eliteSessionReports.sessionId,session.id)).limit(1);
+        if(report)throw new TRPCError({code:"CONFLICT",message:"A documented hour cannot be reassigned."});
+        await replacementConflict(tx,[session],input.teacherId,session.studentId,session.id);
+        const [result]=await tx.insert(eliteSessionCovers).values({sessionId:session.id,enrollmentId:row.id,regularTeacherId:allocation.teacherId,
+          coverTeacherId:input.teacherId,approvedBy:ctx.user.id,reason:input.reason,handover:input.handover,familyNotice:input.familyNotice,status:"assigned"});
+        await tx.update(eliteTeachingSessions).set({teacherId:input.teacherId}).where(eq(eliteTeachingSessions.id,session.id));
+        await audit(tx,row.id,ctx.user.id,"Exceptional cover #"+Number(result.insertId)+" approved for booking #"+session.id+" at "+session.startsAt.toISOString()+
+          ". Regular tutor ID "+allocation.teacherId+" retains the course; covering tutor ID "+input.teacherId+" handles this hour only. Reason: "+input.reason+
+          ". Teaching handover: "+input.handover+". Family notification record: "+input.familyNotice+". Booking time and parent fee unchanged. No automatic message or payment sent.");
+        return {saved:true};
+      });
+    }),
+    cancelCover:admin.input(z.object({coverId:id,reason:text,confirmsFamilyNotified:z.literal(true)}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();await db.transaction(async(tx:any)=>{
+        await lock(tx);const [cover]=await tx.select().from(eliteSessionCovers).where(eq(eliteSessionCovers.id,input.coverId)).limit(1);
+        if(!cover)throw new TRPCError({code:"NOT_FOUND"});
+        if(cover.status==="cancelled")return;
+        const [session]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,cover.sessionId)).limit(1);
+        if(cover.status!=="assigned" || !session || session.status!=="scheduled" || +session.startsAt<=Date.now() || session.teacherId!==cover.coverTeacherId)
+          throw new TRPCError({code:"CONFLICT",message:"Only a future undelivered covering assignment can be cancelled."});
+        const [report]=await tx.select().from(eliteSessionReports).where(eq(eliteSessionReports.sessionId,session.id)).limit(1);
+        if(report)throw new TRPCError({code:"CONFLICT",message:"A documented hour cannot be reassigned."});
+        await replacementConflict(tx,[session],cover.regularTeacherId,session.studentId,session.id);
+        await tx.update(eliteSessionCovers).set({status:"cancelled",cancelledBy:ctx.user.id,cancellationReason:input.reason}).where(eq(eliteSessionCovers.id,cover.id));
+        await tx.update(eliteTeachingSessions).set({teacherId:cover.regularTeacherId}).where(eq(eliteTeachingSessions.id,session.id));
+        await audit(tx,cover.enrollmentId,ctx.user.id,"Exceptional cover #"+cover.id+" cancelled; booking #"+session.id+" restored to regular tutor ID "+cover.regularTeacherId+
+          ". Cover access revoked; original assignment history retained. Reason and family notification: "+input.reason);
+      });return {saved:true};
+    }),
+    coverDetails:teacher.input(z.object({sessionId:id})).query(async({ctx,input})=>{
+      const db=await getDb();const [session]=await db.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,input.sessionId)).limit(1);
+      const cover=await currentCover(db,input.sessionId);
+      if(!cover)return null;
+      if(!session || session.teacherId!==ctx.user.id || cover.coverTeacherId!==ctx.user.id)throw new TRPCError({code:"FORBIDDEN"});
+      const prior=await teachingReports(db,session.enrollmentId,session,true);
+      const key=coverKey(session,cover,prior);
+      const [regular]=await db.select({name:users.name}).from(users).where(eq(users.id,cover.regularTeacherId)).limit(1);
+      return {id:cover.id,regularTutor:regular?.name??"Regular tutor",handover:cover.handover,status:cover.status,
+        acknowledgedAt:cover.acknowledgedAt,reviewKey:key,reviewCurrent:!!cover.acknowledgedAt && cover.reviewKey===key,returnNote:cover.returnNote,
+        lateReviewAllowed:!!cover.lateReviewApprovedAt,reviewOverdue:cover.status==="assigned" && +session.endsAt<=Date.now() && (!cover.acknowledgedAt || cover.reviewKey!==key)};
+    }),
+    acknowledgeCover:teacher.input(z.object({coverId:id,reviewKey:z.string().regex(/^[a-f0-9]{64}$/),confirmsReviewed:z.literal(true),confirmsCommitment:z.literal(true)}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();await db.transaction(async(tx:any)=>{
+        await lock(tx);const [cover]=await tx.select().from(eliteSessionCovers).where(eq(eliteSessionCovers.id,input.coverId)).limit(1);
+        if(!cover || cover.coverTeacherId!==ctx.user.id || !["assigned","delivered","returned"].includes(cover.status))throw new TRPCError({code:"FORBIDDEN"});
+        const session=await assignedCoverSession(tx,cover.sessionId,ctx.user.id);
+        if(cover.status==="assigned" && +session.endsAt<=Date.now() && !cover.lateReviewApprovedAt)throw new TRPCError({code:"PRECONDITION_FAILED",message:"Review and acknowledge the handover before the teaching hour ends. Contact Admin if the handover was missed."});
+        const prior=await teachingReports(tx,session.enrollmentId,session,true),key=coverKey(session,cover,prior);
+        if(input.reviewKey!==key)throw new TRPCError({code:"CONFLICT",message:"The teaching record changed. Reload and review the latest handover."});
+        if(cover.acknowledgedAt && cover.reviewKey===key)return;
+        await tx.update(eliteSessionCovers).set({reviewKey:key,acknowledgedAt:new Date()}).where(eq(eliteSessionCovers.id,cover.id));
+        await audit(tx,cover.enrollmentId,ctx.user.id,"Cover #"+cover.id+": covering tutor reviewed the current lesson, earlier reports and handover, accepted this specific teaching commitment and will return a five-part report to the regular tutor."+
+          (+session.endsAt<=Date.now()?" Late acknowledgement recorded after the hour, with Admin review authorisation; this does not claim the acknowledgement occurred before teaching.":""));
+      });return {saved:true};
+    }),
+    authoriseLateCoverReview:admin.input(z.object({coverId:id,evidence:text}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();await db.transaction(async(tx:any)=>{
+        await lock(tx);const [cover]=await tx.select().from(eliteSessionCovers).where(eq(eliteSessionCovers.id,input.coverId)).limit(1);
+        if(!cover || cover.status!=="assigned")throw new TRPCError({code:"CONFLICT",message:"An unreported covering assignment is required."});
+        await activeEnrollment(tx,cover.enrollmentId);
+        const [session]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,cover.sessionId)).limit(1);
+        if(!session || session.teacherId!==cover.coverTeacherId || session.status!=="scheduled" || +session.endsAt>Date.now())throw new TRPCError({code:"CONFLICT",message:"Only a past unreported covering hour qualifies for this review."});
+        if(cover.lateReviewApprovedAt)return;
+        await tx.update(eliteSessionCovers).set({lateReviewApprovedBy:ctx.user.id,lateReviewReason:input.evidence,lateReviewApprovedAt:new Date()}).where(eq(eliteSessionCovers.id,cover.id));
+        await audit(tx,cover.enrollmentId,ctx.user.id,"Late handover review authorised for exceptional cover #"+cover.id+" after investigation. Evidence: "+input.evidence+
+          ". Covering tutor must still read and acknowledge the current teaching record and document actual delivery. No teaching, fee or payment is recorded by this authorisation.");
+      });return {saved:true};
+    }),
+    myCoverReturns:teacher.query(async({ctx})=>{
+      const db=await getDb();
+      return db.select({id:eliteSessionCovers.id,sessionId:eliteSessionCovers.sessionId,enrollmentId:eliteSessionCovers.enrollmentId,
+        studentName:enrollments.studentName,coverName:users.name,status:eliteSessionCovers.status,handover:eliteSessionCovers.handover,
+        returnNote:eliteSessionCovers.returnNote,returnedAt:eliteSessionCovers.returnedAt,startsAt:eliteTeachingSessions.startsAt,sequence:eliteTeachingSessions.sequence})
+        .from(eliteSessionCovers).innerJoin(enrollments,eq(enrollments.id,eliteSessionCovers.enrollmentId))
+        .innerJoin(users,eq(users.id,eliteSessionCovers.coverTeacherId)).innerJoin(eliteTeachingSessions,eq(eliteTeachingSessions.id,eliteSessionCovers.sessionId))
+        .where(and(eq(eliteSessionCovers.regularTeacherId,ctx.user.id),inArray(eliteSessionCovers.status,["assigned","delivered"])))
+        .orderBy(asc(eliteTeachingSessions.startsAt));
+    }),
+    acknowledgeCoverReturn:teacher.input(z.object({coverId:id,reportId:id,confirmsReviewed:z.literal(true)}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();await db.transaction(async(tx:any)=>{
+        await lock(tx);const [cover]=await tx.select().from(eliteSessionCovers).where(eq(eliteSessionCovers.id,input.coverId)).limit(1);
+        if(!cover || cover.regularTeacherId!==ctx.user.id || !["delivered","returned"].includes(cover.status) || !cover.returnNote)throw new TRPCError({code:"FORBIDDEN"});
+        const [latest]=await tx.select().from(eliteSessionReports).where(eq(eliteSessionReports.sessionId,cover.sessionId)).orderBy(desc(eliteSessionReports.id)).limit(1);
+        if(!latest || latest.authorId!==cover.coverTeacherId || latest.id!==input.reportId)throw new TRPCError({code:"CONFLICT",message:"Read the latest covering report and return note before continuing."});
+        if(!coverNeedsReturn(cover,latest.id))return;
+        await tx.update(eliteSessionCovers).set({status:"returned",returnedReportId:latest.id,returnedAt:new Date()}).where(eq(eliteSessionCovers.id,cover.id));
+        await audit(tx,cover.enrollmentId,ctx.user.id,"Regular tutor reviewed covering report #"+latest.id+" and the return note for cover #"+cover.id+". Regular teaching responsibility continues; a later report correction requires a new review.");
       });return {saved:true};
     }),
   };
