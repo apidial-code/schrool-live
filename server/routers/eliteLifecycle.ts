@@ -2,11 +2,13 @@ import { randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
 import { and, eq, gte, inArray } from "drizzle-orm";
 import { z } from "zod";
-import { enrollments, lessons, lessonAttempts, studentFileEntries, eliteTeachingSessions, eliteSessionReports } from "../../drizzle/schema.js";
+import { enrollments, lessons, lessonAttempts, studentFileEntries, eliteTeachingSessions, eliteSessionReports, eliteReplacements, eliteScheduleLock } from "../../drizzle/schema.js";
 import { adminProcedure, router } from "../_core/trpc.js";
 import { getDb } from "../db.js";
 import { getSignInOrigin } from "../_core/signInEmail.js";
 import { sydneyDate } from "../../shared/standardSupport.js";
+
+import { teachingComplete } from "../../shared/eliteReplacement.js";
 
 const adminChange = adminProcedure.use(async ({ ctx, next }) => {
   ctx.res.setHeader("Cache-Control", "no-store");
@@ -24,6 +26,7 @@ export const eliteLifecycleRouter = router({
   ])).mutation(async ({ ctx, input }) => {
     const db = await getDb();
     return db.transaction(async (tx: any) => {
+      await tx.select().from(eliteScheduleLock).where(eq(eliteScheduleLock.id,1)).for("update");
       const [row] = await tx.select().from(enrollments).where(eq(enrollments.id, input.enrollmentId)).limit(1).for("update");
       if (!row || row.tier !== "elite" || row.yearLevel !== "year5-6" ||
           row.paymentStatus !== "paid" || !row.studentId || !row.courseId || !row.acceptedAt || !row.activatedAt)
@@ -51,12 +54,11 @@ export const eliteLifecycleRouter = router({
           throw new TRPCError({ code: "PRECONDITION_FAILED", message: "All 23 lessons must have valid passes at all three difficulties." });
         const teaching: { id:number; sequence:number; status:string }[] = await tx.select({id:eliteTeachingSessions.id,sequence:eliteTeachingSessions.sequence,status:eliteTeachingSessions.status})
           .from(eliteTeachingSessions).where(eq(eliteTeachingSessions.enrollmentId,row.id));
-        if(teaching.length!==46 || new Set(teaching.map(s=>s.sequence)).size!==46 || teaching.some(s=>s.status!=="delivered"))
-          throw new TRPCError({code:"PRECONDITION_FAILED",message:"All 46 teaching sessions must be delivered and documented before completion."});
-        const reports: { sessionId:number }[] = await tx.selectDistinct({sessionId:eliteSessionReports.sessionId}).from(eliteSessionReports)
-          .where(inArray(eliteSessionReports.sessionId,teaching.map(s=>s.id)));
-        if(teaching.some(s=>!reports.some(r=>r.sessionId===s.id)))
-          throw new TRPCError({code:"PRECONDITION_FAILED",message:"A five-part tutor report is required for every delivered session."});
+        const reports: { sessionId:number }[] = teaching.length ? await tx.selectDistinct({sessionId:eliteSessionReports.sessionId}).from(eliteSessionReports)
+          .where(inArray(eliteSessionReports.sessionId,teaching.map(s=>s.id))) : [];
+        const replacements=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,row.id));
+        if(!teachingComplete(teaching,replacements,reports.map(r=>r.sessionId)))
+          throw new TRPCError({code:"PRECONDITION_FAILED",message:"All 46 teaching hours must be delivered and documented, including approved replacements for missed bookings."});
         content = "Elite course completion confirmed by Admin. Teaching requirements, tutor approval and five student-created questions per lesson confirmed. Evidence: " +
           input.evidence + ". Learning access closed. Optional internal discussions do not reopen learning access.";
       }

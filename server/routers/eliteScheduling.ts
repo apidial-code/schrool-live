@@ -10,7 +10,9 @@ import { accessPeriodOpen } from "../../shared/courseAccessPeriod.js";
 import { buildTeachingSchedule, covered, overlaps, reportReady, validDay, type AvailabilityWindow } from "../../shared/eliteSchedule.js";
 import { sydneyDate } from "../../shared/standardSupport.js";
 import { users, enrollments, lessons, studentFileEntries, eliteTutors, eliteScheduleLock,
-  eliteFamilyInvites, eliteAllocations, eliteTeachingSessions, eliteSessionReports } from "../../drizzle/schema.js";
+  eliteFamilyInvites, eliteAllocations, eliteTeachingSessions, eliteSessionReports, eliteReplacements } from "../../drizzle/schema.js";
+
+import { replacementPlan, bookingFingerprint, nextReplacement, type ReplacementPlan } from "../../shared/eliteReplacement.js";
 
 const id = z.number().int().positive().safe();
 const timezone = z.string().min(1).max(100).refine(value => {
@@ -106,10 +108,12 @@ async function scheduleView(db:any,enrollmentId:number) {
     lessonId:eliteTeachingSessions.lessonId,lessonTitle:lessons.title,startsAt:eliteTeachingSessions.startsAt,
     endsAt:eliteTeachingSessions.endsAt,status:eliteTeachingSessions.status})
     .from(eliteTeachingSessions).innerJoin(lessons,eq(lessons.id,eliteTeachingSessions.lessonId))
-    .where(eq(eliteTeachingSessions.enrollmentId,enrollmentId)).orderBy(asc(eliteTeachingSessions.sequence));
+    .where(eq(eliteTeachingSessions.enrollmentId,enrollmentId)).orderBy(asc(eliteTeachingSessions.startsAt),asc(eliteTeachingSessions.sequence));
   return {allocation:allocation??null,sessions};
 }
+const replacementKey=z.object({replacementId:id,token:z.string().regex(/^[a-f0-9]{64}$/)}).strict();
 export const eliteSchedulingRouter=router({
+  ...replacementProcedures(),
   registerTutor:admin.input(z.object({name:z.string().trim().min(2).max(255),email:z.string().trim().email().max(255).transform(v=>v.toLowerCase())}).strict()).mutation(async({ctx,input})=>{
     origin(ctx);const db=await getDb();
     return db.transaction(async(tx:any)=>{
@@ -242,6 +246,7 @@ export const eliteSchedulingRouter=router({
         await lock(tx);
         const [session]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,input.sessionId)).limit(1);
         if(!session || session.teacherId!==ctx.user.id) throw new TRPCError({code:"FORBIDDEN",message:"This session is not assigned to you."});
+        if(!["scheduled","delivered"].includes(session.status)) throw new TRPCError({code:"CONFLICT",message:"A missed or cancelled hour cannot be reported as delivered. Open the replacement booking."});
         if(!reportReady(session.startsAt,session.endsAt)) throw new TRPCError({code:"PRECONDITION_FAILED",message:"Submit the report after the session has ended."});
         const [row]=await tx.select().from(enrollments).where(eq(enrollments.id,session.enrollmentId)).limit(1);
         if(!row || row.tier!=="elite" || !["active","completed"].includes(row.status))
@@ -254,15 +259,157 @@ export const eliteSchedulingRouter=router({
             throw new TRPCError({code:"CONFLICT",message:"This report reference has already been used."});
           return {saved:true};
         }
+        if(session.status==="scheduled") {
+          const unresolved=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,session.enrollmentId));
+          const bookings=await replacementBookings(tx,session.enrollmentId);
+          const pending=nextReplacement(unresolved,bookings);
+          if(pending && !(pending.status==="approved" && pending.replacementId===session.id))
+            throw new TRPCError({code:"PRECONDITION_FAILED",message:"Approve and deliver the earlier missed-hour catch-up before progressing to this lesson."});
+        }
         const [latest]=await tx.select().from(eliteSessionReports).where(eq(eliteSessionReports.sessionId,session.id))
           .orderBy(desc(eliteSessionReports.id)).limit(1);
         if((latest?.id??undefined)!==input.revisionOf || latest && latest.authorId!==ctx.user.id)
           throw new TRPCError({code:"CONFLICT",message:"Load the latest report before adding a correction."});
         await tx.insert(eliteSessionReports).values({...fields,sessionId:session.id,authorId:ctx.user.id,requestId:input.requestId,revisionOf:input.revisionOf??null});
         await tx.update(eliteTeachingSessions).set({status:"delivered"}).where(eq(eliteTeachingSessions.id,session.id));
+        const replacementCases=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,session.enrollmentId));
+        let deliveredId=session.id;
+        const settled=new Set<number>();
+        while(true) {
+          const replacement=replacementCases.find((c:any)=>c.replacementId===deliveredId && c.status==="approved" && !settled.has(c.id));
+          if(!replacement)break;settled.add(replacement.id);
+          await tx.update(eliteReplacements).set({status:"delivered",billingStatus:replacement.feeCents ? "due" : "internal"}).where(eq(eliteReplacements.id,replacement.id));
+          await audit(tx,row.id,ctx.user.id,"Replacement #"+replacement.id+" fulfilled by delivered booking #"+session.id+" for missed booking #"+replacement.originalId+". "+(replacement.feeCents?"AUD $80 now due; Admin to debit or issue a seven-day invoice. No automatic payment has been taken.":"Approved internal reserve hour; tutor payment requires Admin processing."));
+          deliveredId=replacement.originalId;
+        }
         await audit(tx,row.id,ctx.user.id,"Five-part tutor session report "+(input.revisionOf?"correction":"submitted")+
           " for teaching session "+session.sequence+". Original report history retained.");
         return {saved:true};
       });
     }),
 });
+
+async function replacementBookings(db:any,enrollmentId:number) {
+  return db.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.enrollmentId,enrollmentId));
+}
+async function replacementToken(db:any,input:z.infer<typeof replacementKey>) {
+  const [row]=await db.select().from(eliteReplacements).where(eq(eliteReplacements.id,input.replacementId)).limit(1);
+  if(!row || row.tokenHash!==createHash("sha256").update(input.token).digest("hex") || !row.expiresAt || +row.expiresAt<=Date.now())
+    throw new TRPCError({code:"NOT_FOUND",message:"This replacement approval link is unavailable or expired. Ask the tutor for a new link."});
+  await activeEnrollment(db,row.enrollmentId);
+  return row;
+}
+async function replacementConflict(tx:any,sessions:{startsAt:Date;endsAt:Date}[],teacherId:number,studentId:number) {
+  const [profile]=await tx.select({approved:eliteTutors.approved,timezone:eliteTutors.timezone,windowsJson:eliteTutors.windowsJson,commitmentAt:eliteTutors.commitmentAt,accountStatus:users.accountStatus}).from(eliteTutors).innerJoin(users,eq(users.id,eliteTutors.teacherId)).where(eq(eliteTutors.teacherId,teacherId)).limit(1);
+  if(!profile?.approved || profile.accountStatus!=="active" || !profile.commitmentAt)
+    throw new TRPCError({code:"CONFLICT",message:"The committed tutor must remain active and approved."});
+  const tutor=profile;
+  const windows=windowsSchema.parse(JSON.parse(tutor.windowsJson));
+  const booked=await tx.select().from(eliteTeachingSessions);
+  const {zoomSessions}=await import("../../drizzle/schema.js");
+  const [tables]=await tx.execute(sql`SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='zoom_sessions'`);
+  const legacy=tables.length?await tx.select().from(zoomSessions):[];
+  if(sessions.some(s=>!covered(s.startsAt,s.endsAt,tutor.timezone,windows) || booked.some((b:any)=>
+    b.status!=="cancelled" && (b.teacherId===teacherId || b.studentId===studentId) && overlaps(s,b)) || legacy.some((b:any)=>
+      b.status!=="cancelled" && b.scheduledAt && (b.teacherId===teacherId || b.studentId===studentId) && overlaps(s,{startsAt:b.scheduledAt,endsAt:new Date(+b.scheduledAt+(b.duration||60)*60000)}))))
+    throw new TRPCError({code:"CONFLICT",message:"The additional hour must fit the tutor's committed availability and have no tutor or student booking conflict."});
+}
+function replacementProcedures() {
+  return {
+    recordMissed:teacher.input(z.object({sessionId:id,reason:z.enum(["illness","school","family","no_show","bereavement","accident","hospitalisation"]),note:text,
+      confirmsWaiting:z.literal(true),parentAuthorisedEarlyDeparture:z.boolean()}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();return db.transaction(async(tx:any)=>{
+        await lock(tx);
+        const [session]=await tx.select().from(eliteTeachingSessions).where(eq(eliteTeachingSessions.id,input.sessionId)).limit(1);
+        if(!session || session.teacherId!==ctx.user.id) throw new TRPCError({code:"FORBIDDEN",message:"Open your own teaching booking."});
+        await activeEnrollment(tx,session.enrollmentId);
+        const [existing]=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.originalId,session.id)).limit(1);
+        if(existing) return {replacementId:existing.id};
+        if(session.status!=="scheduled" || +session.endsAt>Date.now()) throw new TRPCError({code:"PRECONDITION_FAILED",message:"Record a missed hour after its scheduled end. Delivered sessions cannot be changed to missed."});
+        const [report]=await tx.select().from(eliteSessionReports).where(eq(eliteSessionReports.sessionId,session.id)).limit(1);
+        if(report) throw new TRPCError({code:"CONFLICT",message:"This booking already has a delivery report."});
+        const exceptional=["bereavement","accident","hospitalisation"].includes(input.reason);
+        const [result]=await tx.insert(eliteReplacements).values({originalId:session.id,enrollmentId:session.enrollmentId,teacherId:ctx.user.id,
+          reason:input.reason,note:input.note,waitingConfirmed:true,status:exceptional?"admin_review":"awaiting_plan"});
+        await tx.update(eliteTeachingSessions).set({status:"missed"}).where(eq(eliteTeachingSessions.id,session.id));
+        await audit(tx,session.enrollmentId,ctx.user.id,"Missed booking #"+session.id+" recorded. Tutor confirms availability until scheduled end"+
+          (input.parentAuthorisedEarlyDeparture?", or earlier departure expressly authorised by the parent":"")+". Reserved tutor hour remains payable. Reason: "+input.reason+". "+input.note+
+          (exceptional?" Admin review required for exceptional internal reserve use.":" Replacement requires parent approval of AUD $80; fee is due after delivery."));
+        return {replacementId:Number(result.insertId)};
+      });
+    }),
+    replacementCases:read.input(z.object({enrollmentId:id})).query(async({ctx,input})=>{
+      const db=await getDb();const [allocation]=await db.select().from(eliteAllocations).where(eq(eliteAllocations.enrollmentId,input.enrollmentId)).limit(1);
+      if(ctx.user.role!=="admin" && !(ctx.user.role==="teacher" && allocation?.teacherId===ctx.user.id)) throw new TRPCError({code:"FORBIDDEN"});
+      const rows=await db.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,input.enrollmentId)).orderBy(desc(eliteReplacements.id));
+      return rows.map(({tokenHash, ...r}:typeof eliteReplacements.$inferSelect)=>({...r,plan:r.planJson?JSON.parse(r.planJson) as ReplacementPlan:null}));
+    }),
+    reviewReplacement:admin.input(z.object({replacementId:id,funding:z.enum(["parent","internal_reserve"]),evidence:text}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();await db.transaction(async(tx:any)=>{
+        await lock(tx);const [row]=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.id,input.replacementId)).limit(1);
+        if(!row || row.status!=="admin_review") throw new TRPCError({code:"CONFLICT",message:"This case is not awaiting Admin review."});
+        if(input.funding==="internal_reserve") {
+          if(!["bereavement","accident","hospitalisation"].includes(row.reason)) throw new TRPCError({code:"FORBIDDEN",message:"Ordinary absences do not qualify for internal reserve hours."});
+          const used=await tx.select().from(eliteReplacements).where(and(eq(eliteReplacements.enrollmentId,row.enrollmentId),eq(eliteReplacements.funding,"internal_reserve")));
+          if(used.length>=2) throw new TRPCError({code:"CONFLICT",message:"The two internal reserve hours have already been allocated."});
+        }
+        await tx.update(eliteReplacements).set({status:"awaiting_plan",funding:input.funding,feeCents:input.funding==="parent"?8000:0,reviewedBy:ctx.user.id}).where(eq(eliteReplacements.id,row.id));
+        await audit(tx,row.enrollmentId,ctx.user.id,"Replacement #"+row.id+" reviewed: "+input.funding+". Tutor remains payable. Evidence: "+input.evidence);
+      });return {saved:true};
+    }),
+    proposeReplacement:teacher.input(z.object({replacementId:id,mode:z.enum(["extra","next_regular"]),extraAt:z.string().datetime()}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();return db.transaction(async(tx:any)=>{
+        await lock(tx);const [row]=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.id,input.replacementId)).limit(1);
+        if(!row || row.teacherId!==ctx.user.id) throw new TRPCError({code:"FORBIDDEN"});
+        if(!["awaiting_plan","proposed"].includes(row.status)) throw new TRPCError({code:"CONFLICT",message:"This case is not ready for a proposal."});
+        const enrollment=await activeEnrollment(tx,row.enrollmentId);
+        const bookings=await replacementBookings(tx,row.enrollmentId);
+        const cases=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.enrollmentId,row.enrollmentId));
+        if(nextReplacement(cases,bookings)?.id!==row.id) throw new TRPCError({code:"PRECONDITION_FAILED",message:"Arrange the earlier unfinished catch-up first to preserve lesson order."});
+        let plan:ReplacementPlan;
+        try{plan=replacementPlan(bookings,row.originalId,input.mode,new Date(input.extraAt));}catch(e){throw new TRPCError({code:"BAD_REQUEST",message:(e as Error).message});}
+        await replacementConflict(tx,plan.additions.map(s=>({startsAt:new Date(s.startsAt),endsAt:new Date(s.endsAt)})),row.teacherId,enrollment.studentId);
+        const token=randomBytes(32).toString("hex"),expiresAt=new Date(Date.now()+7*86400000);
+        await tx.update(eliteReplacements).set({status:"proposed",planJson:JSON.stringify(plan),tokenHash:createHash("sha256").update(token).digest("hex"),expiresAt}).where(eq(eliteReplacements.id,row.id));
+        await audit(tx,row.enrollmentId,ctx.user.id,"Replacement #"+row.id+" proposed; mode "+input.mode+". Parent approval requested for all lesson changes and "+(row.feeCents?"AUD $80 after delivery":"no additional parent fee")+". No time reserved yet.");
+        return {url:getSignInOrigin()+"/elite/schedule#"+new URLSearchParams({replacementId:String(row.id),token}).toString()};
+      });
+    }),
+    replacementDetails:publicProcedure.input(replacementKey).mutation(async({ctx,input})=>{
+      origin(ctx);ctx.res.setHeader("Cache-Control","no-store");const db=await getDb();const row=await replacementToken(db,input);
+      const [enrollment]=await db.select().from(enrollments).where(eq(enrollments.id,row.enrollmentId)).limit(1);
+      const schedule=await scheduleView(db,row.enrollmentId);
+      return {id:row.id,status:row.status,studentName:enrollment.studentName,feeCents:row.feeCents,billingStatus:row.billingStatus,
+        originalId:row.originalId,replacementId:row.replacementId,plan:row.planJson?JSON.parse(row.planJson) as ReplacementPlan:null,...schedule};
+    }),
+    approveReplacement:publicProcedure.input(replacementKey.extend({parentName:z.string().trim().min(2).max(255),confirmsTimesAndFee:z.literal(true)}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);ctx.res.setHeader("Cache-Control","no-store");const db=await getDb();return db.transaction(async(tx:any)=>{
+        await lock(tx);const row=await replacementToken(tx,input);
+        if(["approved","delivered"].includes(row.status)) return {saved:true};
+        if(row.status!=="proposed" || !row.planJson) throw new TRPCError({code:"CONFLICT",message:"A current tutor proposal is required."});
+        const bookings=await replacementBookings(tx,row.enrollmentId),stored=JSON.parse(row.planJson) as ReplacementPlan;
+        if(stored.fingerprint!==bookingFingerprint(bookings)) throw new TRPCError({code:"CONFLICT",message:"The teaching record changed. Ask the tutor to refresh this proposal before approving."});
+        let plan:ReplacementPlan;
+        try{plan=replacementPlan(bookings,row.originalId,stored.mode,new Date(stored.additions[0].startsAt));}catch(e){throw new TRPCError({code:"CONFLICT",message:(e as Error).message});}
+        const enrollment=await activeEnrollment(tx,row.enrollmentId);
+        await replacementConflict(tx,plan.additions.map(s=>({startsAt:new Date(s.startsAt),endsAt:new Date(s.endsAt)})),row.teacherId,enrollment.studentId);
+        for(const change of plan.changes) await tx.update(eliteTeachingSessions).set({lessonId:change.lessonId}).where(eq(eliteTeachingSessions.id,change.id));
+        const added=plan.additions[0];const [result]=await tx.insert(eliteTeachingSessions).values({...added,startsAt:new Date(added.startsAt),endsAt:new Date(added.endsAt),
+          enrollmentId:row.enrollmentId,teacherId:row.teacherId,studentId:enrollment.studentId,status:"scheduled"});
+        await tx.update(eliteReplacements).set({status:"approved",parentName:input.parentName,approvedAt:new Date(),replacementId:plan.replacementId??Number(result.insertId)}).where(eq(eliteReplacements.id,row.id));
+        await audit(tx,row.enrollmentId,row.teacherId,"Replacement #"+row.id+" approved by parent/guardian "+input.parentName+". "+(row.feeCents?"AUD $80 due after delivery; seven-day invoice or authorised debit handled by Admin.":"No additional parent fee; internal reserve authorised by Admin.")+" Additional hour: "+added.startsAt+". Lesson changes: "+JSON.stringify(plan.changes)+". Original booking retained and tutor remains payable.");
+        return {saved:true};
+      });
+    }),
+    replacementBilling:admin.input(z.object({replacementId:id,status:z.enum(["invoiced","paid"]),reference:z.string().trim().min(3).max(255)}).strict()).mutation(async({ctx,input})=>{
+      origin(ctx);const db=await getDb();await db.transaction(async(tx:any)=>{
+        await lock(tx);const [row]=await tx.select().from(eliteReplacements).where(eq(eliteReplacements.id,input.replacementId)).limit(1);
+        if(!row || row.status!=="delivered" || row.feeCents!==8000) throw new TRPCError({code:"PRECONDITION_FAILED",message:"The approved paid replacement must be delivered first."});
+        if(row.billingStatus===input.status && row.billingReference===input.reference) return;
+        if(row.billingStatus==="paid" || input.status==="invoiced" && row.billingStatus!=="due") throw new TRPCError({code:"CONFLICT",message:"This billing record cannot be moved backwards."});
+        await tx.update(eliteReplacements).set({billingStatus:input.status,billingReference:input.reference}).where(eq(eliteReplacements.id,row.id));
+        await audit(tx,row.enrollmentId,ctx.user.id,"Replacement #"+row.id+" AUD $80 marked "+input.status+" by Admin. External invoice/payment reference: "+input.reference+". This action records an existing invoice/payment; it does not collect funds.");
+      });return {saved:true};
+    }),
+  };
+}

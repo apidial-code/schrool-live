@@ -1,4 +1,5 @@
 import { trpc } from "../lib/trpc";
+import { ReplacementCases } from "./EliteReplacement.tsx";
 export const reportLabels = [
   ["lessonUnderstanding","1. Lesson taught and the student's understanding at the start"],
   ["nextObjectives","2. Next session's aim and objectives"],
@@ -24,8 +25,8 @@ export default function EliteScheduleView({enrollmentId,admin=false}:{enrollment
     <h3 className="text-xl font-semibold">Elite teaching schedule</h3>
     {schedule.isLoading?<p>Loading schedule…</p>:schedule.error?<p role="alert">Unable to load the schedule. <button className="underline" onClick={()=>schedule.refetch()}>Try again</button></p>:schedule.data?.allocation?<>
       <p>Tutor: {schedule.data.allocation.tutorName} · Time zone: {schedule.data.allocation.timezone}</p>
-      <p>One tutor for all 46 teaching sessions. Each lesson has two one-hour sessions.</p>
-      <details><summary className="cursor-pointer font-semibold">View all {schedule.data.sessions.length} teaching sessions</summary>
+      <p>One committed tutor and 46 delivered teaching hours. Each lesson has two one-hour sessions. Missed bookings and approved additional hours remain in the record.</p>
+      <details><summary className="cursor-pointer font-semibold">View all {schedule.data.sessions.length} teaching bookings</summary>
         <ol className="mt-3 divide-y">{schedule.data.sessions.map(s=><li key={s.id} className="py-2">{s.sequence}. {sessionDate(s.startsAt,schedule.data!.allocation!.timezone)} · {s.lessonTitle} · {s.status}</li>)}</ol>
       </details>
     </>:<p>The family has not yet confirmed a teaching schedule.</p>}
@@ -36,6 +37,7 @@ export default function EliteScheduleView({enrollmentId,admin=false}:{enrollment
         {link.error && <p role="alert">{link.error.message}</p>}
         {link.data && <label className="block">Private family link<input readOnly className="mt-1 block w-full rounded border p-2" value={link.data.url} onFocus={e=>e.target.select()} /></label>}
       </>}
+      <ReplacementCases enrollmentId={enrollmentId} admin onSaved={()=>{void schedule.refetch();}}/>
       <EliteReports enrollmentId={enrollmentId}/>
     </>}
   </section>;

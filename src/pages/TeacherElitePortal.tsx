@@ -3,6 +3,8 @@ import { trpc } from "../lib/trpc";
 import { weekdays, type AvailabilityWindow } from "../../shared/eliteSchedule";
 import { EliteReports, reportLabels, sessionDate } from "../components/EliteScheduleView.tsx";
 
+import { MissedSession, ReplacementCases } from "../components/EliteReplacement.tsx";
+
 export default function TeacherElitePortal() {
   const availability=trpc.eliteScheduling.myAvailability.useQuery(undefined,{retry:false,staleTime:0});
   const [page,setPage]=useState(0);
@@ -37,7 +39,7 @@ export default function TeacherElitePortal() {
       {sessions.isLoading?<p>Loading sessions…</p>:sessions.error?<p role="alert">Unable to load sessions.</p>:!sessions.data?.rows.length?<p>No sessions allocated yet.</p>:<ul className="max-h-96 overflow-auto divide-y">{sessions.data.rows.map(s=><li key={s.id} className="py-2"><button className="text-left text-blue-800 underline" onClick={()=>setSelected(s.id)}>{sessionDate(s.startsAt,availability.data?.timezone)} · {s.studentName} · Session {s.sequence} · {s.lessonTitle} · {s.status}</button></li>)}</ul>}
       <nav className="flex gap-4" aria-label="Teaching session pages"><button disabled={!page || sessions.isFetching} onClick={()=>{setSelected(null);setPage(page-1);}}>Previous</button><span>Page {page+1}</span><button disabled={!sessions.data?.hasMore || sessions.isFetching} onClick={()=>{setSelected(null);setPage(page+1);}}>Next</button></nav>
     </section>
-    {selectedSession && <SessionReport key={selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();}}/>}
+    {selectedSession && <><MissedSession key={"missed-"+selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();}}/><ReplacementCases key={"replacement-"+selectedSession.id+selectedSession.status} enrollmentId={selectedSession.enrollmentId} onSaved={()=>{void sessions.refetch();}}/><SessionReport key={selectedSession.id} session={selectedSession} onSaved={()=>{void sessions.refetch();}}/></>}
   </main>;
 }
 type Session={id:number;enrollmentId:number;sequence:number;studentName:string|null;lessonTitle:string|null;startsAt:Date|string;endsAt:Date|string;status:string};
@@ -55,7 +57,7 @@ function SessionReport({session,onSaved}:{session:Session;onSaved:()=>void}) {
     <p>Review earlier reports below before teaching. Submit the five-part report after this session. Corrections create a new version and preserve the original.</p>
     {!ended && <p>Reporting opens after the scheduled session ends.</p>}
     {history.error && <p role="alert">Load report history successfully before submitting.</p>}
-    <fieldset disabled={submit.isPending || !ended || history.isLoading || !!history.error} className="space-y-3">
+    <fieldset disabled={submit.isPending || !ended || !["scheduled","delivered"].includes(session.status) || history.isLoading || !!history.error} className="space-y-3">
       {reportLabels.map(([key,label])=><label key={key} className="block">{label}<textarea maxLength={2000} className="mt-1 block w-full rounded border p-3" rows={3} value={fields[key]} onChange={e=>{setFields({...fields,[key]:e.target.value});setRequestId(crypto.randomUUID());}}/></label>)}
       <label className="block"><input type="checkbox" checked={delivered} onChange={e=>setDelivered(e.target.checked)}/> I delivered this teaching session and confirm this report accurately records it.</label>
       <button disabled={!delivered || Object.values(fields).some(v=>v.trim().length<10)} className="rounded bg-[#1560B0] px-4 py-3 text-white disabled:opacity-50" onClick={async()=>{setMessage("");try{await submit.mutateAsync({...fields,sessionId:session.id,requestId,revisionOf:latest?.id,confirmsDelivered:true});setMessage("Session report saved.");await history.refetch();onSaved();}catch(e){setMessage(e instanceof Error?e.message:"Unable to save.");}}}>{latest?"Save report correction":"Submit session report"}</button>

@@ -287,3 +287,26 @@ export const eliteSessionReports = mysqlTable("elite_session_reports", {
   tutorComments: text("tutor_comments").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 }, t => [index("elite_session_report_history").on(t.sessionId,t.id)]);
+
+export const eliteReplacements = mysqlTable("elite_replacements", {
+  id: serial("id").primaryKey(),
+  originalId: int("original_id").notNull().unique(),
+  enrollmentId: int("enrollment_id").notNull(),
+  teacherId: int("teacher_id").notNull(),
+  reason: varchar("reason", { length:30 }).notNull(),
+  note: text("note").notNull(),
+  waitingConfirmed: boolean("waiting_confirmed").notNull(),
+  status: varchar("status", { length:30 }).notNull().default("awaiting_plan"),
+  planJson: text("plan_json"),
+  tokenHash: varchar("token_hash", { length:64 }),
+  expiresAt: timestamp("expires_at"),
+  parentName: varchar("parent_name", { length:255 }),
+  approvedAt: timestamp("approved_at"),
+  replacementId: int("replacement_id"),
+  feeCents: int("fee_cents").notNull().default(8000),
+  funding: varchar("funding", { length:30 }).notNull().default("parent"),
+  reviewedBy: int("reviewed_by"),
+  billingStatus: varchar("billing_status", { length:30 }).notNull().default("not_due"),
+  billingReference: varchar("billing_reference", { length:255 }),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+}, t => [index("elite_replacement_enrollment").on(t.enrollmentId)]);
