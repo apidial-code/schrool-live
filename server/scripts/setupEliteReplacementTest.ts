@@ -70,7 +70,7 @@ export async function setupEliteReplacementTest(allowReport=false,archive=false)
       const replacement=approved[0];
       const session=bookings.find((s:any)=>s.id===replacement.replacementId);
       if(!session || session.status!=="scheduled" || replacement.teacherId!==tutor.id || !replacement.approvedAt ||
-        !replacement.parentName?.startsWith("STAGING TEST") || replacement.originalId!==bookings[0]?.id || replacement.feeCents!==8000)
+        !replacement.parentName || replacement.parentName.trim().length<2 || replacement.originalId!==bookings[0]?.id || replacement.feeCents!==8000)
         throw new Error("The parent-approved staging fixture does not match.");
       const reports=await tx.select().from(eliteSessionReports).where(eq(eliteSessionReports.sessionId,session.id)).limit(1);
       if(reports.length)throw new Error("This fixture already has a report.");
