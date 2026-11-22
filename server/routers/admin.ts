@@ -1,3 +1,4 @@
+import { familyLinksRouter } from "./familyLinks.js";
 import { eliteLifecycleRouter } from "./eliteLifecycle.js";
 import { studentSupportRouter } from "./studentSupport.js";
 import { z } from "zod";
@@ -18,6 +19,7 @@ const records = adminProcedure.use(async ({ ctx, next }) => {
 });
 export const adminRouter = router({
   support: studentSupportRouter,
+  familyLinks: familyLinksRouter,
   eliteLifecycle: eliteLifecycleRouter,
   getDashboardStats: records.query(async ({ ctx }) => {
     const now = new Date();

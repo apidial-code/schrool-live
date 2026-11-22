@@ -1,3 +1,4 @@
+import AdminFamilyLink from "../components/AdminFamilyLink.tsx";
 import EliteScheduleView from "../components/EliteScheduleView.tsx";
 import AdminEliteLifecycle from "../components/AdminEliteLifecycle.tsx";
 import { useEffect, useRef, useState } from "react";
@@ -54,6 +55,7 @@ export default function AdminStudentFiles() {
           <p><strong>Parent or guardian:</strong> {data.family?.parentName ?? "Not recorded"}</p><p><strong>Parent email:</strong> {data.family?.parentEmail ?? data.enrollment.parentEmail ?? "Not recorded"}</p><p><strong>Phone:</strong> {data.family?.phone ?? "Not recorded"}</p><p>Consultant ID: {data.enrollment.consultantId ?? "Not recorded"}</p>
           {!data.snapshotAvailable && <p>Saved agreement details are unavailable for this record. Missing information is not inferred.</p>}
         </section>
+        <AdminFamilyLink key={`family-${selected}`} enrollmentId={selected} onSaved={() => { void file.refetch(); }} />
         <section className={box}><h3 className="text-xl font-semibold">Enrolment and access</h3><p>{data.courseName ?? data.enrollment.yearLevel} · {data.enrollment.tier}</p><p>Status: {data.enrollment.status} · Payment: {data.enrollment.paymentStatus}</p><p>Draft saved: {date(data.draftSavedAt)}</p><p>Enrolment date: {date(data.enrollment.enrolledAt ?? data.enrollment.activatedAt)}</p>{!data.enrollment.enrolledAt && data.enrollment.activatedAt && <p className="text-sm">Enrolment date shown from the recorded access activation.</p>}<p>Agreement accepted: {date(data.enrollment.acceptedAt)}</p><p>Access activated: {date(data.enrollment.activatedAt)}</p><p>Access ends: {data.enrollment.tier === "elite" && !data.enrollment.accessEndsAt ? "On confirmed course completion" : date(data.enrollment.accessEndsAt)}</p></section>
         {data.enrollment.tier === "standard" && <section className={box}><h3 className="text-xl font-semibold">Standard phone support</h3><p>Up to 30 minutes each week during the first three months. Unused minutes do not carry forward.</p><p>The student learns independently through their student dashboard. Parents can request a progress report from Admin.</p><p>Record calls and follow-up notes in the Admin notes section below.</p></section>}
         {data.enrollment.tier === "elite" && <AdminEliteLifecycle key={`elite-${selected}`} enrollmentId={selected} status={data.enrollment.status} hasExpiry={!!data.enrollment.accessEndsAt} onSaved={() => { void file.refetch(); void list.refetch(); }} />}
