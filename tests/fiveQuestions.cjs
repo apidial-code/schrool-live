@@ -1,0 +1,68 @@
+// Run from the repository root: node tests/fiveQuestions.cjs
+const assert=require('node:assert/strict'),{build}=require('esbuild'),{getTableName}=require('drizzle-orm'),{MySqlDialect}=require('drizzle-orm/mysql-core');
+(async()=>{
+await build({entryPoints:['server/routers/fiveQuestions.ts','server/fiveQuestionAccess.ts','server/routers/lessons.ts','shared/fiveQuestions.ts','server/scripts/setupFiveQuestions.ts','server/routers/eliteLifecycle.ts','server/routers/eliteScheduling.ts'],outdir:'tests/.five-test',outbase:'.',bundle:true,platform:'node',format:'esm',packages:'external',outExtension:{'.js':'.mjs'},plugins:[{name:'mock-db',setup(b){b.onResolve({filter:/^\.{1,2}\/.*\.js$/},args=>{const path=require('node:path'),fs=require('node:fs');const target=path.resolve(path.dirname(args.importer),args.path.slice(0,-3)+'.ts');if(fs.existsSync(target))return{path:target};});b.onLoad({filter:/[\\/]server[\\/]db\.ts$/},()=>({contents:'export async function getDb(){return globalThis.fiveDb}',loader:'js'}));b.onLoad({filter:/[\\/]server[\\/]_core[\\/]signInEmail\.ts$/},()=>({contents:'export function getSignInOrigin(){return "https://staging.example"}',loader:'js'}));}}]});
+const {fiveQuestionsRouter:r,validatePhoto}=await import('./.five-test/server/routers/fiveQuestions.mjs');
+const {requireFiveLesson,approvalRequirements}=await import('./.five-test/server/fiveQuestionAccess.mjs');
+const {lessonsRouter}=await import('./.five-test/server/routers/lessons.mjs');
+const {submittedWork,emptyWork}=await import('./.five-test/shared/fiveQuestions.mjs');
+let queue=[],reads=[],writes=[];
+function select(fields){const entry={fields};reads.push(entry);const result=queue.shift();assert.notEqual(result,undefined,'Unqueued select');const q={from(t){entry.table=getTableName(t);return q},innerJoin(t,on){(entry.joins??=[]).push(on);return q},leftJoin(t,on){(entry.joins??=[]).push(on);return q},where(v){entry.where=v;return q},limit(){return q},orderBy(){return q},offset(){return q},groupBy(){return q},for(){return q},then(a,b){return Promise.resolve(result).then(a,b)}};return q;}
+const db={select,selectDistinct:select,transaction:async fn=>fn(db),insert(t){return{values(v){writes.push({table:getTableName(t),v});return Promise.resolve();}}},update(t){return{set(v){return{where(w){writes.push({table:getTableName(t),v,w});return Promise.resolve();}}}}}};global.fiveDb=db;
+const ctx=(role='student',id=20,status='active',origin='https://staging.example')=>({user:{id,role,accountStatus:status},req:{headers:{origin}},res:{setHeader(){}}});
+const student=r.createCaller(ctx()),teacher=r.createCaller(ctx('teacher',12)),parent=r.createCaller(ctx('parent',30)),admin=r.createCaller(ctx('admin',1));
+const row={id:30,studentId:20,courseId:2,yearLevel:'year5-6',tier:'elite',status:'active',paymentStatus:'paid',acceptedAt:new Date(1),activatedAt:new Date(1),accessEndsAt:null};
+const course=[{id:1,title:'Fractions'},{id:2,title:'Decimals'}],input={enrollmentId:30,lessonId:1},work=Array.from({length:5},(_,i)=>({question:`Question ${i}`,answer:'Worked steps = answer',photo:null}));
+const requestId='10000000-0000-4000-8000-000000000001';
+assert(!submittedWork.safeParse(emptyWork()).success);assert(submittedWork.safeParse(work).success);
+for(const photo of ['https://evil.example/x','data:image/svg+xml;base64,PHN2Zz4=','data:image/jpeg;base64,AAAA'])assert.throws(()=>validatePhoto(photo));
+validatePhoto(null);const fs=require('fs');validatePhoto('data:image/jpeg;base64,'+'/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABQAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==');
+for(const role of ['parent','admin','teacher','consultant'])await assert.rejects(r.createCaller(ctx(role)).saveDraft({...input,version:0,work}),e=>e.code==='NOT_FOUND');
+await assert.rejects(r.createCaller(ctx('student',20,'pending')).draft(input),e=>e.code==='FORBIDDEN');
+await assert.rejects(r.createCaller({...ctx(),user:null}).draft(input),e=>e.code==='UNAUTHORIZED');
+await assert.rejects(r.createCaller(ctx('student',20,'active','https://evil.example')).saveDraft({...input,version:0,work}),e=>e.code==='FORBIDDEN');assert.equal(queue.length,0);
+queue=[[{...row,studentId:99}]];await assert.rejects(student.draft(input),e=>e.code==='NOT_FOUND');
+queue=[[]];await assert.rejects(parent.history(input),e=>e.code==='NOT_FOUND');
+queue=[[row],[],[{approved:true,commitmentAt:new Date()}]];await assert.rejects(teacher.history(input),e=>e.code==='NOT_FOUND'); // covering tutor cannot own regular approval
+queue=[course,[]];await assert.rejects(requireFiveLesson(db,row,2),e=>e.code==='FORBIDDEN');
+queue=[course,[{lessonId:1,decision:'approved'}]];assert.equal((await requireFiveLesson(db,row,2)).id,2);
+queue=[[row],[row],course,[],[],[]];let draft=await student.draft(input);assert.equal(draft.version,0);assert.equal(draft.work.length,5);
+const writePrefix=()=>[[{id:1}],[row],[row],[row],course,[]];
+queue=[...writePrefix(),[],[]];assert.deepEqual(await student.saveDraft({...input,version:0,work}),{version:1});assert.equal(writes.at(-1).table,'five_question_drafts');assert.equal(JSON.parse(writes.at(-1).v.workJson).length,5);
+const before=writes.length;queue=[...writePrefix(),[],[{id:10,studentId:20,version:2}]];await assert.rejects(student.saveDraft({...input,version:1,work}),e=>e.code==='CONFLICT');assert.equal(writes.length,before);
+queue=[...writePrefix(),[{id:3,decision:null}]];await assert.rejects(student.saveDraft({...input,version:1,work}),e=>e.code==='CONFLICT');
+queue=[...writePrefix(),[],[],[{id:10,studentId:20,version:1,workJson:JSON.stringify(work)}],[{id:3,decision:null}]];
+assert.deepEqual(await student.submit({...input,version:1,requestId,confirmsOwnWork:true}),{id:3});assert.equal(writes.at(-2).table,'five_question_submissions');assert.equal(writes.at(-1).v.version,2);
+const afterSubmit=writes.length;queue=[...writePrefix(),[{id:3,studentId:20,enrollmentId:30,lessonId:1}]];assert.deepEqual(await student.submit({...input,version:1,requestId,confirmsOwnWork:true}),{id:3});assert.equal(writes.length,afterSubmit);
+const teacherPrefix=()=>[[{id:1}],[row],[row],[{teacherId:12}],[{approved:true,commitmentAt:new Date()}],course,[],[{id:3,decision:null}]];
+const review={...input,submissionId:3,decision:'approved',feedback:'Good work, all five questions and working reviewed.',confirmsReviewed:true};
+queue=[...teacherPrefix(),[{difficulty:'easy'}],[],[]];await assert.rejects(teacher.review(review),e=>e.code==='PRECONDITION_FAILED');assert.equal(writes.length,afterSubmit);
+const scores=['easy','medium','challenging'].map(difficulty=>({difficulty})),sessions=[{id:41,startsAt:new Date(1),endsAt:new Date(3600001)},{id:42,startsAt:new Date(1),endsAt:new Date(3600001)}],reports=[{sessionId:41},{sessionId:42}];
+queue=[...teacherPrefix(),scores,sessions,reports,[{status:'delivered'}]];await assert.rejects(teacher.review(review),e=>e.code==='PRECONDITION_FAILED');
+queue=[...teacherPrefix(),scores,sessions,reports,[]];assert.deepEqual(await teacher.review(review),{saved:true});assert.equal(writes.at(-1).table,'five_question_reviews');assert.equal(writes.at(-1).v.authorId,12);
+queue=[...teacherPrefix().slice(0,-1),[{id:3,decision:'approved',feedback:review.feedback}]];const approvedWrites=writes.length;await teacher.review(review);assert.equal(writes.length,approvedWrites);
+queue=[...teacherPrefix().slice(0,-1),[{id:3,decision:'approved',feedback:review.feedback}]];await assert.rejects(teacher.review({...review,decision:'revise'}),e=>e.code==='CONFLICT');
+queue=[...teacherPrefix()];await teacher.review({...review,decision:'revise'});assert.equal(writes.at(-1).v.decision,'revise');
+queue=[...writePrefix(),[{id:3,decision:'revise'}],[{id:10,studentId:20,version:2}]];await student.saveDraft({...input,version:2,work});assert.equal(writes.at(-1).v.version,3);
+queue=[[row],course,[],[{id:3,feedback:'Revision',decision:'revise'}]];await admin.history(input);assert(!('workJson' in reads.at(-1).fields));
+queue=[[row],[{workJson:JSON.stringify(work)}]];assert.equal((await admin.submission({...input,submissionId:3})).length,5);
+const dialect=new MySqlDialect();assert.deepEqual(dialect.sqlToQuery(reads.at(-1).where).params,[3,30,1,20]);
+queue=[[row],[]];await assert.rejects(admin.submission({...input,submissionId:999}),e=>e.code==='NOT_FOUND');
+// Actual lesson listing: Standard's seven-lesson rule survives; Elite needs recorded approval.
+const standardRow={...row,tier:'standard',accessEndsAt:new Date(Date.now()+86400000)};
+queue=[[standardRow],course,[],[]];let listed=await lessonsRouter.createCaller(ctx()).list({enrollmentId:30});assert.deepEqual(listed.map(l=>l.unlocked),[true,false]);
+queue=[[row],course,[],course,[],[]];listed=await lessonsRouter.createCaller(ctx()).list({enrollmentId:30});assert.deepEqual(listed.map(l=>l.unlocked),[true,false]);
+queue=[[row],course,[],course,[{lessonId:1,decision:'approved'}],[]];listed=await lessonsRouter.createCaller(ctx()).list({enrollmentId:30});assert.deepEqual(listed.map(l=>l.unlocked),[true,true]);assert(listed[0].tutorApproved);
+const {eliteLifecycleRouter}=await import('./.five-test/server/routers/eliteLifecycle.mjs');
+const course23=Array.from({length:23},(_,i)=>({id:i+1,title:'Lesson '+(i+1)}));
+queue=[[{id:1}],[row],course23,course23,[]];
+await assert.rejects(eliteLifecycleRouter.createCaller(ctx('admin',1)).update({enrollmentId:30,action:'complete',teachingConfirmed:true,tutorApprovalConfirmed:true,questionsConfirmed:true,evidence:'Staging test: Admin checkbox cannot bypass the missing lesson approvals.'}),e=>e.code==='PRECONDITION_FAILED');
+const {eliteSchedulingRouter}=await import('./.five-test/server/routers/eliteScheduling.mjs');
+queue=[[{id:1}],[{id:42,enrollmentId:30,teacherId:12,lessonId:2,status:'scheduled',startsAt:new Date(Date.now()-7200000),endsAt:new Date(Date.now()-3600000)}],[row],[],course,[]];
+await assert.rejects(eliteSchedulingRouter.createCaller(ctx('teacher',12)).submitReport({sessionId:42,requestId,confirmsDelivered:true,lessonUnderstanding:'Staging lesson work',nextObjectives:'Staging next objectives',progressDifficulties:'Staging progress check',assignedWork:'Staging follow-up work',tutorComments:'Staging teaching comments'}),e=>e.code==='FORBIDDEN');
+const {setupFiveQuestions}=await import('./.five-test/server/scripts/setupFiveQuestions.mjs');
+process.env.APP_BASE_URL='https://production.example';await assert.rejects(setupFiveQuestions(),/Staging configuration/);
+assert.equal(queue.length,0);
+fs.rmSync('tests/.five-test',{recursive:true,force:true});
+console.log('PASS: typed/photo schemas; invalid media; active roles and origin; ownership and family scoping; regular-tutor-only reviews; ordered access; draft conflicts; immutable submissions and retries; revision workflow; exercise/teaching/cover approval checks; private history projections; bounded scoped photo reads; Standard and Elite lesson progression.');
+})().catch(e=>{console.error(e);process.exit(1)});

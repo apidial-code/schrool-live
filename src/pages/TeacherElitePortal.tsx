@@ -1,3 +1,4 @@
+import { TutorFiveQuestions } from "../components/FiveQuestions.tsx";
 import { useEffect, useState } from "react";
 import { trpc } from "../lib/trpc";
 import { weekdays, type AvailabilityWindow } from "../../shared/eliteSchedule";
@@ -43,6 +44,7 @@ export default function TeacherElitePortal() {
       <nav className="flex gap-4" aria-label="Teaching session pages"><button disabled={!page || sessions.isFetching} onClick={()=>{setSelected(null);setPage(page-1);}}>Previous</button><span>Page {page+1}</span><button disabled={!sessions.data?.hasMore || sessions.isFetching} onClick={()=>{setSelected(null);setPage(page+1);}}>Next</button></nav>
     </section>
     <CoverReturns/>
+    <TutorFiveQuestions/>
     {selectedSession && <section id="selected-teaching-session" className="space-y-4">
       <h2 className="rounded border border-blue-200 bg-blue-50 p-4 text-xl font-semibold">Selected: {selectedSession.studentName} · Session {selectedSession.sequence} · Booking #{selectedSession.id}</h2>
       {selectedSession.status==="missed" && <p>This is the original missed hour. Its delivery report is locked; select the approved replacement booking from My teaching sessions.</p>}

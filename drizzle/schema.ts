@@ -234,6 +234,34 @@ export const studentFileEntries = mysqlTable("student_file_entries", {
 
 
 // Dedicated scheduling tables keep the legacy demonstration zoom_sessions separate.
+export const fiveQuestionDrafts = mysqlTable("five_question_drafts", {
+  id: serial("id").primaryKey(),
+  enrollmentId: int("enrollment_id").notNull(),
+  lessonId: int("lesson_id").notNull(),
+  studentId: int("student_id").notNull(),
+  version: int("version").notNull(),
+  workJson: longtext("work_json").notNull(),
+}, t => [uniqueIndex("five_draft_lesson").on(t.enrollmentId,t.lessonId)]);
+export const fiveQuestionSubmissions = mysqlTable("five_question_submissions", {
+  id: serial("id").primaryKey(),
+  enrollmentId: int("enrollment_id").notNull(),
+  lessonId: int("lesson_id").notNull(),
+  studentId: int("student_id").notNull(),
+  requestId: varchar("request_id", { length:36 }).notNull().unique(),
+  workJson: longtext("work_json").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+}, t => [index("five_submission_history").on(t.enrollmentId,t.lessonId,t.id)]);
+export const fiveQuestionReviews = mysqlTable("five_question_reviews", {
+  id: serial("id").primaryKey(),
+  submissionId: int("submission_id").notNull().unique(),
+  enrollmentId: int("enrollment_id").notNull(),
+  lessonId: int("lesson_id").notNull(),
+  authorId: int("author_id").notNull(),
+  decision: varchar("decision", { length:20 }).notNull(),
+  feedback: text("feedback").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+}, t => [index("five_review_enrollment").on(t.enrollmentId,t.lessonId)]);
+
 export const eliteScheduleLock = mysqlTable("elite_schedule_lock", {
   id: int("id").primaryKey(),
 });

@@ -1,4 +1,5 @@
 import { accessPeriodOpen } from "../../shared/courseAccessPeriod.js";
+import { fiveCourse, requireFiveLesson } from "../fiveQuestionAccess.js";
 import { lessonScores } from "../../shared/courseProgress.js";
 import { randomInt, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
@@ -103,12 +104,15 @@ async function courseProgress(db: Awaited<ReturnType<typeof getDb>>,
       inArray(lessonAttempts.lessonId, course.map(lesson => lesson.id)),
     )) : [];
   let previousLessonsComplete = true;
+  const approved = tutorGuided ? (await fiveCourse(db,access.enrollmentId,access.courseId,studentId)).approved : new Set<number>();
+  let previousApproved = true;
   return course.map((lesson, index) => {
     const completed = difficulty.options.every(level => passed.some(attempt =>
       attempt.lessonId === lesson.id && attempt.difficulty === level));
-    const unlocked = !standard || previousLessonsComplete;
+    const unlocked = tutorGuided ? previousApproved : !standard || previousLessonsComplete;
+    previousApproved &&= approved.has(lesson.id);
     if (index < foundationLength) previousLessonsComplete &&= completed;
-    return { ...lesson, completed, unlocked, standard, tutorGuided };
+    return { ...lesson, completed, unlocked, standard, tutorGuided, tutorApproved:approved.has(lesson.id) };
   });
 }
 
@@ -146,6 +150,7 @@ async function lockAccess(tx: any, studentId: number, enrollmentId: number, cour
       !(record.activatedAt.getTime() <= now)) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Course access unavailable." });
   }
+  return record;
 }
 function attemptWhere(studentId: number, input: z.infer<typeof attemptInput>) {
   return and(eq(lessonAttempts.studentId, studentId),
@@ -223,7 +228,8 @@ export const lessonsRouter = router({
   }),
   startAttempt: lessonMutation.input(lessonInput.extend({ difficulty })).mutation(async ({ ctx, input }) => {
     return ctx.db.transaction(async (tx: any) => {
-      await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      const accessRow=await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      if(ctx.access.yearLevel==="year5-6" && ctx.access.tier==="elite")await requireFiveLesson(tx,accessRow,input.lessonId);
       const levels = await progress(tx, ctx.user.id, input.enrollmentId, input.lessonId);
       if (!levels[input.difficulty].unlocked) throw new TRPCError({ code: "FORBIDDEN", message: "Pass the previous difficulty with 8/10 first." });
       const activeKey = `${ctx.user.id}:${input.enrollmentId}:${input.lessonId}:${input.difficulty}`;
@@ -261,7 +267,8 @@ export const lessonsRouter = router({
   saveAnswer: lessonMutation.input(attemptInput.extend({ sourceId: z.string().min(1).max(40),
     optionIndex: z.number().int().min(0).max(9) })).mutation(async ({ ctx, input }) => {
     return ctx.db.transaction(async (tx: any) => {
-      await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      const accessRow=await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      if(ctx.access.yearLevel==="year5-6" && ctx.access.tier==="elite")await requireFiveLesson(tx,accessRow,input.lessonId);
       const row = await findAttempt(tx, ctx.user.id, input);
       if (row.status !== "in_progress") throw new TRPCError({ code: "CONFLICT", message: "This attempt has already been submitted." });
       const data = readAttempt(row), q = data.questions.find(q => q.sourceId === input.sourceId);
@@ -274,7 +281,8 @@ export const lessonsRouter = router({
   }),
   viewSolution: lessonMutation.input(attemptInput.extend({ sourceId: z.string().min(1).max(40) }))
     .mutation(async ({ ctx, input }) => ctx.db.transaction(async (tx: any) => {
-      await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      const accessRow=await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      if(ctx.access.yearLevel==="year5-6" && ctx.access.tier==="elite")await requireFiveLesson(tx,accessRow,input.lessonId);
       const row = await findAttempt(tx, ctx.user.id, input), data = readAttempt(row);
       const q = data.questions.find(q => q.sourceId === input.sourceId);
       if (!q || !q.solutionVideoId || !q.bunnyLibraryId) unavailable("Solution video is not available yet.");
@@ -289,7 +297,8 @@ export const lessonsRouter = router({
     })),
   submitAttempt: lessonMutation.input(attemptInput).mutation(async ({ ctx, input }) => {
     return ctx.db.transaction(async (tx: any) => {
-      await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      const accessRow=await lockAccess(tx, ctx.user.id, input.enrollmentId, ctx.access.courseId);
+      if(ctx.access.yearLevel==="year5-6" && ctx.access.tier==="elite")await requireFiveLesson(tx,accessRow,input.lessonId);
       const row = await findAttempt(tx, ctx.user.id, input);
       if (row.status === "submitted") return publicAttempt(row);
       if (row.status !== "in_progress") unavailable();

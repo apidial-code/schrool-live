@@ -1,7 +1,8 @@
+import { StudentFiveQuestions } from "../components/FiveQuestions.tsx";
 import React, { useRef, useState } from "react";
 import { trpc } from "../lib/trpc";
 
-type Attempt = ReturnType<typeof import("../../server/routers/lessons").publicAttempt>;
+type Attempt = import("@trpc/server").inferRouterOutputs<import("../../server/routers/index").AppRouter>["lessons"]["getAttempt"];
 type Level = "easy" | "medium" | "challenging";
 const levels: Level[] = ["easy", "medium", "challenging"];
 const names = { easy: "Easy", medium: "Medium", challenging: "Challenging" };
@@ -139,7 +140,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
   const denied = ["FORBIDDEN", "UNAUTHORIZED"].includes(actionError?.data?.code);
   const justCompleted = submitted && data.difficulty === "challenging" && (data.validScore ?? 0) >= 8;
   const completion = summary.data.completed && <div className="mb-6 rounded-lg border border-green-200 bg-green-50 p-5">
-      <h2 className="text-xl font-semibold">{lessonTitle} complete</h2>
+      <h2 className="text-xl font-semibold">{lessonTitle} {summary.data.tutorGuided?"exercise passes complete":"complete"}</h2>
       {summary.data.nextLesson ? (
         <a className={`${button} mt-3 inline-block`}
           href={`/student/lesson?enrollmentId=${enrollmentId}&lessonId=${summary.data.nextLesson.id}`}>
@@ -248,6 +249,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
           <button className={secondary} disabled={busy} onClick={() => { setToken(item.attemptToken); setNumber(0); setSolution(null); setActionError(null); }}>Review</button>
         </li>)}</ul>
     </div>}
+    {summary.data.tutorGuided && <StudentFiveQuestions input={input}/>}
   </section>;
 }
 export default function ProtectedLesson() {

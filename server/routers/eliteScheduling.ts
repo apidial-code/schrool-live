@@ -1,4 +1,5 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { requireFiveLesson } from "../fiveQuestionAccess.js";
 import { TRPCError } from "@trpc/server";
 import { and, asc, desc, eq, inArray, sql, ne, or, lt } from "drizzle-orm";
 import { z } from "zod";
@@ -261,6 +262,7 @@ export const eliteSchedulingRouter=router({
           if(retryCover && retryCover.returnNote!==input.coverReturnNote)throw new TRPCError({code:"CONFLICT",message:"This report reference has already been used with another return note."});
           return {saved:true};
         }
+        if(session.status==="scheduled" && row.yearLevel==="year5-6")await requireFiveLesson(tx,row,session.lessonId);
         const cover=await currentCover(tx,session.id);
         if(cover) {
           if(cover.coverTeacherId!==ctx.user.id || !cover.acknowledgedAt || !input.coverReturnNote)

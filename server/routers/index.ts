@@ -1,4 +1,5 @@
 import { eliteSchedulingRouter } from "./eliteScheduling.js";
+import { fiveQuestionsRouter } from "./fiveQuestions.js";
 import { router } from "../_core/trpc.js";
 import { enrollmentNewRouter } from "./enrollmentNew.js";
 import { lessonsRouter } from "./lessons.js";
@@ -26,6 +27,7 @@ export const appRouter = router({
   teacherOnboarding: teacherOnboardingRouter,
   lessons: lessonsRouter,
   eliteScheduling: eliteSchedulingRouter,
+  fiveQuestions: fiveQuestionsRouter,
 });
 
 export type AppRouter = typeof appRouter;

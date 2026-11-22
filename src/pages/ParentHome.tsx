@@ -1,3 +1,4 @@
+import { FiveQuestionRecords } from "../components/FiveQuestions.tsx";
 import { useState } from "react";
 import { trpc } from "../lib/trpc";
 import { courseLevels } from "../../shared/courseProgress";
@@ -32,7 +33,7 @@ function FamilyRecord({enrollmentId}:{enrollmentId:number}) {
     <p>Best valid scores exclude questions whose worked solutions were opened before submission.</p>
     {r.tier==="elite" && <p>Exercise progress is separate from tutor approval, teaching hours and five-question requirements.</p>}
     <div className="overflow-x-auto"><table className="w-full text-left"><thead><tr><th>Lesson</th>{courseLevels.map(l=><th key={l} className="capitalize">{l}</th>)}</tr></thead><tbody>{progress.map(l=><tr key={l.id} className="border-t"><th className="p-2 font-normal">{l.title}{l.completed?" · Passed":""}</th>{courseLevels.map(level=><td className="p-2" key={level}>{l.levels[level].bestScore===null?"No submitted score":`${l.levels[level].bestScore}/10`}<br/>{l.levels[level].attempts} submitted{l.levels[level].active?" · Attempt saved":""}</td>)}</tr>)}</tbody></table></div>
-  </section>{r.tier==="elite" && <><FamilySchedule enrollmentId={enrollmentId}/><FamilyReports enrollmentId={enrollmentId}/></>}</>;
+  </section>{r.tier==="elite" && <><FamilySchedule enrollmentId={enrollmentId}/><FamilyReports enrollmentId={enrollmentId}/>{r.yearLevel==="year5-6"&&<FiveQuestionRecords enrollmentId={enrollmentId}/>}</>}</>;
 }
 function FamilySchedule({enrollmentId}:{enrollmentId:number}) {
   const result=trpc.parent.schedule.useQuery({enrollmentId},{retry:false,staleTime:0,gcTime:0});const d=result.data;

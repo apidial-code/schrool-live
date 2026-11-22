@@ -158,6 +158,7 @@ function CourseLessons({ enrollmentId }: { enrollmentId: number }) {
                   )}
                   {lesson.completed ? <span className="ml-2 text-sm font-semibold text-green-800">Complete</span>
                     : lesson.unlocked && <span className="ml-2 text-sm text-slate-600">{courseLevels.some(level => lesson.levelScores[level].active || lesson.levelScores[level].attempts > 0) ? "In progress" : "Not started"}</span>}
+                  {lesson.tutorGuided&&<p className="mt-2 text-sm">{lesson.tutorApproved?"Tutor approved":"Tutor approval pending. Five-question work and both teaching hours are required before progressing."}</p>}
                   <dl className="mt-3 grid gap-3 sm:grid-cols-3">
                     {courseLevels.map(level => {
                       const score = lesson.levelScores[level];

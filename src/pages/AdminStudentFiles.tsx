@@ -1,3 +1,4 @@
+import { FiveQuestionRecords } from "../components/FiveQuestions.tsx";
 import AdminFamilyLink from "../components/AdminFamilyLink.tsx";
 import EliteScheduleView from "../components/EliteScheduleView.tsx";
 import AdminEliteLifecycle from "../components/AdminEliteLifecycle.tsx";
@@ -60,6 +61,7 @@ export default function AdminStudentFiles() {
         {data.enrollment.tier === "standard" && <section className={box}><h3 className="text-xl font-semibold">Standard phone support</h3><p>Up to 30 minutes each week during the first three months. Unused minutes do not carry forward.</p><p>The student learns independently through their student dashboard. Parents can request a progress report from Admin.</p><p>Record calls and follow-up notes in the Admin notes section below.</p></section>}
         {data.enrollment.tier === "elite" && <AdminEliteLifecycle key={`elite-${selected}`} enrollmentId={selected} status={data.enrollment.status} hasExpiry={!!data.enrollment.accessEndsAt} onSaved={() => { void file.refetch(); void list.refetch(); }} />}
         {data.enrollment.tier === "elite" && <EliteScheduleView key={`schedule-${selected}`} enrollmentId={selected} admin />}
+        {data.enrollment.tier==="elite" && data.enrollment.yearLevel==="year5-6" && <FiveQuestionRecords key={`five-${selected}`} enrollmentId={selected}/>}
         <AdminStudentSupport key={selected} enrollmentId={selected} standard={data.enrollment.tier === "standard"} />
         <section className={box}><h3 className="text-xl font-semibold">Payments</h3><p>Agreed total: {money(data.enrollment.agreedTotalCents, data.enrollment.currency)} · Plan: {data.enrollment.paymentPlan ?? "Not recorded"}</p>
           <div className="overflow-x-auto"><table className="w-full text-left"><caption className="text-left">Recorded payment attempts</caption><thead><tr>{["Recorded", "Amount", "Status", "Mode"].map(t => <th className="p-2" key={t}>{t}</th>)}</tr></thead><tbody>{data.payments.map(p => <tr key={p.id}><td className="p-2">{date(p.paidAt ?? p.createdAt)}</td><td className="p-2">{money(p.amountCents,p.currency)}</td><td className="p-2">{p.status}</td><td className="p-2">{p.livemode ? "Live" : "Test"}</td></tr>)}</tbody></table></div>{!data.payments.length && <p>No payment attempts recorded.</p>}

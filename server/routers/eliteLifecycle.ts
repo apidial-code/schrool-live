@@ -9,6 +9,7 @@ import { getSignInOrigin } from "../_core/signInEmail.js";
 import { sydneyDate } from "../../shared/standardSupport.js";
 
 import { teachingComplete } from "../../shared/eliteReplacement.js";
+import { fiveCourse } from "../fiveQuestionAccess.js";
 
 const adminChange = adminProcedure.use(async ({ ctx, next }) => {
   ctx.res.setHeader("Cache-Control", "no-store");
@@ -45,6 +46,9 @@ export const eliteLifecycleRouter = router({
           .filter((l: { title: string | null }) => l.title?.trim().toLowerCase() !== "access verification");
         if (course.length !== 23)
           throw new TRPCError({ code: "PRECONDITION_FAILED", message: "The 23-lesson course must be available before completion can be recorded." });
+        const {approved}=await fiveCourse(tx,row.id,row.courseId,row.studentId);
+        if(!course.every(l=>approved.has(l.id)))
+          throw new TRPCError({code:"PRECONDITION_FAILED",message:"The regular tutor must approve the recorded five-question work for all 23 lessons."});
         const scores: { lessonId: number; difficulty: string }[] = await tx.selectDistinct({ lessonId: lessonAttempts.lessonId, difficulty: lessonAttempts.difficulty })
           .from(lessonAttempts).where(and(eq(lessonAttempts.enrollmentId,row.id),
             eq(lessonAttempts.studentId,row.studentId), eq(lessonAttempts.status,"submitted"),
