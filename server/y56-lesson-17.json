@@ -169,16 +169,16 @@
       "sourceId": "L17-M1",
       "difficulty": "medium",
       "orderIndex": 1,
-      "questionText": "Find the HCF of 90 and 300.",
+      "questionText": "Find the HCF of 300 and 1050.",
       "diagram": null,
       "options": [
-        "54",
-        "35",
-        "40",
-        "45",
-        "30"
+        "154",
+        "135",
+        "140",
+        "145",
+        "150"
       ],
-      "correctAnswer": "30",
+      "correctAnswer": "150",
       "solutionVideoId": "fb951bd4-f27a-4c54-8dbe-7455a261c591"
     },
     {
@@ -201,39 +201,39 @@
       "sourceId": "L17-M3",
       "difficulty": "medium",
       "orderIndex": 3,
-      "questionText": "Find the HCF of 200 and 300.",
+      "questionText": "Find the HCF of 324 and 1890.",
       "diagram": null,
       "options": [
-        "120",
-        "90",
-        "80",
-        "110",
-        "100"
+        "56",
+        "35",
+        "40",
+        "45",
+        "54"
       ],
-      "correctAnswer": "100",
+      "correctAnswer": "54",
       "solutionVideoId": "806a947d-81c6-440a-9221-029af00fa04b"
     },
     {
       "sourceId": "L17-M4",
       "difficulty": "medium",
       "orderIndex": 4,
-      "questionText": "Find the LCM of 250 and 320.",
+      "questionText": "Find the HCF of 1260 and 1050.",
       "diagram": null,
       "options": [
-        "4890",
-        "5000",
-        "5680",
-        "5640",
-        "8000"
+        "290",
+        "200",
+        "380",
+        "240",
+        "210"
       ],
-      "correctAnswer": "8000",
+      "correctAnswer": "210",
       "solutionVideoId": "a4106dae-3249-45d9-b56c-cf526c97675f"
     },
     {
       "sourceId": "L17-M5",
       "difficulty": "medium",
       "orderIndex": 5,
-      "questionText": "Find the HCF of 250 and 320.",
+      "questionText": "Find the HCF of 1250 and 2310.",
       "diagram": null,
       "options": [
         "18",
@@ -281,48 +281,48 @@
       "sourceId": "L17-M8",
       "difficulty": "medium",
       "orderIndex": 8,
-      "questionText": "Find the LCM of 450 and 560.",
+      "questionText": "Find the LCM of 144 and 324.",
       "diagram": null,
       "options": [
-        "25290",
-        "24100",
-        "25260",
-        "25280",
-        "25200"
+        "1290",
+        "1100",
+        "1260",
+        "1280",
+        "1296"
       ],
-      "correctAnswer": "25200",
+      "correctAnswer": "1296",
       "solutionVideoId": "f17df0fd-98c4-47a8-832e-d4a3e52fb541"
     },
     {
       "sourceId": "L17-M9",
       "difficulty": "medium",
       "orderIndex": 9,
-      "questionText": "Find the HCF of 450 and 560.",
+      "questionText": "Find the LCM of 80 and 120.",
       "diagram": null,
       "options": [
-        "60",
-        "20",
-        "30",
-        "50",
-        "10"
+        "160",
+        "320",
+        "230",
+        "150",
+        "240"
       ],
-      "correctAnswer": "10",
+      "correctAnswer": "240",
       "solutionVideoId": "f33f2bf0-40c7-4a99-8ec2-ffad095157ae"
     },
     {
       "sourceId": "L17-M10",
       "difficulty": "medium",
       "orderIndex": 10,
-      "questionText": "Find the LCM of 300 and 1050.",
+      "questionText": "Find the LCM of 90 and 300.",
       "diagram": null,
       "options": [
-        "2400",
-        "2200",
-        "2700",
-        "2800",
-        "2100"
+        "400",
+        "200",
+        "700",
+        "800",
+        "900"
       ],
-      "correctAnswer": "2100",
+      "correctAnswer": "900",
       "solutionVideoId": "0bbf7539-d611-4cd1-a249-9701b23cdd40"
     },
     {
