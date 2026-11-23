@@ -329,16 +329,16 @@
       "sourceId": "L17-C1",
       "difficulty": "challenging",
       "orderIndex": 1,
-      "questionText": "Find the HCF of 300 and 1050.",
+      "questionText": "Find the LCM of 200 and 300.",
       "diagram": null,
       "options": [
         "180",
-        "140",
-        "170",
-        "130",
-        "150"
+        "640",
+        "370",
+        "530",
+        "600"
       ],
-      "correctAnswer": "150",
+      "correctAnswer": "600",
       "solutionVideoId": "4b270f93-290e-498e-8d6b-56983b99b711"
     },
     {
@@ -361,48 +361,48 @@
       "sourceId": "L17-C3",
       "difficulty": "challenging",
       "orderIndex": 3,
-      "questionText": "Find the HCF of 1250 and 1050.",
+      "questionText": "Find the LCM of 300 and 450.",
       "diagram": null,
       "options": [
-        "90",
-        "60",
-        "80",
-        "70",
-        "50"
+        "990",
+        "960",
+        "880",
+        "870",
+        "900"
       ],
-      "correctAnswer": "50",
+      "correctAnswer": "900",
       "solutionVideoId": "9c5557b5-f7be-4e5d-9146-7e3227cda887"
     },
     {
       "sourceId": "L17-C4",
       "difficulty": "challenging",
       "orderIndex": 4,
-      "questionText": "Find the LCM of 324 and 1890.",
+      "questionText": "Find the LCM of 450 and 560.",
       "diagram": null,
       "options": [
-        "11434",
-        "11430",
-        "11304",
-        "11504",
-        "11340"
+        "25434",
+        "25430",
+        "25304",
+        "25504",
+        "25200"
       ],
-      "correctAnswer": "11340",
+      "correctAnswer": "25200",
       "solutionVideoId": "bfa08ad0-9494-4503-b47d-22a685ae5a0e"
     },
     {
       "sourceId": "L17-C5",
       "difficulty": "challenging",
       "orderIndex": 5,
-      "questionText": "Find the HCF of 324 and 1890.",
+      "questionText": "Find the LCM of 300 and 1050.",
       "diagram": null,
       "options": [
-        "55",
-        "53",
-        "52",
-        "51",
-        "54"
+        "2500",
+        "2300",
+        "2200",
+        "5100",
+        "2100"
       ],
-      "correctAnswer": "54",
+      "correctAnswer": "2100",
       "solutionVideoId": "34875a64-da61-478c-9dc0-f6402915379e"
     },
     {
@@ -441,48 +441,48 @@
       "sourceId": "L17-C8",
       "difficulty": "challenging",
       "orderIndex": 8,
-      "questionText": "Find the HCF of 1250 and 2310.",
+      "questionText": "Find the LCM of 1250 and 1050.",
       "diagram": null,
       "options": [
-        "11",
-        "12",
-        "8",
-        "9",
-        "10"
+        "11310",
+        "12420",
+        "26451",
+        "26820",
+        "26250"
       ],
-      "correctAnswer": "10",
+      "correctAnswer": "26250",
       "solutionVideoId": "b742ee7e-ebb9-4e81-aef9-870d0dce500d"
     },
     {
       "sourceId": "L17-C9",
       "difficulty": "challenging",
       "orderIndex": 9,
-      "questionText": "Find the LCM of 1250 and 2310.",
+      "questionText": "Find the HCF of 1250 and 2310.",
       "diagram": null,
       "options": [
-        "278580",
-        "288570",
-        "285750",
-        "287550",
-        "288750"
+        "80",
+        "70",
+        "75",
+        "50",
+        "10"
       ],
-      "correctAnswer": "288750",
+      "correctAnswer": "10",
       "solutionVideoId": "f280965e-8301-494a-a71e-f7d3b07548d3"
     },
     {
       "sourceId": "L17-C10",
       "difficulty": "challenging",
       "orderIndex": 10,
-      "questionText": "Find the LCM of 36 and 84.",
+      "questionText": "Find the LCM of 1250 and 2310.",
       "diagram": null,
       "options": [
-        "254",
-        "256",
-        "258",
-        "242",
-        "252"
+        "254123",
+        "256626",
+        "258775",
+        "242620",
+        "288750"
       ],
-      "correctAnswer": "252",
+      "correctAnswer": "288750",
       "solutionVideoId": "721f8e8c-8d0a-4f88-bc65-c3c820d350b8"
     }
   ]
