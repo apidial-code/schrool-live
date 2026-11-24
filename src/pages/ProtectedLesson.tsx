@@ -1,5 +1,6 @@
 import { StudentFiveQuestions } from "../components/FiveQuestions.tsx";
 import React, { useRef, useState } from "react";
+import { useSearch } from "wouter";
 import { trpc } from "../lib/trpc";
 
 type Attempt = import("@trpc/server").inferRouterOutputs<import("../../server/routers/index").AppRouter>["lessons"]["getAttempt"];
@@ -8,8 +9,8 @@ const levels: Level[] = ["easy", "medium", "challenging"];
 const names = { easy: "Easy", medium: "Medium", challenging: "Challenging" };
 const button = "rounded-lg bg-[#1560B0] px-5 py-3 font-medium text-white disabled:cursor-not-allowed disabled:opacity-50";
 const secondary = "rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-800 disabled:cursor-not-allowed disabled:opacity-50";
-function readId(name: string) {
-  const values = new URLSearchParams(window.location.search).getAll(name);
+function readId(search: string, name: string) {
+  const values = new URLSearchParams(search).getAll(name);
   if (values.length !== 1 || !/^[1-9][0-9]*$/.test(values[0])) return 0;
   const value = Number(values[0]);
   return Number.isSafeInteger(value) ? value : 0;
@@ -110,7 +111,9 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
   const save = trpc.lessons.saveAnswer.useMutation();
   const view = trpc.lessons.viewSolution.useMutation();
   const submit = trpc.lessons.submitAttempt.useMutation();
-  function remember(data: Attempt) {
+  async function remember(data: Attempt) {
+    // A focus/reconnect read started before a save must not replace its result.
+    await utils.lessons.getAttempt.cancel({ ...input, attemptToken: data.attemptToken });
     utils.lessons.getAttempt.setData({ ...input, attemptToken: data.attemptToken }, data);
     setToken(data.attemptToken);
   }
@@ -124,11 +127,14 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
   async function openLevel(level: Level) {
     await act(async () => {
       const data = await start.mutateAsync({ ...input, difficulty: level });
-      setSolution(null); setNumber(0); remember(data);
+      setSolution(null);
+      const unanswered = data.questions.findIndex(q => data.answers[q.sourceId] === undefined);
+      setNumber(unanswered < 0 ? 0 : unanswered);
+      await remember(data);
       await summary.refetch();
     });
   }
-  if (summary.isLoading || summary.isFetching) return <p className="mt-6" role="status">Checking exercises and saved progress…</p>;
+  if (summary.isLoading || !summary.data && summary.isFetching) return <p className="mt-6" role="status">Checking exercises and saved progress…</p>;
   if (summary.error) return <div className="mt-6" role="alert"><p>{message(summary.error)}</p>
     {summary.error.data?.code === "UNAUTHORIZED" ? <a className="underline" href="/login">Go to sign in</a>
       : <button className={`${secondary} mt-3`} onClick={() => summary.refetch()}>Try again</button>}</div>;
@@ -178,7 +184,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
     </div>}
     <p className="mt-3 h-6" role="status" aria-live="polite">{busy ? "Saving…" : ""}</p>
     {token && !denied && <div className="mt-6">
-      {attempt.isLoading || attempt.isFetching ? <p role="status">Loading saved attempt…</p>
+      {attempt.isLoading || !attempt.data && attempt.isFetching ? <p role="status">Loading saved attempt…</p>
         : attempt.error ? <div role="alert"><p>{message(attempt.error)}</p>
           {attempt.error.data?.code === "UNAUTHORIZED" ? <a href="/login" className="underline">Go to sign in</a>
             : <button className={secondary} onClick={() => attempt.refetch()}>Reload attempt</button>}</div>
@@ -208,7 +214,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
               {question.options.map((option, i) => <label key={`${question.sourceId}:${i}`}
                 className={`flex cursor-pointer items-center gap-4 rounded-lg border p-4 text-xl ${data.answers[question.sourceId] === i ? "border-[#1560B0] bg-blue-50" : "border-slate-200"}`}>
                 <input type="radio" name={`${token}:${question.sourceId}`} checked={data.answers[question.sourceId] === i}
-                  onChange={() => act(async () => { const updated = await save.mutateAsync({ ...attemptInput, sourceId: question.sourceId, optionIndex: i }); remember(updated); })} />
+                  onChange={() => act(async () => { const updated = await save.mutateAsync({ ...attemptInput, sourceId: question.sourceId, optionIndex: i }); await remember(updated); })} />
                 <span className="text-sm text-slate-500">{String.fromCharCode(65 + i)}.</span>
                 <span><MathText text={option} /></span>
               </label>)}
@@ -220,7 +226,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
             </p>
             {data.solutionViewed.includes(question.sourceId) && <p className="mt-3 text-sm text-amber-800">Solution opened before submission. This question does not count towards this attempt’s valid score.</p>}
             <button className={`${secondary} mt-5`} disabled={busy || !question.hasSolution || !!actionError}
-              onClick={() => act(async () => { const response = await view.mutateAsync({ ...attemptInput, sourceId: question.sourceId }); remember(response.attempt); setSolution({ sourceId: response.sourceId, url: response.url }); })}>
+              onClick={() => act(async () => { const response = await view.mutateAsync({ ...attemptInput, sourceId: question.sourceId }); await remember(response.attempt); setSolution({ sourceId: response.sourceId, url: response.url }); })}>
               {question.hasSolution ? "Watch worked solution" : "Solution video not available yet"}
             </button>
             {solution?.sourceId === question.sourceId && <div>
@@ -234,7 +240,7 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
           </div>
           {!submitted && <div className="mt-5">
             <button className={button} disabled={busy || answered !== 10 || !!actionError}
-              onClick={() => act(async () => { const result = await submit.mutateAsync(attemptInput); setSolution(null); remember(result); await summary.refetch(); })}>
+              onClick={() => act(async () => { const result = await submit.mutateAsync(attemptInput); setSolution(null); await remember(result); await summary.refetch(); })}>
               Submit all 10 answers
             </button>
             <p className="mt-2 text-sm text-slate-600">{answered === 10 ? "All answers saved. Ready to submit." : `Answer the remaining ${10 - answered} questions before submitting.`}</p>
@@ -253,7 +259,13 @@ function Exercises({ enrollmentId, lessonId, lessonTitle }: {
   </section>;
 }
 export default function ProtectedLesson() {
-  const enrollmentId = readId("enrollmentId"), lessonId = readId("lessonId");
+  // Query-string-only navigation must update the lesson immediately. Pin the
+  // entire lesson subtree to its identity, including outstanding async work.
+  const search = useSearch();
+  const enrollmentId = readId(search, "enrollmentId"), lessonId = readId(search, "lessonId");
+  return <LessonPage key={`${enrollmentId}:${lessonId}`} enrollmentId={enrollmentId} lessonId={lessonId} />;
+}
+function LessonPage({ enrollmentId, lessonId }: { enrollmentId: number; lessonId: number }) {
   const valid = enrollmentId > 0 && lessonId > 0;
   const lesson = trpc.lessons.getById.useQuery({ enrollmentId, lessonId }, {
     enabled: valid, retry: false, staleTime: 0, gcTime: 0,
@@ -271,7 +283,7 @@ export default function ProtectedLesson() {
       <a href="/student" className={`underline ${hasFractionLayout ? "text-white" : "text-[#1560B0]"}`}>Back to my enrolments</a>
       <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
         {!valid ? <h1 className="text-xl font-semibold">Invalid lesson link</h1>
-          : lesson.isFetching || lesson.isLoading ? <p role="status">Checking lesson access…</p>
+          : lesson.isLoading || !lesson.data && lesson.isFetching ? <p role="status">Checking lesson access…</p>
           : lesson.error ? <div role="alert"><h1 className="text-xl font-semibold">Lesson unavailable</h1>
             <p className="mt-3">{message(lesson.error)}</p>
             {lesson.error.data?.code === "UNAUTHORIZED" ? <a href="/login" className="mt-4 inline-block underline">Go to sign in</a>
