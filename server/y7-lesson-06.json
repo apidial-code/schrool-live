@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 6,
+  "title": "Changing Fractions to Percentages",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "beeb3e11-3d2a-4b2f-975b-032b604f2223",
+  "questions": [
+    {
+      "sourceId": "Y7L06-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Express \\frac{1}{8} as a percentage.",
+      "diagram": null,
+      "options": [
+        "12.3%",
+        "12.4%",
+        "12.8%",
+        "12.7%",
+        "12.5%"
+      ],
+      "solutionVideoId": "2591f930-9232-4b44-b45f-2dba89f0b573",
+      "correctAnswer": "12.5%"
+    },
+    {
+      "sourceId": "Y7L06-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Express \\frac{1}{2} as a percentage.",
+      "diagram": null,
+      "options": [
+        "51%",
+        "53%",
+        "54%",
+        "49%",
+        "50%"
+      ],
+      "solutionVideoId": "d7278cd1-3fef-4ee6-b256-018dc86b7d62",
+      "correctAnswer": "50%"
+    },
+    {
+      "sourceId": "Y7L06-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Express \\frac{1}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "21%",
+        "25%",
+        "28%",
+        "24%",
+        "20%"
+      ],
+      "solutionVideoId": "9fef4c82-f2bd-4255-b6ac-a604a9e2257f",
+      "correctAnswer": "20%"
+    },
+    {
+      "sourceId": "Y7L06-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Express \\frac{2}{7} as a percentage, rounded to 2 decimal places.",
+      "diagram": null,
+      "options": [
+        "27.58%",
+        "26.71%",
+        "25.81%",
+        "23.81%",
+        "28.57%"
+      ],
+      "solutionVideoId": "5676a125-48a8-44a0-a378-e1d0c218ecf9",
+      "correctAnswer": "28.57%"
+    },
+    {
+      "sourceId": "Y7L06-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Express \\frac{2}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "45%",
+        "43%",
+        "41%",
+        "39%",
+        "40%"
+      ],
+      "solutionVideoId": "e71126a5-55c1-4017-a616-85b1d0c3bd4c",
+      "correctAnswer": "40%"
+    },
+    {
+      "sourceId": "Y7L06-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Express \\frac{1}{3} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "36.5%",
+        "34.5%",
+        "32.8%",
+        "31.2%",
+        "33.3%"
+      ],
+      "solutionVideoId": "094626bf-e292-4b7e-965b-c2db34c39a81",
+      "correctAnswer": "33.3%"
+    },
+    {
+      "sourceId": "Y7L06-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Express \\frac{2}{3} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "66.4%",
+        "66.5%",
+        "66.9%",
+        "66.8%",
+        "66.7%"
+      ],
+      "solutionVideoId": "660ba13f-dbae-4616-be7e-30de75d3e4d2",
+      "correctAnswer": "66.7%"
+    },
+    {
+      "sourceId": "Y7L06-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Express \\frac{3}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "61%",
+        "62%",
+        "63%",
+        "64%",
+        "60%"
+      ],
+      "solutionVideoId": "40c00a19-fe37-4a36-99af-7e4b41b202b3",
+      "correctAnswer": "60%"
+    },
+    {
+      "sourceId": "Y7L06-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Express \\frac{4}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "85%",
+        "81%",
+        "83%",
+        "82%",
+        "80%"
+      ],
+      "solutionVideoId": "5f7a4826-3c31-4a70-add1-27b5a0068e94",
+      "correctAnswer": "80%"
+    },
+    {
+      "sourceId": "Y7L06-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Express \\frac{7}{8} as a percentage.",
+      "diagram": null,
+      "options": [
+        "86.74%",
+        "87.61%",
+        "85.68%",
+        "88.61%",
+        "87.5%"
+      ],
+      "solutionVideoId": "f14f74a4-4627-4bdf-a7c7-460dfe6b19b2",
+      "correctAnswer": "87.5%"
+    },
+    {
+      "sourceId": "Y7L06-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Express \\frac{1}{6} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "19.8%",
+        "18.9%",
+        "15.7%",
+        "17.8%",
+        "16.7%"
+      ],
+      "solutionVideoId": "86452896-341a-45e1-b25f-6436c498caa2",
+      "correctAnswer": "16.7%"
+    },
+    {
+      "sourceId": "Y7L06-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Express \\frac{5}{6} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "83.5%",
+        "83.7%",
+        "83.8%",
+        "83.9%",
+        "83.3%"
+      ],
+      "solutionVideoId": "fddc4d77-e7b9-4c18-bbaa-8f7c2c78f2ea",
+      "correctAnswer": "83.3%"
+    },
+    {
+      "sourceId": "Y7L06-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Express \\frac{9}{11} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "81.9%",
+        "82.8%",
+        "83.7%",
+        "85.8%",
+        "81.8%"
+      ],
+      "solutionVideoId": "c7ec0947-b3fd-4748-a4a1-b31179707f4c",
+      "correctAnswer": "81.8%"
+    },
+    {
+      "sourceId": "Y7L06-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Express \\frac{1}{9} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "111.1%",
+        "1.111%",
+        "11.18%",
+        "11.13%",
+        "11.1%"
+      ],
+      "solutionVideoId": "233631fe-6fca-46ae-b69b-ab67d15e6ecb",
+      "correctAnswer": "11.1%"
+    },
+    {
+      "sourceId": "Y7L06-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Express \\frac{2}{9} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "22.12%",
+        "222%",
+        "2.22%",
+        "22.02%",
+        "22.2%"
+      ],
+      "solutionVideoId": "dbfe26d8-3868-47f1-a668-f3c59d4c1d2d",
+      "correctAnswer": "22.2%"
+    },
+    {
+      "sourceId": "Y7L06-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Express \\frac{5}{9} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "5.5%",
+        "517%",
+        "52.8%",
+        "53.4%",
+        "55.6%"
+      ],
+      "solutionVideoId": "ff781f8a-5a03-45fc-8a59-053e563e95b5",
+      "correctAnswer": "55.6%"
+    },
+    {
+      "sourceId": "Y7L06-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Express \\frac{10}{11} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "90.7%",
+        "93.8%",
+        "90.5%",
+        "91.8%",
+        "90.9%"
+      ],
+      "solutionVideoId": "bdc61f0c-38b5-468a-a2b3-e7d0d6f2513a",
+      "correctAnswer": "90.9%"
+    },
+    {
+      "sourceId": "Y7L06-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Express \\frac{13}{26} as a percentage.",
+      "diagram": null,
+      "options": [
+        "51%",
+        "54%",
+        "53%",
+        "52%",
+        "50%"
+      ],
+      "solutionVideoId": "3cd3165d-274c-43bb-a040-365f3d5035a5",
+      "correctAnswer": "50%"
+    },
+    {
+      "sourceId": "Y7L06-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Express \\frac{4}{9} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "43.2%",
+        "41.3%",
+        "46.5%",
+        "46.7%",
+        "44.4%"
+      ],
+      "solutionVideoId": "93742fb2-0908-4c29-a126-37717c7a8d43",
+      "correctAnswer": "44.4%"
+    },
+    {
+      "sourceId": "Y7L06-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Express 2 \\frac{3}{4} as a percentage.",
+      "diagram": null,
+      "options": [
+        "291%",
+        "282%",
+        "283%",
+        "276%",
+        "275%"
+      ],
+      "solutionVideoId": "0c27e0ee-434c-4e91-9e90-cf2593b68caa",
+      "correctAnswer": "275%"
+    },
+    {
+      "sourceId": "Y7L06-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Express 3 \\frac{1}{7} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "352.8%",
+        "341.1%",
+        "31.82%",
+        "315.2%",
+        "314.3%"
+      ],
+      "solutionVideoId": "5fa2516f-19d4-4389-b338-a83fc6f9546c",
+      "correctAnswer": "314.3%"
+    },
+    {
+      "sourceId": "Y7L06-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Express 4 \\frac{2}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "416%",
+        "410%",
+        "420%",
+        "430%",
+        "440%"
+      ],
+      "solutionVideoId": "39d4d944-d5ac-45af-8373-1b20c5e1318c",
+      "correctAnswer": "440%"
+    },
+    {
+      "sourceId": "Y7L06-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Express 5 \\frac{1}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "514%",
+        "516%",
+        "518%",
+        "521%",
+        "520%"
+      ],
+      "solutionVideoId": "dec8c7a3-05e7-4813-b91f-c264ee33f7b3",
+      "correctAnswer": "520%"
+    },
+    {
+      "sourceId": "Y7L06-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Express 6 \\frac{1}{4} as a percentage.",
+      "diagram": null,
+      "options": [
+        "623%",
+        "629%",
+        "621%",
+        "628%",
+        "625%"
+      ],
+      "solutionVideoId": "9984d547-e2c4-463a-9159-e74a56dd1695",
+      "correctAnswer": "625%"
+    },
+    {
+      "sourceId": "Y7L06-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Express 7 \\frac{2}{3} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "762.8%",
+        "761.7%",
+        "763.9%",
+        "768.7%",
+        "766.7%"
+      ],
+      "solutionVideoId": "194ed1d6-8398-4edc-bd4a-a5c5b1a3304a",
+      "correctAnswer": "766.7%"
+    },
+    {
+      "sourceId": "Y7L06-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Express 7 \\frac{1}{3} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "740.8%",
+        "732.4%",
+        "741.9%",
+        "735.8%",
+        "733.3%"
+      ],
+      "solutionVideoId": "75825022-1922-4d16-8aba-039a7a31c4fb",
+      "correctAnswer": "733.3%"
+    },
+    {
+      "sourceId": "Y7L06-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Express 8 \\frac{1}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "823%",
+        "821%",
+        "819%",
+        "818%",
+        "820%"
+      ],
+      "solutionVideoId": "cff63616-4e8e-460b-a9be-03bbca1bccb0",
+      "correctAnswer": "820%"
+    },
+    {
+      "sourceId": "Y7L06-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Express 9 \\frac{2}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "946%",
+        "945%",
+        "943%",
+        "941%",
+        "940%"
+      ],
+      "solutionVideoId": "6ddeceed-0f22-40be-89b7-a8c0c3c212a4",
+      "correctAnswer": "940%"
+    },
+    {
+      "sourceId": "Y7L06-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Express 7 \\frac{1}{5} as a percentage.",
+      "diagram": null,
+      "options": [
+        "723%",
+        "721%",
+        "728%",
+        "729%",
+        "720%"
+      ],
+      "solutionVideoId": "8b5935e4-b912-49be-97e1-077e7471a371",
+      "correctAnswer": "720%"
+    },
+    {
+      "sourceId": "Y7L06-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Express 6 \\frac{2}{3} as a percentage, rounded to 1 decimal place.",
+      "diagram": null,
+      "options": [
+        "667.8%",
+        "6678%",
+        "666.73%",
+        "666.83%",
+        "666.7%"
+      ],
+      "solutionVideoId": "36095f8b-0413-423f-a7ce-e5ca590586b6",
+      "correctAnswer": "666.7%"
+    }
+  ]
+}
