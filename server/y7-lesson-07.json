@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 7,
+  "title": "Changing Decimals to Percentages",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "4ba06629-ef7f-4a45-b3fd-dcdc2b9fec31",
+  "questions": [
+    {
+      "sourceId": "Y7L07-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Convert 0.11 to percentage.",
+      "diagram": null,
+      "options": [
+        "8%",
+        "12%",
+        "10%",
+        "9%",
+        "11%"
+      ],
+      "solutionVideoId": "12080381-1610-4f50-824e-3e434911ec1e",
+      "correctAnswer": "11%"
+    },
+    {
+      "sourceId": "Y7L07-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Convert 0.12 to percentage.",
+      "diagram": null,
+      "options": [
+        "13%",
+        "14%",
+        "15%",
+        "16%",
+        "12%"
+      ],
+      "solutionVideoId": "5d444c55-756c-4d15-bc71-0b49f1218e45",
+      "correctAnswer": "12%"
+    },
+    {
+      "sourceId": "Y7L07-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Convert 0.8 to percentage.",
+      "diagram": null,
+      "options": [
+        "70%",
+        "88%",
+        "87%",
+        "90%",
+        "80%"
+      ],
+      "solutionVideoId": "920ade4a-acc9-4d06-8010-08a66429da2a",
+      "correctAnswer": "80%"
+    },
+    {
+      "sourceId": "Y7L07-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Convert 0.9 to percentage.",
+      "diagram": null,
+      "options": [
+        "50%",
+        "80%",
+        "70%",
+        "60%",
+        "90%"
+      ],
+      "solutionVideoId": "3192c818-8e1b-4bbc-a52d-132bfc872c62",
+      "correctAnswer": "90%"
+    },
+    {
+      "sourceId": "Y7L07-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Convert 1.0 to percentage.",
+      "diagram": null,
+      "options": [
+        "104%",
+        "101%",
+        "102%",
+        "103%",
+        "100%"
+      ],
+      "solutionVideoId": "5c5bd994-f253-4fc5-9d53-76465c679c06",
+      "correctAnswer": "100%"
+    },
+    {
+      "sourceId": "Y7L07-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Convert 1.5 to percentage.",
+      "diagram": null,
+      "options": [
+        "161%",
+        "154%",
+        "156%",
+        "160%",
+        "150%"
+      ],
+      "solutionVideoId": "5768b47c-f526-4655-a0c9-673881cab273",
+      "correctAnswer": "150%"
+    },
+    {
+      "sourceId": "Y7L07-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Convert 2.1 to percentage.",
+      "diagram": null,
+      "options": [
+        "215%",
+        "211%",
+        "212%",
+        "213%",
+        "210%"
+      ],
+      "solutionVideoId": "e93a6072-3a19-46a5-9e92-88a98f92dae9",
+      "correctAnswer": "210%"
+    },
+    {
+      "sourceId": "Y7L07-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Convert 2.12 to percentage.",
+      "diagram": null,
+      "options": [
+        "214%",
+        "211%",
+        "210%",
+        "213%",
+        "212%"
+      ],
+      "solutionVideoId": "4f61b607-59e0-4a6c-a919-3f8f2181ef9b",
+      "correctAnswer": "212%"
+    },
+    {
+      "sourceId": "Y7L07-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Convert 2.53 to percentage.",
+      "diagram": null,
+      "options": [
+        "250%",
+        "235%",
+        "251%",
+        "241%",
+        "253%"
+      ],
+      "solutionVideoId": "e2646cec-8e01-4b40-a01e-c9d708cc3970",
+      "correctAnswer": "253%"
+    },
+    {
+      "sourceId": "Y7L07-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Convert 4.5 to percentage.",
+      "diagram": null,
+      "options": [
+        "453%",
+        "449%",
+        "451%",
+        "452%",
+        "450%"
+      ],
+      "solutionVideoId": "c4067e01-bb8b-4874-8311-6083e197075a",
+      "correctAnswer": "450%"
+    },
+    {
+      "sourceId": "Y7L07-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Convert 5.6 to percentage.",
+      "diagram": null,
+      "options": [
+        "573%",
+        "570%",
+        "571%",
+        "572%",
+        "560%"
+      ],
+      "solutionVideoId": "04a60afc-fa2e-466e-b9a9-fcba18cbdf44",
+      "correctAnswer": "560%"
+    },
+    {
+      "sourceId": "Y7L07-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Convert 8.91 to percentage.",
+      "diagram": null,
+      "options": [
+        "819%",
+        "890%",
+        "818%",
+        "817%",
+        "891%"
+      ],
+      "solutionVideoId": "9d89bbb5-74b3-4bfa-95f7-85886f15c3e8",
+      "correctAnswer": "891%"
+    },
+    {
+      "sourceId": "Y7L07-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Convert 9.22 to percentage.",
+      "diagram": null,
+      "options": [
+        "925%",
+        "921%",
+        "923%",
+        "924%",
+        "922%"
+      ],
+      "solutionVideoId": "7b92901a-4153-49f2-8bfc-13358fc87d0b",
+      "correctAnswer": "922%"
+    },
+    {
+      "sourceId": "Y7L07-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Convert 10.12 to percentage.",
+      "diagram": null,
+      "options": [
+        "1015%",
+        "1011%",
+        "1014%",
+        "1013%",
+        "1012%"
+      ],
+      "solutionVideoId": "49de81c4-6868-4062-aa42-d3959babc2c2",
+      "correctAnswer": "1012%"
+    },
+    {
+      "sourceId": "Y7L07-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Convert 11.123 to percentage.",
+      "diagram": null,
+      "options": [
+        "1111.2%",
+        "1113.3%",
+        "1114.3%",
+        "1112.1%",
+        "1112.3%"
+      ],
+      "solutionVideoId": "95d8a7ba-41dd-4043-a9c5-890001786245",
+      "correctAnswer": "1112.3%"
+    },
+    {
+      "sourceId": "Y7L07-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Convert 7.51 to percentage.",
+      "diagram": null,
+      "options": [
+        "758%",
+        "651%",
+        "753%",
+        "755%",
+        "751%"
+      ],
+      "solutionVideoId": "6394cf7f-cdd3-4d4f-82ab-1685541378eb",
+      "correctAnswer": "751%"
+    },
+    {
+      "sourceId": "Y7L07-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Convert 7.55 to percentage.",
+      "diagram": null,
+      "options": [
+        "752%",
+        "735%",
+        "754%",
+        "751%",
+        "755%"
+      ],
+      "solutionVideoId": "d170f1a1-379f-4102-8178-99f20c093f7e",
+      "correctAnswer": "755%"
+    },
+    {
+      "sourceId": "Y7L07-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Convert 15.75 to percentage.",
+      "diagram": null,
+      "options": [
+        "1558%",
+        "1565%",
+        "1557%",
+        "1585%",
+        "1575%"
+      ],
+      "solutionVideoId": "4e48eded-abc2-4f2b-9eab-eb48a29bf01a",
+      "correctAnswer": "1575%"
+    },
+    {
+      "sourceId": "Y7L07-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Convert 15.81 to percentage.",
+      "diagram": null,
+      "options": [
+        "1575%",
+        "1583%",
+        "1582%",
+        "1584%",
+        "1581%"
+      ],
+      "solutionVideoId": "98b86c34-bb8a-45d8-b98d-629d425f6052",
+      "correctAnswer": "1581%"
+    },
+    {
+      "sourceId": "Y7L07-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Convert 16.71 to percentage.",
+      "diagram": null,
+      "options": [
+        "1716%",
+        "1761%",
+        "1871%",
+        "1781%",
+        "1671%"
+      ],
+      "solutionVideoId": "44534d12-fc82-420d-9ac6-fc5d66f33437",
+      "correctAnswer": "1671%"
+    },
+    {
+      "sourceId": "Y7L07-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Convert 17.8 to percentage.",
+      "diagram": null,
+      "options": [
+        "1781%",
+        "1788%",
+        "1782%",
+        "1718%",
+        "1780%"
+      ],
+      "solutionVideoId": "449a04a8-2dd2-4cfb-91c1-ea00e769b38d",
+      "correctAnswer": "1780%"
+    },
+    {
+      "sourceId": "Y7L07-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Convert 18.2 to percentage.",
+      "diagram": null,
+      "options": [
+        "1632%",
+        "1951%",
+        "1821%",
+        "1731%",
+        "1820%"
+      ],
+      "solutionVideoId": "f8817a70-15f2-485a-bc3d-0d091e516dd6",
+      "correctAnswer": "1820%"
+    },
+    {
+      "sourceId": "Y7L07-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Convert 19.21 to percentage.",
+      "diagram": null,
+      "options": [
+        "1920%",
+        "1723%",
+        "1924%",
+        "1925%",
+        "1921%"
+      ],
+      "solutionVideoId": "2f4b128f-d8c0-4ceb-9f37-2cac750678d7",
+      "correctAnswer": "1921%"
+    },
+    {
+      "sourceId": "Y7L07-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Convert 20.15 to percentage.",
+      "diagram": null,
+      "options": [
+        "2051%",
+        "2054%",
+        "2052%",
+        "2053%",
+        "2015%"
+      ],
+      "solutionVideoId": "6deae821-af05-4f79-9700-b1788517b01c",
+      "correctAnswer": "2015%"
+    },
+    {
+      "sourceId": "Y7L07-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Convert 21.81 to percentage.",
+      "diagram": null,
+      "options": [
+        "2178%",
+        "2171%",
+        "2118%",
+        "2161%",
+        "2181%"
+      ],
+      "solutionVideoId": "0ca3c7d5-83ff-42d9-994c-5e3132ef1c09",
+      "correctAnswer": "2181%"
+    },
+    {
+      "sourceId": "Y7L07-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Convert 22.91 to percentage.",
+      "diagram": null,
+      "options": [
+        "2921%",
+        "2191%",
+        "2292%",
+        "2219%",
+        "2291%"
+      ],
+      "solutionVideoId": "be49fe3f-e69e-48a1-a729-9ecf989d30ca",
+      "correctAnswer": "2291%"
+    },
+    {
+      "sourceId": "Y7L07-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Convert 53.7 to percentage.",
+      "diagram": null,
+      "options": [
+        "5390%",
+        "5360%",
+        "5350%",
+        "5380%",
+        "5370%"
+      ],
+      "solutionVideoId": "62f99a46-5492-4c87-b8bc-d0c19b5a8760",
+      "correctAnswer": "5370%"
+    },
+    {
+      "sourceId": "Y7L07-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Convert 61.718 to percentage.",
+      "diagram": null,
+      "options": [
+        "6071.8%",
+        "61.718%",
+        "61.728%",
+        "6172.8%",
+        "6171.8%"
+      ],
+      "solutionVideoId": "ef6b623d-32b2-45c0-9e61-3f41168a0024",
+      "correctAnswer": "6171.8%"
+    },
+    {
+      "sourceId": "Y7L07-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Convert 70.818 to percentage.",
+      "diagram": null,
+      "options": [
+        "7088.1%",
+        "708.18%",
+        "7801.8%",
+        "8071.8%",
+        "7081.8%"
+      ],
+      "solutionVideoId": "66fb2e23-f3a7-4ddf-ba94-db256e25827f",
+      "correctAnswer": "7081.8%"
+    },
+    {
+      "sourceId": "Y7L07-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Convert 71.85 to percentage.",
+      "diagram": null,
+      "options": [
+        "7186%",
+        "7485%",
+        "7385%",
+        "7285%",
+        "7185%"
+      ],
+      "solutionVideoId": "0ae72efb-e81c-4d17-a0c2-061eee1b6d1b",
+      "correctAnswer": "7185%"
+    }
+  ]
+}
