@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 9,
+  "title": "Rounding and Estimation",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "2debcadf-0052-4716-a4c5-eef228c46b42",
+  "questions": [
+    {
+      "sourceId": "Y7L09-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Round 47 to the nearest ten. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "40",
+        "45",
+        "48",
+        "60",
+        "50"
+      ],
+      "solutionVideoId": "ab4cc5fe-4cbc-4309-8109-4ae657951dfe",
+      "correctAnswer": "50"
+    },
+    {
+      "sourceId": "Y7L09-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Round 83 to the nearest ten. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "90",
+        "85",
+        "70",
+        "84",
+        "80"
+      ],
+      "solutionVideoId": "d923a9ea-b952-403c-86a7-56789d0653f9",
+      "correctAnswer": "80"
+    },
+    {
+      "sourceId": "Y7L09-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Round 125 to the nearest ten. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "120",
+        "100",
+        "125",
+        "140",
+        "130"
+      ],
+      "solutionVideoId": "0972f15c-cfcd-4ef7-a07f-d1303befd893",
+      "correctAnswer": "130"
+    },
+    {
+      "sourceId": "Y7L09-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Round 362 to the nearest hundred. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "300",
+        "360",
+        "370",
+        "500",
+        "400"
+      ],
+      "solutionVideoId": "45140144-d4b7-4577-ad4f-26aaf40d41d5",
+      "correctAnswer": "400"
+    },
+    {
+      "sourceId": "Y7L09-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Round 849 to the nearest hundred. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "900",
+        "850",
+        "840",
+        "700",
+        "800"
+      ],
+      "solutionVideoId": "a9ad3ce9-4705-4061-88bb-d845e92c6d7c",
+      "correctAnswer": "800"
+    },
+    {
+      "sourceId": "Y7L09-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Round 1500 to the nearest thousand. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "1000",
+        "1500",
+        "1600",
+        "3000",
+        "2000"
+      ],
+      "solutionVideoId": "b4dfb691-9a8f-4e9d-8bfe-beb0dc7de8f1",
+      "correctAnswer": "2000"
+    },
+    {
+      "sourceId": "Y7L09-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Round 6492 to the nearest thousand. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "6500",
+        "7000",
+        "6400",
+        "5000",
+        "6000"
+      ],
+      "solutionVideoId": "8535aee9-dff5-4a2d-be62-54b584a9562b",
+      "correctAnswer": "6000"
+    },
+    {
+      "sourceId": "Y7L09-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Round 7.3 to the nearest whole number. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "8",
+        "7.5",
+        "7.3",
+        "6",
+        "7"
+      ],
+      "solutionVideoId": "873847a5-d2a4-4014-bc8a-a2235e19c7e1",
+      "correctAnswer": "7"
+    },
+    {
+      "sourceId": "Y7L09-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Round 9.5 to the nearest whole number. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "9",
+        "9.6",
+        "8",
+        "11",
+        "10"
+      ],
+      "solutionVideoId": "6667b218-150b-4692-9110-4b97b95b37b4",
+      "correctAnswer": "10"
+    },
+    {
+      "sourceId": "Y7L09-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Estimate 498 + 203 by rounding each number to the nearest hundred. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "600",
+        "800",
+        "690",
+        "710",
+        "700"
+      ],
+      "solutionVideoId": "ec7d03c0-4372-4396-9915-482e9f5e5328",
+      "correctAnswer": "700"
+    },
+    {
+      "sourceId": "Y7L09-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Round 6.47 to one decimal place. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "6.4",
+        "6.47",
+        "6.0",
+        "6.6",
+        "6.5"
+      ],
+      "solutionVideoId": "e4c83044-e0fa-40c3-81ac-5dfbba0f4182",
+      "correctAnswer": "6.5"
+    },
+    {
+      "sourceId": "Y7L09-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Round 12.342 to two decimal places. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "12.35",
+        "12.3",
+        "12.342",
+        "12.40",
+        "12.34"
+      ],
+      "solutionVideoId": "89d94406-6f86-47ab-8ff9-2fef44f8ffd0",
+      "correctAnswer": "12.34"
+    },
+    {
+      "sourceId": "Y7L09-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Round 8.995 to two decimal places. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "8.99",
+        "8.90",
+        "9.01",
+        "8.95",
+        "9.00"
+      ],
+      "solutionVideoId": "9f89bb70-7b3e-4bc3-b2c4-d7739c147f34",
+      "correctAnswer": "9.00"
+    },
+    {
+      "sourceId": "Y7L09-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Round 0.076 to two decimal places. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "0.07",
+        "0.076",
+        "0.10",
+        "0.008",
+        "0.08"
+      ],
+      "solutionVideoId": "f086c728-3dd8-4202-80cc-0566486cdb3b",
+      "correctAnswer": "0.08"
+    },
+    {
+      "sourceId": "Y7L09-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Round 4268 to two significant figures. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "4200",
+        "4270",
+        "4000",
+        "4400",
+        "4300"
+      ],
+      "solutionVideoId": "1b14545b-8f90-4e45-a17f-9df335de29ba",
+      "correctAnswer": "4300"
+    },
+    {
+      "sourceId": "Y7L09-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Round 0.0387 to one significant figure. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "0.03",
+        "0.039",
+        "0.004",
+        "0.038",
+        "0.04"
+      ],
+      "solutionVideoId": "1abd70ee-dacd-4e82-a586-b8e6802b4a6f",
+      "correctAnswer": "0.04"
+    },
+    {
+      "sourceId": "Y7L09-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Estimate 48 + 73 by rounding each number to the nearest ten. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "110",
+        "121",
+        "130",
+        "100",
+        "120"
+      ],
+      "solutionVideoId": "c1e6b523-e239-4c34-828b-245892e61ed0",
+      "correctAnswer": "120"
+    },
+    {
+      "sourceId": "Y7L09-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Estimate 398 − 152 by rounding each number to the nearest hundred. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "250",
+        "246",
+        "300",
+        "100",
+        "200"
+      ],
+      "solutionVideoId": "b441db05-d318-4b81-aa9a-a289f5caf5f2",
+      "correctAnswer": "200"
+    },
+    {
+      "sourceId": "Y7L09-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Estimate 19.8 × 4.1 by rounding each factor to the nearest whole number. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "8",
+        "800",
+        "84",
+        "79.18",
+        "80"
+      ],
+      "solutionVideoId": "c10a0a9c-0cdd-4425-a014-ddc6e8f6fa41",
+      "correctAnswer": "80"
+    },
+    {
+      "sourceId": "Y7L09-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Estimate 59.8 ÷ 3.02 by rounding both numbers to the nearest whole number. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "2",
+        "200",
+        "18",
+        "30",
+        "20"
+      ],
+      "solutionVideoId": "9386eba4-cb79-4a2c-a6b0-395129b22ead",
+      "correctAnswer": "20"
+    },
+    {
+      "sourceId": "Y7L09-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Round 99.95 to one decimal place. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "99.9",
+        "99.0",
+        "100.1",
+        "99.5",
+        "100.0"
+      ],
+      "solutionVideoId": "e65115fb-145a-4080-9c96-7f5e42b0c453",
+      "correctAnswer": "100.0"
+    },
+    {
+      "sourceId": "Y7L09-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Round 0.004786 to two significant figures. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "0.0047",
+        "0.00479",
+        "0.048",
+        "0.0049",
+        "0.0048"
+      ],
+      "solutionVideoId": "c4aaf4e8-f2ef-4c80-a65f-4cd8b1505956",
+      "correctAnswer": "0.0048"
+    },
+    {
+      "sourceId": "Y7L09-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Round 0.9995 to three decimal places. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "0.999",
+        "0.990",
+        "1.001",
+        "0.995",
+        "1.000"
+      ],
+      "solutionVideoId": "b5d47fdd-be1e-44d7-96ca-61cd0762911f",
+      "correctAnswer": "1.000"
+    },
+    {
+      "sourceId": "Y7L09-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Round 58492 to three significant figures. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "58400",
+        "58000",
+        "5850",
+        "59000",
+        "58500"
+      ],
+      "solutionVideoId": "6ae7175d-bc83-4a72-b5f9-b48e1f8b3755",
+      "correctAnswer": "58500"
+    },
+    {
+      "sourceId": "Y7L09-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Estimate (49.2 × 19.7) + 203 by rounding each number to one significant figure. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "1000",
+        "1180",
+        "1300",
+        "2200",
+        "1200"
+      ],
+      "solutionVideoId": "f47b4a94-efd8-4fbe-a4b4-9e1a1e89a89e",
+      "correctAnswer": "1200"
+    },
+    {
+      "sourceId": "Y7L09-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Estimate (79.4 + 41.2) ÷ 5.8 by rounding each number to one significant figure. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "2",
+        "12",
+        "24",
+        "200",
+        "20"
+      ],
+      "solutionVideoId": "698d628d-e9b9-470c-90b2-6b0bd98e48da",
+      "correctAnswer": "20"
+    },
+    {
+      "sourceId": "Y7L09-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "A notebook costs $4.87. Estimate the cost of 8 notebooks by rounding the price to the nearest dollar. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "$32",
+        "$38.96",
+        "$48",
+        "$39",
+        "$40"
+      ],
+      "solutionVideoId": "f7981d63-94c4-436a-b9a6-f203a090df97",
+      "correctAnswer": "$40"
+    },
+    {
+      "sourceId": "Y7L09-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "A rectangle measures 12.6 m by 7.4 m. Estimate its area by rounding each length to the nearest whole metre. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "96 m²",
+        "84 m²",
+        "93.24 m²",
+        "104 m²",
+        "91 m²"
+      ],
+      "solutionVideoId": "6422ca14-fdf5-47fd-9107-b9d69682dfb5",
+      "correctAnswer": "91 m²"
+    },
+    {
+      "sourceId": "Y7L09-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Estimate 4.98 × 0.203 by rounding each factor to one significant figure. Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "0.1",
+        "10",
+        "1.5",
+        "0.8",
+        "1"
+      ],
+      "solutionVideoId": "5d85cf24-bf13-423e-9503-0a897b165829",
+      "correctAnswer": "1"
+    },
+    {
+      "sourceId": "Y7L09-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Two items cost $12.68 and $7.46. Round each price to the nearest dollar and add. By how much does this estimate fall below the exact total? Halfway values round up.",
+      "diagram": null,
+      "options": [
+        "$0.04",
+        "$0.86",
+        "$1.00",
+        "$0.24",
+        "$0.14"
+      ],
+      "solutionVideoId": "568bc66b-1d09-4eb2-897c-1bd14197384c",
+      "correctAnswer": "$0.14"
+    }
+  ]
+}
