@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 3,
+  "title": "Dividing Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "7518fb19-8e86-4797-9f3f-bef7a0832b76",
+  "questions": [
+    {
+      "sourceId": "Y7L03-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Calculate 6.4 ÷ 2.",
+      "diagram": null,
+      "options": [
+        "0.32",
+        "32",
+        "3.02",
+        "4.2",
+        "3.2"
+      ],
+      "solutionVideoId": "f1d43ef5-59e0-4f03-9b2e-20c081a03e87",
+      "correctAnswer": "3.2"
+    },
+    {
+      "sourceId": "Y7L03-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Calculate 8.4 ÷ 4.",
+      "diagram": null,
+      "options": [
+        "0.21",
+        "21",
+        "2.4",
+        "3.1",
+        "2.1"
+      ],
+      "solutionVideoId": "4127289a-f8f3-4102-95f7-c46484be8119",
+      "correctAnswer": "2.1"
+    },
+    {
+      "sourceId": "Y7L03-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Calculate 9.6 ÷ 3.",
+      "diagram": null,
+      "options": [
+        "0.32",
+        "32",
+        "2.3",
+        "3.02",
+        "3.2"
+      ],
+      "solutionVideoId": "07278c2e-d5be-465c-9f80-52c09d835ecf",
+      "correctAnswer": "3.2"
+    },
+    {
+      "sourceId": "Y7L03-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Calculate 7.5 ÷ 5.",
+      "diagram": null,
+      "options": [
+        "0.15",
+        "15",
+        "1.05",
+        "2.5",
+        "1.5"
+      ],
+      "solutionVideoId": "84e9a81b-5043-48d5-bc21-a81e7bf79ec5",
+      "correctAnswer": "1.5"
+    },
+    {
+      "sourceId": "Y7L03-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Calculate 4.8 ÷ 6.",
+      "diagram": null,
+      "options": [
+        "8",
+        "0.08",
+        "1.2",
+        "0.6",
+        "0.8"
+      ],
+      "solutionVideoId": "96abd313-ae6c-40f7-bfc3-f398647cf04f",
+      "correctAnswer": "0.8"
+    },
+    {
+      "sourceId": "Y7L03-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Calculate 3.6 ÷ 9.",
+      "diagram": null,
+      "options": [
+        "4",
+        "0.04",
+        "0.6",
+        "0.9",
+        "0.4"
+      ],
+      "solutionVideoId": "662acf56-8e71-4cbc-82af-b877a2e3b152",
+      "correctAnswer": "0.4"
+    },
+    {
+      "sourceId": "Y7L03-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Calculate 8.64 ÷ 4.",
+      "diagram": null,
+      "options": [
+        "0.216",
+        "21.6",
+        "2.06",
+        "2.64",
+        "2.16"
+      ],
+      "solutionVideoId": "561c66ae-a4e3-48f7-8119-54375b23f5af",
+      "correctAnswer": "2.16"
+    },
+    {
+      "sourceId": "Y7L03-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Calculate 6.3 ÷ 3.",
+      "diagram": null,
+      "options": [
+        "0.21",
+        "21",
+        "2.3",
+        "1.9",
+        "2.1"
+      ],
+      "solutionVideoId": "6ad12561-d2cb-489a-af4d-ed18ebda9780",
+      "correctAnswer": "2.1"
+    },
+    {
+      "sourceId": "Y7L03-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Calculate 5.25 ÷ 5.",
+      "diagram": null,
+      "options": [
+        "0.105",
+        "10.5",
+        "1.5",
+        "1.15",
+        "1.05"
+      ],
+      "solutionVideoId": "65b60de4-5f46-42ef-84db-62e69368e1a4",
+      "correctAnswer": "1.05"
+    },
+    {
+      "sourceId": "Y7L03-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Calculate 0.72 ÷ 6.",
+      "diagram": null,
+      "options": [
+        "1.2",
+        "0.012",
+        "0.18",
+        "0.6",
+        "0.12"
+      ],
+      "solutionVideoId": "35941d12-5b0f-4b57-a2c6-453a1798970c",
+      "correctAnswer": "0.12"
+    },
+    {
+      "sourceId": "Y7L03-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Calculate 4.8 ÷ 0.6.",
+      "diagram": null,
+      "options": [
+        "0.8",
+        "80",
+        "0.08",
+        "6",
+        "8"
+      ],
+      "solutionVideoId": "8c1a9c0f-8048-4c8b-914c-56100bffc4ad",
+      "correctAnswer": "8"
+    },
+    {
+      "sourceId": "Y7L03-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Calculate 7.2 ÷ 0.3.",
+      "diagram": null,
+      "options": [
+        "2.4",
+        "240",
+        "0.24",
+        "21.6",
+        "24"
+      ],
+      "solutionVideoId": "4c306bed-6c0d-41cb-a98c-b6b4285da5b7",
+      "correctAnswer": "24"
+    },
+    {
+      "sourceId": "Y7L03-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Calculate 6.25 ÷ 0.5.",
+      "diagram": null,
+      "options": [
+        "1.25",
+        "125",
+        "3.125",
+        "11.5",
+        "12.5"
+      ],
+      "solutionVideoId": "0ea20c09-b099-409a-8e0f-26ea27837204",
+      "correctAnswer": "12.5"
+    },
+    {
+      "sourceId": "Y7L03-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Calculate 5.04 ÷ 1.2.",
+      "diagram": null,
+      "options": [
+        "0.42",
+        "42",
+        "4.02",
+        "6.048",
+        "4.2"
+      ],
+      "solutionVideoId": "75683506-8ee2-4759-8a36-304bef1cf1a5",
+      "correctAnswer": "4.2"
+    },
+    {
+      "sourceId": "Y7L03-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Calculate 0.84 ÷ 0.4.",
+      "diagram": null,
+      "options": [
+        "0.21",
+        "21",
+        "0.336",
+        "1.2",
+        "2.1"
+      ],
+      "solutionVideoId": "e3735860-eaad-4f3e-ad63-0add75c7bb76",
+      "correctAnswer": "2.1"
+    },
+    {
+      "sourceId": "Y7L03-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Calculate 12.6 ÷ 4.",
+      "diagram": null,
+      "options": [
+        "0.315",
+        "31.5",
+        "3.5",
+        "3.05",
+        "3.15"
+      ],
+      "solutionVideoId": "7eebb372-490c-4d98-827f-7f5dfd472314",
+      "correctAnswer": "3.15"
+    },
+    {
+      "sourceId": "Y7L03-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Calculate 3.75 ÷ 1.5.",
+      "diagram": null,
+      "options": [
+        "0.25",
+        "25",
+        "5.625",
+        "2.05",
+        "2.5"
+      ],
+      "solutionVideoId": "1033d233-b95d-41d1-ba8a-dc89f4e114f9",
+      "correctAnswer": "2.5"
+    },
+    {
+      "sourceId": "Y7L03-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Calculate 0.96 ÷ 1.2.",
+      "diagram": null,
+      "options": [
+        "8",
+        "0.08",
+        "1.152",
+        "1.25",
+        "0.8"
+      ],
+      "solutionVideoId": "116c92cf-fbdf-45ab-b7f6-73d7302cb38e",
+      "correctAnswer": "0.8"
+    },
+    {
+      "sourceId": "Y7L03-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Calculate 1.44 ÷ 0.12.",
+      "diagram": null,
+      "options": [
+        "1.2",
+        "120",
+        "0.12",
+        "0.1728",
+        "12"
+      ],
+      "solutionVideoId": "3e3e291d-2fbf-4a2a-b878-62541426da52",
+      "correctAnswer": "12"
+    },
+    {
+      "sourceId": "Y7L03-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Calculate 2.1 ÷ 0.07.",
+      "diagram": null,
+      "options": [
+        "3",
+        "300",
+        "0.3",
+        "0.147",
+        "30"
+      ],
+      "solutionVideoId": "65c14eba-d675-45a7-a82c-471a9cf2bb99",
+      "correctAnswer": "30"
+    },
+    {
+      "sourceId": "Y7L03-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Calculate 8.424 ÷ 0.27.",
+      "diagram": null,
+      "options": [
+        "3.12",
+        "312",
+        "0.312",
+        "30.12",
+        "31.2"
+      ],
+      "solutionVideoId": "25601b3a-f5d8-4d47-90f9-c2d2e8d297c0",
+      "correctAnswer": "31.2"
+    },
+    {
+      "sourceId": "Y7L03-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Calculate 14.196 ÷ 0.26.",
+      "diagram": null,
+      "options": [
+        "5.46",
+        "546",
+        "54.06",
+        "36.9096",
+        "54.6"
+      ],
+      "solutionVideoId": "af175774-63d6-48af-b2b7-eb6fda19e668",
+      "correctAnswer": "54.6"
+    },
+    {
+      "sourceId": "Y7L03-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Calculate 5.625 ÷ 1.25.",
+      "diagram": null,
+      "options": [
+        "0.45",
+        "45",
+        "4.05",
+        "7.03125",
+        "4.5"
+      ],
+      "solutionVideoId": "c058c1f5-a0b1-4f07-b444-003bfaa6a0a0",
+      "correctAnswer": "4.5"
+    },
+    {
+      "sourceId": "Y7L03-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Calculate 0.063 ÷ 0.45.",
+      "diagram": null,
+      "options": [
+        "1.4",
+        "0.014",
+        "14",
+        "0.02835",
+        "0.14"
+      ],
+      "solutionVideoId": "19682cfe-751d-4f32-bb66-ce3d1ad2a02a",
+      "correctAnswer": "0.14"
+    },
+    {
+      "sourceId": "Y7L03-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Calculate 0.00072 ÷ 0.012.",
+      "diagram": null,
+      "options": [
+        "0.6",
+        "0.006",
+        "6",
+        "0.00006",
+        "0.06"
+      ],
+      "solutionVideoId": "d75623f1-0d26-4202-9f37-78da0528dfe6",
+      "correctAnswer": "0.06"
+    },
+    {
+      "sourceId": "Y7L03-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Calculate 45.36 ÷ 1.8.",
+      "diagram": null,
+      "options": [
+        "2.52",
+        "252",
+        "25.02",
+        "81.648",
+        "25.2"
+      ],
+      "solutionVideoId": "6239ea3e-073c-4b73-89d8-4187be0713dd",
+      "correctAnswer": "25.2"
+    },
+    {
+      "sourceId": "Y7L03-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Calculate 6.03 ÷ 0.03.",
+      "diagram": null,
+      "options": [
+        "20.1",
+        "2.01",
+        "200.1",
+        "2010",
+        "201"
+      ],
+      "solutionVideoId": "a814eec6-a739-41d4-a568-88b589a3fdf5",
+      "correctAnswer": "201"
+    },
+    {
+      "sourceId": "Y7L03-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "A ribbon is 2.88 m long. It is cut into pieces 0.24 m long, with no waste. How many pieces are made?",
+      "diagram": null,
+      "options": [
+        "1.2",
+        "120",
+        "10",
+        "14",
+        "12"
+      ],
+      "solutionVideoId": "4299502e-6d22-47c4-82b8-04ca91f0d5bb",
+      "correctAnswer": "12"
+    },
+    {
+      "sourceId": "Y7L03-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "A 3.5 kg bag of rice costs $13.65. What is the cost per kilogram?",
+      "diagram": null,
+      "options": [
+        "$0.39",
+        "$39.00",
+        "$4.10",
+        "$4.90",
+        "$3.90"
+      ],
+      "solutionVideoId": "c3329afd-f8a5-4c8a-b77e-47dadbfee755",
+      "correctAnswer": "$3.90"
+    },
+    {
+      "sourceId": "Y7L03-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Calculate (7.56 ÷ 0.6) ÷ 0.3.",
+      "diagram": null,
+      "options": [
+        "4.2",
+        "420",
+        "12.6",
+        "25.2",
+        "42"
+      ],
+      "solutionVideoId": "edd43a31-735b-4ca0-bca6-d0e11a305ee7",
+      "correctAnswer": "42"
+    }
+  ]
+}
