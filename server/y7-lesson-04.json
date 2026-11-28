@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 4,
+  "title": "Changing Decimals to Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "f151149c-f06b-4e35-8082-69c248d20fde",
+  "questions": [
+    {
+      "sourceId": "Y7L04-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Convert 0.5 to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{10}",
+        "\\frac{8}{10}",
+        "\\frac{6}{10}",
+        "\\frac{7}{10}",
+        "\\frac{5}{10}"
+      ],
+      "solutionVideoId": "41880b94-1a95-4f4a-b76d-cdf20232dbfd",
+      "correctAnswer": "\\frac{5}{10}"
+    },
+    {
+      "sourceId": "Y7L04-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Change 0.8 to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{10}",
+        "\\frac{7}{10}",
+        "\\frac{9}{10}",
+        "\\frac{3}{10}",
+        "\\frac{8}{10}"
+      ],
+      "solutionVideoId": "ec5e877d-fc4c-49e2-b6b4-1a6ba1558621",
+      "correctAnswer": "\\frac{8}{10}"
+    },
+    {
+      "sourceId": "Y7L04-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "What is 0.9 as a fraction?",
+      "diagram": null,
+      "options": [
+        "\\frac{8}{10}",
+        "\\frac{7}{10}",
+        "\\frac{5}{10}",
+        "\\frac{11}{10}",
+        "\\frac{9}{10}"
+      ],
+      "solutionVideoId": "abad4573-e72e-4bc0-b7fa-3045291e2939",
+      "correctAnswer": "\\frac{9}{10}"
+    },
+    {
+      "sourceId": "Y7L04-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Show 0.6 as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{10}",
+        "\\frac{14}{10}",
+        "\\frac{12}{10}",
+        "\\frac{17}{10}",
+        "\\frac{6}{10}"
+      ],
+      "solutionVideoId": "8ce9f252-3a7d-41da-9de4-2cc8c23d9104",
+      "correctAnswer": "\\frac{6}{10}"
+    },
+    {
+      "sourceId": "Y7L04-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Convert 0.7 to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{6}{10}",
+        "\\frac{11}{10}",
+        "\\frac{13}{10}",
+        "\\frac{14}{10}",
+        "\\frac{7}{10}"
+      ],
+      "solutionVideoId": "ef1b11d8-acf6-4503-955c-c2917c1e9e98",
+      "correctAnswer": "\\frac{7}{10}"
+    },
+    {
+      "sourceId": "Y7L04-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Express 0.11 as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{10}",
+        "\\frac{11}{1000}",
+        "\\frac{12}{1000}",
+        "\\frac{7}{100}",
+        "\\frac{11}{100}"
+      ],
+      "solutionVideoId": "0bca9a29-bcb5-4454-aefc-e667e38a1f33",
+      "correctAnswer": "\\frac{11}{100}"
+    },
+    {
+      "sourceId": "Y7L04-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Show 0.12 as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{12}{10000}",
+        "\\frac{12}{10}",
+        "\\frac{12}{1000}",
+        "\\frac{12}{100000}",
+        "\\frac{12}{100}"
+      ],
+      "solutionVideoId": "5fae39f2-9bbb-406d-8188-bc03fffaadb8",
+      "correctAnswer": "\\frac{12}{100}"
+    },
+    {
+      "sourceId": "Y7L04-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Convert 0.15 to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{15}{100000}",
+        "\\frac{15}{10000}",
+        "\\frac{15}{1000}",
+        "\\frac{15}{10}",
+        "\\frac{15}{100}"
+      ],
+      "solutionVideoId": "f85bfc78-04b5-4e15-9a98-a0cae9f635ad",
+      "correctAnswer": "\\frac{15}{100}"
+    },
+    {
+      "sourceId": "Y7L04-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Change 0.22 to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{22}{10}",
+        "\\frac{22}{1000}",
+        "\\frac{22}{10000}",
+        "\\frac{22}{100000}",
+        "\\frac{22}{100}"
+      ],
+      "solutionVideoId": "6714707c-101c-4a61-b490-1c8c65e126ed",
+      "correctAnswer": "\\frac{22}{100}"
+    },
+    {
+      "sourceId": "Y7L04-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Express 0.25 as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{25}{100000}",
+        "\\frac{25}{10000}",
+        "\\frac{25}{1000}",
+        "\\frac{25}{10}",
+        "\\frac{25}{100}"
+      ],
+      "solutionVideoId": "6cf39a0a-c8ca-4e67-bba5-185ca23a8b43",
+      "correctAnswer": "\\frac{25}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Convert 0.33 to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{33}{1000}",
+        "\\frac{33}{10000}",
+        "\\frac{33}{100000}",
+        "\\frac{33}{10}",
+        "\\frac{33}{100}"
+      ],
+      "solutionVideoId": "9ec6958c-dc06-4490-9177-e4e726f50672",
+      "correctAnswer": "\\frac{33}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Change 0.131 to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{131}{10}",
+        "\\frac{131}{100}",
+        "\\frac{131}{100000}",
+        "\\frac{131}{10000}",
+        "\\frac{131}{1000}"
+      ],
+      "solutionVideoId": "7b21ccb4-a91a-4272-90b5-f61fc8a8c281",
+      "correctAnswer": "\\frac{131}{1000}"
+    },
+    {
+      "sourceId": "Y7L04-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Express 0.151 as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{151}{100000}",
+        "\\frac{151}{10000}",
+        "\\frac{151}{100}",
+        "\\frac{151}{10}",
+        "\\frac{151}{1000}"
+      ],
+      "solutionVideoId": "d45c17af-c9cd-460b-933c-20b894f70584",
+      "correctAnswer": "\\frac{151}{1000}"
+    },
+    {
+      "sourceId": "Y7L04-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "How would you express 0.171 as a fraction?",
+      "diagram": null,
+      "options": [
+        "\\frac{171}{10}",
+        "\\frac{171}{100}",
+        "\\frac{171}{10000}",
+        "\\frac{171}{100000}",
+        "\\frac{171}{1000}"
+      ],
+      "solutionVideoId": "551e2526-bd62-44a4-88e3-b573b47368b8",
+      "correctAnswer": "\\frac{171}{1000}"
+    },
+    {
+      "sourceId": "Y7L04-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "What is 3.81 as a fraction?",
+      "diagram": null,
+      "options": [
+        "3 \\frac{81}{10}",
+        "3 \\frac{81}{1000}",
+        "3 \\frac{81}{10000}",
+        "3 \\frac{81}{100000}",
+        "3 \\frac{81}{100}"
+      ],
+      "solutionVideoId": "69b66e91-287d-4561-8dec-fa5466cb32e7",
+      "correctAnswer": "3 \\frac{81}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Change 4.52 to a fraction.",
+      "diagram": null,
+      "options": [
+        "4 \\frac{62}{10}",
+        "4 \\frac{52}{1000}",
+        "4 \\frac{52}{10}",
+        "4 \\frac{62}{1000}",
+        "4 \\frac{52}{100}"
+      ],
+      "solutionVideoId": "b6519522-dfd4-4cbd-94b4-bdd77e5ab7f8",
+      "correctAnswer": "4 \\frac{52}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Express 5.61 as a fraction.",
+      "diagram": null,
+      "options": [
+        "5 \\frac{16}{100}",
+        "5 \\frac{61}{1000}",
+        "5 \\frac{16}{1000}",
+        "6 \\frac{61}{1000}",
+        "5 \\frac{61}{100}"
+      ],
+      "solutionVideoId": "00f8cd68-3bca-4d76-9f86-562def632504",
+      "correctAnswer": "5 \\frac{61}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Convert 9.53 to a fraction.",
+      "diagram": null,
+      "options": [
+        "9 \\frac{53}{1000}",
+        "9 \\frac{35}{1000}",
+        "9 \\frac{53}{10000}",
+        "9 \\frac{53}{10}",
+        "9 \\frac{53}{100}"
+      ],
+      "solutionVideoId": "fb8338d7-0bec-45e2-a59a-64a54658e61d",
+      "correctAnswer": "9 \\frac{53}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "How would you write 8.28 as a fraction?",
+      "diagram": null,
+      "options": [
+        "8 \\frac{27}{10}",
+        "2 \\frac{28}{100}",
+        "1 \\frac{28}{100}",
+        "8 \\frac{28}{1000}",
+        "8 \\frac{28}{100}"
+      ],
+      "solutionVideoId": "8e331c6b-ecee-4f19-8edf-11e9ca7f0bc4",
+      "correctAnswer": "8 \\frac{28}{100}"
+    },
+    {
+      "sourceId": "Y7L04-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Express 7.55 as a fraction.",
+      "diagram": null,
+      "options": [
+        "7 \\frac{55}{1000}",
+        "7 \\frac{55}{10000}",
+        "7 \\frac{55}{10}",
+        "5 \\frac{55}{10}",
+        "7 \\frac{55}{100}"
+      ],
+      "solutionVideoId": "26eb40dd-1577-46e5-b079-b3c1e74802a4",
+      "correctAnswer": "7 \\frac{55}{100}"
+    },
+    {
+      "sourceId": "Y7L04-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Convert 0.45 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{9}{21}",
+        "\\frac{9}{23}",
+        "\\frac{9}{24}",
+        "\\frac{9}{22}",
+        "\\frac{9}{20}"
+      ],
+      "solutionVideoId": "d474fa56-2c20-4eb9-9eb3-497781a67c9e",
+      "correctAnswer": "\\frac{9}{20}"
+    },
+    {
+      "sourceId": "Y7L04-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Change 0.18 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{9}{49}",
+        "\\frac{8}{50}",
+        "\\frac{7}{23}",
+        "\\frac{6}{22}",
+        "\\frac{9}{50}"
+      ],
+      "solutionVideoId": "55f02c14-23b3-4fc9-b136-d0f549e1fcb7",
+      "correctAnswer": "\\frac{9}{50}"
+    },
+    {
+      "sourceId": "Y7L04-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Convert 0.72 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{9}{17}",
+        "\\frac{8}{17}",
+        "\\frac{9}{22}",
+        "\\frac{18}{23}",
+        "\\frac{18}{25}"
+      ],
+      "solutionVideoId": "14985733-e3a1-40be-80b2-91c1efa35720",
+      "correctAnswer": "\\frac{18}{25}"
+    },
+    {
+      "sourceId": "Y7L04-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Change 0.16 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{23}",
+        "\\frac{4}{22}",
+        "\\frac{4}{21}",
+        "\\frac{7}{16}",
+        "\\frac{4}{25}"
+      ],
+      "solutionVideoId": "60b16ad3-56a5-47ce-9297-eadddb6076a8",
+      "correctAnswer": "\\frac{4}{25}"
+    },
+    {
+      "sourceId": "Y7L04-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Express 0.36 as a fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{8}{21}",
+        "\\frac{7}{22}",
+        "\\frac{6}{17}",
+        "\\frac{5}{21}",
+        "\\frac{9}{25}"
+      ],
+      "solutionVideoId": "69c444ca-91f1-4e86-9425-6f4ebd577452",
+      "correctAnswer": "\\frac{9}{25}"
+    },
+    {
+      "sourceId": "Y7L04-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Convert 0.42 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{20}{21}",
+        "\\frac{13}{15}",
+        "\\frac{7}{15}",
+        "\\frac{6}{11}",
+        "\\frac{21}{50}"
+      ],
+      "solutionVideoId": "78491b3d-c939-4970-ad2e-c16ce9844cd5",
+      "correctAnswer": "\\frac{21}{50}"
+    },
+    {
+      "sourceId": "Y7L04-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Change 0.88 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{25}",
+        "\\frac{13}{17}",
+        "\\frac{14}{15}",
+        "\\frac{13}{19}",
+        "\\frac{22}{25}"
+      ],
+      "solutionVideoId": "b1322afc-6cdd-4dbb-95a7-712a22fc9c84",
+      "correctAnswer": "\\frac{22}{25}"
+    },
+    {
+      "sourceId": "Y7L04-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Rewrite 0.32 as a fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{23}",
+        "\\frac{6}{29}",
+        "\\frac{7}{11}",
+        "\\frac{11}{13}",
+        "\\frac{8}{25}"
+      ],
+      "solutionVideoId": "a325893e-ba89-4198-931b-4c673376b5be",
+      "correctAnswer": "\\frac{8}{25}"
+    },
+    {
+      "sourceId": "Y7L04-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Change 0.132 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{33}{100}",
+        "\\frac{33}{180}",
+        "\\frac{33}{172}",
+        "\\frac{33}{220}",
+        "\\frac{33}{250}"
+      ],
+      "solutionVideoId": "b34b4a54-4caf-41ba-b310-fa518f089632",
+      "correctAnswer": "\\frac{33}{250}"
+    },
+    {
+      "sourceId": "Y7L04-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Convert 0.482 to fraction and simplify.",
+      "diagram": null,
+      "options": [
+        "\\frac{240}{501}",
+        "\\frac{231}{250}",
+        "\\frac{236}{281}",
+        "\\frac{263}{264}",
+        "\\frac{241}{500}"
+      ],
+      "solutionVideoId": "a1e0d548-1cc4-481a-859f-0691ae549551",
+      "correctAnswer": "\\frac{241}{500}"
+    }
+  ]
+}
