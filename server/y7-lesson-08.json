@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 8,
+  "title": "Changing Percentages to Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "38059adf-6e8f-4c1d-bade-abe93b5a9613",
+  "questions": [
+    {
+      "sourceId": "Y7L08-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Convert 2% to decimal.",
+      "diagram": null,
+      "options": [
+        "2.02",
+        "0.01",
+        "0.03",
+        "0.2",
+        "0.02"
+      ],
+      "solutionVideoId": "ba79aaf6-4162-4f88-ae40-15974ed51d05",
+      "correctAnswer": "0.02"
+    },
+    {
+      "sourceId": "Y7L08-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Convert 4% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.44",
+        "0.4",
+        "4.4",
+        "4.1",
+        "0.04"
+      ],
+      "solutionVideoId": "b3077a32-5b52-4bf6-8e38-17e85bfc89fe",
+      "correctAnswer": "0.04"
+    },
+    {
+      "sourceId": "Y7L08-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Convert 5% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.09",
+        "0.08",
+        "0.07",
+        "0.06",
+        "0.05"
+      ],
+      "solutionVideoId": "46e3e544-5d99-4262-a444-06506a3a56fe",
+      "correctAnswer": "0.05"
+    },
+    {
+      "sourceId": "Y7L08-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Convert 13% to decimal.",
+      "diagram": null,
+      "options": [
+        "1.3",
+        "0.31",
+        "0.013",
+        "0.03",
+        "0.13"
+      ],
+      "solutionVideoId": "110c3250-51f7-472b-86b9-dd4446931ae3",
+      "correctAnswer": "0.13"
+    },
+    {
+      "sourceId": "Y7L08-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Convert 8% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.04",
+        "0.07",
+        "0.06",
+        "0.05",
+        "0.08"
+      ],
+      "solutionVideoId": "7507f659-48d3-4c0c-9503-12c59407e486",
+      "correctAnswer": "0.08"
+    },
+    {
+      "sourceId": "Y7L08-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Convert 9% to decimal.",
+      "diagram": null,
+      "options": [
+        "9.1",
+        "0.9",
+        "1.9",
+        "9.09",
+        "0.09"
+      ],
+      "solutionVideoId": "e3e1ee02-f106-420f-bb48-362ad9363b96",
+      "correctAnswer": "0.09"
+    },
+    {
+      "sourceId": "Y7L08-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Convert 14% to decimal.",
+      "diagram": null,
+      "options": [
+        "1.4",
+        "0.13",
+        "0.12",
+        "0.11",
+        "0.14"
+      ],
+      "solutionVideoId": "0bcda478-ad02-455e-ba7e-6e1abfa1ff1e",
+      "correctAnswer": "0.14"
+    },
+    {
+      "sourceId": "Y7L08-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Convert 27% to decimal.",
+      "diagram": null,
+      "options": [
+        "7.2",
+        "2.7",
+        "0.34",
+        "0.72",
+        "0.27"
+      ],
+      "solutionVideoId": "6a97c813-c689-4fb7-b4e6-2a40a2f34ced",
+      "correctAnswer": "0.27"
+    },
+    {
+      "sourceId": "Y7L08-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Convert 30% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.33",
+        "3.1",
+        "30",
+        "0.03",
+        "0.3"
+      ],
+      "solutionVideoId": "afe1d6e8-cfba-4244-ab54-27ebc6519056",
+      "correctAnswer": "0.3"
+    },
+    {
+      "sourceId": "Y7L08-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Convert 33% to decimal.",
+      "diagram": null,
+      "options": [
+        "33",
+        "3.3",
+        "0.3",
+        "3.03",
+        "0.33"
+      ],
+      "solutionVideoId": "d13b6fcb-ab87-4226-84af-008fb6cb5c86",
+      "correctAnswer": "0.33"
+    },
+    {
+      "sourceId": "Y7L08-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Convert 36% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.63",
+        "0.036",
+        "36.36",
+        "3.6",
+        "0.36"
+      ],
+      "solutionVideoId": "df2f9682-efd4-460d-b1d9-4eb35023f663",
+      "correctAnswer": "0.36"
+    },
+    {
+      "sourceId": "Y7L08-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Convert 42% to decimal.",
+      "diagram": null,
+      "options": [
+        "42.2",
+        "4.2",
+        "2.4",
+        "42",
+        "0.42"
+      ],
+      "solutionVideoId": "8e934d45-cd14-435d-bc88-9f28d586ab09",
+      "correctAnswer": "0.42"
+    },
+    {
+      "sourceId": "Y7L08-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Convert 50% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.55",
+        "50",
+        "5.5",
+        "0.6",
+        "0.50"
+      ],
+      "solutionVideoId": "4d9e59df-0991-4d46-85db-aaae4b604788",
+      "correctAnswer": "0.50"
+    },
+    {
+      "sourceId": "Y7L08-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Convert 75% to decimal.",
+      "diagram": null,
+      "options": [
+        "5.7",
+        "7.5",
+        "8.5",
+        "75",
+        "0.75"
+      ],
+      "solutionVideoId": "cccd48d1-6443-48a3-b34d-326821bf5f1e",
+      "correctAnswer": "0.75"
+    },
+    {
+      "sourceId": "Y7L08-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Convert 63% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.063",
+        "0.36",
+        "6.3",
+        "3.6",
+        "0.63"
+      ],
+      "solutionVideoId": "42fcf649-3aea-4af5-bd04-b73b6aba88c3",
+      "correctAnswer": "0.63"
+    },
+    {
+      "sourceId": "Y7L08-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Convert 120% to decimal.",
+      "diagram": null,
+      "options": [
+        "2.01",
+        "21",
+        "12",
+        "0.12",
+        "1.20"
+      ],
+      "solutionVideoId": "495e5b7e-b608-4dff-8fd6-d8733420d738",
+      "correctAnswer": "1.20"
+    },
+    {
+      "sourceId": "Y7L08-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Convert 250% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.52",
+        "0.25",
+        "0.025",
+        "5.2",
+        "2.50"
+      ],
+      "solutionVideoId": "ace4c4a0-6bf0-4301-aee5-a5d701d78ab5",
+      "correctAnswer": "2.50"
+    },
+    {
+      "sourceId": "Y7L08-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Convert 300% to decimal.",
+      "diagram": null,
+      "options": [
+        "30.3",
+        "0.3",
+        "3.03",
+        "3.3",
+        "3"
+      ],
+      "solutionVideoId": "a8f35411-d386-4c5a-aeca-62df825b7857",
+      "correctAnswer": "3"
+    },
+    {
+      "sourceId": "Y7L08-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Convert 325% to decimal.",
+      "diagram": null,
+      "options": [
+        "3.32",
+        "3.2",
+        "3.52",
+        "3.35",
+        "3.25"
+      ],
+      "solutionVideoId": "6509839a-09d6-438d-a2c9-f0b8966195a4",
+      "correctAnswer": "3.25"
+    },
+    {
+      "sourceId": "Y7L08-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Convert 400% to decimal.",
+      "diagram": null,
+      "options": [
+        "4.1",
+        "0.4",
+        "0.04",
+        "4.4",
+        "4"
+      ],
+      "solutionVideoId": "c3c67153-eb67-4881-b09f-a22a9d4728f8",
+      "correctAnswer": "4"
+    },
+    {
+      "sourceId": "Y7L08-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Convert 6.25% to decimal.",
+      "diagram": null,
+      "options": [
+        "6.252",
+        "0.625",
+        "0.652",
+        "6.25",
+        "0.0625"
+      ],
+      "solutionVideoId": "aec7a9e0-9744-49e0-884f-7a97e2c1e473",
+      "correctAnswer": "0.0625"
+    },
+    {
+      "sourceId": "Y7L08-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Convert 7.5% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.0075",
+        "0.57",
+        "0.75",
+        "7.5",
+        "0.075"
+      ],
+      "solutionVideoId": "3429f8cc-06d5-4763-b67c-6a4f81cf7fef",
+      "correctAnswer": "0.075"
+    },
+    {
+      "sourceId": "Y7L08-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Convert 8.75% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.0758",
+        "0.0857",
+        "0.0785",
+        "0.0578",
+        "0.0875"
+      ],
+      "solutionVideoId": "9eb04bb2-834f-44d4-a470-da9d5f074623",
+      "correctAnswer": "0.0875"
+    },
+    {
+      "sourceId": "Y7L08-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Convert 9.25% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.592",
+        "0.0952",
+        "0.925",
+        "9.25",
+        "0.0925"
+      ],
+      "solutionVideoId": "95edfe5a-4c60-4a3e-a004-76cee326039d",
+      "correctAnswer": "0.0925"
+    },
+    {
+      "sourceId": "Y7L08-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Convert 10.13% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.1031",
+        "0.1301",
+        "0.1310",
+        "1.0310",
+        "0.1013"
+      ],
+      "solutionVideoId": "7da494ff-3287-4dd1-9af9-b473f7c36bbc",
+      "correctAnswer": "0.1013"
+    },
+    {
+      "sourceId": "Y7L08-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Convert 12.24% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.1221",
+        "0.1242",
+        "0.1222",
+        "0.1422",
+        "0.1224"
+      ],
+      "solutionVideoId": "c14a01cc-040d-4763-9c69-29016f8961a0",
+      "correctAnswer": "0.1224"
+    },
+    {
+      "sourceId": "Y7L08-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Convert 20.14% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.2141",
+        "0.2104",
+        "2.104",
+        "2.14",
+        "0.2014"
+      ],
+      "solutionVideoId": "d4b8ae36-0b75-43aa-9ffc-89b1b8074f1c",
+      "correctAnswer": "0.2014"
+    },
+    {
+      "sourceId": "Y7L08-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Convert 220.1% to decimal.",
+      "diagram": null,
+      "options": [
+        "2.021",
+        "2.21",
+        "2.22",
+        "2.012",
+        "2.201"
+      ],
+      "solutionVideoId": "a74a1f2c-0211-4575-81ab-abcee791b64c",
+      "correctAnswer": "2.201"
+    },
+    {
+      "sourceId": "Y7L08-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Convert 230.8% to decimal.",
+      "diagram": null,
+      "options": [
+        "0.2308",
+        "23.08",
+        "2.380",
+        "2.383",
+        "2.308"
+      ],
+      "solutionVideoId": "54c2ac86-7535-4fd7-a8ce-68120383ff9b",
+      "correctAnswer": "2.308"
+    },
+    {
+      "sourceId": "Y7L08-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Convert 240.5% to decimal.",
+      "diagram": null,
+      "options": [
+        "2.54",
+        "24.5",
+        "240.5",
+        "2.504",
+        "2.405"
+      ],
+      "solutionVideoId": "108c28fa-5ebd-4a21-b313-e7ef3b111007",
+      "correctAnswer": "2.405"
+    }
+  ]
+}
