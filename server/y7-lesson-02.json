@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 2,
+  "title": "Multiplying Decimals",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "8350a930-f9a7-4ca8-81c8-4c3302c244da",
+  "questions": [
+    {
+      "sourceId": "Y7L02-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Calculate 0.3 × 4.",
+      "diagram": null,
+      "options": [
+        "12",
+        "0.12",
+        "120",
+        "0.012",
+        "1.2"
+      ],
+      "solutionVideoId": "43b20494-6051-42f4-a1d0-9f8de425a1bd",
+      "correctAnswer": "1.2"
+    },
+    {
+      "sourceId": "Y7L02-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Calculate 0.7 × 6.",
+      "diagram": null,
+      "options": [
+        "42",
+        "0.42",
+        "420",
+        "0.042",
+        "4.2"
+      ],
+      "solutionVideoId": "bb3b4c45-b309-4778-9a06-694dc8e4ded5",
+      "correctAnswer": "4.2"
+    },
+    {
+      "sourceId": "Y7L02-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Calculate 1.2 × 3.",
+      "diagram": null,
+      "options": [
+        "36",
+        "0.36",
+        "360",
+        "0.036",
+        "3.6"
+      ],
+      "solutionVideoId": "ac8e69c8-126e-4af1-ace8-69761e12b628",
+      "correctAnswer": "3.6"
+    },
+    {
+      "sourceId": "Y7L02-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Calculate 2.5 × 4.",
+      "diagram": null,
+      "options": [
+        "100",
+        "1",
+        "1000",
+        "0.1",
+        "10"
+      ],
+      "solutionVideoId": "1757955b-2f7e-4fe7-9c76-ebd80c9d3004",
+      "correctAnswer": "10"
+    },
+    {
+      "sourceId": "Y7L02-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Calculate 0.08 × 5.",
+      "diagram": null,
+      "options": [
+        "4",
+        "0.04",
+        "40",
+        "0.004",
+        "0.4"
+      ],
+      "solutionVideoId": "0fb62382-c906-479b-8c63-eedd50b0e96f",
+      "correctAnswer": "0.4"
+    },
+    {
+      "sourceId": "Y7L02-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Calculate 0.12 × 3.",
+      "diagram": null,
+      "options": [
+        "3.6",
+        "0.036",
+        "36",
+        "0.0036",
+        "0.36"
+      ],
+      "solutionVideoId": "aeb2c9fb-1acc-4406-afd4-9a6d6d939b58",
+      "correctAnswer": "0.36"
+    },
+    {
+      "sourceId": "Y7L02-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Calculate 3.4 × 2.",
+      "diagram": null,
+      "options": [
+        "68",
+        "0.68",
+        "680",
+        "0.068",
+        "6.8"
+      ],
+      "solutionVideoId": "a7f1b518-1f6a-43ff-9df7-fb6bf7e45131",
+      "correctAnswer": "6.8"
+    },
+    {
+      "sourceId": "Y7L02-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Calculate 0.6 × 0.5.",
+      "diagram": null,
+      "options": [
+        "3",
+        "0.03",
+        "30",
+        "0.003",
+        "0.3"
+      ],
+      "solutionVideoId": "8b4db81e-4da9-4c8f-919c-1b244bdb0261",
+      "correctAnswer": "0.3"
+    },
+    {
+      "sourceId": "Y7L02-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Calculate 0.4 × 0.2.",
+      "diagram": null,
+      "options": [
+        "0.8",
+        "0.008",
+        "8",
+        "0.0008",
+        "0.08"
+      ],
+      "solutionVideoId": "3eced292-790d-4703-b9c3-20e65ea79325",
+      "correctAnswer": "0.08"
+    },
+    {
+      "sourceId": "Y7L02-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Calculate 0.9 × 0.3.",
+      "diagram": null,
+      "options": [
+        "2.7",
+        "0.027",
+        "27",
+        "0.0027",
+        "0.27"
+      ],
+      "solutionVideoId": "eae1c9ee-f00c-43c3-95f2-7edaa387fce3",
+      "correctAnswer": "0.27"
+    },
+    {
+      "sourceId": "Y7L02-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Calculate 1.4 × 2.3.",
+      "diagram": null,
+      "options": [
+        "32.2",
+        "0.322",
+        "322",
+        "0.0322",
+        "3.22"
+      ],
+      "solutionVideoId": "bb1c0762-779a-4ca0-820f-711e1f27ef2e",
+      "correctAnswer": "3.22"
+    },
+    {
+      "sourceId": "Y7L02-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Calculate 2.6 × 1.5.",
+      "diagram": null,
+      "options": [
+        "39",
+        "0.39",
+        "390",
+        "0.039",
+        "3.9"
+      ],
+      "solutionVideoId": "2cf6b542-2230-4b24-843e-2c34807c91d1",
+      "correctAnswer": "3.9"
+    },
+    {
+      "sourceId": "Y7L02-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Calculate 0.24 × 0.6.",
+      "diagram": null,
+      "options": [
+        "1.44",
+        "0.0144",
+        "14.4",
+        "0.00144",
+        "0.144"
+      ],
+      "solutionVideoId": "cf4d18f2-09d9-47aa-8e3f-290a7cc7feab",
+      "correctAnswer": "0.144"
+    },
+    {
+      "sourceId": "Y7L02-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Calculate 3.25 × 4.",
+      "diagram": null,
+      "options": [
+        "130",
+        "1.3",
+        "1300",
+        "0.13",
+        "13"
+      ],
+      "solutionVideoId": "de6bcf78-e62f-4e23-8188-0342af6805b3",
+      "correctAnswer": "13"
+    },
+    {
+      "sourceId": "Y7L02-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Calculate 4.2 × 0.35.",
+      "diagram": null,
+      "options": [
+        "14.7",
+        "0.147",
+        "147",
+        "0.0147",
+        "1.47"
+      ],
+      "solutionVideoId": "1f93c8ff-410f-45f7-b652-2cfd4c8f9f81",
+      "correctAnswer": "1.47"
+    },
+    {
+      "sourceId": "Y7L02-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Calculate 0.75 × 0.8.",
+      "diagram": null,
+      "options": [
+        "6",
+        "0.06",
+        "60",
+        "0.006",
+        "0.6"
+      ],
+      "solutionVideoId": "daabec72-9675-4c6b-976f-1cb8f70c1b7a",
+      "correctAnswer": "0.6"
+    },
+    {
+      "sourceId": "Y7L02-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Calculate 6.4 × 1.25.",
+      "diagram": null,
+      "options": [
+        "80",
+        "0.8",
+        "800",
+        "0.08",
+        "8"
+      ],
+      "solutionVideoId": "75d9fcb1-d668-4ca5-86a6-c243eea3f811",
+      "correctAnswer": "8"
+    },
+    {
+      "sourceId": "Y7L02-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Calculate 0.09 × 0.07.",
+      "diagram": null,
+      "options": [
+        "0.063",
+        "0.00063",
+        "0.63",
+        "0.000063",
+        "0.0063"
+      ],
+      "solutionVideoId": "bc62a4f0-9b8d-4234-a696-405891c933c7",
+      "correctAnswer": "0.0063"
+    },
+    {
+      "sourceId": "Y7L02-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Calculate 12.5 × 0.16.",
+      "diagram": null,
+      "options": [
+        "20",
+        "0.2",
+        "200",
+        "0.02",
+        "2"
+      ],
+      "solutionVideoId": "3dd587c6-01ee-4696-a889-9b08cfc55016",
+      "correctAnswer": "2"
+    },
+    {
+      "sourceId": "Y7L02-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Calculate 2.45 × 3.6.",
+      "diagram": null,
+      "options": [
+        "88.2",
+        "0.882",
+        "882",
+        "0.0882",
+        "8.82"
+      ],
+      "solutionVideoId": "cb215551-b752-46c3-b32e-64109bf900b8",
+      "correctAnswer": "8.82"
+    },
+    {
+      "sourceId": "Y7L02-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Calculate 0.125 × 0.48.",
+      "diagram": null,
+      "options": [
+        "0.6",
+        "0.006",
+        "6",
+        "0.0006",
+        "0.06"
+      ],
+      "solutionVideoId": "53131c7d-4b8c-4994-8c70-2c5590976871",
+      "correctAnswer": "0.06"
+    },
+    {
+      "sourceId": "Y7L02-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Calculate 3.75 × 2.4.",
+      "diagram": null,
+      "options": [
+        "90",
+        "0.9",
+        "900",
+        "0.09",
+        "9"
+      ],
+      "solutionVideoId": "9908abf0-3355-4bd0-b9c7-d0e6b99df8f8",
+      "correctAnswer": "9"
+    },
+    {
+      "sourceId": "Y7L02-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Calculate 0.036 × 0.25.",
+      "diagram": null,
+      "options": [
+        "0.09",
+        "0.0009",
+        "0.9",
+        "0.00009",
+        "0.009"
+      ],
+      "solutionVideoId": "fb98a330-4183-46ca-9f25-ab28fc7c56b1",
+      "correctAnswer": "0.009"
+    },
+    {
+      "sourceId": "Y7L02-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Calculate 12.08 × 0.75.",
+      "diagram": null,
+      "options": [
+        "90.6",
+        "0.906",
+        "906",
+        "0.0906",
+        "9.06"
+      ],
+      "solutionVideoId": "36d2fbea-2726-49e9-a166-440c5111c9bd",
+      "correctAnswer": "9.06"
+    },
+    {
+      "sourceId": "Y7L02-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Calculate 0.072 × 0.045.",
+      "diagram": null,
+      "options": [
+        "0.0324",
+        "0.000324",
+        "0.324",
+        "0.0000324",
+        "0.00324"
+      ],
+      "solutionVideoId": "a483a90b-0c7e-45df-8d08-c6e68b203bb5",
+      "correctAnswer": "0.00324"
+    },
+    {
+      "sourceId": "Y7L02-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Calculate 4.06 × 2.35.",
+      "diagram": null,
+      "options": [
+        "95.41",
+        "0.9541",
+        "954.1",
+        "0.09541",
+        "9.541"
+      ],
+      "solutionVideoId": "8e4c8aab-d5e0-4fc1-876f-e63d2595db58",
+      "correctAnswer": "9.541"
+    },
+    {
+      "sourceId": "Y7L02-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Calculate 0.4 × 0.25 × 1.8.",
+      "diagram": null,
+      "options": [
+        "1.8",
+        "0.018",
+        "18",
+        "0.0018",
+        "0.18"
+      ],
+      "solutionVideoId": "86795e70-e161-4edf-b064-23d0de24fd88",
+      "correctAnswer": "0.18"
+    },
+    {
+      "sourceId": "Y7L02-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Calculate 2.5 × 0.12 × 0.08.",
+      "diagram": null,
+      "options": [
+        "0.24",
+        "0.0024",
+        "2.4",
+        "0.00024",
+        "0.024"
+      ],
+      "solutionVideoId": "e6016b01-7edf-4fd3-b07b-6533033b62e3",
+      "correctAnswer": "0.024"
+    },
+    {
+      "sourceId": "Y7L02-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Apples cost $7.85 per kilogram. What is the cost of 2.4 kilograms?",
+      "diagram": null,
+      "options": [
+        "$188.40",
+        "$1.88",
+        "$1884.00",
+        "$0.19",
+        "$18.84"
+      ],
+      "solutionVideoId": "e0308e98-9b64-47ce-b432-68f973c033fb",
+      "correctAnswer": "$18.84"
+    },
+    {
+      "sourceId": "Y7L02-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "A rectangular garden is 3.75 metres long and 2.48 metres wide. What is its area?",
+      "diagram": null,
+      "options": [
+        "93 m²",
+        "0.93 m²",
+        "930 m²",
+        "0.093 m²",
+        "9.3 m²"
+      ],
+      "solutionVideoId": "054ce9a8-54e4-48ff-b732-f32f37537f3a",
+      "correctAnswer": "9.3 m²"
+    }
+  ]
+}
