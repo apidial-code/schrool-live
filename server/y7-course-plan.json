@@ -1,0 +1,151 @@
+{
+  "courseTitle": "Math II Year 7",
+  "coreLessonCount": 28,
+  "durationWeeks": 28,
+  "eliteZoomSessions": 56,
+  "eliteWeeklyZoomSessions": 2,
+  "foundationRevision": "Optional Year 5/6 revision; excluded from core progression and session count",
+  "sequenceStatus": "Proposed teaching order; only Lesson 1 is included in this import batch",
+  "lessons": [
+    {
+      "orderIndex": 1,
+      "title": "Division of Directed Numbers",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 2,
+      "title": "Multiplying Decimals",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 3,
+      "title": "Dividing Decimals",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 4,
+      "title": "Changing Decimals to Fractions",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 5,
+      "title": "Writing Percentages as Fractions",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 6,
+      "title": "Changing Fractions to Percentages",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 7,
+      "title": "Changing Decimals to Percentages",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 8,
+      "title": "Changing Percentages to Decimals",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 9,
+      "title": "Rounding and Estimation",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 10,
+      "title": "Finding Percentages",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 11,
+      "title": "Ratio Foundations",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 12,
+      "title": "Pronumerals",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 13,
+      "title": "Basic Rules in Algebra",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 14,
+      "title": "Like and Unlike Terms",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 15,
+      "title": "Multiplication in Algebra",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 16,
+      "title": "Division in Algebra",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 17,
+      "title": "Substitution and Formulae",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 18,
+      "title": "Simple Equations",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 19,
+      "title": "Number Patterns",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 20,
+      "title": "Coordinates and Simple Graphs",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 21,
+      "title": "Perimeter",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 22,
+      "title": "Area",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 23,
+      "title": "Area of Triangles and Parallelograms",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 24,
+      "title": "Volume of Rectangular Prisms",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 25,
+      "title": "Important Parts of a Circle",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 26,
+      "title": "Data and Averages",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 27,
+      "title": "Basic Probability",
+      "assessment": "multiple-choice"
+    },
+    {
+      "orderIndex": 28,
+      "title": "Construction in Geometry",
+      "assessment": "tutor-marked practical"
+    }
+  ]
+}

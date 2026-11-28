@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 1,
+  "title": "Division of Directed Numbers",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "f7e6018c-d8cc-4d99-a434-3063cc550255",
+  "questions": [
+    {
+      "sourceId": "Y7L01-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Solve :  Divide 18 by 3",
+      "diagram": null,
+      "options": [
+        "5",
+        "8",
+        "-3",
+        "-6",
+        "6"
+      ],
+      "solutionVideoId": "80a02b1f-1086-47c7-a98f-b394f97480d6",
+      "correctAnswer": "6"
+    },
+    {
+      "sourceId": "Y7L01-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Solve : 21 divided by ( - 7 )",
+      "diagram": null,
+      "options": [
+        "7",
+        "3",
+        "2",
+        "-2",
+        "-3"
+      ],
+      "solutionVideoId": "77fd70e4-1aeb-4ad1-8937-3dbc51d73854",
+      "correctAnswer": "-3"
+    },
+    {
+      "sourceId": "Y7L01-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Solve : 16 divided by ( - 2 )",
+      "diagram": null,
+      "options": [
+        "16",
+        "-6",
+        "-3",
+        "-2",
+        "-8"
+      ],
+      "solutionVideoId": "91eca7a7-26bc-4c6e-bee5-f11c14e05bd4",
+      "correctAnswer": "-8"
+    },
+    {
+      "sourceId": "Y7L01-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Solve : 25 divided by ( - 5 )",
+      "diagram": null,
+      "options": [
+        "8",
+        "-3",
+        "5",
+        "4",
+        "-5"
+      ],
+      "solutionVideoId": "8a01d591-99d0-4e9d-8532-f7fa2417a041",
+      "correctAnswer": "-5"
+    },
+    {
+      "sourceId": "Y7L01-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Solve : ( - 14 ) divided by ( - 2 )",
+      "diagram": null,
+      "options": [
+        "2",
+        "8",
+        "9",
+        "5",
+        "7"
+      ],
+      "solutionVideoId": "04b33b21-812f-41d4-8b81-d632a0aebcb8",
+      "correctAnswer": "7"
+    },
+    {
+      "sourceId": "Y7L01-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Solve : - 30 divided by 2",
+      "diagram": null,
+      "options": [
+        "8",
+        "-7",
+        "7",
+        "-8",
+        "-15"
+      ],
+      "solutionVideoId": "92df073b-0fd4-42fe-abfc-641a4d0d6950",
+      "correctAnswer": "-15"
+    },
+    {
+      "sourceId": "Y7L01-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Solve : - 250 divided by 10",
+      "diagram": null,
+      "options": [
+        "20",
+        "23",
+        "21",
+        "24",
+        "-25"
+      ],
+      "solutionVideoId": "19c0098f-17e7-406e-a527-5f2cf604aa46",
+      "correctAnswer": "-25"
+    },
+    {
+      "sourceId": "Y7L01-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Solve : 96 divided by ( - 6 )",
+      "diagram": null,
+      "options": [
+        "6",
+        "-18",
+        "16",
+        "-17",
+        "-16"
+      ],
+      "solutionVideoId": "e1ef75f0-6677-4bc3-9892-2adff96c0519",
+      "correctAnswer": "-16"
+    },
+    {
+      "sourceId": "Y7L01-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Solve : (- 27 ) divided by ( - 3 )",
+      "diagram": null,
+      "options": [
+        "2",
+        "5",
+        "8",
+        "4",
+        "9"
+      ],
+      "solutionVideoId": "302924b0-fd68-41ab-9cba-0988249f39ec",
+      "correctAnswer": "9"
+    },
+    {
+      "sourceId": "Y7L01-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Solve : ( - 15 ) divided by ( - 3 )",
+      "diagram": null,
+      "options": [
+        "3",
+        "4",
+        "2",
+        "6",
+        "5"
+      ],
+      "solutionVideoId": "39c0bb65-002d-44c9-a265-9a8e2a5f71e4",
+      "correctAnswer": "5"
+    },
+    {
+      "sourceId": "Y7L01-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Solve : - 30 divided by 3",
+      "diagram": null,
+      "options": [
+        "-5",
+        "20",
+        "9",
+        "8",
+        "-10"
+      ],
+      "solutionVideoId": "ba3dec20-8f71-41c8-8edf-ca2aad5fde07",
+      "correctAnswer": "-10"
+    },
+    {
+      "sourceId": "Y7L01-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Solve : - 25 divided by - 5",
+      "diagram": null,
+      "options": [
+        "6",
+        "-5",
+        "3",
+        "-3",
+        "5"
+      ],
+      "solutionVideoId": "4227b9d4-8105-4741-bc35-9e2a9c2a68b2",
+      "correctAnswer": "5"
+    },
+    {
+      "sourceId": "Y7L01-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Solve : - 84 divided by 4",
+      "diagram": null,
+      "options": [
+        "10",
+        "20",
+        "22",
+        "21",
+        "-21"
+      ],
+      "solutionVideoId": "ec4f9924-d095-4204-bece-663e0ff1ecf3",
+      "correctAnswer": "-21"
+    },
+    {
+      "sourceId": "Y7L01-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Solve : 100 divided by - 4",
+      "diagram": null,
+      "options": [
+        "17",
+        "25",
+        "-17",
+        "14",
+        "-25"
+      ],
+      "solutionVideoId": "7cb2410d-d899-4b3c-bc11-0e1866187e2a",
+      "correctAnswer": "-25"
+    },
+    {
+      "sourceId": "Y7L01-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Solve : ( - 3 - 3 ) divided by ( 1 - 7 )",
+      "diagram": null,
+      "options": [
+        "3",
+        "-1",
+        "2",
+        "-2",
+        "1"
+      ],
+      "solutionVideoId": "8e3291d4-bb6d-45c7-bd3a-db689106a16d",
+      "correctAnswer": "1"
+    },
+    {
+      "sourceId": "Y7L01-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Solve : ( 10 - 12 ) divided by ( 4 - 2 )",
+      "diagram": null,
+      "options": [
+        "3",
+        "2",
+        "4",
+        "5",
+        "-1"
+      ],
+      "solutionVideoId": "f6de7a12-8423-4751-8e62-aac752b0d68d",
+      "correctAnswer": "-1"
+    },
+    {
+      "sourceId": "Y7L01-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Solve : - 30 divided by ( 9 - 6 )",
+      "diagram": null,
+      "options": [
+        "5",
+        "3",
+        "6",
+        "9",
+        "-10"
+      ],
+      "solutionVideoId": "4dff6a42-5495-495d-abad-40117a0ddd17",
+      "correctAnswer": "-10"
+    },
+    {
+      "sourceId": "Y7L01-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Solve : - 16 divided by ( 4 × 4 )",
+      "diagram": null,
+      "options": [
+        "3",
+        "1",
+        "2",
+        "-2",
+        "-1"
+      ],
+      "solutionVideoId": "af69276d-329f-4d99-98ad-1d6bd14c3371",
+      "correctAnswer": "-1"
+    },
+    {
+      "sourceId": "Y7L01-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Solve : 9 ( 27 - 38 ) divided by - 11",
+      "diagram": null,
+      "options": [
+        "7",
+        "-9",
+        "-8",
+        "8",
+        "9"
+      ],
+      "solutionVideoId": "feccfaf5-edd8-4d4b-85bc-13c5698c516d",
+      "correctAnswer": "9"
+    },
+    {
+      "sourceId": "Y7L01-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Solve : 6 [ 15 - ( 12 - 6 ) ] divided by ( - 3 )",
+      "diagram": null,
+      "options": [
+        "-3",
+        "-7",
+        "-9",
+        "-5",
+        "-18"
+      ],
+      "solutionVideoId": "e128b735-5ee8-4c69-bacc-5c0dd6c75313",
+      "correctAnswer": "-18"
+    },
+    {
+      "sourceId": "Y7L01-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Solve : ( 12 - 8 ) ( - 9 + 3 ) divided by 3",
+      "diagram": null,
+      "options": [
+        "7",
+        "-9",
+        "9",
+        "8",
+        "-8"
+      ],
+      "solutionVideoId": "b77a3c90-6a36-4024-a432-7eb134dcec9a",
+      "correctAnswer": "-8"
+    },
+    {
+      "sourceId": "Y7L01-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Solve : ( 8 - 15 ) ( 9 + 3 ) divided by ( - 4 )",
+      "diagram": null,
+      "options": [
+        "-17",
+        "20",
+        "-20",
+        "17",
+        "21"
+      ],
+      "solutionVideoId": "f81def98-3641-4f12-a5da-cc89660c7b68",
+      "correctAnswer": "21"
+    },
+    {
+      "sourceId": "Y7L01-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Solve : ( 12 - 16 ) ( 12 + 3 ) divided by ( - 3 )",
+      "diagram": null,
+      "options": [
+        "-20",
+        "16",
+        "-18",
+        "18",
+        "20"
+      ],
+      "solutionVideoId": "4c857822-ec8b-4b56-b7a7-ff4cb664a726",
+      "correctAnswer": "20"
+    },
+    {
+      "sourceId": "Y7L01-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Solve : ( - 8 × - 7 ) divided by 2",
+      "diagram": null,
+      "options": [
+        "-28",
+        "14",
+        "7",
+        "-14",
+        "28"
+      ],
+      "solutionVideoId": "d46b322c-2645-413a-a0d3-0aa838ece03a",
+      "correctAnswer": "28"
+    },
+    {
+      "sourceId": "Y7L01-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Solve : - 26 × - 18 divided by ( - 9 )",
+      "diagram": null,
+      "options": [
+        "25",
+        "-28",
+        "-7",
+        "28",
+        "-52"
+      ],
+      "solutionVideoId": "3e20b6ae-8fd9-43cc-9c7b-4b1c62a77dd6",
+      "correctAnswer": "-52"
+    },
+    {
+      "sourceId": "Y7L01-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Solve : ( - 99 - 1 ) × ( 4 - 2 ) divided by 4",
+      "diagram": null,
+      "options": [
+        "50",
+        "30",
+        "20",
+        "10",
+        "-50"
+      ],
+      "solutionVideoId": "8b950c4b-9282-4b7d-bcf2-d99206bba71e",
+      "correctAnswer": "-50"
+    },
+    {
+      "sourceId": "Y7L01-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Solve : ( - 24 × - 7 ) divided by ( - 6 )",
+      "diagram": null,
+      "options": [
+        "6",
+        "14",
+        "15",
+        "7",
+        "-28"
+      ],
+      "solutionVideoId": "026e6566-2a76-4048-ab9a-37be0731e161",
+      "correctAnswer": "-28"
+    },
+    {
+      "sourceId": "Y7L01-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Solve : - 1 × [ - 7 divided by ( - 1 + 8 ) ]",
+      "diagram": null,
+      "options": [
+        "6",
+        "2",
+        "3",
+        "5",
+        "1"
+      ],
+      "solutionVideoId": "b1993a40-649c-4405-924f-41f4e87b4641",
+      "correctAnswer": "1"
+    },
+    {
+      "sourceId": "Y7L01-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Solve : - 5 × [ - 6 divided by ( - 29 - 1 ) ]",
+      "diagram": null,
+      "options": [
+        "3",
+        "4",
+        "1",
+        "-3",
+        "-1"
+      ],
+      "solutionVideoId": "4403f2ed-63bf-4263-8d49-0186e869850c",
+      "correctAnswer": "-1"
+    },
+    {
+      "sourceId": "Y7L01-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "Solve : ( 0.9 × - 0.9 ) divided by 0.3",
+      "diagram": null,
+      "options": [
+        "7.2",
+        "-0.9",
+        "-1.8",
+        "18.1",
+        "-2.7"
+      ],
+      "solutionVideoId": "682c80bd-f7dd-4ee4-a0ca-042596328601",
+      "correctAnswer": "-2.7"
+    }
+  ]
+}
