@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 10,
+  "title": "Finding Percentages",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "fbedbc18-ead0-42a5-adee-cff46bca12a0",
+  "questions": [
+    {
+      "sourceId": "Y7L10-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Find 10% of 80.",
+      "diagram": null,
+      "options": [
+        "0.8",
+        "80",
+        "18",
+        "800",
+        "8"
+      ],
+      "solutionVideoId": "f402beca-7a2b-44a6-8efc-05906f917822",
+      "correctAnswer": "8"
+    },
+    {
+      "sourceId": "Y7L10-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Find 50% of 36.",
+      "diagram": null,
+      "options": [
+        "9",
+        "36",
+        "72",
+        "16",
+        "18"
+      ],
+      "solutionVideoId": "468a4971-f0a5-4e65-9cfe-949879caba09",
+      "correctAnswer": "18"
+    },
+    {
+      "sourceId": "Y7L10-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Find 25% of 64.",
+      "diagram": null,
+      "options": [
+        "8",
+        "32",
+        "25",
+        "12",
+        "16"
+      ],
+      "solutionVideoId": "919ace2e-cd7e-4cbc-bb02-ebb7a71d2520",
+      "correctAnswer": "16"
+    },
+    {
+      "sourceId": "Y7L10-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Find 20% of 90.",
+      "diagram": null,
+      "options": [
+        "9",
+        "20",
+        "45",
+        "27",
+        "18"
+      ],
+      "solutionVideoId": "b89a51fe-8f30-4a92-b484-267fd8729e75",
+      "correctAnswer": "18"
+    },
+    {
+      "sourceId": "Y7L10-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Find 5% of 200.",
+      "diagram": null,
+      "options": [
+        "5",
+        "20",
+        "100",
+        "40",
+        "10"
+      ],
+      "solutionVideoId": "89e2fcd8-26c7-42ce-bdc4-a7da4bfe533d",
+      "correctAnswer": "10"
+    },
+    {
+      "sourceId": "Y7L10-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Find 1% of 700.",
+      "diagram": null,
+      "options": [
+        "70",
+        "0.7",
+        "1",
+        "700",
+        "7"
+      ],
+      "solutionVideoId": "f73d3110-b288-41c7-96fa-677f3f52c225",
+      "correctAnswer": "7"
+    },
+    {
+      "sourceId": "Y7L10-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Find 75% of 40.",
+      "diagram": null,
+      "options": [
+        "10",
+        "20",
+        "35",
+        "25",
+        "30"
+      ],
+      "solutionVideoId": "a6e4c860-43be-4f01-b99d-f1895ac8662b",
+      "correctAnswer": "30"
+    },
+    {
+      "sourceId": "Y7L10-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Find 30% of 60.",
+      "diagram": null,
+      "options": [
+        "3",
+        "6",
+        "30",
+        "20",
+        "18"
+      ],
+      "solutionVideoId": "a21796a6-8db7-454a-8dc9-c7355e9afca6",
+      "correctAnswer": "18"
+    },
+    {
+      "sourceId": "Y7L10-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "Find 15% of 80.",
+      "diagram": null,
+      "options": [
+        "8",
+        "15",
+        "20",
+        "10",
+        "12"
+      ],
+      "solutionVideoId": "e41954e1-1b91-4591-9ec1-33cb4fd2c872",
+      "correctAnswer": "12"
+    },
+    {
+      "sourceId": "Y7L10-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Find 40% of 150.",
+      "diagram": null,
+      "options": [
+        "40",
+        "15",
+        "75",
+        "45",
+        "60"
+      ],
+      "solutionVideoId": "75193bc3-198c-4429-879b-9e4367c23c8a",
+      "correctAnswer": "60"
+    },
+    {
+      "sourceId": "Y7L10-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Find 12% of 250.",
+      "diagram": null,
+      "options": [
+        "12",
+        "25",
+        "300",
+        "35",
+        "30"
+      ],
+      "solutionVideoId": "3fb70490-6967-479c-b70a-3db41c8e8fe5",
+      "correctAnswer": "30"
+    },
+    {
+      "sourceId": "Y7L10-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Find 35% of 240.",
+      "diagram": null,
+      "options": [
+        "72",
+        "35",
+        "96",
+        "48",
+        "84"
+      ],
+      "solutionVideoId": "6c378770-c7e7-43bb-b827-a737ddb1da74",
+      "correctAnswer": "84"
+    },
+    {
+      "sourceId": "Y7L10-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Find 2.5% of 160.",
+      "diagram": null,
+      "options": [
+        "40",
+        "2.5",
+        "0.4",
+        "8",
+        "4"
+      ],
+      "solutionVideoId": "a1626491-48b6-4f36-be6b-431fd3acdb12",
+      "correctAnswer": "4"
+    },
+    {
+      "sourceId": "Y7L10-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Find 125% of 48.",
+      "diagram": null,
+      "options": [
+        "12",
+        "48",
+        "54",
+        "72",
+        "60"
+      ],
+      "solutionVideoId": "5b424084-0643-47cd-af24-de28aa0ee756",
+      "correctAnswer": "60"
+    },
+    {
+      "sourceId": "Y7L10-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "A student answers 18 of 30 questions correctly. What percentage is correct?",
+      "diagram": null,
+      "options": [
+        "18%",
+        "30%",
+        "40%",
+        "75%",
+        "60%"
+      ],
+      "solutionVideoId": "afd95c1e-7b6e-4f9b-a023-1751948fdda9",
+      "correctAnswer": "60%"
+    },
+    {
+      "sourceId": "Y7L10-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "What percentage of 80 is 36?",
+      "diagram": null,
+      "options": [
+        "36%",
+        "44%",
+        "55%",
+        "60%",
+        "45%"
+      ],
+      "solutionVideoId": "30549bf2-d728-4282-b0bb-33a9a317644e",
+      "correctAnswer": "45%"
+    },
+    {
+      "sourceId": "Y7L10-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "A bag costs $80. It is reduced by 15%. What is the sale price?",
+      "diagram": null,
+      "options": [
+        "$12.00",
+        "$65.00",
+        "$72.00",
+        "$92.00",
+        "$68.00"
+      ],
+      "solutionVideoId": "56a0ee29-8a0a-486b-99d2-c440ebbd623f",
+      "correctAnswer": "$68.00"
+    },
+    {
+      "sourceId": "Y7L10-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Increase 120 by 10%.",
+      "diagram": null,
+      "options": [
+        "12",
+        "130",
+        "108",
+        "144",
+        "132"
+      ],
+      "solutionVideoId": "c0a5710c-8835-49d7-83c2-e8341750ce91",
+      "correctAnswer": "132"
+    },
+    {
+      "sourceId": "Y7L10-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "There are 60 students. If 35% walk to school, how many students walk?",
+      "diagram": null,
+      "options": [
+        "35",
+        "18",
+        "39",
+        "24",
+        "21"
+      ],
+      "solutionVideoId": "992b5bd8-68e8-471e-8ff3-5ceee7a99552",
+      "correctAnswer": "21"
+    },
+    {
+      "sourceId": "Y7L10-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "A 500 mL drink contains 8% fruit juice by volume. How much fruit juice does it contain?",
+      "diagram": null,
+      "options": [
+        "8 mL",
+        "50 mL",
+        "400 mL",
+        "4 mL",
+        "40 mL"
+      ],
+      "solutionVideoId": "671cf6a5-14ba-4aba-bf5b-8400ad901db1",
+      "correctAnswer": "40 mL"
+    },
+    {
+      "sourceId": "Y7L10-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Find 17.5% of 360.",
+      "diagram": null,
+      "options": [
+        "36",
+        "54",
+        "630",
+        "72",
+        "63"
+      ],
+      "solutionVideoId": "9268397c-e8c1-4866-b0d3-f76395110d49",
+      "correctAnswer": "63"
+    },
+    {
+      "sourceId": "Y7L10-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Find 0.5% of 840.",
+      "diagram": null,
+      "options": [
+        "42",
+        "0.42",
+        "420",
+        "8.4",
+        "4.2"
+      ],
+      "solutionVideoId": "a1e0ee22-692f-49f3-bd39-e8cf6231fa46",
+      "correctAnswer": "4.2"
+    },
+    {
+      "sourceId": "Y7L10-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "A jacket costs $240. It is discounted by 12.5%. What is the sale price?",
+      "diagram": null,
+      "options": [
+        "$30.00",
+        "$227.50",
+        "$220.00",
+        "$270.00",
+        "$210.00"
+      ],
+      "solutionVideoId": "98a9aa50-fe5f-41c5-a65e-12c1162d9b54",
+      "correctAnswer": "$210.00"
+    },
+    {
+      "sourceId": "Y7L10-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "A price of $180 increases by 15%. What is the new price?",
+      "diagram": null,
+      "options": [
+        "$27.00",
+        "$195.00",
+        "$153.00",
+        "$198.00",
+        "$207.00"
+      ],
+      "solutionVideoId": "1d50d278-7bbc-46c0-bffe-0a1ca8cd367e",
+      "correctAnswer": "$207.00"
+    },
+    {
+      "sourceId": "Y7L10-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "A price rises from $80 to $100. What is the percentage increase?",
+      "diagram": null,
+      "options": [
+        "20%",
+        "80%",
+        "125%",
+        "30%",
+        "25%"
+      ],
+      "solutionVideoId": "3925b42e-07e3-420f-b9f8-dc70b6d7ee57",
+      "correctAnswer": "25%"
+    },
+    {
+      "sourceId": "Y7L10-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "A price falls from $150 to $120. What is the percentage decrease?",
+      "diagram": null,
+      "options": [
+        "25%",
+        "30%",
+        "80%",
+        "15%",
+        "20%"
+      ],
+      "solutionVideoId": "3a7adad8-88e3-45ef-9a5a-bfd1afd63329",
+      "correctAnswer": "20%"
+    },
+    {
+      "sourceId": "Y7L10-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "30% of a number is 54. Find the number.",
+      "diagram": null,
+      "options": [
+        "16.2",
+        "162",
+        "84",
+        "150",
+        "180"
+      ],
+      "solutionVideoId": "44da7af3-7e9f-48ca-8c22-117026f39d77",
+      "correctAnswer": "180"
+    },
+    {
+      "sourceId": "Y7L10-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "A sale price is $96 after a 20% discount. What was the original price?",
+      "diagram": null,
+      "options": [
+        "$76.80",
+        "$115.20",
+        "$100.00",
+        "$480.00",
+        "$120.00"
+      ],
+      "solutionVideoId": "dc836fa3-0f20-46a5-ab8b-f2bb1940c31a",
+      "correctAnswer": "$120.00"
+    },
+    {
+      "sourceId": "Y7L10-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "An amount of $60 increases by 10%, then the new amount decreases by 10%. What is the final amount?",
+      "diagram": null,
+      "options": [
+        "$60.00",
+        "$54.00",
+        "$66.00",
+        "$58.00",
+        "$59.40"
+      ],
+      "solutionVideoId": "7c8eff5f-ad6b-4309-adc0-112f164177cf",
+      "correctAnswer": "$59.40"
+    },
+    {
+      "sourceId": "Y7L10-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "A school has 200 students. Girls make up 55% of the students. If 30% of the girls travel by bus, how many girls travel by bus?",
+      "diagram": null,
+      "options": [
+        "60",
+        "110",
+        "85",
+        "30",
+        "33"
+      ],
+      "solutionVideoId": "7f46610a-903b-495f-9b7e-e4a3a730dc9f",
+      "correctAnswer": "33"
+    }
+  ]
+}
