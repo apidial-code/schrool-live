@@ -1,0 +1,490 @@
+{
+  "formatVersion": 1,
+  "courseTitle": "Math II Year 7",
+  "sourceLessonNumber": 5,
+  "title": "Writing Percentages as Fractions",
+  "bunnyLibraryId": 360729,
+  "bunnyVideoId": "dd74a951-5248-4bac-ac1e-a7a4cc2a513e",
+  "questions": [
+    {
+      "sourceId": "Y7L05-E1",
+      "difficulty": "easy",
+      "orderIndex": 1,
+      "questionText": "Change 57% to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{54}{100}",
+        "\\frac{53}{100}",
+        "\\frac{51}{100}",
+        "\\frac{56}{100}",
+        "\\frac{57}{100}"
+      ],
+      "solutionVideoId": "74a2c6f9-e7ec-4797-9aa6-3f36f81253f1",
+      "correctAnswer": "\\frac{57}{100}"
+    },
+    {
+      "sourceId": "Y7L05-E2",
+      "difficulty": "easy",
+      "orderIndex": 2,
+      "questionText": "Convert 25% to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{24}{100}",
+        "\\frac{24}{10}",
+        "\\frac{25}{10}",
+        "\\frac{25}{1000}",
+        "\\frac{25}{100}"
+      ],
+      "solutionVideoId": "d3733027-17f0-493a-95ca-17610bf3879d",
+      "correctAnswer": "\\frac{25}{100}"
+    },
+    {
+      "sourceId": "Y7L05-E3",
+      "difficulty": "easy",
+      "orderIndex": 3,
+      "questionText": "Express 3% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{100}",
+        "\\frac{1}{100}",
+        "\\frac{7}{100}",
+        "\\frac{9}{100}",
+        "\\frac{3}{100}"
+      ],
+      "solutionVideoId": "925c7170-fc0a-44f3-8f75-7c7e610e22dc",
+      "correctAnswer": "\\frac{3}{100}"
+    },
+    {
+      "sourceId": "Y7L05-E4",
+      "difficulty": "easy",
+      "orderIndex": 4,
+      "questionText": "Change 20% to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{20}{10}",
+        "\\frac{30}{10}",
+        "\\frac{200}{100}",
+        "\\frac{20}{1000}",
+        "\\frac{20}{100}"
+      ],
+      "solutionVideoId": "f98f642e-5674-4e82-bb70-7b55dbbcfbaf",
+      "correctAnswer": "\\frac{20}{100}"
+    },
+    {
+      "sourceId": "Y7L05-E5",
+      "difficulty": "easy",
+      "orderIndex": 5,
+      "questionText": "Show 33% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{50}",
+        "\\frac{22}{23}",
+        "\\frac{33}{50}",
+        "\\frac{33}{73}",
+        "\\frac{33}{100}"
+      ],
+      "solutionVideoId": "548715f9-b440-4819-b365-c44e47adc4e7",
+      "correctAnswer": "\\frac{33}{100}"
+    },
+    {
+      "sourceId": "Y7L05-E6",
+      "difficulty": "easy",
+      "orderIndex": 6,
+      "questionText": "Express 4% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{1000}",
+        "\\frac{4}{2000}",
+        "\\frac{4}{200}",
+        "\\frac{4}{10}",
+        "\\frac{4}{100}"
+      ],
+      "solutionVideoId": "ddaa2a1b-b97a-4738-b334-3c79543a3543",
+      "correctAnswer": "\\frac{4}{100}"
+    },
+    {
+      "sourceId": "Y7L05-E7",
+      "difficulty": "easy",
+      "orderIndex": 7,
+      "questionText": "Show how 52% can be expressed as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{9}{25}",
+        "\\frac{11}{25}",
+        "\\frac{12}{25}",
+        "\\frac{7}{25}",
+        "\\frac{13}{25}"
+      ],
+      "solutionVideoId": "ce484fad-d98a-4cfb-b513-2b360c419452",
+      "correctAnswer": "\\frac{13}{25}"
+    },
+    {
+      "sourceId": "Y7L05-E8",
+      "difficulty": "easy",
+      "orderIndex": 8,
+      "questionText": "Change 60% to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{5}",
+        "\\frac{2}{5}",
+        "\\frac{3}{7}",
+        "\\frac{2}{7}",
+        "\\frac{3}{5}"
+      ],
+      "solutionVideoId": "e24dc0a8-9f63-4228-b0c9-0e8aaa08d2c1",
+      "correctAnswer": "\\frac{3}{5}"
+    },
+    {
+      "sourceId": "Y7L05-E9",
+      "difficulty": "easy",
+      "orderIndex": 9,
+      "questionText": "How is 70% written as a fraction?",
+      "diagram": null,
+      "options": [
+        "\\frac{9}{10}",
+        "\\frac{3}{10}",
+        "\\frac{8}{11}",
+        "\\frac{9}{11}",
+        "\\frac{7}{10}"
+      ],
+      "solutionVideoId": "73f26edf-2d46-46d3-8052-8e697df9db3f",
+      "correctAnswer": "\\frac{7}{10}"
+    },
+    {
+      "sourceId": "Y7L05-E10",
+      "difficulty": "easy",
+      "orderIndex": 10,
+      "questionText": "Rewrite 15% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{4}{20}",
+        "\\frac{1}{20}",
+        "\\frac{2}{20}",
+        "\\frac{6}{20}",
+        "\\frac{3}{20}"
+      ],
+      "solutionVideoId": "b149da86-046c-4a0f-82e7-c5446fa86d9b",
+      "correctAnswer": "\\frac{3}{20}"
+    },
+    {
+      "sourceId": "Y7L05-M1",
+      "difficulty": "medium",
+      "orderIndex": 1,
+      "questionText": "Express 160% as a fraction.",
+      "diagram": null,
+      "options": [
+        "1 \\frac{1}{5}",
+        "1 \\frac{2}{5}",
+        "1 \\frac{3}{7}",
+        "1 \\frac{4}{7}",
+        "1 \\frac{3}{5}"
+      ],
+      "solutionVideoId": "0c1e3864-780e-48e1-89b8-4d7f9b849537",
+      "correctAnswer": "1 \\frac{3}{5}"
+    },
+    {
+      "sourceId": "Y7L05-M2",
+      "difficulty": "medium",
+      "orderIndex": 2,
+      "questionText": "Convert 200% to a fraction.",
+      "diagram": null,
+      "options": [
+        "1",
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "solutionVideoId": "f6f221a9-f6e0-4ae9-950a-5c476f051655",
+      "correctAnswer": "2"
+    },
+    {
+      "sourceId": "Y7L05-M3",
+      "difficulty": "medium",
+      "orderIndex": 3,
+      "questionText": "Rewrite 2 \\frac{1}{4} % as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{11}{400}",
+        "\\frac{13}{400}",
+        "\\frac{21}{400}",
+        "\\frac{17}{400}",
+        "\\frac{9}{400}"
+      ],
+      "solutionVideoId": "24038c96-c4d6-4951-abee-1f636d4965a3",
+      "correctAnswer": "\\frac{9}{400}"
+    },
+    {
+      "sourceId": "Y7L05-M4",
+      "difficulty": "medium",
+      "orderIndex": 4,
+      "questionText": "Change 3 \\frac{3}{4} % to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{80}",
+        "\\frac{9}{80}",
+        "\\frac{11}{80}",
+        "\\frac{13}{80}",
+        "\\frac{3}{80}"
+      ],
+      "solutionVideoId": "893bb245-9c9e-4f85-b935-5dd10dd1539d",
+      "correctAnswer": "\\frac{3}{80}"
+    },
+    {
+      "sourceId": "Y7L05-M5",
+      "difficulty": "medium",
+      "orderIndex": 5,
+      "questionText": "Represent 1 \\frac{1}{4} % as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{6}{70}",
+        "\\frac{7}{80}",
+        "\\frac{21}{80}",
+        "\\frac{6}{71}",
+        "\\frac{1}{80}"
+      ],
+      "solutionVideoId": "5e35f714-fcc8-46fd-83c4-dbc92835d93d",
+      "correctAnswer": "\\frac{1}{80}"
+    },
+    {
+      "sourceId": "Y7L05-M6",
+      "difficulty": "medium",
+      "orderIndex": 6,
+      "questionText": "Show 1.7% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{17}{100}",
+        "\\frac{17}{10}",
+        "\\frac{17}{50}",
+        "\\frac{17}{75}",
+        "\\frac{17}{1000}"
+      ],
+      "solutionVideoId": "69827a80-07f5-4c96-86c9-b4c7fdc34590",
+      "correctAnswer": "\\frac{17}{1000}"
+    },
+    {
+      "sourceId": "Y7L05-M7",
+      "difficulty": "medium",
+      "orderIndex": 7,
+      "questionText": "Express \\frac{1}{8} % as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{1}{80}",
+        "\\frac{5}{80}",
+        "\\frac{7}{80}",
+        "\\frac{9}{80}",
+        "\\frac{1}{800}"
+      ],
+      "solutionVideoId": "158e0796-6018-4685-bec2-b71d12952586",
+      "correctAnswer": "\\frac{1}{800}"
+    },
+    {
+      "sourceId": "Y7L05-M8",
+      "difficulty": "medium",
+      "orderIndex": 8,
+      "questionText": "Change 63% to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{63}{1000}",
+        "\\frac{63}{10}",
+        "\\frac{71}{75}",
+        "\\frac{63}{65}",
+        "\\frac{63}{100}"
+      ],
+      "solutionVideoId": "9548bb62-f1a5-4765-b67f-2ca4ed076028",
+      "correctAnswer": "\\frac{63}{100}"
+    },
+    {
+      "sourceId": "Y7L05-M9",
+      "difficulty": "medium",
+      "orderIndex": 9,
+      "questionText": "Convert 2 \\frac{1}{2} % to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{39}{40}",
+        "\\frac{28}{40}",
+        "\\frac{37}{40}",
+        "\\frac{33}{40}",
+        "\\frac{1}{40}"
+      ],
+      "solutionVideoId": "70059a0b-a12f-4478-8acf-e8eb071f359b",
+      "correctAnswer": "\\frac{1}{40}"
+    },
+    {
+      "sourceId": "Y7L05-M10",
+      "difficulty": "medium",
+      "orderIndex": 10,
+      "questionText": "Show 3 \\frac{1}{3} % as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{30}",
+        "\\frac{9}{30}",
+        "\\frac{11}{30}",
+        "\\frac{13}{30}",
+        "\\frac{1}{30}"
+      ],
+      "solutionVideoId": "b9f693f3-7b05-42bc-86ef-091cd081c66d",
+      "correctAnswer": "\\frac{1}{30}"
+    },
+    {
+      "sourceId": "Y7L05-C1",
+      "difficulty": "challenging",
+      "orderIndex": 1,
+      "questionText": "Express 1.5% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{3}{20}",
+        "\\frac{5}{2000}",
+        "\\frac{7}{2000}",
+        "\\frac{3}{2000}",
+        "\\frac{3}{200}"
+      ],
+      "solutionVideoId": "3cf6383a-8cb1-46e7-bf68-e53baa1bee52",
+      "correctAnswer": "\\frac{3}{200}"
+    },
+    {
+      "sourceId": "Y7L05-C2",
+      "difficulty": "challenging",
+      "orderIndex": 2,
+      "questionText": "Show 1.8% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{500}",
+        "\\frac{11}{500}",
+        "\\frac{21}{500}",
+        "\\frac{41}{500}",
+        "\\frac{9}{500}"
+      ],
+      "solutionVideoId": "680686de-ef01-4fb0-b87e-1b6468926467",
+      "correctAnswer": "\\frac{9}{500}"
+    },
+    {
+      "sourceId": "Y7L05-C3",
+      "difficulty": "challenging",
+      "orderIndex": 3,
+      "questionText": "Convert 2.7% to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{29}{1000}",
+        "\\frac{27}{100}",
+        "\\frac{27}{10}",
+        "\\frac{29}{100}",
+        "\\frac{27}{1000}"
+      ],
+      "solutionVideoId": "1c5b2d3e-2245-4b13-8a3d-a6b85ff3eb7f",
+      "correctAnswer": "\\frac{27}{1000}"
+    },
+    {
+      "sourceId": "Y7L05-C4",
+      "difficulty": "challenging",
+      "orderIndex": 4,
+      "questionText": "Rewrite 3.8% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{17}{500}",
+        "\\frac{11}{500}",
+        "\\frac{49}{500}",
+        "\\frac{61}{500}",
+        "\\frac{19}{500}"
+      ],
+      "solutionVideoId": "4ba9d31c-109b-43de-83a1-a2d83ef38f82",
+      "correctAnswer": "\\frac{19}{500}"
+    },
+    {
+      "sourceId": "Y7L05-C5",
+      "difficulty": "challenging",
+      "orderIndex": 5,
+      "questionText": "Change 7.1% to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{71}{100}",
+        "\\frac{61}{100}",
+        "\\frac{71}{10}",
+        "\\frac{71}{101}",
+        "\\frac{71}{1000}"
+      ],
+      "solutionVideoId": "c00a9a7f-8b6d-4735-90f0-74214e01b030",
+      "correctAnswer": "\\frac{71}{1000}"
+    },
+    {
+      "sourceId": "Y7L05-C6",
+      "difficulty": "challenging",
+      "orderIndex": 6,
+      "questionText": "Express 6.4% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{5}{125}",
+        "\\frac{7}{125}",
+        "\\frac{6}{125}",
+        "\\frac{9}{125}",
+        "\\frac{8}{125}"
+      ],
+      "solutionVideoId": "05afadaf-01a3-43be-906a-05c06be292e8",
+      "correctAnswer": "\\frac{8}{125}"
+    },
+    {
+      "sourceId": "Y7L05-C7",
+      "difficulty": "challenging",
+      "orderIndex": 7,
+      "questionText": "Show 7.5% as a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{7}{40}",
+        "\\frac{6}{40}",
+        "\\frac{9}{40}",
+        "\\frac{77}{40}",
+        "\\frac{3}{40}"
+      ],
+      "solutionVideoId": "7e8c8a64-2a69-44ae-97b7-d335dfae400b",
+      "correctAnswer": "\\frac{3}{40}"
+    },
+    {
+      "sourceId": "Y7L05-C8",
+      "difficulty": "challenging",
+      "orderIndex": 8,
+      "questionText": "Convert 9.2% to a fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{22}{250}",
+        "\\frac{21}{250}",
+        "\\frac{24}{250}",
+        "\\frac{29}{250}",
+        "\\frac{23}{250}"
+      ],
+      "solutionVideoId": "9bd9913b-3be9-41c9-b3b6-b487eb506d07",
+      "correctAnswer": "\\frac{23}{250}"
+    },
+    {
+      "sourceId": "Y7L05-C9",
+      "difficulty": "challenging",
+      "orderIndex": 9,
+      "questionText": "Change 10.1% to fraction.",
+      "diagram": null,
+      "options": [
+        "\\frac{101}{100}",
+        "\\frac{101}{10}",
+        "\\frac{103}{100}",
+        "\\frac{103}{1000}",
+        "\\frac{101}{1000}"
+      ],
+      "solutionVideoId": "f7deb117-abfa-45a1-bada-f73d0fcd284e",
+      "correctAnswer": "\\frac{101}{1000}"
+    },
+    {
+      "sourceId": "Y7L05-C10",
+      "difficulty": "challenging",
+      "orderIndex": 10,
+      "questionText": "What is 11.8% as a fraction?",
+      "diagram": null,
+      "options": [
+        "\\frac{71}{500}",
+        "\\frac{81}{500}",
+        "\\frac{91}{500}",
+        "\\frac{69}{500}",
+        "\\frac{59}{500}"
+      ],
+      "solutionVideoId": "95d38a32-e49f-495a-af2f-82e883f04f46",
+      "correctAnswer": "\\frac{59}{500}"
+    }
+  ]
+}
